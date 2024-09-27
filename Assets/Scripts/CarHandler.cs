@@ -45,14 +45,14 @@ public class CarHandler : MonoBehaviour
         }
     }
 
-    void Accelerate()
+    public void Accelerate()
     {
         rb.drag = 0;
         if (rb.velocity.z >= maxForwardVelocity)
             return;
         rb.AddForce(rb.transform.forward * acceleationMultiplier * input.y);
     }
-    void Brake()
+    public void Brake()
     {
         if (rb.velocity.z <= 0) 
             return;
@@ -61,7 +61,7 @@ public class CarHandler : MonoBehaviour
         rb.AddForce(rb.transform.forward * brakeMultiplier * input.y);
     }
 
-    void Steer()
+    public void Steer()
     {
 
         if (Mathf.Abs(input.x) > 0)
