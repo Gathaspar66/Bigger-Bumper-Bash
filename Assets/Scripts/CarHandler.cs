@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CarHandler : MonoBehaviour
@@ -12,11 +13,7 @@ public class CarHandler : MonoBehaviour
     Vector2 input=Vector2.zero;
     public float maxForwardVelocity = 30;
     float maxSteerVelocity = 2;
-    void Start()
-    {
-        
-    }
-
+    
     
     void Update()
     {
@@ -90,5 +87,19 @@ public class CarHandler : MonoBehaviour
 
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("wykryto kolizjê z:");
+        //EditorApplication.isPaused = true;
+        Time.timeScale = 0;
+    }
+        
+        
+        
+
+
+
+
 
 }
