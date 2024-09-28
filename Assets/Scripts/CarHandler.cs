@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CarHandler : MonoBehaviour
@@ -12,11 +13,7 @@ public class CarHandler : MonoBehaviour
     Vector2 input=Vector2.zero;
     public float maxForwardVelocity = 30;
     float maxSteerVelocity = 2;
-    void Start()
-    {
-        
-    }
-
+    
     
     void Update()
     {
@@ -45,14 +42,14 @@ public class CarHandler : MonoBehaviour
         }
     }
 
-    void Accelerate()
+    public void Accelerate()
     {
         rb.drag = 0;
         if (rb.velocity.z >= maxForwardVelocity)
             return;
         rb.AddForce(rb.transform.forward * acceleationMultiplier * input.y);
     }
-    void Brake()
+    public void Brake()
     {
         if (rb.velocity.z <= 0) 
             return;
@@ -61,7 +58,7 @@ public class CarHandler : MonoBehaviour
         rb.AddForce(rb.transform.forward * brakeMultiplier * input.y);
     }
 
-    void Steer()
+    public void Steer()
     {
 
         if (Mathf.Abs(input.x) > 0)
@@ -90,5 +87,19 @@ public class CarHandler : MonoBehaviour
 
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("wykryto kolizjê z:");
+        //EditorApplication.isPaused = true;
+        Time.timeScale = 0;
+    }
+        
+        
+        
+
+
+
+
 
 }

@@ -2,20 +2,25 @@ using UnityEngine;
 
 public class FollowCarOnZ : MonoBehaviour
 {
-    public Transform carTransform; 
-    public float cameraOffsetZ = -10f;  
+    GameObject car;
 
-    private Vector3 initialCameraPosition; 
+    public Transform carTransform;
+    public Vector3 offset;
+    
+
+    
 
     void Start()
     {
-      
-        initialCameraPosition = transform.position;
+        car = ControlsCameraChoice.instance.GetCar();
+        transform.position = car.transform.position  + offset;
+        // initialCameraPosition = transform.position;
+        //initialCameraPosition = car.transform.position;
     }
 
     void LateUpdate()
     {
         
-        transform.position = new Vector3(initialCameraPosition.x, initialCameraPosition.y, carTransform.position.z + cameraOffsetZ);
+        transform.position = new Vector3(0, car.transform.position.y, car.transform.position.z) + offset;
     }
 }
