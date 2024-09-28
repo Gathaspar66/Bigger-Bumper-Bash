@@ -30,7 +30,7 @@ public class ControlsCameraChoice : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         SetupDropdowns();
@@ -38,7 +38,7 @@ public class ControlsCameraChoice : MonoBehaviour
         NewControls();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         CheckForDropdownChange();
@@ -56,8 +56,9 @@ public class ControlsCameraChoice : MonoBehaviour
 
     public void OnButtonPressOK()
     {
-        NewCamera();
-        NewControls();
+        // NewCamera();
+        //NewControls();
+        Time.timeScale = 1;
     }
 
 

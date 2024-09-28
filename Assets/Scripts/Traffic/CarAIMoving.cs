@@ -21,7 +21,7 @@ public class CarAIMoving : MonoBehaviour
         currentLaneIndex = Random.Range(0, lanes.Length);
         transform.position = new Vector3(lanes[currentLaneIndex].position.x, transform.position.y, transform.position.z);
         maxSpeed = speed;
-        StartCoroutine(ChangeLane());
+        //StartCoroutine(ChangeLane());
     }
 
     public void SetPlayerCarTransform(Transform playerTransform)
