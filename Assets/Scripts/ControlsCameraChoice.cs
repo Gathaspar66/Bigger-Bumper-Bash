@@ -46,6 +46,10 @@ public class ControlsCameraChoice : MonoBehaviour
         {
             ToggleMenu();
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            OnButtonPressOK();
+        }
     }
 
     void ToggleMenu()
