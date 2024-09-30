@@ -24,15 +24,20 @@ public class CarHandler : MonoBehaviour
         if (input.y > 0)
         {
             Accelerate();
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "true");
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.BRAKING, "false");
         }
         else
         {
             rb.drag = 0.2f;
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "false");
         }
 
         if (input.y < 0)
         {
             Brake();
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "false2");
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.BRAKING, "true");
         }
 
         Steer();
@@ -49,6 +54,7 @@ public class CarHandler : MonoBehaviour
             return;
         rb.AddForce(rb.transform.forward * acceleationMultiplier * input.y);
     }
+
     public void Brake()
     {
         if (rb.velocity.z <= 0) 
@@ -64,22 +70,32 @@ public class CarHandler : MonoBehaviour
         if (Mathf.Abs(input.x) > 0)
         {
             float speedbaseSteerLimit = rb.velocity.z / 5.0f;
-            speedbaseSteerLimit=Mathf.Clamp01(speedbaseSteerLimit);
+            speedbaseSteerLimit = Mathf.Clamp01(speedbaseSteerLimit);
 
 
 
-            rb.AddForce(rb.transform.right * steeringMultiplier * input.x* speedbaseSteerLimit);
+            rb.AddForce(rb.transform.right * steeringMultiplier * input.x * speedbaseSteerLimit);
 
             float normalizedX = rb.velocity.x / maxSteerVelocity;
-            normalizedX=Mathf.Clamp(normalizedX,-1.0f,1.0f);
+            normalizedX = Mathf.Clamp(normalizedX, -1.0f, 1.0f);
             rb.velocity = new Vector3(normalizedX * maxSteerVelocity, 0, rb.velocity.z);
 
+            if (normalizedX > 0)
+            {
+                DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "right");
+            }
+            else
+            {
+                DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "left");
+            }
         }
         else
         {
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, 0, rb.velocity.z), Time.fixedDeltaTime * 3);
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "false");
         }
     }
+
     public void SetInput(Vector2 inputVector)
     {
         inputVector.Normalize();
