@@ -21,14 +21,13 @@ public class InputHandler : MonoBehaviour
 
         if (JoyStick.Instance != null && JoyStick.Instance.Background.gameObject.activeSelf)
         {
-            print("siema");
+            
             input = JoyStick.Instance.GetInput();
             
         }
 
 
-        print(input);
-            print("jestem w inpucie");
+       
         car.GetComponent<CarHandler>().SetInput(input);
 
 
