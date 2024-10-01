@@ -1882,8 +1882,8 @@ MonoBehaviour:
   gameModel: {fileID: 1228615890}
   acceleationMultiplier: 30
   brakeMultiplier: 15
-  steeringMultiplier: 5
-  maxForwardVelocity: 50
+  steeringMultiplier: 100
+  maxForwardVelocity: 30
 --- !u!54 &1228615889
 Rigidbody:
   m_ObjectHideFlags: 0

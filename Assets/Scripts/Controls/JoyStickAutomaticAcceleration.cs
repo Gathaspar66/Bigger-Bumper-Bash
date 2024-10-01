@@ -40,7 +40,7 @@ public class JoyStickAutomaticAcceleration : MonoBehaviour, IDragHandler, IPoint
     {
         isTouching = false;
         Background.gameObject.SetActive(false);
-
+        inputVector = Vector2.zero;
 
         inputVector.y = -1;
 
