@@ -452,15 +452,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuCanvas: {fileID: 265179848}
   cameraPrefabs:
+  - {fileID: 8758173062638144608, guid: 702a1a6980c494840a29aaf5392a9ef6, type: 3}
   - {fileID: 4496141727355302413, guid: 5c4cf61e5805e1d408b4181f693169bc, type: 3}
   - {fileID: 8546807661143207116, guid: b32c8c1aafd8d154abb7011d0b9fd808, type: 3}
   - {fileID: 4708083737688954580, guid: ef559997d5f26d6429af0110962e5fe1, type: 3}
   - {fileID: 4708083737688954580, guid: 64517b366e87e014898fafe90cd2180e, type: 3}
   - {fileID: 4708083737688954580, guid: 991dc8572b402a54597ccbff7f2f7000, type: 3}
-  - {fileID: 8758173062638144608, guid: 702a1a6980c494840a29aaf5392a9ef6, type: 3}
   controlPrefabs:
-  - {fileID: 5007730798198615199, guid: fef182cb95b6b2147b4de92617ce5035, type: 3}
+  - {fileID: 5007730798198615199, guid: 5dd4a2846e7a98c4e96f544e6b952a86, type: 3}
   - {fileID: 6637203455357346621, guid: dc06d8928d4870a4691aa79a474be379, type: 3}
+  - {fileID: 5007730798198615199, guid: fef182cb95b6b2147b4de92617ce5035, type: 3}
   car: {fileID: 1228615886}
   camerasDropdown: {fileID: 816833097}
   controlsDropdown: {fileID: 2074031379}
@@ -4290,7 +4291,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033268307}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2dfb530742818c4bbc956ec97d2fc73, type: 3}
   m_Name: 
@@ -4311,7 +4312,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033268307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6fd6220849e7fa4d96339edb33190ca, type: 3}
   m_Name: 

@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\PointsManager.cs" />
     <Compile Include="Assets\Scripts\ControlsCameraChoice.cs" />
     <Compile Include="Assets\Scripts\Traffic\ObstacleSpawner.cs" />
+    <Compile Include="Assets\Scripts\Controls\JoyStickAutomaticAcceleration.cs" />
     <Compile Include="Assets\Scripts\Controls\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Cameras\CameraInside.cs" />
     <Compile Include="Assets\Scripts\Cameras\FollowCarBounds.cs" />

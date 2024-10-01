@@ -19,7 +19,8 @@ public class CarAIMoving : MonoBehaviour
     void Start()
     {
         currentLaneIndex = Random.Range(0, lanes.Length);
-        transform.position = new Vector3(lanes[currentLaneIndex].position.x, transform.position.y, transform.position.z);
+        transform.position =
+            new Vector3(lanes[currentLaneIndex].position.x, transform.position.y, transform.position.z);
         maxSpeed = speed;
         //StartCoroutine(ChangeLane());
     }
@@ -46,9 +47,15 @@ public class CarAIMoving : MonoBehaviour
 
     void MoveCar()
     {
-        // Vector3 newPosition = transform.position + Vector3.forward * speed * Time.deltaTime;
-        //transform.position = newPosition;
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        if (currentLaneIndex == 0 || currentLaneIndex == 1)
+        {
+            transform.Translate(Vector3.back * speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
     }
 
     void DetectOtherCarsAndBrake()
@@ -83,7 +90,8 @@ public class CarAIMoving : MonoBehaviour
 
     IEnumerator MoveToNewLane(int newLaneIndex)
     {
-        Vector3 targetPosition = new Vector3(lanes[newLaneIndex].position.x, transform.position.y, transform.position.z);
+        Vector3 targetPosition =
+            new Vector3(lanes[newLaneIndex].position.x, transform.position.y, transform.position.z);
 
         while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
