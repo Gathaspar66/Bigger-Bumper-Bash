@@ -33,4 +33,17 @@ public class InputHandler : MonoBehaviour
     {
         car.GetComponent<CarHandler>().SetInput(input);
     }
+
+    public void SetHorizontal(float value)
+    {
+        input.x = value;
+        UpdateInput();
+    }
+
+
+    public void SetVertical(float value)
+    {
+        input.y = value;
+        UpdateInput();
+    }
 }
