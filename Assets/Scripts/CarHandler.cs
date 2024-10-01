@@ -19,7 +19,11 @@ public class CarHandler : MonoBehaviour
 
     void Update()
     {
-        gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 3, 0);
+        gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 0.5f, 0);
+        gameModel.transform.rotation = Quaternion.Euler(0, 0, rb.velocity.x);
+
+
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             wHeld = true;
