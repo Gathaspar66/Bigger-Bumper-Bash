@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JoyStick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+public class JoyStickAutomaticAcceleration : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     public RectTransform Background;
     public RectTransform Handle;
     private Vector2 inputVector = Vector2.zero;
-
     private Vector2 initialTouchPosition = Vector2.zero;
+    public bool isTouching = false;
 
-    public static JoyStick Instance { get; private set; }
+    public static JoyStickAutomaticAcceleration Instance { get; private set; }
 
     private void Awake()
     {
@@ -25,11 +25,27 @@ public class JoyStick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        isTouching = true;
         Background.gameObject.SetActive(true);
         initialTouchPosition = eventData.position;
         Background.position = eventData.position;
         Handle.anchoredPosition = Vector2.zero;
         OnDrag(eventData);
+
+        inputVector.y = 1;
+    }
+
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        isTouching = false;
+        Background.gameObject.SetActive(false);
+        inputVector = Vector2.zero;
+
+        inputVector.y = -1;
+
+
+        Handle.anchoredPosition = Vector2.zero;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -37,20 +53,17 @@ public class JoyStick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         Vector2 touchDirection = eventData.position - initialTouchPosition;
         float joystickRadius = Background.sizeDelta.x / 2f;
 
-        inputVector = (touchDirection.magnitude > joystickRadius)
-            ? touchDirection.normalized
-            : touchDirection / joystickRadius;
+
+        float inputX = touchDirection.x;
+        inputVector = new Vector2(
+            (Mathf.Abs(inputX) > joystickRadius) ? Mathf.Sign(inputX) : (inputX / joystickRadius),
+            0f
+        );
+
 
         Handle.anchoredPosition = inputVector * joystickRadius;
+        inputVector.y = 1;
     }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Background.gameObject.SetActive(false);
-        inputVector = Vector2.zero;
-        Handle.anchoredPosition = Vector2.zero;
-    }
-
 
     public Vector2 GetInput()
     {

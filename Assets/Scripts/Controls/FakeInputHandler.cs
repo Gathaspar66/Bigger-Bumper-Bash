@@ -3,10 +3,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class InputHandler : MonoBehaviour
+public class FakeInputHandler : MonoBehaviour
 {
     private Vector2 input = Vector2.zero;
     public GameObject car;
+
+    public FakeJoystickSteering joyL;
+    public FakeJoystickAccelerationBrake joyR;
 
     void Start()
     {
@@ -15,15 +18,9 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
-        if (JoyStick.Instance != null && JoyStick.Instance.Background.gameObject.activeSelf)
-        {
-            input = JoyStick.Instance.GetInput();
-        }
+        //joyL.GetComponent<FakeJoystickSteering>().GetInput();
+        input = joyR.GetComponent<FakeJoystickAccelerationBrake>().GetInput();
 
-        if (JoyStickAutomaticAcceleration.Instance != null)
-        {
-            input = JoyStickAutomaticAcceleration.Instance.GetInput();
-        }
 
         car.GetComponent<CarHandler>().SetInput(input);
     }
