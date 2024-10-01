@@ -33,7 +33,16 @@ public class ObstacleSpawner : MonoBehaviour
       
         Vector3 spawnPosition = new Vector3(lane.position.x, lane.position.y, playerCarTransform.position.z + spawnDistance);
 
-      
-        Instantiate(staticCarPrefab, spawnPosition, Quaternion.identity);
+
+        GameObject newCar = Instantiate(staticCarPrefab, spawnPosition, Quaternion.identity);
+
+        
+        BlueCarDestroyer blueCarDestroyer = newCar.GetComponent<BlueCarDestroyer>();
+        if (blueCarDestroyer != null)
+        {
+            blueCarDestroyer.playerCarTransform = playerCarTransform; 
+        }
     }
+
+  
 }

@@ -10,15 +10,16 @@ public class CarHandler : MonoBehaviour
     public float acceleationMultiplier = 3;
     public float brakeMultiplier = 15;
     public float steeringMultiplier = 5;
-    Vector2 input=Vector2.zero;
+    Vector2 input = Vector2.zero;
     public float maxForwardVelocity = 30;
     float maxSteerVelocity = 2;
-    
-    
+
+
     void Update()
     {
         gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 3, 0);
     }
+
     private void FixedUpdate()
     {
         if (input.y > 0)
@@ -41,7 +42,7 @@ public class CarHandler : MonoBehaviour
         }
 
         Steer();
-        if(rb.velocity.z<=0)
+        if (rb.velocity.z <= 0)
         {
             rb.velocity = Vector3.zero;
         }
@@ -57,21 +58,19 @@ public class CarHandler : MonoBehaviour
 
     public void Brake()
     {
-        if (rb.velocity.z <= 0) 
+        if (rb.velocity.z <= 0)
             return;
-                
+
 
         rb.AddForce(rb.transform.forward * brakeMultiplier * input.y);
     }
 
     public void Steer()
     {
-
         if (Mathf.Abs(input.x) > 0)
         {
             float speedbaseSteerLimit = rb.velocity.z / 5.0f;
             speedbaseSteerLimit = Mathf.Clamp01(speedbaseSteerLimit);
-
 
 
             rb.AddForce(rb.transform.right * steeringMultiplier * input.x * speedbaseSteerLimit);
@@ -100,22 +99,12 @@ public class CarHandler : MonoBehaviour
     {
         inputVector.Normalize();
         input = inputVector;
-
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("wykryto kolizjê z:");
+        Debug.Log("Wykryto kolizjê z: " + other.gameObject.name, other.gameObject);
         //EditorApplication.isPaused = true;
         Time.timeScale = 0;
     }
-        
-        
-        
-
-
-
-
-
 }

@@ -1584,6 +1584,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &978173676
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8664369382022809974, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_Name
+      value: Section
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.53616714
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.063068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664369382022809975, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d029572fa203b240a6cdc36d16615b8, type: 3}
 --- !u!1 &996875755
 GameObject:
   m_ObjectHideFlags: 0
@@ -4168,6 +4225,7 @@ GameObject:
   - component: {fileID: 2033268308}
   - component: {fileID: 2033268310}
   - component: {fileID: 2033268311}
+  - component: {fileID: 2033268312}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4211,7 +4269,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033268307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fe0b09283b98b94a88f11d70b0eb2d4, type: 3}
   m_Name: 
@@ -4232,12 +4290,33 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033268307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2dfb530742818c4bbc956ec97d2fc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dynamicCarPrefab: {fileID: 5595434474965355739, guid: d83ee53f9fb18f343ba1610577911ec6, type: 3}
+  lanePositions:
+  - {fileID: 465021164}
+  - {fileID: 1789457571}
+  - {fileID: 930543506}
+  - {fileID: 1827477219}
+  playerCarTransform: {fileID: 1228615890}
+  spawnDistance: 50
+  spawnInterval: 1
+--- !u!114 &2033268312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033268307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6fd6220849e7fa4d96339edb33190ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsPrefab: {fileID: 6173357011797978784, guid: 8c594e8764beb004195ef0780ae19a86, type: 3}
   lanePositions:
   - {fileID: 465021164}
   - {fileID: 1789457571}
@@ -4631,3 +4710,4 @@ SceneRoots:
   - {fileID: 1982639436}
   - {fileID: 8766152357800705258}
   - {fileID: 247714126473081505}
+  - {fileID: 978173676}

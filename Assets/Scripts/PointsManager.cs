@@ -25,7 +25,7 @@ public class PointsManager : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
+
     void Start()
     {
         car = ControlsCameraChoice.instance.GetCar();
@@ -34,7 +34,7 @@ public class PointsManager : MonoBehaviour
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         CheckSpeed();
@@ -58,7 +58,7 @@ public class PointsManager : MonoBehaviour
         if (car.transform.position.x < 0)
         {
             SwitchLanes(true);
-        } 
+        }
     }
 
     public void SwitchLanes(bool hardLane) //hardLane means double points, e.g. going upstream
@@ -77,6 +77,7 @@ public class PointsManager : MonoBehaviour
             //if crate multiplier above max, set to max
             if (cratePointMultiplier > cratePointMultiplierMax) cratePointMultiplier = cratePointMultiplierMax;
         }
+
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
     }
 
@@ -90,14 +91,24 @@ public class PointsManager : MonoBehaviour
             cratePointMultiplierTimer = cratePointMultiplierTimerMax;
             if (cratePointMultiplier > 1) cratePointMultiplier -= 1;
         }
+
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIERTIMER, cratePointMultiplierTimer);
     }
 
     void CalculatePoints()
     {
         currentCarLocationZ = car.transform.position.z;
-        points += (currentCarLocationZ - lastCarLocationZ) * speedPointMultiplier * lanePointMultiplier * cratePointMultiplier;
+        points += (currentCarLocationZ - lastCarLocationZ) * speedPointMultiplier * lanePointMultiplier *
+                  cratePointMultiplier;
         lastCarLocationZ = car.transform.position.z;
+        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
+    }
+
+    public void AddPoints(float pointValue)
+    {
+        points += pointValue;
+
+        CrateHit();
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
     }
 }
