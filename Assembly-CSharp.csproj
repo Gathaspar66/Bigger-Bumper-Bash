@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Cameras\FollowCar.cs" />
     <Compile Include="Assets\Scripts\DebugWindow.cs" />
     <Compile Include="Assets\Scripts\EndlessLevelHandler.cs" />
+    <Compile Include="Assets\Scripts\PanelScaler.cs" />
     <Compile Include="Assets\Scripts\Cameras\RubberBand.cs" />
     <Compile Include="Assets\Scripts\PointsManager.cs" />
     <Compile Include="Assets\Scripts\ControlsCameraChoice.cs" />

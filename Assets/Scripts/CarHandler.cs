@@ -14,14 +14,29 @@ public class CarHandler : MonoBehaviour
     public float maxForwardVelocity = 30;
     float maxSteerVelocity = 2;
 
+    bool wHeld = false;
+
 
     void Update()
     {
         gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 3, 0);
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            wHeld = true;
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            wHeld = false;
+        }
     }
 
     private void FixedUpdate()
     {
+        if (wHeld)
+        {
+            input.y = 1;
+        }
+
         if (input.y > 0)
         {
             Accelerate();
@@ -33,7 +48,6 @@ public class CarHandler : MonoBehaviour
             rb.drag = 0.2f;
             DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "false");
         }
-
         if (input.y < 0)
         {
             Brake();
@@ -46,6 +60,7 @@ public class CarHandler : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
+
     }
 
     public void Accelerate()
