@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\EffectManager.cs" />
     <Compile Include="Assets\Scripts\Controls\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Cameras\CameraInside.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Controls\FakeJoystickSteering.cs" />
     <Compile Include="Assets\Scripts\Controls\FakeJoystickAccelerationBrake.cs" />
     <Compile Include="Assets\Scripts\Cameras\FollowCarBounds.cs" />

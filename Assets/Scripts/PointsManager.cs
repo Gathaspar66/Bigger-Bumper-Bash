@@ -48,7 +48,8 @@ public class PointsManager : MonoBehaviour
         //velocity unclear, possible increased Z velocity while turning
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEED, car.GetComponent<Rigidbody>().velocity.z);
         speedPointMultiplier = 1;
-        if (car.GetComponent<Rigidbody>().velocity.z > 25) speedPointMultiplier = 2;
+        if (car.GetComponent<Rigidbody>().velocity.z > 10) speedPointMultiplier = 2;
+        if (car.GetComponent<Rigidbody>().velocity.z > 20) speedPointMultiplier = 3;
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEEDMULTIPLIER, speedPointMultiplier);
     }
 
