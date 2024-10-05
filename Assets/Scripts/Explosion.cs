@@ -6,6 +6,7 @@ public class Explosion : MonoBehaviour
     public GameObject originalObject;
     public GameObject model;
     Rigidbody[] rigidbodies;
+    
    private void Awake()
     {
         rigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -13,7 +14,8 @@ public class Explosion : MonoBehaviour
 
     void Start()
     {
-        Explode(Vector3.forward);
+       // Explode(Vector3.forward);
+       
     }
 
     public void Explode(Vector3 externalForce)

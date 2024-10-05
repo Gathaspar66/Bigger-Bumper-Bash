@@ -19,7 +19,11 @@ public class CarHandler : MonoBehaviour
 
     void Update()
     {
-        gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 3, 0);
+        //gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 3f, 0);
+        gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 0.5f, rb.velocity.x * 1f);
+
+
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             wHeld = true;
@@ -119,7 +123,15 @@ public class CarHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Wykryto kolizjê z: " + other.gameObject.name, other.gameObject);
+        if (other.gameObject.name.Contains("points"))
+        {
+            EffectManager.instance.SpawnAnEffect(gameObject.transform.position, true);
+        }
+        else
+        {
+            EffectManager.instance.SpawnAnEffect(gameObject.transform.position, false);
+        }
         //EditorApplication.isPaused = true;
-        Time.timeScale = 0;
+       // Time.timeScale = 0;
     }
 }
