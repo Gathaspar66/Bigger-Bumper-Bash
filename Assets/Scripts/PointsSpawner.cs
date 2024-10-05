@@ -9,12 +9,13 @@ public class PointsSpawner : MonoBehaviour
     public Transform playerCarTransform;
     public float spawnDistance = 50f;
     public float spawnInterval = 1f;
+    public float spawnIntervalDistance = 50f;
+    GameObject car;
+    private Rigidbody rb;
+    public float speed;
+    public float lastSpawnPosition;
 
-    void Start()
-    {
-        StartCoroutine(SpawnStaticCars());
-    }
-
+    /*
     IEnumerator SpawnStaticCars()
     {
         while (true)
@@ -23,6 +24,30 @@ public class PointsSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
         }
     }
+    */
+
+    void Start()
+    {
+        car = ControlsCameraChoice.instance.GetCar();
+        rb = car.GetComponent<Rigidbody>();
+        //StartCoroutine(SpawnStaticCars());
+        lastSpawnPosition = car.transform.position.z;
+    }
+
+    void Update()
+    {
+        speed = rb.velocity.z;
+
+        float distanceTraveled = car.transform.position.z - lastSpawnPosition;
+
+
+        if (distanceTraveled >= spawnIntervalDistance)
+        {
+            SpawnPointsPrefab();
+            lastSpawnPosition = car.transform.position.z;
+        }
+    }
+
 
     void SpawnPointsPrefab()
     {

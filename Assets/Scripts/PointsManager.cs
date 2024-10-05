@@ -90,6 +90,7 @@ public class PointsManager : MonoBehaviour
         {
             cratePointMultiplierTimer = cratePointMultiplierTimerMax;
             if (cratePointMultiplier > 1) cratePointMultiplier -= 1;
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
         }
 
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIERTIMER, cratePointMultiplierTimer);

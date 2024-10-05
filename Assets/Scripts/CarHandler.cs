@@ -124,6 +124,6 @@ public class CarHandler : MonoBehaviour
     {
         Debug.Log("Wykryto kolizjê z: " + other.gameObject.name, other.gameObject);
         //EditorApplication.isPaused = true;
-        Time.timeScale = 0;
+       // Time.timeScale = 0;
     }
 }
