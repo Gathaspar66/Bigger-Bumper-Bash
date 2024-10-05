@@ -16,8 +16,8 @@ public class ControlsCameraChoice : MonoBehaviour
 
     bool isMenuOn = true;
 
-    GameObject currentCamera;
-    GameObject currentControls;
+    public GameObject currentCamera;
+    public GameObject currentControls;
 
     int lastCamerasDropdownValue = 0;
     int lastControlsDropdownValue = 0;
