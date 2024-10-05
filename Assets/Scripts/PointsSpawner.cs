@@ -56,7 +56,7 @@ public class PointsSpawner : MonoBehaviour
 
 
         Vector3 spawnPosition =
-            new Vector3(lane.position.x, lane.position.y, playerCarTransform.position.z + spawnDistance);
+            new Vector3(lane.position.x, lane.position.y+ 0.1f, playerCarTransform.position.z + spawnDistance);
 
 
         GameObject newPointsObject = Instantiate(pointsPrefab, spawnPosition, Quaternion.identity);

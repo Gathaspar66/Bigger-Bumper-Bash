@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8303040298510919495}
   - component: {fileID: 7165367893061984421}
   - component: {fileID: -7114225460735755227}
+  - component: {fileID: 7904117267217623583}
   m_Layer: 3
   m_Name: CubeBlue
   m_TagString: Untagged
@@ -119,3 +120,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!114 &7904117267217623583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607087247116259691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc8ae84708f2a04fb7aaf7692e04acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCarTransform: {fileID: 0}

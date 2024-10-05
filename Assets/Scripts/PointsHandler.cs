@@ -6,7 +6,7 @@ public class PointsHandler : MonoBehaviour
 {
     public Transform playerCarTransform;
     public PointsManager pointsManager;
-
+    private Explosion explosionScript;
     void Update()
     {
         DestroyCarIfTooFar();
@@ -22,8 +22,9 @@ public class PointsHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        explosionScript = GetComponent<Explosion>();
         PointsManager.instance.AddPoints(1000);
-
+        explosionScript.Explode(Vector3.forward);
         Destroy(gameObject);
     }
 }

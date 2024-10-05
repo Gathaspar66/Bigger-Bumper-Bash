@@ -1572,7 +1572,7 @@ Transform:
   m_GameObject: {fileID: 465021163}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.86, y: 1.01, z: -6.7453146}
+  m_LocalPosition: {x: -3.86, y: 0, z: -6.7453146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3302,7 +3302,7 @@ Transform:
   m_GameObject: {fileID: 930543505}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.41, y: 1.01, z: -6.7453146}
+  m_LocalPosition: {x: 1.41, y: 0, z: -6.7453146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4038,7 +4038,7 @@ MonoBehaviour:
   acceleationMultiplier: 30
   brakeMultiplier: 15
   steeringMultiplier: 100
-  maxForwardVelocity: 30
+  maxForwardVelocity: 20
 --- !u!54 &1228615889
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4063,7 +4063,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!4 &1228615890 stripped
@@ -5738,7 +5738,7 @@ Transform:
   m_GameObject: {fileID: 1789457570}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.59, y: 1.01, z: -6.7453146}
+  m_LocalPosition: {x: -1.59, y: 0, z: -6.7453146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6052,7 +6052,7 @@ Transform:
   m_GameObject: {fileID: 1827477218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.73, y: 1.01, z: -6.7453146}
+  m_LocalPosition: {x: 3.73, y: 0, z: -6.7453146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6927,12 +6927,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033268307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fe0b09283b98b94a88f11d70b0eb2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticCarPrefab: {fileID: 1607087247116259691, guid: bf704ab2429575843b79c26ceee45200, type: 3}
+  staticCarPrefab: {fileID: 3414897016482836124, guid: b323987014904eb41a7693e635435c71, type: 3}
   lanePositions:
   - {fileID: 465021164}
   - {fileID: 1789457571}
@@ -6955,7 +6955,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dfb530742818c4bbc956ec97d2fc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dynamicCarPrefab: {fileID: 5595434474965355739, guid: d83ee53f9fb18f343ba1610577911ec6, type: 3}
+  carPrefabs:
+  - {fileID: 8142877991688725419, guid: c18e69c75ba3bda49995d2ad95d66552, type: 3}
+  - {fileID: 5287034374119066164, guid: 7713a2e1d9f09564c97885f312000d6f, type: 3}
+  - {fileID: 6105960227422118555, guid: 8d66c2f01992d62448f61b6fded89bce, type: 3}
   lanePositions:
   - {fileID: 465021164}
   - {fileID: 1789457571}
@@ -6973,12 +6976,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033268307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6fd6220849e7fa4d96339edb33190ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsPrefab: {fileID: 6173357011797978784, guid: 8c594e8764beb004195ef0780ae19a86, type: 3}
+  pointsPrefab: {fileID: 8345360250626384349, guid: 64a5f1e62e84c444cb093ee173ac28e9, type: 3}
   lanePositions:
   - {fileID: 465021164}
   - {fileID: 1789457571}

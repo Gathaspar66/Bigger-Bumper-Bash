@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarAIMoving : MonoBehaviour
 {
     public float speed = 12f;
-    public float brakeDistance = 10f;
+    public float brakeDistance = 20f;
     public float laneChangeSpeed = 3f;
     public float laneChangeInterval = 2f;
     public Transform[] lanes;
@@ -30,7 +30,7 @@ public class CarAIMoving : MonoBehaviour
         playerCarTransform = playerTransform;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         MoveCar();
         DetectOtherCarsAndBrake();
@@ -39,7 +39,7 @@ public class CarAIMoving : MonoBehaviour
 
     void DestroyCarIfTooFar()
     {
-        if (playerCarTransform != null && transform.position.z < playerCarTransform.position.z - 100f)
+        if (transform.position.z < playerCarTransform.position.z - 100f)
         {
             Destroy(gameObject);
         }

@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class MovingCarSpawner : MonoBehaviour
 {
-    public GameObject dynamicCarPrefab;
+    //public GameObject dynamicCarPrefab;
+    //public GameObject dynamicCarPrefab1;
+    //public GameObject dynamicCarPrefab2;
+
+    public GameObject[] carPrefabs;
+
     public Transform[] lanePositions;
     public Transform playerCarTransform;
     public float spawnDistance = 50f;
@@ -50,6 +55,7 @@ public class MovingCarSpawner : MonoBehaviour
     void SpawnDynamicCar()
     {
         int randomLaneIndex = Random.Range(0, lanePositions.Length);
+        int randomPrefab = Random.Range(0, carPrefabs.Length);
         Transform lane = lanePositions[randomLaneIndex];
 
 
@@ -57,7 +63,7 @@ public class MovingCarSpawner : MonoBehaviour
             new Vector3(lane.position.x, lane.position.y, playerCarTransform.position.z + spawnDistance);
 
 
-        GameObject car = Instantiate(dynamicCarPrefab, spawnPosition, Quaternion.identity);
+        GameObject car = Instantiate(carPrefabs[randomPrefab], spawnPosition, Quaternion.identity);
 
 
         CarAIMoving carAI = car.GetComponent<CarAIMoving>();
