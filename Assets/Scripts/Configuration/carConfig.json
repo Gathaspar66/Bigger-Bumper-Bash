@@ -1,0 +1,18 @@
+{
+  "Unikacz": {
+    "acceleationMultiplier": 30.0,
+    "brakeMultiplier": 15.0,
+    "steeringMultiplier": 100.0,
+    "maxForwardVelocity": 2137.0,
+    "maxSteerVelocity": 2.0,
+    "minForwardVelocity": 10
+  },
+  "Auto2": {
+    "acceleationMultiplier": 4.0,
+    "brakeMultiplier": 10.0,
+    "steeringMultiplier": 6.0,
+    "maxForwardVelocity": 35.0,
+    "maxSteerVelocity": 2.5,
+    "minForwardVelocity": 10
+  }
+}
