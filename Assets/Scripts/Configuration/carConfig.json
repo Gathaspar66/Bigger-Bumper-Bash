@@ -3,7 +3,7 @@
     "acceleationMultiplier": 30.0,
     "brakeMultiplier": 15.0,
     "steeringMultiplier": 100.0,
-    "maxForwardVelocity": 2137.0,
+    "maxForwardVelocity": 20.0,
     "maxSteerVelocity": 2.0,
     "minForwardVelocity": 10
   },
