@@ -19,7 +19,7 @@ public class PointsManager : MonoBehaviour
 
     public float points = 0;
 
-
+    //
     private void Awake()
     {
         instance = this;
