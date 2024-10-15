@@ -18,6 +18,8 @@ public class CarAIMoving : MonoBehaviour
     private float spawnMaxSpeed;
     public GameObject[] carPrefabs;
     public static CarAIMoving instance;
+    public float minBrakeRaycastDistance;
+    public float maxBrakeRaycastDistance;
 
     private void Awake()
     {
@@ -26,8 +28,8 @@ public class CarAIMoving : MonoBehaviour
 
     void Start()
     {
-        brakeRaycastDistance = Random.Range(5, 20);
-        Set();
+        brakeRaycastDistance = Random.Range(minBrakeRaycastDistance, maxBrakeRaycastDistance);
+        SetInitialSpeed();
     }
 
     void FixedUpdate()
@@ -37,7 +39,7 @@ public class CarAIMoving : MonoBehaviour
         DestroyCarIfTooFar();
     }
 
-    void Set()
+    void SetInitialSpeed()
     {
         maxSpeed = PlayerSteering.instance.maxForwardVelocity;
         minSpeed = PlayerSteering.instance.minForwardVelocity;
@@ -45,9 +47,8 @@ public class CarAIMoving : MonoBehaviour
         spawnMaxSpeed = maxSpeed * 1.1f;
 
         speed = GenerateSpeed();
-       
+
         maxSpeed = speed;
-        //currentLaneIndexFront = TrafficManager.instance.randomLaneIndexFront;
     }
 
     float GenerateSpeed()
@@ -55,7 +56,7 @@ public class CarAIMoving : MonoBehaviour
         do
         {
             speed = Random.Range(spawnMinSpeed, spawnMaxSpeed);
-        } while (speed == minSpeed);
+        } while (speed > minSpeed + 1 || speed < minSpeed - 1);
 
         return speed;
     }
@@ -64,12 +65,12 @@ public class CarAIMoving : MonoBehaviour
     {
         int randomIndex = Random.Range(0, carPrefabs.Length);
         currentLaneIndex = randomLaneIndex;
-        
+
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
 
         Quaternion spawnRotation;
-       
+
         if (currentLaneIndex == 0 || currentLaneIndex == 1)
         {
             spawnRotation = Quaternion.Euler(0, 180, 0);

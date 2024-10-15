@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnStaticObstacleDistance: 50
-  staticObstacleSpawnIntervalDistance: 50
+  staticObstacleSpawnIntervalDistance: 30
   frontSpawnDynamicObstacleDistance: 100
   frontDynamicObstacleSpawnIntervalDistance: 10
   backSpawnDynamicObstacleDistance: -10
@@ -597,7 +597,7 @@ MonoBehaviour:
   trafficLayer:
     serializedVersion: 2
     m_Bits: 8
-  boxSize: {x: 1.4, y: 1, z: 4.16}
+  boxSize: {x: 1.4, y: 1, z: 4.18}
   spawnPosition: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   speed: 0

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  brakeDistance: 11.39
+  brakeRaycastDistance: 0
   carLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -53,3 +53,5 @@ MonoBehaviour:
   carPrefabs:
   - {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
   - {fileID: 90333524050876863, guid: acba0aafceec875478c3c9d158db4fee, type: 3}
+  minBrakeRaycastDistance: 2
+  maxBrakeRaycastDistance: 10

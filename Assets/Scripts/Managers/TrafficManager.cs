@@ -2,23 +2,22 @@ using UnityEngine;
 
 public class TrafficManager : MonoBehaviour
 {
-    [Header("Static Obstacle Spawn Settings")]
+    [Header("Static Obstacle Spawn Settings")]//
     public float spawnStaticObstacleDistance = 50f;
-
     public float staticObstacleSpawnIntervalDistance = 50f;
 
-    [Header("Dynamic Obstacle Spawn Settings")]
+    [Header("Dynamic Obstacle Spawn Settings")]//
     public float frontSpawnDynamicObstacleDistance = 50f;
-
     public float frontDynamicObstacleSpawnIntervalDistance = 50f;
-
     public float backSpawnDynamicObstacleDistance = -10f;
     public float backDynamicObstacleSpawnIntervalDistance = 50f;
 
-    [Header("Static And Dynamic Prefabs")] public GameObject staticObstaclePrefab;
+    [Header("Static And Dynamic Prefabs")]//
+    public GameObject staticObstaclePrefab;
     public GameObject dynamicObstaclePrefab;
 
-    [Header("Other")] public float playerPrefabOffset = 0.5f;
+    [Header("Other")] 
+    public float playerPrefabOffset = 0.5f;
     public Transform[] lanePositions;
 
     public GameObject car;
@@ -30,7 +29,7 @@ public class TrafficManager : MonoBehaviour
     public float speed;
     public float lastSpawnPosition;
 
-    private Vector3 spawnPosition2; // do usuniecia
+    private Vector3 spawnPosition2; //to be removed in the future for the time being for the reason of debugging
     public static TrafficManager instance;
 
     private void Awake()
