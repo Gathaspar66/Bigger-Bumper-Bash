@@ -10,6 +10,7 @@ public class PlayerSteering : MonoBehaviour
 {
     [Header("Car Performance Settings")] //
     public float acceleationMultiplier;
+
     public float brakeMultiplier;
     public float steeringMultiplier;
     public float maxForwardVelocity;
@@ -18,9 +19,16 @@ public class PlayerSteering : MonoBehaviour
 
     [Header("Other")] //
     public Rigidbody rb;
+
     public Transform gameModel;
     private Vector2 input = Vector2.zero;
     private bool wHeld = false;
+    public static PlayerSteering instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {

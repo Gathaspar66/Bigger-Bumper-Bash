@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3531961504411367285}
-  m_Layer: 0
+  - component: {fileID: 4771932926838438196}
+  m_Layer: 3
   m_Name: DynamicObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,3 +32,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4771932926838438196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121954177195123221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef436304118f6974a9fe493a1ebbdd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 12
+  brakeRaycastDistance: 0
+  carLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  raycastOffsetY: 0.51
+  carPrefabs:
+  - {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
+  - {fileID: 90333524050876863, guid: acba0aafceec875478c3c9d158db4fee, type: 3}
+  minBrakeRaycastDistance: 2
+  maxBrakeRaycastDistance: 10
