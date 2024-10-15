@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1068980787133908836}
   - component: {fileID: 7419151477809295542}
   - component: {fileID: 1421288006978361768}
+  - component: {fileID: 5831812412874202471}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -77,6 +78,18 @@ MonoBehaviour:
   steeringMultiplier: 100
   maxForwardVelocity: 20
   maxSteerVelocity: 2
+  minForwardVelocity: 0
   rb: {fileID: 7419151477809295542}
   gameModel: {fileID: 0}
-  carConfigFile: {fileID: 4900000, guid: f1f9ac60f21ad2045803ba7172c3ec55, type: 3}
+--- !u!114 &5831812412874202471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432101980971534461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460636d58877af94196d3f564d9ffc38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

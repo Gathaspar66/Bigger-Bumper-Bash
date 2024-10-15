@@ -11,10 +11,12 @@ public class PlayerManager : MonoBehaviour
     public GameObject unikaczPrefab;
     private GameObject playerInstance;
     private GameObject carInstance;
-    public Camera camera;
+    public Camera cameraPrefab;
+    public Camera currentCameraPrefab;
     private CarConfig config;
     private CarConfigDictionary carConfigs;
     public TextAsset carConfigFile;
+
     private void Awake()
     {
         instance = this;
@@ -27,13 +29,14 @@ public class PlayerManager : MonoBehaviour
         LoadConfig();
         SpawnCamera();
     }
+
     void LoadConfig()
     {
-
         carConfigs = JsonUtility.FromJson<CarConfigDictionary>(carConfigFile.text);
         config = carConfigs.Unikacz;
         playerInstance.GetComponent<PlayerSteering>().LoadCarSettings(config);
     }
+
     public void SpawnPlayerPrefab()
     {
         playerInstance = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -47,7 +50,12 @@ public class PlayerManager : MonoBehaviour
 
     public void SpawnCamera()
     {
-        Instantiate(camera, new Vector3(0, 0, 0), camera.transform.rotation);
+        currentCameraPrefab = Instantiate(cameraPrefab, new Vector3(0, 0, 0), cameraPrefab.transform.rotation);
+    }
+
+    public Camera GetCameraInstance()
+    {
+        return currentCameraPrefab;
     }
 
     public GameObject GetPlayerInstance()

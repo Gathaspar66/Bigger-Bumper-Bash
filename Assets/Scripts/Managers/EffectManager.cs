@@ -13,26 +13,16 @@ public class EffectManager : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SpawnAnEffect(Vector3 location, bool isPositive = true)
     {
-        if(currentEffect != null)
+        if (currentEffect != null)
         {
             Destroy(currentEffect);
         }
+
         currentEffect = Instantiate(effect, location, Quaternion.identity);
-        currentEffect.transform.parent = Camera.main.transform;
+        currentEffect.transform.parent = PlayerManager.instance.GetCameraInstance().transform;
         currentEffect.GetComponent<Effect>().Activate(isPositive);
     }
 }

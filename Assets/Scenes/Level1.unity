@@ -815,7 +815,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5432101980971534461, guid: eefaae4d1396b3f48ab656bd529f7bd9, type: 3}
   unikaczPrefab: {fileID: 90333524050876863, guid: acba0aafceec875478c3c9d158db4fee, type: 3}
-  camera: {fileID: 7280080578915174522, guid: 45f1f94e9a7014844933124b4811847e, type: 3}
+  cameraPrefab: {fileID: 7280080578915174522, guid: 45f1f94e9a7014844933124b4811847e, type: 3}
+  currentCameraPrefab: {fileID: 0}
   carConfigFile: {fileID: 4900000, guid: f1f9ac60f21ad2045803ba7172c3ec55, type: 3}
 --- !u!1 &2048719953
 GameObject:

@@ -40,7 +40,6 @@ public class DebugWindow : MonoBehaviour
     public GameObject menuCanvas;
 
 
-    //DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIERTIMER, cratePointMultiplierTimer);
     private void Awake()
     {
         instance = this;
@@ -99,26 +98,25 @@ public class DebugWindow : MonoBehaviour
                 turning = textContainer;
                 break;
         }
+
         textContainerWindow.text = "points:    " +
-                                    "\nspeed multiplier:    " +
-                                    "\nspeed:    " +
-                                    "\nlane multiplier:    " +
-                                    "\ncrate multiplier:    " +
-                                    "\ncrate multiplier timer:    " +
-                                    "\naccelerating:    " +
-                                    "\nbraking:    " +
-                                    "\nturning:    ";
+                                   "\nspeed multiplier:    " +
+                                   "\nspeed:    " +
+                                   "\nlane multiplier:    " +
+                                   "\ncrate multiplier:    " +
+                                   "\ncrate multiplier timer:    " +
+                                   "\naccelerating:    " +
+                                   "\nbraking:    " +
+                                   "\nturning:    ";
 
-        textContainerWindowValues.text =    points + "\n" +
-                                            speedMultiplier + "\n" +
-                                            speed + "\n" +
-                                            laneMultiplier + "\n" +
-                                            crateMultiplier + "\n" +
-                                            crateMultiplierTimer + "\n" +
-                                            accelerating + "\n" +
-                                            braking + "\n" +
-                                            turning;
-
-
+        textContainerWindowValues.text = points + "\n" +
+                                         speedMultiplier + "\n" +
+                                         speed + "\n" +
+                                         laneMultiplier + "\n" +
+                                         crateMultiplier + "\n" +
+                                         crateMultiplierTimer + "\n" +
+                                         accelerating + "\n" +
+                                         braking + "\n" +
+                                         turning;
     }
 }

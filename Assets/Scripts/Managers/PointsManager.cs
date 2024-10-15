@@ -18,7 +18,7 @@ public class PointsManager : MonoBehaviour
     float currentCarLocationZ;
 
     public float points = 0;
-  
+
 
     private void Awake()
     {
@@ -113,5 +113,4 @@ public class PointsManager : MonoBehaviour
         CrateHit();
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
     }
-
 }

@@ -5,7 +5,9 @@ using TMPro;
 
 public class Effect : MonoBehaviour
 {
-    List<string> positiveWords = new List<string> { "Bash!", "Smash!", "Wham!", "Boom!", "Whack!", "Bam!", "Slam!", "Bang!", "Pound!" };
+    List<string> positiveWords = new List<string>
+        { "Bash!", "Smash!", "Wham!", "Boom!", "Whack!", "Bam!", "Slam!", "Bang!", "Pound!" };
+
     List<string> negativeWords = new List<string> { "Crash!", "Thrash!" };
 
     public List<GameObject> backgrounds;
@@ -20,7 +22,6 @@ public class Effect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class Effect : MonoBehaviour
             if (transform.localScale.x >= 2.0f)
             {
                 waitForDestroy -= Time.deltaTime;
-                if(waitForDestroy <= 0)
+                if (waitForDestroy <= 0)
                 {
                     Destroy(gameObject);
                 }
@@ -73,6 +74,7 @@ public class Effect : MonoBehaviour
             textToInsert = negativeWords[choice];
             text.color = Color.red;
         }
+
         text.text = textToInsert;
     }
 }
