@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb66d92addf4434995029121355ab4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textContainerWindow: {fileID: 0}
-  textContainerWindowValues: {fileID: 0}
+  textContainerWindow: {fileID: 1046817908120817563}
+  textContainerWindowValues: {fileID: 2992018584676939873}
   menuCanvas: {fileID: 3305865088609429957}
 --- !u!1 &2736028406994547498
 GameObject:

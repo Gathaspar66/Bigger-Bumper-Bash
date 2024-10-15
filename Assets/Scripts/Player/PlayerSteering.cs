@@ -65,6 +65,8 @@ public class PlayerSteering : MonoBehaviour
 
     private void FixedUpdate()
     {
+        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "false");
+        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.BRAKING, "false");
         if (wHeld)
         {
             input.y = 1;
@@ -73,20 +75,18 @@ public class PlayerSteering : MonoBehaviour
         if (input.y > 0)
         {
             Accelerate();
-            //DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "true");
-            //DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.BRAKING, "false");
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "true");
         }
         else
         {
             rb.drag = 0.2f;
-            //DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "false");
         }
 
         if (input.y < 0)
         {
             Brake();
-            //DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "false2");
-            //DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.BRAKING, "true");
+
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.BRAKING, "true");
         }
 
         Steer();
@@ -129,17 +129,17 @@ public class PlayerSteering : MonoBehaviour
 
             if (normalizedX > 0)
             {
-                //DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "right");
+                DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "right");
             }
             else
             {
-                //DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "left");
+                DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "left");
             }
         }
         else
         {
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, 0, rb.velocity.z), Time.fixedDeltaTime * 3);
-            //DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "false");
+            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "false");
         }
     }
 

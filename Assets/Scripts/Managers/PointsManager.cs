@@ -18,7 +18,7 @@ public class PointsManager : MonoBehaviour
     float currentCarLocationZ;
 
     public float points = 0;
-    //changes for new pull request
+  
 
     private void Awake()
     {

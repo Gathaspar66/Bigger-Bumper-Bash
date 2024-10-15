@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject userInterfaceManager;
     public GameObject playerManager;
     public GameObject trafficMaganer;
+    public GameObject pointsManager;
+
     private void Awake()
     {
         instance = this;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
         roadManager.SetActive(true);
         userInterfaceManager.SetActive(true);
         trafficMaganer.SetActive(true);
+        pointsManager.SetActive(true);
     }
 
     public GameObject GetPlayer()
