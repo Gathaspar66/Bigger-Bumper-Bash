@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3939250863403656692
+--- !u!1 &6160970351542831283
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 910589124303338333}
-  - component: {fileID: 6287944034891540614}
-  m_Layer: 3
-  m_Name: StaticObstacle
+  - component: {fileID: 3937331602243158378}
+  - component: {fileID: 4363046262011817179}
+  m_Layer: 0
+  m_Name: PointsPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &910589124303338333
+--- !u!4 &3937331602243158378
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3939250863403656692}
+  m_GameObject: {fileID: 6160970351542831283}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.628552, y: -23.879055, z: 24.661835}
+  m_LocalPosition: {x: -3.9140863, y: 10.867348, z: 3965.2354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6287944034891540614
+--- !u!114 &4363046262011817179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3939250863403656692}
+  m_GameObject: {fileID: 6160970351542831283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7e8b8788bcc374499a17aa35b7a1fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 887cff9ab94ceeb43a002316eac29475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carPrefabs:
-  - {fileID: 3504747680130670635, guid: f51d0e06b675ac244997bce6b1d12c4d, type: 3}
+  PointsMeshes:
+  - {fileID: 817748635290121295, guid: 2268edb02d6694d4998d51239919ce38, type: 3}

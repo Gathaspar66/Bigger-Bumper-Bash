@@ -675,8 +675,11 @@ MonoBehaviour:
   frontDynamicObstacleSpawnIntervalDistance: 20
   backSpawnDynamicObstacleDistance: -10
   backDynamicObstacleSpawnIntervalDistance: 20
+  pointsSpawnIntervalDistance: 10
+  pointsSpawnDistance: 50
   staticObstaclePrefab: {fileID: 3939250863403656692, guid: 8e383579c08bf984b8e799939ddd0b40, type: 3}
   dynamicObstaclePrefab: {fileID: 121954177195123221, guid: 76c696841b6af984f8a73350970feb1c, type: 3}
+  pointsPrefab: {fileID: 6160970351542831283, guid: b62827d41be3d5e44b782b096e59f322, type: 3}
   playerPrefabOffset: 0.5
   lanePositions:
   - {fileID: 809456405}
@@ -864,6 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sectionsPrefabs:
   - {fileID: 8664369382022809974, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
+  - {fileID: 8664369382022809974, guid: 28c5d3ae091fdab4fa3fac6c9b7ba7c1, type: 3}
 --- !u!1001 &2122320036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -912,10 +916,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5464418221873440195, guid: f33b0b320e604094aae6257a3bf9a764, type: 3}
-      propertyPath: effect
-      value: 
-      objectReference: {fileID: 8588475003400544300, guid: 2212032f5e2996e4fb4110436eadb62d, type: 3}
     - target: {fileID: 8332406927487935370, guid: f33b0b320e604094aae6257a3bf9a764, type: 3}
       propertyPath: m_Name
       value: EffectManager

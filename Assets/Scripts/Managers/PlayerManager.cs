@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
-using static carConfig;
+using static CarConfiguration;
 
 public class PlayerManager : MonoBehaviour
 {

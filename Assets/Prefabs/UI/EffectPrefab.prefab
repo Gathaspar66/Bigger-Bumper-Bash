@@ -1668,7 +1668,7 @@ GameObject:
   - component: {fileID: 5677566605360495374}
   - component: {fileID: 532136625466203560}
   m_Layer: 0
-  m_Name: Effect
+  m_Name: EffectPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

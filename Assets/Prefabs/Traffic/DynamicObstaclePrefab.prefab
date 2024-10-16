@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8332406927487935370
+--- !u!1 &121954177195123221
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3214443899391614079}
-  - component: {fileID: 5464418221873440195}
-  m_Layer: 0
-  m_Name: EffectManager
+  - component: {fileID: 3531961504411367285}
+  - component: {fileID: 4771932926838438196}
+  m_Layer: 3
+  m_Name: DynamicObstaclePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3214443899391614079
+--- !u!4 &3531961504411367285
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8332406927487935370}
+  m_GameObject: {fileID: 121954177195123221}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09963393, y: 3.4231653, z: -0.8470879}
+  m_LocalPosition: {x: 13.628552, y: -23.879055, z: 24.661835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5464418221873440195
+--- !u!114 &4771932926838438196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8332406927487935370}
+  m_GameObject: {fileID: 121954177195123221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 218410fcdfd9f2048bf9410146e93384, type: 3}
+  m_Script: {fileID: 11500000, guid: ef436304118f6974a9fe493a1ebbdd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 8588475003400544300, guid: 2212032f5e2996e4fb4110436eadb62d, type: 3}
+  speed: 12
+  brakeRaycastDistance: 0
+  carLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  raycastOffsetY: 0.51
+  carPrefabs:
+  - {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
+  - {fileID: 90333524050876863, guid: acba0aafceec875478c3c9d158db4fee, type: 3}
+  minBrakeRaycastDistance: 2
+  maxBrakeRaycastDistance: 10
