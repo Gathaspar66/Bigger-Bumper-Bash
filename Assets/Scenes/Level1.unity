@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a5a8efb57cb27409b9015aa300c012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fakeButtonsJoystick: {fileID: 3178819371182851789, guid: 37037cead9b4cf84dbcaa283c276f2d9, type: 3}
+  fakeButtonsJoystick: {fileID: 1942652076201249849, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
 --- !u!1 &1768838800
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,63 +920,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33b0b320e604094aae6257a3bf9a764, type: 3}
---- !u!1001 &733258655600530266
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1942652076201249849, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_Name
-      value: ControlOnPointerExit
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1522.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 822
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323428444918784021, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -989,4 +932,3 @@ SceneRoots:
   - {fileID: 70409480}
   - {fileID: 1768838801}
   - {fileID: 612417491}
-  - {fileID: 733258655600530266}
