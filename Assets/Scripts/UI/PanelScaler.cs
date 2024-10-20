@@ -13,7 +13,6 @@ public class PanelScaler : MonoBehaviour
     {
         panel = gameObject.GetComponent<RectTransform>();
         float scale = Screen.height /2.0f / 300.0f;
-        print("scale " + scale + " "+Screen.height);
         panel.localScale = scale * Vector3.one;
         panel.anchoredPosition = panel.anchoredPosition * scale;
     }

@@ -670,32 +670,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnStaticObstacleDistance: 50
-  staticObstacleSpawnIntervalDistance: 30
   frontSpawnDynamicObstacleDistance: 100
-  frontDynamicObstacleSpawnIntervalDistance: 20
   backSpawnDynamicObstacleDistance: -10
+  pointsSpawnDistance: 50
+  staticObstacleSpawnIntervalDistance: 30
+  frontDynamicObstacleSpawnIntervalDistance: 20
   backDynamicObstacleSpawnIntervalDistance: 20
   pointsSpawnIntervalDistance: 10
-  pointsSpawnDistance: 50
   staticObstaclePrefab: {fileID: 3939250863403656692, guid: 8e383579c08bf984b8e799939ddd0b40, type: 3}
   dynamicObstaclePrefab: {fileID: 121954177195123221, guid: 76c696841b6af984f8a73350970feb1c, type: 3}
   pointsPrefab: {fileID: 6160970351542831283, guid: b62827d41be3d5e44b782b096e59f322, type: 3}
-  playerPrefabOffset: 0.5
+  playerPrefabOffsetSpawn: 0.5
+  pointsSpawnPositionX: 5
+  pointsSpawnHeight: 0.5
   lanePositions:
   - {fileID: 809456405}
   - {fileID: 70409480}
   - {fileID: 1768838801}
   - {fileID: 612417491}
-  car: {fileID: 0}
-  raycastHeightOffset: 0.5
   trafficLayer:
     serializedVersion: 2
     m_Bits: 8
-  boxSize: {x: 1.4, y: 1, z: 4.18}
-  spawnPosition: {x: 0, y: 0, z: 0}
-  rb: {fileID: 0}
-  speed: 0
-  lastSpawnPosition: 0
 --- !u!1 &1673432933
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a5a8efb57cb27409b9015aa300c012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fakeButtonsJoystick: {fileID: 3178819371182851789, guid: 37037cead9b4cf84dbcaa283c276f2d9, type: 3}
+  fakeButtonsJoystick: {fileID: 1942652076201249849, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
 --- !u!1 &1768838800
 GameObject:
   m_ObjectHideFlags: 0

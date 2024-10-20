@@ -58,6 +58,7 @@ public class DebugWindow : MonoBehaviour
     {
         isMenuOn = !isMenuOn;
         menuCanvas.SetActive(isMenuOn);
+        ControlHandler.instance.ShowDebugAreas(isMenuOn);
     }
 
     public void UpdateDebugWindow(DebugWindowEnum textType, float value)
