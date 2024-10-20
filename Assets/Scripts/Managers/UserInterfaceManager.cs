@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class UserInterfaceManager : MonoBehaviour
 {
-    public GameObject fakeButtonsJoystick;
+    public GameObject controlsPrefab;
+    public GameObject speedMeterPrefab;
 
     void Start()
     {
-        Instantiate(fakeButtonsJoystick, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(controlsPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(speedMeterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     }
+
 }

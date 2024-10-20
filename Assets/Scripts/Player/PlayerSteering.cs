@@ -13,9 +13,9 @@ public class PlayerSteering : MonoBehaviour
 
     public float brakeMultiplier;
     public float steeringMultiplier;
+    public float minForwardVelocity;
     public float maxForwardVelocity;
     public float maxSteerVelocity;
-    public float minForwardVelocity;
 
     [Header("Other")] //
     public Rigidbody rb;
@@ -147,5 +147,12 @@ public class PlayerSteering : MonoBehaviour
     {
         inputVector.Normalize();
         input = inputVector;
+    }
+
+    public List<float> GetSpeedBreakpoints()
+    {
+        return new List<float> {minForwardVelocity,
+            minForwardVelocity + (maxForwardVelocity - minForwardVelocity) / 2,
+            maxForwardVelocity};
     }
 }
