@@ -38,7 +38,6 @@ public class PointsManager : MonoBehaviour
     void Update()
     {
         CheckSpeed();
-        CheckLanes();
         CheckCrateMultiplierTimer();
         CalculatePoints();
     }
@@ -51,15 +50,6 @@ public class PointsManager : MonoBehaviour
         if (car.GetComponent<Rigidbody>().velocity.z > 10) speedPointMultiplier = 2;
         if (car.GetComponent<Rigidbody>().velocity.z > 20) speedPointMultiplier = 3;
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEEDMULTIPLIER, speedPointMultiplier);
-    }
-
-    void CheckLanes()
-    {
-        SwitchLanes(false);
-        if (car.transform.position.x < 0)
-        {
-            SwitchLanes(true);
-        }
     }
 
     public void SwitchLanes(bool hardLane) //hardLane means double points, e.g. going upstream
