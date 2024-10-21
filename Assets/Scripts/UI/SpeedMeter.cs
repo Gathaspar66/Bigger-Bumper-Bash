@@ -20,6 +20,8 @@ public class SpeedMeter : MonoBehaviour
     float currentSpeedBarOrangeSize;
     float carSpeed = 0;
 
+    int speedMultiplier = 1;
+
     bool maxSpeed;
 
     GameObject car;
@@ -35,39 +37,44 @@ public class SpeedMeter : MonoBehaviour
 
     void Update()
     {
-        UpdateSpeed();
+        CalculateSpeed();
     }
 
-    void UpdateSpeed()
-    {
-        UpdateSpeedBar();
-    }
-
-    void UpdateSpeedBar()
+    void CalculateSpeed()
     {
         carSpeed = car.GetComponent<Rigidbody>().velocity.z;
-        text.text = "x1";
+        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEED, car.GetComponent<Rigidbody>().velocity.z);
         currentSpeedBarGreenSize = 0;
         currentSpeedBarOrangeSize = 0;
         maxSpeed = false;
+        speedMultiplier = 1;
 
         if (carSpeed >= breakpoints[0])
         {
             currentSpeedBarGreenSize = Mathf.Clamp((carSpeed - breakpoints[0]) / (breakpoints[1]- breakpoints[0]) * speedBarGreenSize, 0, speedBarGreenSize);
             if (carSpeed >= breakpoints[1])
             {
-                text.text = "x2";
+                speedMultiplier = 2;
                 currentSpeedBarOrangeSize = Mathf.Clamp((carSpeed - breakpoints[1]) / (breakpoints[2]- breakpoints[1]) * speedBarOrangeSize, 0, speedBarOrangeSize);
                 if(carSpeed >= breakpoints[2])
                 {
-                    text.text = "x3";
+                    speedMultiplier = 3;
                     maxSpeed = true;
                 }
             }
         }
+
+        text.text = "x" + speedMultiplier.ToString();
         speedBarGreen.sizeDelta = new Vector2(speedBarGreen.sizeDelta.x, currentSpeedBarGreenSize);
         speedBarOrange.sizeDelta = new Vector2(speedBarOrange.sizeDelta.x, currentSpeedBarOrangeSize);
         redBgBig.SetActive(maxSpeed);
+
+        NotifyPointsManager(speedMultiplier);
+    }
+
+    void NotifyPointsManager(int speedMultiplier)
+    {
+        PointsManager.instance.UpdateSpeedMultiplier(speedMultiplier);
     }
 
     void SetupBreakpoints()

@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 7008768926357959161}
   - component: {fileID: 7058411071833737246}
   m_Layer: 0
-  m_Name: SpeedMeter
+  m_Name: SpeedMeterPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 2150241619243838090}
   - component: {fileID: 5572477994763481669}
   m_Layer: 0
-  m_Name: WrongWay
+  m_Name: WrongWayPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

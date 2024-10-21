@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 3323428444918784021}
   - component: {fileID: 5282013350432790260}
   m_Layer: 0
-  m_Name: ControlOnPointerExit
+  m_Name: ControlOnPointerExitPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

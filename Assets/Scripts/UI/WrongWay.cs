@@ -52,8 +52,7 @@ public class WrongWay : MonoBehaviour
         hardLaneSwitchTimerCurrent = 0;
         text.alpha = 0;
         textbg.alpha = 0;
-        bonusActive = false;
-        bonusText.SetActive(false);
+        ActivateBonus(false);
     }
 
     void HardLaneCheck()
@@ -77,8 +76,28 @@ public class WrongWay : MonoBehaviour
         {
             text.alpha = 0;
             textbg.alpha = 0;
-            bonusActive = true;
-            bonusText.SetActive(true);
+            ActivateBonus(true);
         }
+    }
+
+    void ActivateBonus(bool value)
+    {
+        if (value)
+        {
+            bonusActive = value;
+            bonusText.SetActive(value);
+            NotifyPointsManager(2);
+        }
+        else
+        {
+            bonusActive = value;
+            bonusText.SetActive(value);
+            NotifyPointsManager(1);
+        }
+    }
+
+    void NotifyPointsManager(int value)
+    {
+        PointsManager.instance.UpdateLaneMultiplier(value);
     }
 }
