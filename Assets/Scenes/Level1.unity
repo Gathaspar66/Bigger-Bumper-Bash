@@ -485,79 +485,6 @@ MonoBehaviour:
   playerManager: {fileID: 1779088894}
   trafficMaganer: {fileID: 1441534258}
   pointsManager: {fileID: 46194912}
---- !u!1001 &847434906
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4092742377354415646, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.487
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739168924520748846, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.487
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267332708864771952, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.487
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809974, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_Name
-      value: RoadPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664369382022809975, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8885061309011478544, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.487
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
 --- !u!4 &1008674900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5909198345600321680, guid: a25952da247a62b4fa3641a2fe76089c, type: 3}
@@ -669,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aff41a45072b846b00038f75f89268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnStaticObstacleDistance: 50
+  spawnStaticObstacleDistance: 80
   frontSpawnDynamicObstacleDistance: 100
   backSpawnDynamicObstacleDistance: -10
   pointsSpawnDistance: 50
@@ -862,7 +789,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sectionsPrefabs:
   - {fileID: 8664369382022809974, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
-  - {fileID: 8664369382022809974, guid: 28c5d3ae091fdab4fa3fac6c9b7ba7c1, type: 3}
 --- !u!1001 &2122320036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -927,7 +853,6 @@ SceneRoots:
   - {fileID: 257062011}
   - {fileID: 822716057}
   - {fileID: 705507995}
-  - {fileID: 847434906}
   - {fileID: 809456405}
   - {fileID: 70409480}
   - {fileID: 1768838801}
