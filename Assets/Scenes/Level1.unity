@@ -662,7 +662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a5a8efb57cb27409b9015aa300c012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fakeButtonsJoystick: {fileID: 1942652076201249849, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
+  controlsPrefab: {fileID: 1942652076201249849, guid: a1e3d3363356935428df978d0af2a21b, type: 3}
+  speedMeterPrefab: {fileID: 1771094033834645513, guid: f5a3fd1039d64b644ab9f13a9d735e21, type: 3}
+  wrongWayPrefab: {fileID: 2795156579907963403, guid: 9a635231d7de7384c99f358d133ee919, type: 3}
+  pickupMultiplierPrefab: {fileID: 4247801098824645400, guid: 5d156330ed618144f8794ec570682d86, type: 3}
 --- !u!1 &1768838800
 GameObject:
   m_ObjectHideFlags: 0

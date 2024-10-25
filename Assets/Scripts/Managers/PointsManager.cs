@@ -37,35 +37,35 @@ public class PointsManager : MonoBehaviour
 
     void Update()
     {
-        CheckSpeed();
-        CheckLanes();
         CheckCrateMultiplierTimer();
         CalculatePoints();
     }
-
-    void CheckSpeed()
+    void CalculatePoints()
     {
-        //velocity unclear, possible increased Z velocity while turning
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEED, car.GetComponent<Rigidbody>().velocity.z);
-        speedPointMultiplier = 1;
-        if (car.GetComponent<Rigidbody>().velocity.z > 10) speedPointMultiplier = 2;
-        if (car.GetComponent<Rigidbody>().velocity.z > 20) speedPointMultiplier = 3;
+        currentCarLocationZ = car.transform.position.z;
+        points += (currentCarLocationZ - lastCarLocationZ) * speedPointMultiplier * lanePointMultiplier *
+                  cratePointMultiplier;
+        lastCarLocationZ = car.transform.position.z;
+        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
+    }
+
+    public void AddPoints(float pointValue)
+    {
+        points += pointValue;
+
+        CrateHit();
+        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
+    }
+
+    public void UpdateSpeedMultiplier(int value)
+    {
+        speedPointMultiplier = value;
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEEDMULTIPLIER, speedPointMultiplier);
     }
 
-    void CheckLanes()
+    public void UpdateLaneMultiplier(int value)
     {
-        SwitchLanes(false);
-        if (car.transform.position.x < 0)
-        {
-            SwitchLanes(true);
-        }
-    }
-
-    public void SwitchLanes(bool hardLane) //hardLane means double points, e.g. going upstream
-    {
-        lanePointMultiplier = 1;
-        if (hardLane) lanePointMultiplier = 2;
+        lanePointMultiplier = value;
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.LANEMULTIPLIER, lanePointMultiplier);
     }
 
@@ -94,23 +94,7 @@ public class PointsManager : MonoBehaviour
             DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
         }
 
+        UserInterfaceManager.instance.UpdatePickupMultiplier((int)cratePointMultiplier);
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIERTIMER, cratePointMultiplierTimer);
-    }
-
-    void CalculatePoints()
-    {
-        currentCarLocationZ = car.transform.position.z;
-        points += (currentCarLocationZ - lastCarLocationZ) * speedPointMultiplier * lanePointMultiplier *
-                  cratePointMultiplier;
-        lastCarLocationZ = car.transform.position.z;
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
-    }
-
-    public void AddPoints(float pointValue)
-    {
-        points += pointValue;
-
-        CrateHit();
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
     }
 }
