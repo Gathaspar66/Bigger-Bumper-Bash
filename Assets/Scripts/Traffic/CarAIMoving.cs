@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CarAIMoving : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class CarAIMoving : MonoBehaviour
     public float brakeRaycastDistance;
 
 
-    public LayerMask carLayer;
+    //public LayerMask carLayer;
 
     public float raycastOffsetY = 0f;
     private int currentLaneIndex;
@@ -20,6 +21,12 @@ public class CarAIMoving : MonoBehaviour
     public static CarAIMoving instance;
     public float minBrakeRaycastDistance;
     public float maxBrakeRaycastDistance;
+
+
+    private Vector3 boxSize;
+    private float raycastHeightOffset = 0.5f; // Przesuniêcie boxa w górê
+    public LayerMask trafficLayer;
+
 
     private void Awake()
     {
@@ -70,7 +77,7 @@ public class CarAIMoving : MonoBehaviour
 
 
         Quaternion spawnRotation;
-
+        /*
         if (currentLaneIndex == 0 || currentLaneIndex == 1)
         {
             spawnRotation = Quaternion.Euler(0, 180, 0);
@@ -80,8 +87,8 @@ public class CarAIMoving : MonoBehaviour
             spawnRotation = transform.rotation;
         }
 
-
-        GameObject spawnedCar = Instantiate(carPrefabs[randomIndex], spawnPosition, spawnRotation);
+        */
+        GameObject spawnedCar = Instantiate(carPrefabs[randomIndex], spawnPosition, transform.rotation);
         spawnedCar.transform.SetParent(transform);
     }
 
@@ -97,6 +104,8 @@ public class CarAIMoving : MonoBehaviour
 
     void MoveCar()
     {
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        /*
         if (currentLaneIndex == 0 || currentLaneIndex == 1)
         {
             transform.Translate(Vector3.back * speed * Time.deltaTime);
@@ -105,21 +114,27 @@ public class CarAIMoving : MonoBehaviour
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
+        */
     }
 
     void DetectOtherCarsAndBrake()
     {
         RaycastHit hit;
-
-
         Vector3 rayOrigin = transform.position + Vector3.up * raycastOffsetY;
+        Vector3 rayDirection = gameObject.transform.forward;
+
+        //Vector3 rayDirection =
+        //  (currentLaneIndex == 0 || currentLaneIndex == 1) ? Vector3.back : Vector3.forward;
 
 
-        Vector3 rayDirection =
-            (currentLaneIndex == 0 || currentLaneIndex == 1) ? Vector3.back : Vector3.forward;
+        boxSize = new Vector3(1.2f, 1f, brakeRaycastDistance);
+       Collider[] hitColliders = Physics.OverlapBox(rayOrigin + rayDirection.normalized*brakeRaycastDistance, boxSize / 2,
 
+        //    Quaternion.identity, trafficLayer);
+        //Collider[] hitColliders = Physics.OverlapBox(rayOrigin + rayDirection * brakeRaycastDistance, boxSize / 2,
 
-        if (Physics.Raycast(rayOrigin, rayDirection, out hit, brakeRaycastDistance, carLayer))
+            Quaternion.identity, trafficLayer);
+        if (hitColliders.Length > 0)
         {
             speed = Mathf.Lerp(speed, 0, Time.deltaTime * 3f);
         }
@@ -136,10 +151,13 @@ public class CarAIMoving : MonoBehaviour
         Vector3 rayOrigin = transform.position + Vector3.up * raycastOffsetY;
 
 
-        Vector3 rayDirection =
-            (currentLaneIndex == 0 || currentLaneIndex == 1) ? Vector3.back : Vector3.forward;
+       // Vector3 rayDirection =
+         //   (currentLaneIndex == 0 || currentLaneIndex == 1) ? Vector3.back : Vector3.forward;
+            Vector3 rayDirection = gameObject.transform.forward;
 
-
-        Gizmos.DrawRay(rayOrigin, rayDirection * brakeRaycastDistance);
+        Gizmos.DrawRay(rayOrigin, Vector3.forward * brakeRaycastDistance);
+        //Gizmos.DrawWireCube(rayOrigin + rayDirection * (brakeRaycastDistance), new Vector3(1, 1, brakeRaycastDistance));
+        Gizmos.DrawWireCube(rayOrigin + rayDirection.normalized * brakeRaycastDistance/2, boxSize);
+        //Gizmos.DrawWireCube(rayOrigin+Vector3.forward, boxSize);
     }
 }

@@ -127,7 +127,17 @@ public class TrafficManager : MonoBehaviour
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
-            GameObject newFrontDynamicCar = Instantiate(dynamicObstaclePrefab, spawnPosition, Quaternion.identity);
+            Quaternion rotation;
+            if (randomLaneIndex == 0 || randomLaneIndex == 1)
+            {
+                rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                rotation = Quaternion.identity;
+            }
+
+            GameObject newFrontDynamicCar = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
 
             CarAIMoving.instance.SpawnRandomCar(randomLaneIndex);
         }

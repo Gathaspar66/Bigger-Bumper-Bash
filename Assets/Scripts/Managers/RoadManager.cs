@@ -11,7 +11,7 @@ public class RoadManager : MonoBehaviour
     Transform playerCarTransform;
 
     WaitForSeconds waitFor100ms = new WaitForSeconds(0.1f);
-    const float sectionLength = 26;
+    const float sectionLength = 30;
 
     void Start()
     {
