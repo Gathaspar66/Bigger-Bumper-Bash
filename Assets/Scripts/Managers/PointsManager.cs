@@ -26,7 +26,7 @@ public class PointsManager : MonoBehaviour
     }
 
 
-    void Start()
+    public void Activate()
     {
         car = PlayerManager.instance.GetPlayerInstance();
         lastCarLocationZ = car.transform.position.z;

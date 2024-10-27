@@ -76,9 +76,9 @@ MonoBehaviour:
   acceleationMultiplier: 30
   brakeMultiplier: 15
   steeringMultiplier: 100
+  minForwardVelocity: 0
   maxForwardVelocity: 20
   maxSteerVelocity: 2
-  minForwardVelocity: 0
   rb: {fileID: 7419151477809295542}
   gameModel: {fileID: 0}
 --- !u!114 &5831812412874202471
@@ -93,3 +93,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460636d58877af94196d3f564d9ffc38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {fileID: 2100000, guid: 66fb998a70f9b004b9021cba53a04bf5, type: 2}
+  immune: {fileID: 2100000, guid: 73ca67a0e05e25743b473a1c7f476d0b, type: 2}

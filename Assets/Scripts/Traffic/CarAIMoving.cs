@@ -24,7 +24,7 @@ public class CarAIMoving : MonoBehaviour
 
 
     private Vector3 boxSize;
-    private float raycastHeightOffset = 0.5f; // Przesuniêcie boxa w górê
+    //  private float raycastHeightOffset = 0.5f; // Przesuniêcie boxa w górê
     public LayerMask trafficLayer;
 
 
@@ -76,7 +76,7 @@ public class CarAIMoving : MonoBehaviour
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
 
-        Quaternion spawnRotation;
+        //Quaternion spawnRotation;
         /*
         if (currentLaneIndex == 0 || currentLaneIndex == 1)
         {
@@ -119,7 +119,7 @@ public class CarAIMoving : MonoBehaviour
 
     void DetectOtherCarsAndBrake()
     {
-        RaycastHit hit;
+        //RaycastHit hit;
         Vector3 rayOrigin = transform.position + Vector3.up * raycastOffsetY;
         Vector3 rayDirection = gameObject.transform.forward;
 

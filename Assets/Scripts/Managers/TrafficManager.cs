@@ -52,7 +52,7 @@ public class TrafficManager : MonoBehaviour
         instance = this;
     }
 
-    void Start()
+    public void Activate()
     {
         car = PlayerManager.instance.GetPlayerInstance();
         rb = car.GetComponent<Rigidbody>();

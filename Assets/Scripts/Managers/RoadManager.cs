@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RoadManager : MonoBehaviour
 {
+    public static RoadManager instance;
+
     public GameObject[] sectionsPrefabs;
     GameObject[] sectionsPool = new GameObject[20];
     GameObject[] sections = new GameObject[20];
@@ -13,7 +15,12 @@ public class RoadManager : MonoBehaviour
     WaitForSeconds waitFor100ms = new WaitForSeconds(0.1f);
     const float sectionLength = 30;
 
-    void Start()
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public void Activate()
     {
         playerCarTransform = PlayerManager.instance.GetPlayerInstance().transform;
         SetStartPosition();
