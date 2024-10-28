@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &46194913
 Transform:
   m_ObjectHideFlags: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
   roadManager: {fileID: 2048719953}
   userInterfaceManager: {fileID: 1673432933}
   playerManager: {fileID: 1779088894}
-  trafficMaganer: {fileID: 1441534258}
+  trafficManager: {fileID: 1441534258}
   pointsManager: {fileID: 46194912}
 --- !u!4 &1008674900 stripped
 Transform:
@@ -568,7 +568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1441534259
 Transform:
   m_ObjectHideFlags: 0
@@ -634,7 +634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1673432934
 Transform:
   m_ObjectHideFlags: 0
@@ -666,6 +666,9 @@ MonoBehaviour:
   speedMeterPrefab: {fileID: 1771094033834645513, guid: f5a3fd1039d64b644ab9f13a9d735e21, type: 3}
   wrongWayPrefab: {fileID: 2795156579907963403, guid: 9a635231d7de7384c99f358d133ee919, type: 3}
   pickupMultiplierPrefab: {fileID: 4247801098824645400, guid: 5d156330ed618144f8794ec570682d86, type: 3}
+  healthDisplayPrefab: {fileID: 8451096820670422793, guid: 9442a5c44ce468c4099a13c42daf30a2, type: 3}
+  ingameMenuPrefab: {fileID: 8989588133055270684, guid: eee1f03d97129834f93d488c4c8edea6, type: 3}
+  endgameMenuPrefab: {fileID: 8938392843139606295, guid: ad0c8dda4927e34439e3310fdcc4fa25, type: 3}
 --- !u!1 &1768838800
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1779088895
 Transform:
   m_ObjectHideFlags: 0
@@ -746,6 +749,7 @@ MonoBehaviour:
   cameraPrefab: {fileID: 7280080578915174522, guid: 45f1f94e9a7014844933124b4811847e, type: 3}
   currentCameraPrefab: {fileID: 0}
   carConfigFile: {fileID: 4900000, guid: f1f9ac60f21ad2045803ba7172c3ec55, type: 3}
+  playerHealth: 3
 --- !u!1 &2048719953
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2048719954
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class GameManager : MonoBehaviour
     public GameObject roadManager;
     public GameObject userInterfaceManager;
     public GameObject playerManager;
-    public GameObject trafficMaganer;
+    public GameObject trafficManager;
     public GameObject pointsManager;
+
+    bool isGameOver = false;
 
     private void Awake()
     {
@@ -19,27 +22,46 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        spawnBasicElementsOfGame();
+        SpawnBasicElementsOfGame();
 
 
-        activeManagers();
+        ActivateManagers();
     }
 
-    public void spawnBasicElementsOfGame()
+    public void SpawnBasicElementsOfGame()
     {
     }
 
-    public void activeManagers()
+    public void ActivateManagers()
     {
-        playerManager.SetActive(true);
-        roadManager.SetActive(true);
-        userInterfaceManager.SetActive(true);
-        trafficMaganer.SetActive(true);
-        pointsManager.SetActive(true);
+        PlayerManager.instance.Activate();
+        RoadManager.instance.Activate();
+        UserInterfaceManager.instance.Activate();
+        TrafficManager.instance.Activate();
+        PointsManager.instance.Activate();
     }
 
     public GameObject GetPlayer()
     {
         return playerInstance;
+    }
+
+    public void PauseGame(bool ifPause)
+    {
+        if (isGameOver) return;
+        Time.timeScale = (ifPause == true) ? 0 : 1;
+    }
+
+    public void RestartLevel()
+
+    {
+        PauseGame(false);
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void QuitToMenu()
+    {
+        PauseGame(false);
+        SceneManager.LoadScene("MainMenu");
     }
 }

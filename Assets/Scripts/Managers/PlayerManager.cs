@@ -17,12 +17,19 @@ public class PlayerManager : MonoBehaviour
     private CarConfigDictionary carConfigs;
     public TextAsset carConfigFile;
 
+    public int playerHealth = 3;
+
+
     private void Awake()
     {
         instance = this;
     }
 
-    void Start()
+    private void Update()
+    {
+    }
+
+    public void Activate()
     {
         SpawnPlayerPrefab();
         SpawnCar();
@@ -61,5 +68,22 @@ public class PlayerManager : MonoBehaviour
     public GameObject GetPlayerInstance()
     {
         return playerInstance;
+    }
+
+    public void GetDamaged()
+    {
+        playerHealth -= 1;
+        UserInterfaceManager.instance.UpdateHealthDisplay(playerHealth);
+        if (playerHealth <= 0)
+        {
+            UserInterfaceManager.instance.OnPlayerDeath();
+            return;
+        }
+        StartImmunity();
+    }
+
+    void StartImmunity()
+    {
+        playerInstance.GetComponent<PlayerHitDetection>().StartImmunity();
     }
 }
