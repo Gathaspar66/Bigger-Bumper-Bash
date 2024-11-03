@@ -45,7 +45,7 @@ public class WrongWay : MonoBehaviour
     {
         hardLane = true;
     }
-    
+
     void LeaveHardLane()
     {
         hardLane = false;

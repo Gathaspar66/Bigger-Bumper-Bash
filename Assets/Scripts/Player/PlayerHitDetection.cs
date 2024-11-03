@@ -8,9 +8,11 @@ public class PlayerHitDetection : MonoBehaviour
     bool isImmune = false;
     float immunityDuration = 3;
     float currentImmunityDuration = 0;
+
     private void Start()
     {
     }
+
     private void Update()
     {
         UpdateImmunity();
@@ -45,23 +47,27 @@ public class PlayerHitDetection : MonoBehaviour
         }
         else
         {
-            if(0.75f < currentImmunityDuration && currentImmunityDuration <= 1)
-            {
-                SetCarMaterial(normal);
-            }
-            else if (0.5f < currentImmunityDuration && currentImmunityDuration < 0.75f)
-            {
-                SetCarMaterial(immune);
-            }
-            else if (0.25f < currentImmunityDuration && currentImmunityDuration < 0.5f)
-            {
-                SetCarMaterial(normal);
-            }
-            else if (currentImmunityDuration < 0.25f)
-            {
-                SetCarMaterial(immune);
-            }
+            bool flash = Mathf.PingPong(currentImmunityDuration * 5, 1) > 0.5f;
+            SetCarMaterial(flash ? immune : normal);
 
+            /*
+             if(0.75f < currentImmunityDuration && currentImmunityDuration <= 1)
+             {
+                 SetCarMaterial(normal);
+             }
+             else if (0.5f < currentImmunityDuration && currentImmunityDuration < 0.75f)
+             {
+                 SetCarMaterial(immune);
+             }
+             else if (0.25f < currentImmunityDuration && currentImmunityDuration < 0.5f)
+             {
+                 SetCarMaterial(normal);
+             }
+             else if (currentImmunityDuration < 0.25f)
+             {
+                 SetCarMaterial(immune);
+             }
+             */
         }
     }
 
@@ -87,5 +93,4 @@ public class PlayerHitDetection : MonoBehaviour
     {
         transform.GetChild(0).transform.Find("Body").GetComponent<MeshRenderer>().material = materialToSet;
     }
-
 }
