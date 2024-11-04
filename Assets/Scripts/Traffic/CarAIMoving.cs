@@ -24,6 +24,7 @@ public class CarAIMoving : MonoBehaviour
 
 
     private Vector3 boxSize;
+
     //  private float raycastHeightOffset = 0.5f; // Przesuniêcie boxa w górê
     public LayerMask trafficLayer;
 
@@ -76,18 +77,6 @@ public class CarAIMoving : MonoBehaviour
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
 
-        //Quaternion spawnRotation;
-        /*
-        if (currentLaneIndex == 0 || currentLaneIndex == 1)
-        {
-            spawnRotation = Quaternion.Euler(0, 180, 0);
-        }
-        else
-        {
-            spawnRotation = transform.rotation;
-        }
-
-        */
         GameObject spawnedCar = Instantiate(carPrefabs[randomIndex], spawnPosition, transform.rotation);
         spawnedCar.transform.SetParent(transform);
     }
@@ -105,34 +94,17 @@ public class CarAIMoving : MonoBehaviour
     void MoveCar()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        /*
-        if (currentLaneIndex == 0 || currentLaneIndex == 1)
-        {
-            transform.Translate(Vector3.back * speed * Time.deltaTime);
-        }
-        else
-        {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        }
-        */
     }
 
     void DetectOtherCarsAndBrake()
     {
-        //RaycastHit hit;
         Vector3 rayOrigin = transform.position + Vector3.up * raycastOffsetY;
         Vector3 rayDirection = gameObject.transform.forward;
 
-        //Vector3 rayDirection =
-        //  (currentLaneIndex == 0 || currentLaneIndex == 1) ? Vector3.back : Vector3.forward;
-
 
         boxSize = new Vector3(1.2f, 1f, brakeRaycastDistance);
-       Collider[] hitColliders = Physics.OverlapBox(rayOrigin + rayDirection.normalized*brakeRaycastDistance, boxSize / 2,
-
-        //    Quaternion.identity, trafficLayer);
-        //Collider[] hitColliders = Physics.OverlapBox(rayOrigin + rayDirection * brakeRaycastDistance, boxSize / 2,
-
+        Collider[] hitColliders = Physics.OverlapBox(rayOrigin + rayDirection.normalized * brakeRaycastDistance,
+            boxSize / 2,
             Quaternion.identity, trafficLayer);
         if (hitColliders.Length > 0)
         {
@@ -151,13 +123,13 @@ public class CarAIMoving : MonoBehaviour
         Vector3 rayOrigin = transform.position + Vector3.up * raycastOffsetY;
 
 
-       // Vector3 rayDirection =
-         //   (currentLaneIndex == 0 || currentLaneIndex == 1) ? Vector3.back : Vector3.forward;
-            Vector3 rayDirection = gameObject.transform.forward;
+        // Vector3 rayDirection =
+        //   (currentLaneIndex == 0 || currentLaneIndex == 1) ? Vector3.back : Vector3.forward;
+        Vector3 rayDirection = gameObject.transform.forward;
 
         Gizmos.DrawRay(rayOrigin, Vector3.forward * brakeRaycastDistance);
         //Gizmos.DrawWireCube(rayOrigin + rayDirection * (brakeRaycastDistance), new Vector3(1, 1, brakeRaycastDistance));
-        Gizmos.DrawWireCube(rayOrigin + rayDirection.normalized * brakeRaycastDistance/2, boxSize);
+        Gizmos.DrawWireCube(rayOrigin + rayDirection.normalized * brakeRaycastDistance / 2, boxSize);
         //Gizmos.DrawWireCube(rayOrigin+Vector3.forward, boxSize);
     }
 }

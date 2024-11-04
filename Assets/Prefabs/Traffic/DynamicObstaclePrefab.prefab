@@ -50,7 +50,8 @@ MonoBehaviour:
   carPrefabs:
   - {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
   - {fileID: 90333524050876863, guid: acba0aafceec875478c3c9d158db4fee, type: 3}
-  minBrakeRaycastDistance: 5
+  - {fileID: 3254706542479514739, guid: c245eb74ca6ab3242a96f51b647e277f, type: 3}
+  minBrakeRaycastDistance: 6
   maxBrakeRaycastDistance: 10
   trafficLayer:
     serializedVersion: 2

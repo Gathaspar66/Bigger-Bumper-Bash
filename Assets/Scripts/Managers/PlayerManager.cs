@@ -72,7 +72,7 @@ public class PlayerManager : MonoBehaviour
 
     public void GetDamaged()
     {
-        playerHealth -= 1;
+      //  playerHealth -= 1;
         UserInterfaceManager.instance.UpdateHealthDisplay(playerHealth);
         if (playerHealth <= 0)
         {

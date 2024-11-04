@@ -17,6 +17,8 @@ public class PlayerSteering : MonoBehaviour
     public float maxForwardVelocity;
     public float maxSteerVelocity;
 
+    public AnimationCurve steeringMultiplierCurve;
+
     [Header("Other")] //
     public Rigidbody rb;
 
@@ -117,17 +119,23 @@ public class PlayerSteering : MonoBehaviour
     {
         if (Mathf.Abs(input.x) > 0)
         {
-            float speedbaseSteerLimit = rb.velocity.z / 5.0f;
-            speedbaseSteerLimit = Mathf.Clamp01(speedbaseSteerLimit);
+            float currentSpeed = rb.velocity.z;
 
 
-            rb.AddForce(rb.transform.right * steeringMultiplier * input.x * speedbaseSteerLimit);
+            float dynamicSteeringMultiplier = steeringMultiplierCurve.Evaluate(currentSpeed);
+            print(dynamicSteeringMultiplier);
 
-            float normalizedX = rb.velocity.x / maxSteerVelocity;
-            normalizedX = Mathf.Clamp(normalizedX, -1.0f, 1.0f);
-            rb.velocity = new Vector3(normalizedX * maxSteerVelocity, 0, rb.velocity.z);
+            float targetXVelocity = input.x * dynamicSteeringMultiplier;
 
-            if (normalizedX > 0)
+
+            rb.velocity = new Vector3(
+                Mathf.Lerp(rb.velocity.x, targetXVelocity, Time.fixedDeltaTime * 5),
+                rb.velocity.y,
+                rb.velocity.z
+            );
+
+
+            if (input.x > 0)
             {
                 DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "right");
             }
@@ -138,10 +146,14 @@ public class PlayerSteering : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, 0, rb.velocity.z), Time.fixedDeltaTime * 3);
+            rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, rb.velocity.y, rb.velocity.z),
+                Time.fixedDeltaTime * 3);
+
+
             DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "false");
         }
     }
+
 
     public void SetInput(Vector2 inputVector)
     {
@@ -151,8 +163,11 @@ public class PlayerSteering : MonoBehaviour
 
     public List<float> GetSpeedBreakpoints()
     {
-        return new List<float> {minForwardVelocity,
+        return new List<float>
+        {
+            minForwardVelocity,
             minForwardVelocity + (maxForwardVelocity - minForwardVelocity) / 2,
-            maxForwardVelocity};
+            maxForwardVelocity
+        };
     }
 }
