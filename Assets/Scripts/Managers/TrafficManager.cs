@@ -36,8 +36,8 @@ public class TrafficManager : MonoBehaviour
     public Transform[] lanePositions;
     public LayerMask trafficLayer;
     private GameObject car;
-    private float raycastHeightOffset = 0.5f;
-    private Vector3 boxSize = new Vector3(1.4f, 1.0f, 4.18f);
+    private readonly float raycastHeightOffset = 0.5f;
+    private Vector3 boxSize = new(1.8f, 1.0f, 6.5f);
     private Vector3 spawnPosition;
     private Rigidbody rb;
     private Vector3 spawnPosition2; //to be removed in the future for the time being for the reason of debugging
@@ -63,7 +63,7 @@ public class TrafficManager : MonoBehaviour
         lastSpawnPositionPoints = car.transform.position.z;
     }
 
-    void Update()
+    private void Update()
     {
         CheckSpawnTimers();
     }
@@ -105,13 +105,13 @@ public class TrafficManager : MonoBehaviour
         int randomLaneIndex = Random.Range(0, lanePositions.Length);
         Transform lane = lanePositions[randomLaneIndex];
 
-        Vector3 spawnPosition = new Vector3(lane.position.x, lane.position.y,
+        Vector3 spawnPosition = new(lane.position.x, lane.position.y,
             car.transform.position.z + spawnStaticObstacleDistance);
 
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
-            GameObject newStaticCar = Instantiate(staticObstaclePrefab, spawnPosition, Quaternion.identity);
+            _ = Instantiate(staticObstaclePrefab, spawnPosition, Quaternion.identity);
         }
     }
 
@@ -127,17 +127,8 @@ public class TrafficManager : MonoBehaviour
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
-            Quaternion rotation;
-            if (randomLaneIndex == 0 || randomLaneIndex == 1)
-            {
-                rotation = Quaternion.Euler(0, 180, 0);
-            }
-            else
-            {
-                rotation = Quaternion.identity;
-            }
-
-            GameObject newFrontDynamicCar = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
+            Quaternion rotation = randomLaneIndex is 0 or 1 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
+            _ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
 
             CarAIMoving.instance.SpawnRandomCar(randomLaneIndex);
         }
@@ -156,12 +147,12 @@ public class TrafficManager : MonoBehaviour
 
         if (!IsSpawnLocationClear(spawnPosition2))
         {
-            GameObject newBackDynamicCar = Instantiate(dynamicObstaclePrefab, spawnPosition2, Quaternion.identity);
+            _ = Instantiate(dynamicObstaclePrefab, spawnPosition2, Quaternion.identity);
             CarAIMoving.instance.SpawnRandomCar(randomLaneIndex);
         }
     }
 
-    void SpawnPointsPrefab()
+    private void SpawnPointsPrefab()
     {
         float randomXPosition = Random.Range(-pointsSpawnPositionX, pointsSpawnPositionX);
         spawnPosition = new Vector3(randomXPosition, pointsSpawnHeight,
@@ -169,13 +160,13 @@ public class TrafficManager : MonoBehaviour
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
-            GameObject newPointsObject = Instantiate(pointsPrefab, spawnPosition, Quaternion.identity);
+            _ = Instantiate(pointsPrefab, spawnPosition, Quaternion.identity);
         }
     }
 
     public bool IsSpawnLocationClear(Vector3 position)
     {
-        Vector3 boxCenter = position + Vector3.up * raycastHeightOffset;
+        Vector3 boxCenter = position + (Vector3.up * raycastHeightOffset);
 
 
         Collider[] colliders = Physics.OverlapBox(boxCenter, boxSize / 2, Quaternion.identity, trafficLayer);
@@ -184,13 +175,10 @@ public class TrafficManager : MonoBehaviour
         return colliders.Length > 0;
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
-        Vector3 boxCenter = spawnPosition + Vector3.up * raycastHeightOffset;
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(boxCenter, boxSize);
-        boxCenter = spawnPosition2 + Vector3.up * raycastHeightOffset;
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
+        Vector3 boxCenter = spawnPosition2;
         Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 }
