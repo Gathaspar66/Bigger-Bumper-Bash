@@ -16,6 +16,7 @@ public class PointsManager : MonoBehaviour
 
     float lastCarLocationZ;
     float currentCarLocationZ;
+    float pointsMultiplier = 0;
 
     public float points = 0;
 
@@ -30,7 +31,6 @@ public class PointsManager : MonoBehaviour
     {
         car = PlayerManager.instance.GetPlayerInstance();
         lastCarLocationZ = car.transform.position.z;
-
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
     }
 
@@ -40,11 +40,13 @@ public class PointsManager : MonoBehaviour
         CheckCrateMultiplierTimer();
         CalculatePoints();
     }
+
     void CalculatePoints()
     {
         currentCarLocationZ = car.transform.position.z;
-        points += (currentCarLocationZ - lastCarLocationZ) * speedPointMultiplier * lanePointMultiplier *
-                  cratePointMultiplier;
+        pointsMultiplier = speedPointMultiplier * lanePointMultiplier * cratePointMultiplier;
+        UserInterfaceManager.instance.UpdatePointsMultiplayerDisplay(pointsMultiplier);
+        points += (currentCarLocationZ - lastCarLocationZ) * pointsMultiplier;
         lastCarLocationZ = car.transform.position.z;
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
     }
