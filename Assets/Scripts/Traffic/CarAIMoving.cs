@@ -5,8 +5,6 @@ public class CarAIMoving : MonoBehaviour
     public float speed;
     public float brakeRaycastDistance;
 
-    //public LayerMask carLayer;
-
     public float raycastOffsetY = 0f;
     private int currentLaneIndex;
     private float maxSpeed;
@@ -20,7 +18,7 @@ public class CarAIMoving : MonoBehaviour
     private readonly float collisionOffsetZ = 2.0f;
     private Vector3 boxSize;
     public LayerMask trafficLayer;
-
+    public Collider carCollider;
 
     private void Awake()
     {
@@ -35,8 +33,8 @@ public class CarAIMoving : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MoveCar();
         DetectOtherCarsAndBrake();
+        MoveCar();
         DestroyCarIfTooFar();
     }
 
@@ -50,8 +48,6 @@ public class CarAIMoving : MonoBehaviour
         speed = GenerateSpeed();
 
         maxSpeed = speed;
-
-
     }
 
     private float GenerateSpeed()
@@ -92,11 +88,10 @@ public class CarAIMoving : MonoBehaviour
 
     private void DetectOtherCarsAndBrake()
     {
-        Collider carCollider = GetComponentInChildren<Collider>();
+        carCollider = GetComponentInChildren<Collider>();
 
         Vector3 carSize = carCollider.bounds.size;
         float halfCarLength = carSize.z / 2f;
-
 
         Vector3 rayOrigin = transform.position + (Vector3.up * raycastOffsetY);
         Vector3 rayDirection = gameObject.transform.forward;
@@ -104,7 +99,20 @@ public class CarAIMoving : MonoBehaviour
         Vector3 boxCenter = rayOrigin + (rayDirection.normalized * (halfCarLength + (brakeRaycastDistance / 2f)));
 
         boxSize = new Vector3(1.2f, 1f, brakeRaycastDistance);
+
         Collider[] hitColliders = Physics.OverlapBox(boxCenter, boxSize / 2, Quaternion.identity, trafficLayer);
+
+        int detectedCars = 0;
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.transform.IsChildOf(transform) || hitCollider.transform == transform)
+            {
+                continue;
+            }
+
+            detectedCars++;
+        }
+
         if (IsOtherCarInsideCollider(carCollider))
         {
             speed = 0f;
@@ -112,36 +120,45 @@ public class CarAIMoving : MonoBehaviour
         }
 
 
-        speed = hitColliders.Length > 0 ? Mathf.Lerp(speed, 0, Time.deltaTime * 3f) : Mathf.Lerp(speed, maxSpeed, Time.deltaTime * 2f);
+        speed = detectedCars > 0
+            ? Mathf.Lerp(speed, 0, Time.deltaTime * 3f)
+            : Mathf.Lerp(speed, maxSpeed, Time.deltaTime * 2f);
     }
-    // check another collider and set the speed to 0 so that the objects are not in another object
+
     private bool IsOtherCarInsideCollider(Collider carCollider)
     {
-        Vector3 offsetPosition = carCollider.bounds.center + (transform.forward * collisionOffsetZ);
-        Collider[] immediateHits = Physics.OverlapSphere(offsetPosition, 0.1f, trafficLayer);
+        Vector3 extendedExtents = carCollider.bounds.extents + new Vector3(0f, 0f, 1f);
+        Collider[] hitColliders =
+            Physics.OverlapBox(carCollider.bounds.center, extendedExtents, Quaternion.identity, trafficLayer);
 
-        foreach (Collider c in immediateHits)
+        foreach (Collider hitCollider in hitColliders)
         {
-            if (c != carCollider)
+            if (hitCollider != carCollider && !hitCollider.transform.IsChildOf(carCollider.transform))
             {
-
                 return true;
             }
         }
-        return false;
 
+        return false;
     }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Vector3 rayOrigin = transform.position + (Vector3.up * raycastOffsetY);
-        Collider carCollider = GetComponentInChildren<Collider>();
-        Vector3 carSize = carCollider.bounds.size;
-        float halfCarLength = carSize.z / 2f;
-        Vector3 boxSize = new(1.2f, 1f, brakeRaycastDistance);
-        Vector3 boxCenter = rayOrigin + (transform.forward * (halfCarLength + (brakeRaycastDistance / 2f)));
-        Gizmos.DrawRay(rayOrigin, transform.forward * (halfCarLength + brakeRaycastDistance));
-        Gizmos.DrawWireCube(boxCenter, boxSize);
-    }
+        Vector3 center = carCollider.bounds.center;
+        Vector3 halfExtents = carCollider.bounds.extents + new Vector3(0f, 0f, 1f);
+        _ = Quaternion.identity;
 
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(center, halfExtents * 2f);
+
+        //Gizmos.color = Color.red;
+        // Vector3 rayOrigin = transform.position + (Vector3.up * raycastOffsetY);
+        //  Collider carCollider = GetComponentInChildren<Collider>();
+        // Vector3 carSize = carCollider.bounds.size;
+        //  float halfCarLength = carSize.z / 2f;
+        // Vector3 boxSize = new(1.2f, 1f, brakeRaycastDistance);
+        // Vector3 boxCenter = rayOrigin + (transform.forward * (halfCarLength + (brakeRaycastDistance / 2f)));
+        // Gizmos.DrawRay(rayOrigin, transform.forward * (halfCarLength + brakeRaycastDistance));
+        // Gizmos.DrawWireCube(boxCenter, boxSize);
+    }
 }
