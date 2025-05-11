@@ -507,9 +507,9 @@ MonoBehaviour:
   frontSpawnDynamicObstacleDistance: 100
   backSpawnDynamicObstacleDistance: -10
   pointsSpawnDistance: 50
-  staticObstacleSpawnIntervalDistance: 1
-  frontDynamicObstacleSpawnIntervalDistance: 1
-  backDynamicObstacleSpawnIntervalDistance: 1
+  staticObstacleSpawnIntervalDistance: 10
+  frontDynamicObstacleSpawnIntervalDistance: 10
+  backDynamicObstacleSpawnIntervalDistance: 10
   pointsSpawnIntervalDistance: 1000000
   staticObstaclePrefab: {fileID: 3939250863403656692, guid: 8e383579c08bf984b8e799939ddd0b40, type: 3}
   dynamicObstaclePrefab: {fileID: 121954177195123221, guid: 76c696841b6af984f8a73350970feb1c, type: 3}
