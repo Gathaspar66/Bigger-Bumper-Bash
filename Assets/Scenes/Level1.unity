@@ -670,14 +670,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59772a85409812c40ad82413c7114289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralSectionsPrefabs:
-  - {fileID: 8664369382022809974, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
+  normalSectionsPrefabs:
   - {fileID: 8664369382022809974, guid: 861eb8f0ce18254479f6a58ab5952dca, type: 3}
-  - {fileID: 8664369382022809974, guid: 350bd0d02d1d1e647bab5756b8e539e9, type: 3}
-  - {fileID: 8664369382022809974, guid: ee16a093ba7d11b4ca0c9f88a8f2a8e3, type: 3}
-  specialSectionsPrefabs:
-  - {fileID: 8664369382022809974, guid: add5c664883fe9149af337e7cd5da057, type: 3}
-  neutralSpawnChance: 95
+  - {fileID: 8664369382022809974, guid: 2cb8c62996b46bd4b9f1f3459f0bdf4d, type: 3}
+  - {fileID: 8664369382022809974, guid: 08af340eec25ed54e886029e192699ee, type: 3}
+  - {fileID: 8664369382022809974, guid: eda58b0d3413fe846bf5e491b7b9d90f, type: 3}
+  specificSectionsPrefabs:
+  - {fileID: 8664369382022809974, guid: 37bb8bc434eeffc47b9eb9f166c70c8b, type: 3}
+  allSectionsPrefabs: []
+  normalSectionsMultiplier: 5
 --- !u!1001 &2122320036
 PrefabInstance:
   m_ObjectHideFlags: 0

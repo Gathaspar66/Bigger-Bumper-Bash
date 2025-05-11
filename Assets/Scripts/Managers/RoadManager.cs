@@ -1,20 +1,18 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoadManager : MonoBehaviour
 {
     public static RoadManager instance;
 
-    [Header("Prefabs")]
-    public GameObject[] neutralSectionsPrefabs;
-    public GameObject[] specialSectionsPrefabs;
+    public GameObject[] normalSectionsPrefabs;
+    public GameObject[] specificSectionsPrefabs;
 
-    [Header("Spawn Chance")]
-    [Range(0f, 100f)]
-    public float neutralSpawnChance = 95f;
-
+    public GameObject[] allSectionsPrefabs;
+    public int normalSectionsMultiplier = 5;
     private readonly GameObject[] sectionsPool = new GameObject[20];
-    private readonly GameObject[] sections = new GameObject[4];
+    private readonly GameObject[] sections = new GameObject[3];
     private Transform playerCarTransform;
     private readonly WaitForSeconds waitFor100ms = new(0.1f);
     private const float sectionLength = 60;
@@ -22,6 +20,16 @@ public class RoadManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        List<GameObject> tempList = new();
+
+        for (int i = 0; i < normalSectionsMultiplier; i++)
+        {
+            tempList.AddRange(normalSectionsPrefabs);
+        }
+
+        tempList.AddRange(specificSectionsPrefabs);
+        allSectionsPrefabs = tempList.ToArray();
     }
 
     public void Activate()
@@ -34,14 +42,12 @@ public class RoadManager : MonoBehaviour
 
     public void SetStartPosition()
     {
-
         for (int i = 0; i < sectionsPool.Length; i++)
         {
-            GameObject prefabToUse = GetRandomPrefabByChance();
-            sectionsPool[i] = Instantiate(prefabToUse);
+            int randomPrefabIndex = Random.Range(0, allSectionsPrefabs.Length);
+            sectionsPool[i] = Instantiate(allSectionsPrefabs[randomPrefabIndex]);
             sectionsPool[i].SetActive(false);
         }
-
 
         for (int i = 0; i < sections.Length; i++)
         {
@@ -92,8 +98,7 @@ public class RoadManager : MonoBehaviour
             else
             {
                 randomIndex++;
-
-                if (randomIndex > sectionsPool.Length - 1)
+                if (randomIndex >= sectionsPool.Length)
                 {
                     randomIndex = 0;
                 }
@@ -101,16 +106,5 @@ public class RoadManager : MonoBehaviour
         }
 
         return sectionsPool[randomIndex];
-    }
-
-    private GameObject GetRandomPrefabByChance()
-    {
-        float randomValue = Random.Range(0f, 100f);
-        GameObject[] sourceArray = (randomValue <= neutralSpawnChance)
-            ? neutralSectionsPrefabs
-            : specialSectionsPrefabs;
-
-        int randomIndex = Random.Range(0, sourceArray.Length);
-        return sourceArray[randomIndex];
     }
 }
