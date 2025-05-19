@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class HealthDisplay : MonoBehaviour
 {
+
     public GameObject healthPrefab;
     public GameObject emptyHealthPrefab;
-
     public Transform healthOrganizer;
     private readonly List<GameObject> healthIcons = new();
 
@@ -21,7 +21,7 @@ public class HealthDisplay : MonoBehaviour
             healthIcons.Add(healthElement);
         }
     }
-
+    
     public void DeleteOldHealth()
     {
         foreach (GameObject icon in healthIcons)

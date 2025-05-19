@@ -576,6 +576,7 @@ MonoBehaviour:
   healthDisplayPrefab: {fileID: 8451096820670422793, guid: 9442a5c44ce468c4099a13c42daf30a2, type: 3}
   ingameMenuPrefab: {fileID: 8989588133055270684, guid: eee1f03d97129834f93d488c4c8edea6, type: 3}
   endgameMenuPrefab: {fileID: 8938392843139606295, guid: ad0c8dda4927e34439e3310fdcc4fa25, type: 3}
+
 --- !u!1 &1779088894
 GameObject:
   m_ObjectHideFlags: 0

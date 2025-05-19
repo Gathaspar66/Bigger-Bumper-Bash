@@ -11,10 +11,18 @@ public class UserInterfaceManager : MonoBehaviour
     public GameObject healthDisplayPrefab;
     public GameObject ingameMenuPrefab;
     public GameObject endgameMenuPrefab;
+
+    public GameObject pointsMultiplierDisplayPrefab;
+    public GameObject pointsDisplayPrefab;
+  
+    GameObject pointsMultiplierDisplay;
+    GameObject pointsDisplay;
+
     private GameObject speedMeter;
     private GameObject wrongWay;
     private GameObject pickupMultiplier;
     private GameObject healthDisplay;
+
 
     private void Awake()
     {
@@ -30,7 +38,12 @@ public class UserInterfaceManager : MonoBehaviour
         wrongWay = Instantiate(wrongWayPrefab);
         pickupMultiplier = Instantiate(pickupMultiplierPrefab);
         healthDisplay = Instantiate(healthDisplayPrefab);
+
+        pointsMultiplierDisplay = Instantiate(pointsMultiplierDisplayPrefab);
+        pointsDisplay = Instantiate(pointsDisplayPrefab);
+
         UserInterfaceManager.instance.UpdateHealthDisplay(PlayerManager.instance.GetPlayerHealth(), PlayerManager.instance.GetPlayerMaxHealth());
+
     }
 
     public void UpdatePickupMultiplier(int value)
@@ -47,5 +60,15 @@ public class UserInterfaceManager : MonoBehaviour
     {
         Time.timeScale = 0;
         _ = Instantiate(endgameMenuPrefab);
+    }
+
+    public void UpdatePointsMultiplayerDisplay(float amount)
+    {
+        pointsMultiplierDisplay.GetComponent<PointsMultiplierDisplay>().UpdatePointsMultiplayerDisplay(amount);
+    }
+
+    public void UpdatePointsDisplay(float amount)
+    {
+        pointsDisplay.GetComponent<PointsDisplay>().UpdatePointsDisplay(amount);
     }
 }
