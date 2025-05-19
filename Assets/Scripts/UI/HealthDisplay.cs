@@ -8,24 +8,25 @@ public class HealthDisplay : MonoBehaviour
 
     public Transform healthOrganizer;
     private readonly List<GameObject> healthIcons = new();
+
     public void UpdateHealthVisuals(int health, int maxHealth)
     {
-        foreach (GameObject icon in healthIcons)
-        {
-            Destroy(icon);
-        }
-
+        DeleteOldHealth();
 
 
         for (int i = 0; i < maxHealth; i++)
         {
             GameObject prefab = i < health ? healthPrefab : emptyHealthPrefab;
-            GameObject siur = Instantiate(prefab, healthOrganizer);
-            healthIcons.Add(siur);
-
+            GameObject healthElement = Instantiate(prefab, healthOrganizer);
+            healthIcons.Add(healthElement);
         }
+    }
 
-
-
+    public void DeleteOldHealth()
+    {
+        foreach (GameObject icon in healthIcons)
+        {
+            Destroy(icon);
+        }
     }
 }
