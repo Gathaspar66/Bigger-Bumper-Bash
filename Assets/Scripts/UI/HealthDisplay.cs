@@ -1,25 +1,32 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class HealthDisplay : MonoBehaviour
 {
-    public TMP_Text text;
-    // Start is called before the first frame update
-    void Start()
+    public GameObject healthPrefab;
+    public GameObject emptyHealthPrefab;
+
+    public Transform healthOrganizer;
+    private readonly List<GameObject> healthIcons = new();
+
+    public void UpdateHealthVisuals(int health, int maxHealth)
     {
-        
+        DeleteOldHealth();
+
+
+        for (int i = 0; i < maxHealth; i++)
+        {
+            GameObject prefab = i < health ? healthPrefab : emptyHealthPrefab;
+            GameObject healthElement = Instantiate(prefab, healthOrganizer);
+            healthIcons.Add(healthElement);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DeleteOldHealth()
     {
-        
-    }
-
-    public void UpdateHealthVisuals(int health)
-    {
-        text.text = "health: " + health;
+        foreach (GameObject icon in healthIcons)
+        {
+            Destroy(icon);
+        }
     }
 }
