@@ -29,11 +29,11 @@ public class TrafficManager : MonoBehaviour
     [Space(25)] //
     [Header("Other")]
     //
-    public float playerPrefabOffsetSpawn = 0.5f;
+    public float playerPrefabOffsetSpawn = 0.3f;
 
     public float pointsSpawnPositionX = 5f;
     public float pointsSpawnHeight = 0.5f;
-    public Transform[] lanePositions;
+    public float[] laneXPositions = { -4.85f, -1.75f, 1.75f, 4.85f };
     public LayerMask trafficLayer;
     private GameObject car;
     private readonly float raycastHeightOffset = 0.5f;
@@ -77,37 +77,40 @@ public class TrafficManager : MonoBehaviour
 
         if (distanceTraveledStatic >= staticObstacleSpawnIntervalDistance)
         {
-            SpawnObstacleCar();
+            SpawnStaticObstacle();
             lastSpawnPositionStatic = car.transform.position.z;
+            return;
         }
 
         if (distanceTraveledFrontDynamic >= frontDynamicObstacleSpawnIntervalDistance)
         {
             SpawnFrontDynamicCar();
             lastSpawnPositionFrontDynamic = car.transform.position.z;
+            return;
         }
 
         if (distanceTraveledBackDynamic >= backDynamicObstacleSpawnIntervalDistance)
         {
             SpawnBackDynamicCar();
             lastSpawnPositionBackDynamic = car.transform.position.z;
+            return;
         }
 
         if (distanceTraveledPints >= pointsSpawnIntervalDistance)
         {
             SpawnPointsPrefab();
             lastSpawnPositionPoints = car.transform.position.z;
+            return;
         }
     }
 
-    public void SpawnObstacleCar()
+    public void SpawnStaticObstacle()
     {
-        int randomLaneIndex = Random.Range(0, lanePositions.Length);
-        Transform lane = lanePositions[randomLaneIndex];
+        int randomLaneIndex = Random.Range(0, laneXPositions.Length);
+        float laneX = laneXPositions[randomLaneIndex];
 
-        Vector3 spawnPosition = new(lane.position.x, lane.position.y,
-            car.transform.position.z + spawnStaticObstacleDistance);
-
+        spawnPosition = new(laneX, car.transform.position.y,
+           car.transform.position.z + spawnStaticObstacleDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
@@ -117,13 +120,12 @@ public class TrafficManager : MonoBehaviour
 
     public void SpawnFrontDynamicCar()
     {
-        int randomLaneIndex = Random.Range(0, lanePositions.Length);
-        Transform lane = lanePositions[randomLaneIndex];
+        int randomLaneIndex = Random.Range(0, laneXPositions.Length);
+        float laneX = laneXPositions[randomLaneIndex];
         float randomOffset = Random.Range(-playerPrefabOffsetSpawn, playerPrefabOffsetSpawn);
 
-        spawnPosition = new Vector3(lane.position.x + randomOffset, lane.position.y,
-            car.transform.position.z + frontSpawnDynamicObstacleDistance);
-
+        spawnPosition = new(laneX + randomOffset, car.transform.position.y,
+           car.transform.position.z + frontSpawnDynamicObstacleDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
@@ -136,18 +138,16 @@ public class TrafficManager : MonoBehaviour
 
     public void SpawnBackDynamicCar()
     {
-        int randomLaneIndex = Random.Range(2, lanePositions.Length);
-
-        Transform lane = lanePositions[randomLaneIndex];
+        int randomLaneIndex = Random.Range(2, laneXPositions.Length);
+        float laneX = laneXPositions[randomLaneIndex];
         float randomOffset = Random.Range(-playerPrefabOffsetSpawn, playerPrefabOffsetSpawn);
 
-        spawnPosition2 = new Vector3(lane.position.x + randomOffset, lane.position.y,
-            car.transform.position.z + backSpawnDynamicObstacleDistance);
+        spawnPosition = new(laneX + randomOffset, car.transform.position.y,
+           car.transform.position.z + backSpawnDynamicObstacleDistance);
 
-
-        if (!IsSpawnLocationClear(spawnPosition2))
+        if (!IsSpawnLocationClear(spawnPosition))
         {
-            _ = Instantiate(dynamicObstaclePrefab, spawnPosition2, Quaternion.identity);
+            _ = Instantiate(dynamicObstaclePrefab, spawnPosition, Quaternion.identity);
             CarAIMoving.instance.SpawnRandomCar(randomLaneIndex);
         }
     }
@@ -156,7 +156,7 @@ public class TrafficManager : MonoBehaviour
     {
         float randomXPosition = Random.Range(-pointsSpawnPositionX, pointsSpawnPositionX);
         spawnPosition = new Vector3(randomXPosition, pointsSpawnHeight,
-            car.transform.position.z + pointsSpawnDistance);
+           car.transform.position.z + pointsSpawnDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
@@ -178,7 +178,7 @@ public class TrafficManager : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Vector3 boxCenter = spawnPosition2;
+        Vector3 boxCenter = spawnPosition;
         Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 }
