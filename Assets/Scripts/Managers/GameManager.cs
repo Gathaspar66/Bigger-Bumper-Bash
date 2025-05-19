@@ -1,26 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private GameObject playerInstance;
+    private readonly GameObject playerInstance;
     public GameObject roadManager;
     public GameObject userInterfaceManager;
     public GameObject playerManager;
     public GameObject trafficManager;
     public GameObject pointsManager;
-
-    bool isGameOver = false;
+    private readonly bool isGameOver = false;
 
     private void Awake()
     {
         instance = this;
     }
 
-    void Start()
+    private void Start()
     {
         SpawnBasicElementsOfGame();
 
@@ -34,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public void ActivateManagers()
     {
+
         PlayerManager.instance.Activate();
         RoadManager.instance.Activate();
         UserInterfaceManager.instance.Activate();
@@ -48,7 +46,11 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame(bool ifPause)
     {
-        if (isGameOver) return;
+        if (isGameOver)
+        {
+            return;
+        }
+
         Time.timeScale = (ifPause == true) ? 0 : 1;
     }
 

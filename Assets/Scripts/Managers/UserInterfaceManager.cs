@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UserInterfaceManager : MonoBehaviour
@@ -13,11 +11,10 @@ public class UserInterfaceManager : MonoBehaviour
     public GameObject healthDisplayPrefab;
     public GameObject ingameMenuPrefab;
     public GameObject endgameMenuPrefab;
-
-    GameObject speedMeter;
-    GameObject wrongWay;
-    GameObject pickupMultiplier;
-    GameObject healthDisplay;
+    private GameObject speedMeter;
+    private GameObject wrongWay;
+    private GameObject pickupMultiplier;
+    private GameObject healthDisplay;
 
     private void Awake()
     {
@@ -26,13 +23,14 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void Activate()
     {
-        Instantiate(controlsPrefab);
-        Instantiate(ingameMenuPrefab);
+        _ = Instantiate(controlsPrefab);
+        _ = Instantiate(ingameMenuPrefab);
 
         speedMeter = Instantiate(speedMeterPrefab);
         wrongWay = Instantiate(wrongWayPrefab);
         pickupMultiplier = Instantiate(pickupMultiplierPrefab);
         healthDisplay = Instantiate(healthDisplayPrefab);
+        UserInterfaceManager.instance.UpdateHealthDisplay(PlayerManager.instance.GetPlayerHealth(), PlayerManager.instance.GetPlayerMaxHealth());
     }
 
     public void UpdatePickupMultiplier(int value)
@@ -40,14 +38,14 @@ public class UserInterfaceManager : MonoBehaviour
         pickupMultiplier.GetComponent<PickupMultiplier>().UpdatePickupMultiplier(value);
     }
 
-    public void UpdateHealthDisplay(int amount)
+    public void UpdateHealthDisplay(int amount, int maxAmount)
     {
-        healthDisplay.GetComponent<HealthDisplay>().UpdateHealthVisuals(amount);
+        healthDisplay.GetComponent<HealthDisplay>().UpdateHealthVisuals(amount, maxAmount);
     }
 
     public void OnPlayerDeath()
     {
         Time.timeScale = 0;
-        Instantiate(endgameMenuPrefab);
+        _ = Instantiate(endgameMenuPrefab);
     }
 }

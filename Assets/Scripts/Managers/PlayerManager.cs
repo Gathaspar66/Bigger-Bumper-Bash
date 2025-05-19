@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
 using static CarConfiguration;
 
 public class PlayerManager : MonoBehaviour
@@ -16,8 +13,8 @@ public class PlayerManager : MonoBehaviour
     private CarConfig config;
     private CarConfigDictionary carConfigs;
     public TextAsset carConfigFile;
-
-    public int playerHealth = 3;
+    private readonly int playerMaxHealth = 4;
+    private int playerHealth;
 
 
     private void Awake()
@@ -31,13 +28,14 @@ public class PlayerManager : MonoBehaviour
 
     public void Activate()
     {
+        playerHealth = playerMaxHealth;
         SpawnPlayerPrefab();
         SpawnCar();
         LoadConfig();
         SpawnCamera();
     }
 
-    void LoadConfig()
+    private void LoadConfig()
     {
         carConfigs = JsonUtility.FromJson<CarConfigDictionary>(carConfigFile.text);
         config = carConfigs.Unikacz;
@@ -72,17 +70,26 @@ public class PlayerManager : MonoBehaviour
 
     public void GetDamaged()
     {
-      //  playerHealth -= 1;
-        UserInterfaceManager.instance.UpdateHealthDisplay(playerHealth);
+        playerHealth -= 1;
+        UserInterfaceManager.instance.UpdateHealthDisplay(playerHealth, playerMaxHealth);
         if (playerHealth <= 0)
         {
             UserInterfaceManager.instance.OnPlayerDeath();
             return;
         }
+
         StartImmunity();
     }
 
-    void StartImmunity()
+    public int GetPlayerHealth()
+    {
+        return playerHealth;
+    }
+    public int GetPlayerMaxHealth()
+    {
+        return playerMaxHealth;
+    }
+    private void StartImmunity()
     {
         playerInstance.GetComponent<PlayerHitDetection>().StartImmunity();
     }
