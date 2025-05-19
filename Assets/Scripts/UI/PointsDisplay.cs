@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class HealthDisplay : MonoBehaviour
+public class PointsDisplay : MonoBehaviour
 {
     public TMP_Text text;
+
     // Start is called before the first frame update
     void Start()
     {
-        UpdateHealthVisuals(PlayerManager.instance.playerHealth);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void UpdateHealthVisuals(float health)
+    public void UpdatePointsDisplay(float points)
     {
-        text.text = "health: " + (int)health;
+        text.text = "points: " + (int)points;
     }
 }

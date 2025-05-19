@@ -47,6 +47,7 @@ public class PointsManager : MonoBehaviour
         pointsMultiplier = speedPointMultiplier * lanePointMultiplier * cratePointMultiplier;
         UserInterfaceManager.instance.UpdatePointsMultiplayerDisplay(pointsMultiplier);
         points += (currentCarLocationZ - lastCarLocationZ) * pointsMultiplier;
+        UserInterfaceManager.instance.UpdatePointsDisplay(points);
         lastCarLocationZ = car.transform.position.z;
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
     }
