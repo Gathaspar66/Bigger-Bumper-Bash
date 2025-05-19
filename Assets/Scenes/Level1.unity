@@ -174,37 +174,6 @@ MonoBehaviour:
   cratePointMultiplierTimer: 0
   cratePointMultiplierTimerMax: 5
   points: 0
---- !u!1 &70409479
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 70409480}
-  m_Layer: 0
-  m_Name: Lane2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &70409480
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70409479}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.508, y: 0.104, z: -13.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &257062008
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,37 +237,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &612417490
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 612417491}
-  m_Layer: 0
-  m_Name: Lane4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &612417491
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612417490}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.175, y: 0.07800001, z: -13.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -398,37 +336,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &809456404
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 809456405}
-  m_Layer: 0
-  m_Name: Lane1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &809456405
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809456404}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.31, y: 0.185, z: -13.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &822716056
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,21 +507,21 @@ MonoBehaviour:
   frontSpawnDynamicObstacleDistance: 100
   backSpawnDynamicObstacleDistance: -10
   pointsSpawnDistance: 50
-  staticObstacleSpawnIntervalDistance: 50
+  staticObstacleSpawnIntervalDistance: 10
   frontDynamicObstacleSpawnIntervalDistance: 10
   backDynamicObstacleSpawnIntervalDistance: 10
   pointsSpawnIntervalDistance: 1000000
   staticObstaclePrefab: {fileID: 3939250863403656692, guid: 8e383579c08bf984b8e799939ddd0b40, type: 3}
   dynamicObstaclePrefab: {fileID: 121954177195123221, guid: 76c696841b6af984f8a73350970feb1c, type: 3}
   pointsPrefab: {fileID: 6160970351542831283, guid: b62827d41be3d5e44b782b096e59f322, type: 3}
-  playerPrefabOffsetSpawn: 0.5
+  playerPrefabOffsetSpawn: 0.4
   pointsSpawnPositionX: 5
   pointsSpawnHeight: 0.5
-  lanePositions:
-  - {fileID: 809456405}
-  - {fileID: 70409480}
-  - {fileID: 1768838801}
-  - {fileID: 612417491}
+  laneXPositions:
+  - -4.85
+  - -1.75
+  - 1.75
+  - 4.85
   trafficLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -669,39 +576,7 @@ MonoBehaviour:
   healthDisplayPrefab: {fileID: 8451096820670422793, guid: 9442a5c44ce468c4099a13c42daf30a2, type: 3}
   ingameMenuPrefab: {fileID: 8989588133055270684, guid: eee1f03d97129834f93d488c4c8edea6, type: 3}
   endgameMenuPrefab: {fileID: 8938392843139606295, guid: ad0c8dda4927e34439e3310fdcc4fa25, type: 3}
-  pointsMultiplierDisplayPrefab: {fileID: 8451096820670422793, guid: 47a1a5109a67dbf49b66e7bd01196f4a, type: 3}
-  pointsDisplayPrefab: {fileID: 8451096820670422793, guid: db43ec9483d4dc24f9240be897bedbda, type: 3}
---- !u!1 &1768838800
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1768838801}
-  m_Layer: 0
-  m_Name: Lane3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1768838801
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768838800}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.489, y: 0.07800001, z: -13.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
 --- !u!1 &1779088894
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +626,7 @@ MonoBehaviour:
   cameraPrefab: {fileID: 7280080578915174522, guid: 45f1f94e9a7014844933124b4811847e, type: 3}
   currentCameraPrefab: {fileID: 0}
   carConfigFile: {fileID: 4900000, guid: f1f9ac60f21ad2045803ba7172c3ec55, type: 3}
-  playerHealth: 3
+  playerHealth: 5
 --- !u!1 &2048719953
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,8 +671,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59772a85409812c40ad82413c7114289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sectionsPrefabs:
-  - {fileID: 8664369382022809974, guid: 57481af09bc83cc4f803e6eb605220aa, type: 3}
+  normalSectionsPrefabs:
+  - {fileID: 8664369382022809974, guid: 861eb8f0ce18254479f6a58ab5952dca, type: 3}
+  - {fileID: 8664369382022809974, guid: 2cb8c62996b46bd4b9f1f3459f0bdf4d, type: 3}
+  - {fileID: 8664369382022809974, guid: 08af340eec25ed54e886029e192699ee, type: 3}
+  - {fileID: 8664369382022809974, guid: eda58b0d3413fe846bf5e491b7b9d90f, type: 3}
+  specificSectionsPrefabs:
+  - {fileID: 8664369382022809974, guid: 37bb8bc434eeffc47b9eb9f166c70c8b, type: 3}
+  allSectionsPrefabs: []
+  normalSectionsMultiplier: 5
 --- !u!1001 &2122320036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -862,7 +744,3 @@ SceneRoots:
   - {fileID: 257062011}
   - {fileID: 822716057}
   - {fileID: 705507995}
-  - {fileID: 809456405}
-  - {fileID: 70409480}
-  - {fileID: 1768838801}
-  - {fileID: 612417491}

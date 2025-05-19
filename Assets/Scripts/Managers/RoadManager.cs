@@ -2,22 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class RoadManager : MonoBehaviour
 {
     public static RoadManager instance;
 
-    public GameObject[] sectionsPrefabs;
-    GameObject[] sectionsPool = new GameObject[20];
-    GameObject[] sections = new GameObject[20];
-    Transform playerCarTransform;
+    public GameObject[] normalSectionsPrefabs;
+    public GameObject[] specificSectionsPrefabs;
 
-    WaitForSeconds waitFor100ms = new WaitForSeconds(0.1f);
-    const float sectionLength = 30;
+    public GameObject[] allSectionsPrefabs;
+    public int normalSectionsMultiplier = 5;
+    private readonly GameObject[] sectionsPool = new GameObject[20];
+    private readonly GameObject[] sections = new GameObject[3];
+    private Transform playerCarTransform;
+    private readonly WaitForSeconds waitFor100ms = new(0.1f);
+    private const float sectionLength = 60;
 
     private void Awake()
     {
         instance = this;
+
+        List<GameObject> tempList = new();
+
+        for (int i = 0; i < normalSectionsMultiplier; i++)
+        {
+            tempList.AddRange(normalSectionsPrefabs);
+        }
+
+        tempList.AddRange(specificSectionsPrefabs);
+        allSectionsPrefabs = tempList.ToArray();
     }
 
     public void Activate()
@@ -25,37 +37,28 @@ public class RoadManager : MonoBehaviour
         playerCarTransform = PlayerManager.instance.GetPlayerInstance().transform;
         SetStartPosition();
 
-        StartCoroutine(UpdateLessOftenCO());
+        _ = StartCoroutine(UpdateLessOftenCO());
     }
 
     public void SetStartPosition()
     {
-        int prefabIndex = 0;
-
-
         for (int i = 0; i < sectionsPool.Length; i++)
         {
-            sectionsPool[i] = Instantiate(sectionsPrefabs[prefabIndex]);
+            int randomPrefabIndex = Random.Range(0, allSectionsPrefabs.Length);
+            sectionsPool[i] = Instantiate(allSectionsPrefabs[randomPrefabIndex]);
             sectionsPool[i].SetActive(false);
-            prefabIndex++;
-
-            if (prefabIndex > sectionsPrefabs.Length - 1)
-            {
-                prefabIndex = 0;
-            }
         }
-
 
         for (int i = 0; i < sections.Length; i++)
         {
             GameObject randomSection = GetRandomSectionFromPool();
-            randomSection.transform.position = new Vector3(sectionsPool[i].transform.position.x, 0, i * sectionLength);
+            randomSection.transform.position = new Vector3(0, 0, i * sectionLength);
             randomSection.SetActive(true);
             sections[i] = randomSection;
         }
     }
 
-    IEnumerator UpdateLessOftenCO()
+    private IEnumerator UpdateLessOftenCO()
     {
         while (true)
         {
@@ -64,7 +67,7 @@ public class RoadManager : MonoBehaviour
         }
     }
 
-    void UpdateSectionPositions()
+    private void UpdateSectionPositions()
     {
         for (int i = 0; i < sections.Length; i++)
         {
@@ -75,17 +78,16 @@ public class RoadManager : MonoBehaviour
 
                 sections[i] = GetRandomSectionFromPool();
                 sections[i].transform.position = new Vector3(lastSectionPosition.x, 0,
-                    lastSectionPosition.z + sectionLength * sections.Length);
+                    lastSectionPosition.z + (sectionLength * sections.Length));
                 sections[i].SetActive(true);
             }
         }
     }
 
-    GameObject GetRandomSectionFromPool()
+    private GameObject GetRandomSectionFromPool()
     {
         int randomIndex = Random.Range(0, sectionsPool.Length);
         bool isNewSectionFound = false;
-
 
         while (!isNewSectionFound)
         {
@@ -96,8 +98,7 @@ public class RoadManager : MonoBehaviour
             else
             {
                 randomIndex++;
-
-                if (randomIndex > sectionsPool.Length - 1)
+                if (randomIndex >= sectionsPool.Length)
                 {
                     randomIndex = 0;
                 }
