@@ -20,6 +20,7 @@ public class PointsManager : MonoBehaviour
 
     public float points = 0;
 
+    bool calculatePoints = true;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class PointsManager : MonoBehaviour
 
     void CalculatePoints()
     {
+        if (!calculatePoints) return;
         currentCarLocationZ = car.transform.position.z;
         pointsMultiplier = speedPointMultiplier * lanePointMultiplier * cratePointMultiplier;
         UserInterfaceManager.instance.UpdatePointsMultiplayerDisplay(pointsMultiplier);
@@ -103,7 +105,13 @@ public class PointsManager : MonoBehaviour
 
     public void SavePlayerScore()
     {
+        calculatePoints = false;
         if (points <= PlayerPrefs.GetInt("highScore")) return;
         PlayerPrefs.SetInt("highScore", (int)points);
+    }
+
+    public int GetPoints()
+    {
+        return (int)points;
     }
 }

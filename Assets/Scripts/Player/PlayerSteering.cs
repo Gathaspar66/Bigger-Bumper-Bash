@@ -123,7 +123,6 @@ public class PlayerSteering : MonoBehaviour
 
 
             float dynamicSteeringMultiplier = steeringMultiplierCurve.Evaluate(currentSpeed);
-            print(dynamicSteeringMultiplier);
 
             float targetXVelocity = input.x * dynamicSteeringMultiplier;
 

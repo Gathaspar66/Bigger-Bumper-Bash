@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     {
         SpawnBasicElementsOfGame();
 
-
         ActivateManagers();
     }
 
