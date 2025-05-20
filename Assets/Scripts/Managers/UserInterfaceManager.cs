@@ -58,6 +58,7 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
+        PointsManager.instance.SavePlayerScore();
         Time.timeScale = 0;
         _ = Instantiate(endgameMenuPrefab);
     }

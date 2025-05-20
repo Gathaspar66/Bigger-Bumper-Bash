@@ -100,4 +100,10 @@ public class PointsManager : MonoBehaviour
         UserInterfaceManager.instance.UpdatePickupMultiplier((int)cratePointMultiplier);
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIERTIMER, cratePointMultiplierTimer);
     }
+
+    public void SavePlayerScore()
+    {
+        if (points <= PlayerPrefs.GetInt("highScore")) return;
+        PlayerPrefs.SetInt("highScore", (int)points);
+    }
 }
