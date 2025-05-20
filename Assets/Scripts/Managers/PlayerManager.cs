@@ -74,7 +74,7 @@ public class PlayerManager : MonoBehaviour
         UserInterfaceManager.instance.UpdateHealthDisplay(playerHealth, playerMaxHealth);
         if (playerHealth <= 0)
         {
-            UserInterfaceManager.instance.OnPlayerDeath();
+            GameManager.instance.OnPlayerDeath();
             return;
         }
 

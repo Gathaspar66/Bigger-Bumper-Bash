@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     {
         SpawnBasicElementsOfGame();
 
-
         ActivateManagers();
     }
 
@@ -65,5 +64,10 @@ public class GameManager : MonoBehaviour
     {
         PauseGame(false);
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OnPlayerDeath()
+    {
+        UserInterfaceManager.instance.OnPlayerDeath();
     }
 }
