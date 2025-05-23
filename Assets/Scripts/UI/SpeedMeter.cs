@@ -1,8 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpeedMeter : MonoBehaviour
 {
@@ -12,36 +11,38 @@ public class SpeedMeter : MonoBehaviour
     public TMP_Text text;
 
     public GameObject redBgBig;
+    private readonly float speedBarGreenSize = 100;
+    private readonly float speedBarOrangeSize = 100;
+    private float currentSpeedBarGreenSize;
+    private float currentSpeedBarOrangeSize;
+    private float carSpeed = 0;
+    private int speedMultiplier = 1;
+    private bool maxSpeed;
+    private GameObject car;
+    private List<float> breakpoints;
 
-    float speedBarGreenSize = 100;
-    float speedBarOrangeSize = 100;
+    public Image speedFillImage;
+    public GameObject superSpeed;
 
-    float currentSpeedBarGreenSize;
-    float currentSpeedBarOrangeSize;
-    float carSpeed = 0;
-
-    int speedMultiplier = 1;
-
-    bool maxSpeed;
-
-    GameObject car;
-
-    List<float> breakpoints;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         car = PlayerManager.instance.GetPlayerInstance();
         SetupBreakpoints();
+
+        SetFill(0f);
+
+        redBgBig.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
         CalculateSpeed();
     }
 
-    void CalculateSpeed()
+    private void CalculateSpeed()
     {
+        float fill = 0f;
+
         carSpeed = car.GetComponent<Rigidbody>().velocity.z;
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEED, car.GetComponent<Rigidbody>().velocity.z);
         currentSpeedBarGreenSize = 0;
@@ -51,12 +52,17 @@ public class SpeedMeter : MonoBehaviour
 
         if (carSpeed >= breakpoints[0])
         {
-            currentSpeedBarGreenSize = Mathf.Clamp((carSpeed - breakpoints[0]) / (breakpoints[1]- breakpoints[0]) * speedBarGreenSize, 0, speedBarGreenSize);
+            fill = Mathf.Clamp01((carSpeed - breakpoints[0]) / (breakpoints[2] - breakpoints[0]));
+            currentSpeedBarGreenSize =
+                Mathf.Clamp((carSpeed - breakpoints[0]) / (breakpoints[1] - breakpoints[0]) * speedBarGreenSize, 0,
+                    speedBarGreenSize);
             if (carSpeed >= breakpoints[1])
             {
                 speedMultiplier = 2;
-                currentSpeedBarOrangeSize = Mathf.Clamp((carSpeed - breakpoints[1]) / (breakpoints[2]- breakpoints[1]) * speedBarOrangeSize, 0, speedBarOrangeSize);
-                if(carSpeed >= breakpoints[2])
+                currentSpeedBarOrangeSize =
+                    Mathf.Clamp((carSpeed - breakpoints[1]) / (breakpoints[2] - breakpoints[1]) * speedBarOrangeSize, 0,
+                        speedBarOrangeSize);
+                if (carSpeed >= breakpoints[2])
                 {
                     speedMultiplier = 3;
                     maxSpeed = true;
@@ -64,20 +70,28 @@ public class SpeedMeter : MonoBehaviour
             }
         }
 
+        SetFill(fill);
+
         text.text = "x" + speedMultiplier.ToString();
         speedBarGreen.sizeDelta = new Vector2(speedBarGreen.sizeDelta.x, currentSpeedBarGreenSize);
         speedBarOrange.sizeDelta = new Vector2(speedBarOrange.sizeDelta.x, currentSpeedBarOrangeSize);
-        redBgBig.SetActive(maxSpeed);
 
+        redBgBig.SetActive(maxSpeed);
+        superSpeed.SetActive(maxSpeed);
         NotifyPointsManager(speedMultiplier);
     }
 
-    void NotifyPointsManager(int speedMultiplier)
+    private void SetFill(float fillAmount)
+    {
+        speedFillImage.fillAmount = fillAmount;
+    }
+
+    private void NotifyPointsManager(int speedMultiplier)
     {
         PointsManager.instance.UpdateSpeedMultiplier(speedMultiplier);
     }
 
-    void SetupBreakpoints()
+    private void SetupBreakpoints()
     {
         breakpoints = car.GetComponent<PlayerSteering>().GetSpeedBreakpoints();
     }

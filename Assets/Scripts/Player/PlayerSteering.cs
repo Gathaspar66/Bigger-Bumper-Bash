@@ -1,8 +1,5 @@
-using UnityEditor;
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using UnityEngine;
 using static CarConfiguration;
 
 
@@ -27,12 +24,16 @@ public class PlayerSteering : MonoBehaviour
     private bool wHeld = false;
     public static PlayerSteering instance;
 
+    private float targetTiltX = 0f;
+    public float tiltSpeed = 5f;
+    public float tiltValue = 5f;
+
     private void Awake()
     {
         instance = this;
     }
 
-    void Start()
+    private void Start()
     {
         gameModel = PlayerManager.instance.GetPlayerInstance().transform;
         rb.velocity = new Vector3(0, 0, minForwardVelocity);
@@ -49,9 +50,20 @@ public class PlayerSteering : MonoBehaviour
         minForwardVelocity = config.minForwardVelocity;
     }
 
-    void Update()
+    private void Update()
     {
-        gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 0.5f, rb.velocity.x * 1f);
+        // gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 0.5f, rb.velocity.x * 1f);
+        float currentTiltX = gameModel.transform.localEulerAngles.x;
+        if (currentTiltX > 180)
+        {
+            currentTiltX -= 360;
+        }
+
+        float newTiltX = Mathf.Lerp(currentTiltX, targetTiltX, Time.deltaTime * tiltSpeed);
+        float tiltY = rb.velocity.x * 0.5f;
+        float tiltZ = rb.velocity.x * 1f;
+
+        gameModel.transform.localRotation = Quaternion.Euler(newTiltX, tiltY, tiltZ);
 
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -96,21 +108,41 @@ public class PlayerSteering : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, minForwardVelocity);
         }
+
+        if (input.y == 0)
+        {
+            targetTiltX = 0f;
+        }
+
+        if (rb.velocity.z <= minForwardVelocity || rb.velocity.z >= maxForwardVelocity)
+        {
+            targetTiltX = 0f;
+        }
     }
 
     public void Accelerate()
     {
+        targetTiltX = -tiltValue;
+
+
         rb.drag = 0;
         if (rb.velocity.z >= maxForwardVelocity)
+        {
             return;
+        }
+
         rb.AddForce(rb.transform.forward * acceleationMultiplier * input.y);
     }
 
     public void Brake()
     {
-        if (rb.velocity.z <= 0)
-            return;
+        targetTiltX = tiltValue;
 
+
+        if (rb.velocity.z <= 0)
+        {
+            return;
+        }
 
         rb.AddForce(rb.transform.forward * brakeMultiplier * input.y);
     }
@@ -165,7 +197,7 @@ public class PlayerSteering : MonoBehaviour
         return new List<float>
         {
             minForwardVelocity,
-            minForwardVelocity + (maxForwardVelocity - minForwardVelocity) / 2,
+            minForwardVelocity + ((maxForwardVelocity - minForwardVelocity) / 2),
             maxForwardVelocity
         };
     }
