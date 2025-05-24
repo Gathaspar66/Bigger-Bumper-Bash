@@ -11,8 +11,6 @@ public class ControlsTouchPosition : MonoBehaviour
     public Image u;
     public Image d;
 
-    public Image marker;
-
     public ControlHandler handler;
 
     Bounds lb;
@@ -28,7 +26,7 @@ public class ControlsTouchPosition : MonoBehaviour
     private void Update()
     {
         CheckTouch();
-        CheckMouseInput();
+        KeyboardInput();
     }
 
     private void CalculateControlsBounds()
@@ -71,35 +69,36 @@ public class ControlsTouchPosition : MonoBehaviour
                     d.color = new Color(1f, 1f, 1f, 1f);
                     handler.SetInput(SteeringDirection.BRAKE);
                 }
-                marker.rectTransform.position = touch.position;
             }
-
         }
     }
 
-    private void CheckMouseInput()
+    private void KeyboardInput()
     {
-        SetAllToNeutral();
-        Vector2 mouse = Input.mousePosition;
-        if (lb.Contains(mouse))
+        if (Input.GetKey(KeyCode.A))
         {
+            print("a");
             l.color = new Color(1f, 1f, 1f, 1f);
             handler.SetInput(SteeringDirection.LEFT);
         }
+        else
+        {
+            print("not a");
+        }
 
-        if (rb.Contains(mouse))
+        if (Input.GetKey(KeyCode.D))
         {
             r.color = new Color(1f, 1f, 1f, 1f);
             handler.SetInput(SteeringDirection.RIGHT);
         }
 
-        if (ub.Contains(mouse))
+        if (Input.GetKey(KeyCode.W))
         {
             u.color = new Color(1f, 1f, 1f, 1f);
             handler.SetInput(SteeringDirection.ACCELERATE);
         }
 
-        if (db.Contains(mouse))
+        if (Input.GetKey(KeyCode.S))
         {
             d.color = new Color(1f, 1f, 1f, 1f);
             handler.SetInput(SteeringDirection.BRAKE);
@@ -114,6 +113,5 @@ public class ControlsTouchPosition : MonoBehaviour
         r.color = new Color(1f, 1f, 1f, 0.5f);
         u.color = new Color(1f, 1f, 1f, 0.5f);
         d.color = new Color(1f, 1f, 1f, 0.5f);
-        marker.rectTransform.position = new Vector2(Screen.width/2, Screen.height/2);
     }
 }
