@@ -28,6 +28,7 @@ public class ControlsTouchPosition : MonoBehaviour
     private void Update()
     {
         CheckTouch();
+        CheckMouseInput();
     }
 
     private void CalculateControlsBounds()
@@ -73,6 +74,35 @@ public class ControlsTouchPosition : MonoBehaviour
                 marker.rectTransform.position = touch.position;
             }
 
+        }
+    }
+
+    private void CheckMouseInput()
+    {
+        SetAllToNeutral();
+        Vector2 mouse = Input.mousePosition;
+        if (lb.Contains(mouse))
+        {
+            l.color = new Color(1f, 1f, 1f, 1f);
+            handler.SetInput(SteeringDirection.LEFT);
+        }
+
+        if (rb.Contains(mouse))
+        {
+            r.color = new Color(1f, 1f, 1f, 1f);
+            handler.SetInput(SteeringDirection.RIGHT);
+        }
+
+        if (ub.Contains(mouse))
+        {
+            u.color = new Color(1f, 1f, 1f, 1f);
+            handler.SetInput(SteeringDirection.ACCELERATE);
+        }
+
+        if (db.Contains(mouse))
+        {
+            d.color = new Color(1f, 1f, 1f, 1f);
+            handler.SetInput(SteeringDirection.BRAKE);
         }
     }
 
