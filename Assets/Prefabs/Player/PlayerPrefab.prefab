@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7419151477809295542}
   - component: {fileID: 1421288006978361768}
   - component: {fileID: 5831812412874202471}
+  - component: {fileID: 450025254653009301}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -114,6 +115,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   rb: {fileID: 7419151477809295542}
   gameModel: {fileID: 0}
+  tiltSpeed: 5
+  tiltValue: 5
 --- !u!114 &5831812412874202471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,3 +131,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normal: {fileID: 2100000, guid: 66fb998a70f9b004b9021cba53a04bf5, type: 2}
   immune: {fileID: 2100000, guid: 73ca67a0e05e25743b473a1c7f476d0b, type: 2}
+--- !u!65 &450025254653009301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432101980971534461}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2885363, y: 0.7180454, z: 3.2231183}
+  m_Center: {x: -0.0034644604, y: 0.6333066, z: 0.03461194}

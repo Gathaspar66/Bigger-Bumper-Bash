@@ -1,30 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class PickupMultiplier : MonoBehaviour
 {
     public List<Sprite> barrelSprites = new();
+    public List<Sprite> barrelMultiplier = new();
     public Image barrelImage;
-    public TMP_Text text;
+    public Image multiplierValueImage;
 
-    // Start is called before the first frame update
-    void Start()
+    private void UpdatePickupVisual(int value)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void UpdatePickupVisual(int value)
-    {
-        text.text = "x" + value.ToString();
+        multiplierValueImage.sprite = barrelMultiplier[value - 1];
         barrelImage.sprite = barrelSprites[value - 1];
     }
 

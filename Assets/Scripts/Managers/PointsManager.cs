@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PointsManager : MonoBehaviour
@@ -13,14 +11,12 @@ public class PointsManager : MonoBehaviour
     public float cratePointMultiplierMax = 3;
     public float cratePointMultiplierTimer = 0;
     public float cratePointMultiplierTimerMax = 5;
-
-    float lastCarLocationZ;
-    float currentCarLocationZ;
-    float pointsMultiplier = 0;
+    private float lastCarLocationZ;
+    private float currentCarLocationZ;
+    private float pointsMultiplier = 0;
 
     public float points = 0;
-
-    bool calculatePoints = true;
+    private bool calculatePoints = true;
 
     private void Awake()
     {
@@ -35,16 +31,19 @@ public class PointsManager : MonoBehaviour
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
     }
 
-
-    void Update()
+    private void Update()
     {
         CheckCrateMultiplierTimer();
         CalculatePoints();
     }
 
-    void CalculatePoints()
+    private void CalculatePoints()
     {
-        if (!calculatePoints) return;
+        if (!calculatePoints)
+        {
+            return;
+        }
+
         currentCarLocationZ = car.transform.position.z;
         pointsMultiplier = speedPointMultiplier * lanePointMultiplier * cratePointMultiplier;
         UserInterfaceManager.instance.UpdatePointsMultiplayerDisplay(pointsMultiplier);
@@ -81,21 +80,31 @@ public class PointsManager : MonoBehaviour
         {
             cratePointMultiplier += 1;
             //if crate multiplier above max, set to max
-            if (cratePointMultiplier > cratePointMultiplierMax) cratePointMultiplier = cratePointMultiplierMax;
+            if (cratePointMultiplier > cratePointMultiplierMax)
+            {
+                cratePointMultiplier = cratePointMultiplierMax;
+            }
         }
 
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
     }
 
-    void CheckCrateMultiplierTimer()
+    private void CheckCrateMultiplierTimer()
     {
-        if (cratePointMultiplier == 1) return;
+        if (cratePointMultiplier == 1)
+        {
+            return;
+        }
 
         cratePointMultiplierTimer -= Time.deltaTime;
         if (cratePointMultiplierTimer < 0)
         {
             cratePointMultiplierTimer = cratePointMultiplierTimerMax;
-            if (cratePointMultiplier > 1) cratePointMultiplier -= 1;
+            if (cratePointMultiplier > 1)
+            {
+                cratePointMultiplier -= 1;
+            }
+
             DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
         }
 
@@ -106,7 +115,11 @@ public class PointsManager : MonoBehaviour
     public void SavePlayerScore()
     {
         calculatePoints = false;
-        if (points <= PlayerPrefs.GetInt("highScore")) return;
+        if (points <= PlayerPrefs.GetInt("highScore"))
+        {
+            return;
+        }
+
         PlayerPrefs.SetInt("highScore", (int)points);
     }
 

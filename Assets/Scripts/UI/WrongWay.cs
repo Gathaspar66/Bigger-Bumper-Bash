@@ -1,103 +1,113 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class WrongWay : MonoBehaviour
 {
-    GameObject car;
-    bool hardLane = false;
-    bool bonusActive = false;
+    private GameObject car;
+    private bool hardLane = false;
+    private bool bonusActive = false;
+
     public float hardLaneSwitchTimerCurrent = 0;
-    float hardLaneSwitchTimerMax = 1;
+    private readonly float hardLaneSwitchTimerMax = 1f;
 
-    public TMP_Text text, textbg;
-    public GameObject bonusText;
-    string textToInput = "Wrong Way";
+    public Image coloredImage;
+    public Image fillImage;
+    public Image multiplierImage;
+    public Image multiplierValueImage;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         car = PlayerManager.instance.GetPlayerInstance();
+        HideVisuals();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         car = PlayerManager.instance.GetPlayerInstance();
-        CheckLanes();
-        HardLaneCheck();
+        CheckLane();
+        UpdateHardLane();
     }
 
-    void CheckLanes()
+    private void CheckLane()
     {
         if (car.transform.position.x < 0)
         {
-            EnterHardLane();
+            if (!hardLane)
+            {
+                EnterHardLane();
+            }
         }
         else
         {
-            LeaveHardLane();
+            if (hardLane)
+            {
+                ExitHardLane();
+            }
         }
     }
 
-    void EnterHardLane()
+    private void EnterHardLane()
     {
         hardLane = true;
+        ShowVisuals();
     }
 
-    void LeaveHardLane()
+    private void ExitHardLane()
     {
         hardLane = false;
+        bonusActive = false;
         hardLaneSwitchTimerCurrent = 0;
-        text.alpha = 0;
-        textbg.alpha = 0;
-        ActivateBonus(false);
+        SetFill(0);
+        HideVisuals();
+        NotifyPointsManager(1);
     }
 
-    void HardLaneCheck()
+    private void UpdateHardLane()
     {
-        if (!hardLane) return;
-        hardLaneSwitchTimerCurrent += Time.deltaTime;
-        hardLaneSwitchTimerCurrent = Mathf.Clamp(hardLaneSwitchTimerCurrent, 0, hardLaneSwitchTimerMax);
-        HardLaneVisualUpdate();
-    }
-
-    void HardLaneVisualUpdate()
-    {
-        if (bonusActive) return;
-        float alpha = Mathf.Clamp(hardLaneSwitchTimerCurrent * 4, 0, 1);
-        text.alpha = alpha;
-        textbg.alpha = alpha;
-
-        int lettersCount = (int)(hardLaneSwitchTimerCurrent / hardLaneSwitchTimerMax * textToInput.Length);
-        text.text = textToInput.Substring(0, lettersCount);
-        if (hardLaneSwitchTimerCurrent >= hardLaneSwitchTimerMax)
+        if (!hardLane || bonusActive)
         {
-            text.alpha = 0;
-            textbg.alpha = 0;
-            ActivateBonus(true);
+            return;
         }
-    }
 
-    void ActivateBonus(bool value)
-    {
-        if (value)
+        hardLaneSwitchTimerCurrent += Time.deltaTime;
+        float progress = Mathf.Clamp01(hardLaneSwitchTimerCurrent / hardLaneSwitchTimerMax);
+        SetFill(progress);
+
+        if (progress >= 1f)
         {
-            bonusActive = value;
-            bonusText.SetActive(value);
+            bonusActive = true;
+            ShowBonus();
             NotifyPointsManager(2);
         }
-        else
-        {
-            bonusActive = value;
-            bonusText.SetActive(value);
-            NotifyPointsManager(1);
-        }
     }
 
-    void NotifyPointsManager(int value)
+    private void SetFill(float value)
     {
-        PointsManager.instance.UpdateLaneMultiplier(value);
+        fillImage.fillAmount = value;
+    }
+
+    private void ShowVisuals()
+    {
+        coloredImage.gameObject.SetActive(true);
+        fillImage.gameObject.SetActive(true);
+    }
+
+    private void HideVisuals()
+    {
+        coloredImage.gameObject.SetActive(false);
+        fillImage.gameObject.SetActive(false);
+        multiplierImage.gameObject.SetActive(false);
+        multiplierValueImage.gameObject.SetActive(false);
+    }
+
+    private void ShowBonus()
+    {
+        multiplierImage.gameObject.SetActive(true);
+        multiplierValueImage.gameObject.SetActive(true);
+    }
+
+    private void NotifyPointsManager(int multiplier)
+    {
+        PointsManager.instance.UpdateLaneMultiplier(multiplier);
     }
 }

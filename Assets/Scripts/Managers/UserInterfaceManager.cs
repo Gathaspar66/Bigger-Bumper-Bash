@@ -14,9 +14,8 @@ public class UserInterfaceManager : MonoBehaviour
 
     public GameObject pointsMultiplierDisplayPrefab;
     public GameObject pointsDisplayPrefab;
-  
-    GameObject pointsMultiplierDisplay;
-    GameObject pointsDisplay;
+    private GameObject pointsMultiplierDisplay;
+    private GameObject pointsDisplay;
 
     private GameObject speedMeter;
     private GameObject wrongWay;
