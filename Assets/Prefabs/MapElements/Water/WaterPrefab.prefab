@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1596305394588789626}
   - component: {fileID: 2554071113895002738}
   - component: {fileID: 9085957390697518911}
-  - component: {fileID: 7150026990000292415}
+  - component: {fileID: 8182793839133133893}
   m_Layer: 0
   m_Name: WaterPrefab
   m_TagString: Untagged
@@ -123,7 +123,7 @@ MonoBehaviour:
   waveFrequency: 0.53
   waveHeight: 0.48
   waveLength: 0.71
---- !u!114 &7150026990000292415
+--- !u!114 &8182793839133133893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4844516010843545604}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bdd19c708b48c845b8d48dcb0945c28, type: 3}
+  m_Script: {fileID: 11500000, guid: 217118d91430f1642b6f540b29ef90d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   width: 50
