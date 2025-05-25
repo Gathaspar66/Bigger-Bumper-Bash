@@ -50,8 +50,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8c9c7a020c7684e48af53ac416f5c9a6, type: 3}
       propertyPath: m_Name
-      value: tree2
+      value: tree2Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7071182760956848314, guid: 8c9c7a020c7684e48af53ac416f5c9a6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5248ffbcc55d56d44bc4f7f3752841ec, type: 2}
+    - target: {fileID: 7202271454713460447, guid: 8c9c7a020c7684e48af53ac416f5c9a6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6bfac9e52c6da04d8943cf964fbe2e4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
