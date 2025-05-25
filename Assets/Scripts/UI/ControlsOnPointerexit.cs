@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ControlsOnPointerexit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ControlsOnPointerexit : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
 {
+//commented out in case of a redo
+/*
     Image img;
     public ControlHandler handler;
 
@@ -20,7 +22,6 @@ public class ControlsOnPointerexit : MonoBehaviour, IPointerEnterHandler, IPoint
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -40,5 +41,5 @@ public class ControlsOnPointerexit : MonoBehaviour, IPointerEnterHandler, IPoint
         {
             handler.SetInput(SteeringDirection.NEUTRAL);
         }
-    }
+    }*/
 }

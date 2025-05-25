@@ -41,7 +41,6 @@ public class EndgameMenu : MonoBehaviour
     public void UpdateScore()
     {
         int points = PointsManager.instance.GetPoints();
-        print("update score " + points+ " " + PlayerPrefs.GetInt("highScore"));
         if (points > PlayerPrefs.GetInt("highScore"))
         {
             newHighScoreNotification.SetActive(true);
