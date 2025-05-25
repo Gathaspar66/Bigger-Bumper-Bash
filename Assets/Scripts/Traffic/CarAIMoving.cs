@@ -34,10 +34,14 @@ public class CarAIMoving : MonoBehaviour
     private void FixedUpdate()
     {
         DetectOtherCarsAndBrake();
-        MoveCar();
+
         DestroyCarIfTooFar();
     }
 
+    private void Update()
+    {
+        MoveCar();
+    }
     private void SetInitialSpeed()
     {
         maxSpeed = PlayerSteering.instance.maxForwardVelocity;
