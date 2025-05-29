@@ -1,13 +1,11 @@
-using TMPro;
 using UnityEngine;
 
 public class PointsDisplay : MonoBehaviour
 {
-    public TMP_Text text;
+    public DigitRowHandler digitRowHandler;
 
-
-    public void UpdatePointsDisplay(float points)
+    public void SetDigits(int points)
     {
-        text.text = "" + (int)points;
+        digitRowHandler.UpdatePointsDisplay(points);
     }
 }

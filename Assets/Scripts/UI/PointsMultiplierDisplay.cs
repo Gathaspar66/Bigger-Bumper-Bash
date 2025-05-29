@@ -19,7 +19,7 @@ public class PointsMultiplierDisplay : MonoBehaviour
 
     }
 
-    public void UpdatePointsMultiplayerDisplay(float multiplier)
+    public void UpdatePointsMultiplierDisplay(float multiplier)
     {
         text.text = "multiplier: x" + (int)multiplier;
     }

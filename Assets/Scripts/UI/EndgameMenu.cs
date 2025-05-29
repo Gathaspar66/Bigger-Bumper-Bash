@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
 public class EndgameMenu : MonoBehaviour
 {
     public Image blackBackground;
-    public TMP_Text highScore;
     public GameObject newHighScoreNotification;
-
-    // Start is called before the first frame update
-    void Start()
+    public DigitRowHandler digitRowHandler;
+    private void Start()
     {
         ScaleBlackBackground();
     }
@@ -22,10 +16,8 @@ public class EndgameMenu : MonoBehaviour
         blackBackground.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
     public void OnRestartButtonPressed()
@@ -45,6 +37,14 @@ public class EndgameMenu : MonoBehaviour
         {
             newHighScoreNotification.SetActive(true);
         }
-        highScore.text = points.ToString();
+
+        UpdatePointsDisplay(points);
     }
+
+    public void UpdatePointsDisplay(int points)
+    {
+        digitRowHandler.UpdatePointsDisplay(points);
+    }
+
+
 }

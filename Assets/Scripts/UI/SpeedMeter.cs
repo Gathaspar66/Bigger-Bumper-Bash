@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class SpeedMeter : MonoBehaviour
 {
-    public RectTransform speedBarGreen;
-    public RectTransform speedBarOrange;
-    public RectTransform speedBarRed;
+
     public TMP_Text text;
 
-    public GameObject redBgBig;
+
     private readonly float speedBarGreenSize = 100;
     private readonly float speedBarOrangeSize = 100;
     private float currentSpeedBarGreenSize;
@@ -31,7 +29,7 @@ public class SpeedMeter : MonoBehaviour
 
         SetFill(0f);
 
-        redBgBig.SetActive(false);
+
     }
 
     private void Update()
@@ -73,10 +71,9 @@ public class SpeedMeter : MonoBehaviour
         SetFill(fill);
 
         text.text = "x" + speedMultiplier.ToString();
-        speedBarGreen.sizeDelta = new Vector2(speedBarGreen.sizeDelta.x, currentSpeedBarGreenSize);
-        speedBarOrange.sizeDelta = new Vector2(speedBarOrange.sizeDelta.x, currentSpeedBarOrangeSize);
 
-        redBgBig.SetActive(maxSpeed);
+
+        // redBgBig.SetActive(maxSpeed);
         superSpeed.SetActive(maxSpeed);
         NotifyPointsManager(speedMultiplier);
     }

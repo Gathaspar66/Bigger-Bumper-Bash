@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +9,10 @@ public class ControlsTouchPosition : MonoBehaviour
     public Image d;
 
     public ControlHandler handler;
-
-    Bounds lb;
-    Bounds rb;
-    Bounds ub;
-    Bounds db;
+    private Bounds lb;
+    private Bounds rb;
+    private Bounds ub;
+    private Bounds db;
 
     private void Start()
     {
@@ -77,14 +73,10 @@ public class ControlsTouchPosition : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            print("a");
             l.color = new Color(1f, 1f, 1f, 1f);
             handler.SetInput(SteeringDirection.LEFT);
         }
-        else
-        {
-            print("not a");
-        }
+
 
         if (Input.GetKey(KeyCode.D))
         {
@@ -105,7 +97,7 @@ public class ControlsTouchPosition : MonoBehaviour
         }
     }
 
-    void SetAllToNeutral()
+    private void SetAllToNeutral()
     {
         handler.SetInput(SteeringDirection.NEUTRAL);
         handler.SetInput(SteeringDirection.FORWARD);

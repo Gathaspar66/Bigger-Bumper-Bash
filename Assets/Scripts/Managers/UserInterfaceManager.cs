@@ -41,8 +41,8 @@ public class UserInterfaceManager : MonoBehaviour
         pointsMultiplierDisplay = Instantiate(pointsMultiplierDisplayPrefab);
         pointsDisplay = Instantiate(pointsDisplayPrefab);
 
-        UserInterfaceManager.instance.UpdateHealthDisplay(PlayerManager.instance.GetPlayerHealth(), PlayerManager.instance.GetPlayerMaxHealth());
-
+        UserInterfaceManager.instance.UpdateHealthDisplay(PlayerManager.instance.GetPlayerHealth(),
+            PlayerManager.instance.GetPlayerMaxHealth());
     }
 
     public void UpdatePickupMultiplier(int value)
@@ -63,13 +63,13 @@ public class UserInterfaceManager : MonoBehaviour
         PointsManager.instance.SavePlayerScore();
     }
 
-    public void UpdatePointsMultiplayerDisplay(float amount)
+    public void UpdatePointsMultiplierDisplay(float amount)
     {
-        pointsMultiplierDisplay.GetComponent<PointsMultiplierDisplay>().UpdatePointsMultiplayerDisplay(amount);
+        pointsMultiplierDisplay.GetComponent<PointsMultiplierDisplay>().UpdatePointsMultiplierDisplay(amount);
     }
 
-    public void UpdatePointsDisplay(float amount)
+    public void UpdatePointsDisplay(int amount)
     {
-        pointsDisplay.GetComponent<PointsDisplay>().UpdatePointsDisplay(amount);
+        pointsDisplay.GetComponent<PointsDisplay>().SetDigits(amount);
     }
 }
