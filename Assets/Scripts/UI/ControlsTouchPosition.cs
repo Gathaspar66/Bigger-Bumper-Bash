@@ -1,3 +1,7 @@
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +13,11 @@ public class ControlsTouchPosition : MonoBehaviour
     public Image d;
 
     public ControlHandler handler;
+
     private Bounds lb;
     private Bounds rb;
     private Bounds ub;
     private Bounds db;
-
     private void Start()
     {
         CalculateControlsBounds();
@@ -73,9 +77,11 @@ public class ControlsTouchPosition : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
+
             l.color = new Color(1f, 1f, 1f, 1f);
             handler.SetInput(SteeringDirection.LEFT);
         }
+
 
 
         if (Input.GetKey(KeyCode.D))
@@ -97,7 +103,9 @@ public class ControlsTouchPosition : MonoBehaviour
         }
     }
 
+
     private void SetAllToNeutral()
+
     {
         handler.SetInput(SteeringDirection.NEUTRAL);
         handler.SetInput(SteeringDirection.FORWARD);
@@ -106,4 +114,4 @@ public class ControlsTouchPosition : MonoBehaviour
         u.color = new Color(1f, 1f, 1f, 0.5f);
         d.color = new Color(1f, 1f, 1f, 0.5f);
     }
-}
+
