@@ -21,7 +21,7 @@ public class PlayerSteering : MonoBehaviour
 
     public Transform gameModel;
     private Vector2 input = Vector2.zero;
-    private bool wHeld = false;
+    private readonly bool wHeld = false;
     public static PlayerSteering instance;
 
     private float targetTiltX = 0f;
@@ -53,6 +53,11 @@ public class PlayerSteering : MonoBehaviour
     private void Update()
     {
         // gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 0.5f, rb.velocity.x * 1f);
+
+    }
+
+    private void FixedUpdate()
+    {
         float currentTiltX = gameModel.transform.localEulerAngles.x;
         if (currentTiltX > 180)
         {
@@ -66,19 +71,7 @@ public class PlayerSteering : MonoBehaviour
         gameModel.transform.localRotation = Quaternion.Euler(newTiltX, tiltY, tiltZ);
 
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            wHeld = true;
-        }
 
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            wHeld = false;
-        }
-    }
-
-    private void FixedUpdate()
-    {
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "false");
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.BRAKING, "false");
         if (wHeld)

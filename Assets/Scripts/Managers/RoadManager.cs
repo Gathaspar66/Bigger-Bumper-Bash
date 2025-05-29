@@ -10,7 +10,7 @@ public class RoadManager : MonoBehaviour
     public GameObject[] specificSectionsPrefabs;
 
     public GameObject[] allSectionsPrefabs;
-    public int normalSectionsMultiplier = 5;
+    public int normalSectionsMultiplier = 1;
     private readonly GameObject[] sectionsPool = new GameObject[20];
     private readonly GameObject[] sections = new GameObject[3];
     private Transform playerCarTransform;

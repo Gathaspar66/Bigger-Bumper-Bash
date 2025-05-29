@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     private CarConfig config;
     private CarConfigDictionary carConfigs;
     public TextAsset carConfigFile;
-    private readonly int playerMaxHealth = 4;
+    public int playerMaxHealth = 2;
     private int playerHealth;
 
 

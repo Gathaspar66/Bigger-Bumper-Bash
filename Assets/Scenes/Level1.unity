@@ -507,9 +507,9 @@ MonoBehaviour:
   frontSpawnDynamicObstacleDistance: 100
   backSpawnDynamicObstacleDistance: -10
   pointsSpawnDistance: 50
-  staticObstacleSpawnIntervalDistance: 20
-  frontDynamicObstacleSpawnIntervalDistance: 20
-  backDynamicObstacleSpawnIntervalDistance: 20
+  staticObstacleSpawnIntervalDistance: 40
+  frontDynamicObstacleSpawnIntervalDistance: 15
+  backDynamicObstacleSpawnIntervalDistance: 15
   pointsSpawnIntervalDistance: 20
   staticObstaclePrefab: {fileID: 3939250863403656692, guid: 8e383579c08bf984b8e799939ddd0b40, type: 3}
   dynamicObstaclePrefab: {fileID: 121954177195123221, guid: 76c696841b6af984f8a73350970feb1c, type: 3}
@@ -678,6 +678,7 @@ MonoBehaviour:
   - {fileID: 8664369382022809974, guid: eda58b0d3413fe846bf5e491b7b9d90f, type: 3}
   specificSectionsPrefabs:
   - {fileID: 8664369382022809974, guid: 37bb8bc434eeffc47b9eb9f166c70c8b, type: 3}
+  - {fileID: 8664369382022809974, guid: c4711b13dbb610d4a97a2ad025888876, type: 3}
   allSectionsPrefabs: []
   normalSectionsMultiplier: 5
 --- !u!1001 &2122320036
