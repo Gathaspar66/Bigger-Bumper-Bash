@@ -49,9 +49,9 @@ MonoBehaviour:
   raycastOffsetY: 0.51
   carPrefabs:
   - {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
-  - {fileID: 90333524050876863, guid: acba0aafceec875478c3c9d158db4fee, type: 3}
+  - {fileID: 51488253964336661, guid: 4e24d6dcdb5b80e4393393754dab6978, type: 3}
   - {fileID: 3254706542479514739, guid: c245eb74ca6ab3242a96f51b647e277f, type: 3}
-  - {fileID: 7240726251812554313, guid: b592c1180d13dbd41b61ac3e975e85e1, type: 3}
+  - {fileID: 5633759295636568507, guid: 82ddd66021183fd469a7bfa30b2c2453, type: 3}
   minBrakeRaycastDistance: 3
   maxBrakeRaycastDistance: 8
   trafficLayer:
