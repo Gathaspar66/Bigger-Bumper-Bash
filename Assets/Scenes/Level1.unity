@@ -627,6 +627,7 @@ MonoBehaviour:
   cameraPrefab: {fileID: 7280080578915174522, guid: 45f1f94e9a7014844933124b4811847e, type: 3}
   currentCameraPrefab: {fileID: 0}
   carConfigFile: {fileID: 4900000, guid: f1f9ac60f21ad2045803ba7172c3ec55, type: 3}
+  playerMaxHealth: 2
 --- !u!1 &2048719953
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,9 +677,15 @@ MonoBehaviour:
   - {fileID: 8664369382022809974, guid: 2cb8c62996b46bd4b9f1f3459f0bdf4d, type: 3}
   - {fileID: 8664369382022809974, guid: 08af340eec25ed54e886029e192699ee, type: 3}
   - {fileID: 8664369382022809974, guid: eda58b0d3413fe846bf5e491b7b9d90f, type: 3}
+  - {fileID: 8664369382022809974, guid: 4a240eabfcfaa46469337524e7b79bab, type: 3}
+  - {fileID: 8664369382022809974, guid: 87132468c38a8824bb60413406f4f76f, type: 3}
+  - {fileID: 8664369382022809974, guid: 0dcedfcbc0a87bd4f995c096a695c35b, type: 3}
+  - {fileID: 8664369382022809974, guid: d80d165b819425745b4b0500f893b0a8, type: 3}
   specificSectionsPrefabs:
   - {fileID: 8664369382022809974, guid: 37bb8bc434eeffc47b9eb9f166c70c8b, type: 3}
   - {fileID: 8664369382022809974, guid: c4711b13dbb610d4a97a2ad025888876, type: 3}
+  - {fileID: 8664369382022809974, guid: 57233ce38f352914c86ae217e4654644, type: 3}
+  - {fileID: 8664369382022809974, guid: 74531eadc12b3f64fb2be28f8241eadf, type: 3}
   allSectionsPrefabs: []
   normalSectionsMultiplier: 5
 --- !u!1001 &2122320036
