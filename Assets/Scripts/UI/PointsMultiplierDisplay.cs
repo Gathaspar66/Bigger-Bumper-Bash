@@ -1,26 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class PointsMultiplierDisplay : MonoBehaviour
 {
-    public TMP_Text text;
 
-    // Start is called before the first frame update
-    void Start()
+    public DigitRowHandler digitRowHandler;
+
+    public void UpdatePointsMultiplierDisplay(int multiplier)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void UpdatePointsMultiplierDisplay(float multiplier)
-    {
-        text.text = "multiplier: x" + (int)multiplier;
+        digitRowHandler.UpdatePointsDisplay(multiplier);
     }
 }
