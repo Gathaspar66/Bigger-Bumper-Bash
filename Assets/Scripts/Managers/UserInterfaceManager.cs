@@ -63,7 +63,7 @@ public class UserInterfaceManager : MonoBehaviour
         PointsManager.instance.SavePlayerScore();
     }
 
-    public void UpdatePointsMultiplierDisplay(float amount)
+    public void UpdatePointsMultiplierDisplay(int amount)
     {
         pointsMultiplierDisplay.GetComponent<PointsMultiplierDisplay>().UpdatePointsMultiplierDisplay(amount);
     }
