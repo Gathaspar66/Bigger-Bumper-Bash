@@ -85,10 +85,12 @@ public class PlayerManager : MonoBehaviour
     {
         return playerHealth;
     }
+
     public int GetPlayerMaxHealth()
     {
         return playerMaxHealth;
     }
+
     private void StartImmunity()
     {
         playerInstance.GetComponent<PlayerHitDetection>().StartImmunity();
