@@ -21,7 +21,7 @@ public class UserInterfaceManager : MonoBehaviour
     private GameObject wrongWay;
     private GameObject pickupMultiplier;
     private GameObject healthDisplay;
-
+    public int maxMultplier = 18;
 
     private void Awake()
     {
