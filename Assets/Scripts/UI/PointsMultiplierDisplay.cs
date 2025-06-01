@@ -9,7 +9,7 @@ public class PointsMultiplierDisplay : MonoBehaviour
     public void UpdatePointsMultiplierDisplay(int multiplier)
     {
         digitRowHandler.UpdatePointsDisplay(multiplier);
-        if (multiplier == UserInterfaceManager.instance.maxMultplier)
+        if (multiplier == PointsManager.instance.maxMultplier)
         {
             MaxMultiplierImage.gameObject.SetActive(true);
         }

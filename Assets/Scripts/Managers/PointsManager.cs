@@ -11,6 +11,7 @@ public class PointsManager : MonoBehaviour
     public float cratePointMultiplierMax = 3;
     public float cratePointMultiplierTimer = 0;
     public float cratePointMultiplierTimerMax = 5;
+    public int maxMultplier = 18;
     private float lastCarLocationZ;
     private float currentCarLocationZ;
     private float pointsMultiplier = 0;
