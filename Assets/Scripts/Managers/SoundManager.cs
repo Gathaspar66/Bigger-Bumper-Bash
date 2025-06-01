@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource musicSource;
 
     private readonly Dictionary<string, AudioClip> soundMap = new();
+
     private void Awake()
     {
         instance = this;
@@ -18,7 +20,22 @@ public class SoundManager : MonoBehaviour
 
     public void Activate()
     {
-        PlayMusic("sleep");
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        switch (currentScene)
+        {
+            case "MainMenu":
+                PlayMusic("sleep");
+                break;
+
+            case "Level1":
+                PlayMusic("sleep");
+                break;
+
+            default:
+                PlayMusic("default");
+                break;
+        }
     }
 
     private void InitializeSoundMap()
@@ -40,7 +57,13 @@ public class SoundManager : MonoBehaviour
     {
         if (soundMap.TryGetValue(id, out AudioClip clip))
         {
-            sfxSource.PlayOneShot(clip);
+            GameObject tempAudio = new("SFX_" + id);
+            AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
+            audioSource.clip = clip;
+            audioSource.volume = 0.1f;
+            audioSource.Play();
+
+            Destroy(tempAudio, clip.length);
         }
         else
         {

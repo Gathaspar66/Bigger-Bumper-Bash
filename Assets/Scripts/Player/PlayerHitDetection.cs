@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHitDetection : MonoBehaviour
 {
     public Material normal, immune;
-    bool isImmune = false;
-    float immunityDuration = 3;
-    float currentImmunityDuration = 0;
+    private bool isImmune = false;
+    private readonly float immunityDuration = 3;
+    private float currentImmunityDuration = 0;
 
     private void Start()
     {
@@ -22,23 +20,31 @@ public class PlayerHitDetection : MonoBehaviour
     {
         //Debug.Log("Wykryto kolizjê z: " + other.gameObject.name, other.gameObject);
 
+
         if (other.gameObject.layer == 6)
         {
             EffectManager.instance.SpawnAnEffect(gameObject.transform.position, true);
+            SoundManager.instance.PlaySFX("unlock");
         }
 
         if (other.gameObject.layer == 3)
         {
-            if (isImmune) return;
+            if (isImmune)
+            {
+                return;
+            }
+            SoundManager.instance.PlaySFX("crash");
             EffectManager.instance.SpawnAnEffect(gameObject.transform.position, false);
             PlayerManager.instance.GetDamaged();
         }
     }
 
-
-    void UpdateImmunity()
+    private void UpdateImmunity()
     {
-        if (!isImmune) return;
+        if (!isImmune)
+        {
+            return;
+        }
 
         currentImmunityDuration -= Time.deltaTime;
         if (currentImmunityDuration <= 0)
@@ -78,18 +84,18 @@ public class PlayerHitDetection : MonoBehaviour
         SetCarImmune(true);
     }
 
-    void EndImmunity()
+    private void EndImmunity()
     {
         SetCarMaterial(normal);
         SetCarImmune(false);
     }
 
-    void SetCarImmune(bool value)
+    private void SetCarImmune(bool value)
     {
         isImmune = value;
     }
 
-    void SetCarMaterial(Material materialToSet)
+    private void SetCarMaterial(Material materialToSet)
     {
         transform.GetChild(0).transform.Find("Body").GetComponent<MeshRenderer>().material = materialToSet;
     }

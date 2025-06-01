@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 
     public void ActivateManagers()
     {
-
         PlayerManager.instance.Activate();
         RoadManager.instance.Activate();
         UserInterfaceManager.instance.Activate();
