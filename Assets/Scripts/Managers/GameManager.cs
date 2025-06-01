@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerManager;
     public GameObject trafficManager;
     public GameObject pointsManager;
+    public GameObject soundManager;
     private readonly bool isGameOver = false;
 
     private void Awake()
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         UserInterfaceManager.instance.Activate();
         TrafficManager.instance.Activate();
         PointsManager.instance.Activate();
+        SoundManager.instance.Activate();
     }
 
     public GameObject GetPlayer()
