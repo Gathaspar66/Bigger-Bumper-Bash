@@ -45,4 +45,14 @@ public class MainMenuManager : MonoBehaviour
     {
         aboutPanel.SetActive(showPanel);
     }
+
+    public void ToggleSound(bool enableSound)
+    {
+        print("toggle sound button pressed: " + enableSound);
+    }
+
+    public void ToggleSettings(bool enableSettings)
+    {
+        print("toggle settings button pressed: " + enableSettings);
+    }
 }
