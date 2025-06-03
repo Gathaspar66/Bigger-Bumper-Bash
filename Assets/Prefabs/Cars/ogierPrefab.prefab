@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 498888307497959550, guid: e68d318149e4b224e88aaea71083c309, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0cec3e4c63809e4985db7a73794368f, type: 2}
     - target: {fileID: 919132149155446097, guid: e68d318149e4b224e88aaea71083c309, type: 3}
       propertyPath: m_Name
       value: ogierPrefab
@@ -112,6 +116,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e250ecdb8983118428a4bc7895a2a6ed, type: 2}
+    - target: {fileID: 4953377252493334692, guid: e68d318149e4b224e88aaea71083c309, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dde501083b287bf4d853a65d8eb0116f, type: 2}
     - target: {fileID: 5517249587944515539, guid: e68d318149e4b224e88aaea71083c309, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
