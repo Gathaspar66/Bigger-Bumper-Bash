@@ -51,8 +51,9 @@ public class MainMenuManager : MonoBehaviour
         print("toggle sound button pressed: " + enableSound);
     }
 
-    public void ToggleSettings(bool enableSettings)
+    public void OnQuitGamePressed()
     {
-        print("toggle settings button pressed: " + enableSettings);
+        print("quit button pressed: ");
+        Application.Quit();
     }
 }
