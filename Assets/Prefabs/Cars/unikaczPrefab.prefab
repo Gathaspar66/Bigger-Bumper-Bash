@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -6366487901455292545, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 907c7ac9aaa711a409abf028c3317d68, type: 2}
     - target: {fileID: -5387650048432327141, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -76,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -4965934490176571026, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0cec3e4c63809e4985db7a73794368f, type: 2}
     - target: {fileID: -4683669308469848369, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -92,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -2410827379726552650, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd80add5f1391e04896b3c800858a63d, type: 2}
     - target: {fileID: -1637495774133207221, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -184,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6684372686826899408, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0cec3e4c63809e4985db7a73794368f, type: 2}
     - target: {fileID: 6721983640152742638, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
