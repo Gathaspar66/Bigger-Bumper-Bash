@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CarAIMoving : MonoBehaviour
@@ -19,7 +20,9 @@ public class CarAIMoving : MonoBehaviour
     private Vector3 boxSize;
     public LayerMask trafficLayer;
     public Collider carCollider;
-
+    public List<Material> carPaintMaterials;
+    public Vector2 smoothnessRange = new(0.5f, 0.8f);
+    public Vector2 metallicRange = new(0.6f, 1f);
     private void Awake()
     {
         instance = this;
@@ -42,6 +45,7 @@ public class CarAIMoving : MonoBehaviour
     {
         MoveCar();
     }
+
     private void SetInitialSpeed()
     {
         maxSpeed = PlayerSteering.instance.maxForwardVelocity;
@@ -74,6 +78,7 @@ public class CarAIMoving : MonoBehaviour
 
         GameObject spawnedCar = Instantiate(carPrefabs[randomIndex], spawnPosition, transform.rotation);
         spawnedCar.transform.SetParent(transform);
+        ChangeCarBodyColor(spawnedCar);
     }
 
     private void DestroyCarIfTooFar()
@@ -144,6 +149,23 @@ public class CarAIMoving : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void ChangeCarBodyColor(GameObject car)
+    {
+        Transform bodyTransform = car.transform.Find("body");
+        if (bodyTransform != null)
+        {
+            Renderer renderer = bodyTransform.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                Material baseMaterial = carPaintMaterials[Random.Range(0, carPaintMaterials.Count)];
+                Material matInstance = new(baseMaterial);
+                matInstance.SetFloat("_Glossiness", Random.Range(smoothnessRange.x, smoothnessRange.y));
+                matInstance.SetFloat("_Metallic", Random.Range(metallicRange.x, metallicRange.y));
+                renderer.material = matInstance;
+            }
+        }
     }
 
     private void OnDrawGizmos()

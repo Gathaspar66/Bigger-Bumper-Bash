@@ -97,6 +97,6 @@ public class PlayerHitDetection : MonoBehaviour
 
     private void SetCarMaterial(Material materialToSet)
     {
-        transform.GetChild(0).transform.Find("Body").GetComponent<MeshRenderer>().material = materialToSet;
+        transform.GetChild(0).transform.Find("body").GetComponent<MeshRenderer>().material = materialToSet;
     }
 }
