@@ -6,6 +6,8 @@ public class PlayerHitDetection : MonoBehaviour
     private bool isImmune = false;
     private readonly float immunityDuration = 3;
     private float currentImmunityDuration = 0;
+    private float lastBarrierEffectTime = -10f;
+    private readonly float barrierCooldown = 1f;
 
     private void Start()
     {
@@ -18,12 +20,20 @@ public class PlayerHitDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Wykryto kolizjê z: " + other.gameObject.name, other.gameObject);
+        Vector3 hitPoint = transform.position;
 
+        if (other is BoxCollider || other is SphereCollider || other is CapsuleCollider ||
+            (other is MeshCollider mc && mc.convex))
+        {
+            hitPoint = other.ClosestPoint(transform.position);
+        }
 
+        EffectManager.instance.SpawnCrashEffect(hitPoint, true);
         if (other.gameObject.layer == 6)
         {
             EffectManager.instance.SpawnAnEffect(gameObject.transform.position, true);
+
+
             SoundManager.instance.PlaySFX("unlock");
         }
 
@@ -33,9 +43,30 @@ public class PlayerHitDetection : MonoBehaviour
             {
                 return;
             }
+            CameraShake.Instance.Shake(0.2f, 0.1f);
             SoundManager.instance.PlaySFX("crash");
             EffectManager.instance.SpawnAnEffect(gameObject.transform.position, false);
             PlayerManager.instance.GetDamaged();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Barrier"))
+        {
+            if (Time.time - lastBarrierEffectTime >= barrierCooldown)
+            {
+                lastBarrierEffectTime = Time.time;
+
+                Vector3 hitPoint = transform.position;
+                if (other is BoxCollider || other is SphereCollider || other is CapsuleCollider ||
+                    (other is MeshCollider mc && mc.convex))
+                {
+                    hitPoint = other.ClosestPoint(transform.position);
+                }
+
+                EffectManager.instance.SpawnCrashEffect(hitPoint, true);
+            }
         }
     }
 

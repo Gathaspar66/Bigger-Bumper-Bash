@@ -16,7 +16,7 @@ public class CarAIMoving : MonoBehaviour
     public static CarAIMoving instance;
     public float minBrakeRaycastDistance;
     public float maxBrakeRaycastDistance;
-    private readonly float collisionOffsetZ = 2.0f;
+    //private readonly float collisionOffsetZ = 2.0f;
     private Vector3 boxSize;
     public LayerMask trafficLayer;
     public Collider carCollider;

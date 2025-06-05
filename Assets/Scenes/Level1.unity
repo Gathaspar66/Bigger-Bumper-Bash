@@ -521,9 +521,9 @@ MonoBehaviour:
   backSpawnDynamicObstacleDistance: -10
   pointsSpawnDistance: 50
   staticObstacleSpawnIntervalDistance: 400000
-  frontDynamicObstacleSpawnIntervalDistance: 0
-  backDynamicObstacleSpawnIntervalDistance: 0
-  pointsSpawnIntervalDistance: 200000
+  frontDynamicObstacleSpawnIntervalDistance: 10
+  backDynamicObstacleSpawnIntervalDistance: 10
+  pointsSpawnIntervalDistance: 10
   staticObstaclePrefab: {fileID: 3939250863403656692, guid: 8e383579c08bf984b8e799939ddd0b40, type: 3}
   dynamicObstaclePrefab: {fileID: 121954177195123221, guid: 76c696841b6af984f8a73350970feb1c, type: 3}
   pointsPrefab: {fileID: 6160970351542831283, guid: b62827d41be3d5e44b782b096e59f322, type: 3}
@@ -640,7 +640,7 @@ MonoBehaviour:
   cameraPrefab: {fileID: 7280080578915174522, guid: 45f1f94e9a7014844933124b4811847e, type: 3}
   currentCameraPrefab: {fileID: 0}
   carConfigFile: {fileID: 4900000, guid: f1f9ac60f21ad2045803ba7172c3ec55, type: 3}
-  playerMaxHealth: 2
+  playerMaxHealth: 5
 --- !u!1 &2048719953
 GameObject:
   m_ObjectHideFlags: 0
