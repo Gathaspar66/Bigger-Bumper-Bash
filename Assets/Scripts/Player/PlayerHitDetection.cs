@@ -9,6 +9,10 @@ public class PlayerHitDetection : MonoBehaviour
     private float lastBarrierEffectTime = -10f;
     private readonly float barrierCooldown = 1f;
 
+    public ParticleSystem sparksL, sparksR;
+
+    GameObject playerCarPrefab;
+
     private void Start()
     {
     }
@@ -16,6 +20,11 @@ public class PlayerHitDetection : MonoBehaviour
     private void Update()
     {
         UpdateImmunity();
+    }
+
+    public void SetCarPrefab(GameObject playerCarPrefab)
+    {
+        this.playerCarPrefab = playerCarPrefab;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,21 +61,25 @@ public class PlayerHitDetection : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Barrier"))
+        if (other.CompareTag("LeftBarrier"))
         {
-            if (Time.time - lastBarrierEffectTime >= barrierCooldown)
-            {
-                lastBarrierEffectTime = Time.time;
+            sparksL.Play();
+        }
+        if (other.CompareTag("RightBarrier"))
+        {
+            sparksR.Play();
+        }
+    }
 
-                Vector3 hitPoint = transform.position;
-                if (other is BoxCollider || other is SphereCollider || other is CapsuleCollider ||
-                    (other is MeshCollider mc && mc.convex))
-                {
-                    hitPoint = other.ClosestPoint(transform.position);
-                }
-
-                EffectManager.instance.SpawnCrashEffect(hitPoint, true);
-            }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LeftBarrier"))
+        {
+            sparksL.Stop();
+        }
+        if (other.CompareTag("RightBarrier"))
+        {
+            sparksR.Stop();
         }
     }
 
@@ -128,6 +141,6 @@ public class PlayerHitDetection : MonoBehaviour
 
     private void SetCarMaterial(Material materialToSet)
     {
-        transform.GetChild(0).transform.Find("body").GetComponent<MeshRenderer>().material = materialToSet;
+        playerCarPrefab.transform.Find("body").GetComponent<MeshRenderer>().material = materialToSet;
     }
 }
