@@ -6,12 +6,11 @@ public class PlayerHitDetection : MonoBehaviour
     private bool isImmune = false;
     private readonly float immunityDuration = 3;
     private float currentImmunityDuration = 0;
-    private float lastBarrierEffectTime = -10f;
+    private readonly float lastBarrierEffectTime = -10f;
     private readonly float barrierCooldown = 1f;
 
     public ParticleSystem sparksL, sparksR;
-
-    GameObject playerCarPrefab;
+    private GameObject playerCarPrefab;
 
     private void Start()
     {
@@ -29,6 +28,11 @@ public class PlayerHitDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isImmune)
+        {
+            return;
+        }
+
         Vector3 hitPoint = transform.position;
 
         if (other is BoxCollider || other is SphereCollider || other is CapsuleCollider ||
@@ -48,10 +52,7 @@ public class PlayerHitDetection : MonoBehaviour
 
         if (other.gameObject.layer == 3)
         {
-            if (isImmune)
-            {
-                return;
-            }
+
             CameraShake.Instance.Shake(0.2f, 0.1f);
             SoundManager.instance.PlaySFX("crash");
             EffectManager.instance.SpawnAnEffect(gameObject.transform.position, false);
