@@ -11,14 +11,45 @@ public class PlayerHitDetection : MonoBehaviour
 
     public ParticleSystem sparksL, sparksR;
     private GameObject playerCarPrefab;
+    public TrailRenderer leftTrailRenderer;
+    public TrailRenderer rightTrailRenderer;
+    public Vector2 input;
+    public GameObject leftTireTrail;
+    public GameObject rightTireTrail;
+    public float minForwardVelocity;
+    public float maxForwardVelocity;
 
     private void Start()
     {
+        leftTrailRenderer.emitting = false;
+        rightTrailRenderer.emitting = false;
+        minForwardVelocity = PlayerSteering.instance.minForwardVelocity;
+        maxForwardVelocity = PlayerSteering.instance.maxForwardVelocity;
     }
 
     private void Update()
     {
         UpdateImmunity();
+        Transform carTransform = PlayerManager.instance.GetPlayerInstance().transform;
+        _ = carTransform.position;
+
+
+        float currentVelocity = PlayerSteering.instance.rb.velocity.z;
+
+        bool accelerating = input.y > 0 && currentVelocity < maxForwardVelocity;
+        bool braking = input.y < 0 && currentVelocity > minForwardVelocity;
+
+        bool shouldEmit = accelerating || braking;
+
+        if (leftTrailRenderer != null)
+        {
+            leftTrailRenderer.emitting = shouldEmit;
+        }
+
+        if (rightTrailRenderer != null)
+        {
+            rightTrailRenderer.emitting = shouldEmit;
+        }
     }
 
     public void SetCarPrefab(GameObject playerCarPrefab)
@@ -44,18 +75,14 @@ public class PlayerHitDetection : MonoBehaviour
         EffectManager.instance.SpawnCrashEffect(hitPoint, true);
         if (other.gameObject.layer == 6)
         {
-            EffectManager.instance.SpawnAnEffect(gameObject.transform.position, true);
-
-
             SoundManager.instance.PlaySFX("unlock");
         }
 
         if (other.gameObject.layer == 3)
         {
-
             CameraShake.Instance.Shake(0.2f, 0.1f);
             SoundManager.instance.PlaySFX("crash");
-            EffectManager.instance.SpawnAnEffect(gameObject.transform.position, false);
+
             PlayerManager.instance.GetDamaged();
         }
     }
@@ -66,6 +93,7 @@ public class PlayerHitDetection : MonoBehaviour
         {
             sparksL.Play();
         }
+
         if (other.CompareTag("RightBarrier"))
         {
             sparksR.Play();
@@ -78,6 +106,7 @@ public class PlayerHitDetection : MonoBehaviour
         {
             sparksL.Stop();
         }
+
         if (other.CompareTag("RightBarrier"))
         {
             sparksR.Stop();
@@ -100,25 +129,6 @@ public class PlayerHitDetection : MonoBehaviour
         {
             bool flash = Mathf.PingPong(currentImmunityDuration * 5, 1) > 0.5f;
             SetCarMaterial(flash ? immune : normal);
-
-            /*
-             if(0.75f < currentImmunityDuration && currentImmunityDuration <= 1)
-             {
-                 SetCarMaterial(normal);
-             }
-             else if (0.5f < currentImmunityDuration && currentImmunityDuration < 0.75f)
-             {
-                 SetCarMaterial(immune);
-             }
-             else if (0.25f < currentImmunityDuration && currentImmunityDuration < 0.5f)
-             {
-                 SetCarMaterial(normal);
-             }
-             else if (currentImmunityDuration < 0.25f)
-             {
-                 SetCarMaterial(immune);
-             }
-             */
         }
     }
 
@@ -138,6 +148,12 @@ public class PlayerHitDetection : MonoBehaviour
     private void SetCarImmune(bool value)
     {
         isImmune = value;
+    }
+
+    public void SetInput(Vector2 inputVector)
+    {
+        inputVector.Normalize();
+        input = inputVector;
     }
 
     private void SetCarMaterial(Material materialToSet)

@@ -35,7 +35,7 @@ public class PlayerSteering : MonoBehaviour
 
     private void Start()
     {
-        gameModel = PlayerManager.instance.GetPlayerInstance().transform;
+        gameModel = PlayerManager.instance.GetCarInstance().transform;
         rb.velocity = new Vector3(0, 0, minForwardVelocity);
     }
 
@@ -53,7 +53,6 @@ public class PlayerSteering : MonoBehaviour
     private void Update()
     {
         // gameModel.transform.rotation = Quaternion.Euler(0, rb.velocity.x * 0.5f, rb.velocity.x * 1f);
-
     }
 
     private void FixedUpdate()
@@ -69,7 +68,6 @@ public class PlayerSteering : MonoBehaviour
         float tiltZ = rb.velocity.x * 1f;
 
         gameModel.transform.localRotation = Quaternion.Euler(newTiltX, tiltY, tiltZ);
-
 
 
         DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "false");

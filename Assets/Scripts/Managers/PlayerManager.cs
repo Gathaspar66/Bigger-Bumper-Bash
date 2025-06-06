@@ -69,6 +69,11 @@ public class PlayerManager : MonoBehaviour
         return playerInstance;
     }
 
+    public GameObject GetCarInstance()
+    {
+        return carInstance;
+    }
+
     public void GetDamaged()
     {
         playerHealth -= 1;
