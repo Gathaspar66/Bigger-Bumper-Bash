@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum SteeringDirection
@@ -14,16 +12,15 @@ public enum SteeringDirection
 
 public class ControlHandler : MonoBehaviour
 {
-    GameObject car;
+    private GameObject car;
     public GameObject debugArea;
-
-    Vector2 input = Vector2.zero;
+    private Vector2 input = Vector2.zero;
 
     public static ControlHandler instance;
 
     private void Awake()
     {
-        instance = this;    
+        instance = this;
     }
 
     private void Start()
@@ -31,9 +28,10 @@ public class ControlHandler : MonoBehaviour
         car = PlayerManager.instance.GetPlayerInstance();
     }
 
-    void Update()
+    private void Update()
     {
         car.GetComponent<PlayerSteering>().SetInput(input);
+        car.GetComponent<PlayerHitDetection>().SetInput(input);
     }
 
     public void SetInput(SteeringDirection dir)
