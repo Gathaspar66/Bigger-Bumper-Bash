@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public float speed = 1;
-    float rotationspeed = 0.5f;
+    public float offset = 0.2f;
+    public float speed = 2f;
     Vector3 startPosition;
+    float randomOffset;
 
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
+        randomOffset = Random.Range(0f, 2f * Mathf.PI);
     }
 
     // Update is called once per frame
@@ -23,11 +25,13 @@ public class NewBehaviourScript : MonoBehaviour
 
     void MoveUpAndDown()
     {
-        transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time, 0.5f), transform.position.z);
+        Vector3 newPos = startPosition;
+        newPos.y += Mathf.Sin(Time.time * speed) * offset;
+        transform.position = newPos;
     }
 
     void Rotate()
     {
-        transform.Rotate(Vector3.up * rotationspeed);
+        transform.Rotate(Vector3.up);
     }
 }
