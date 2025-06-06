@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private readonly GameObject playerInstance;
+    public GameObject playerInstance;
     public GameObject roadManager;
     public GameObject userInterfaceManager;
     public GameObject playerManager;
@@ -69,6 +69,11 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
+        RoadManager.instance.OnPlayerDeath();
         UserInterfaceManager.instance.OnPlayerDeath();
+        TrafficManager.instance.OnPlayerDeath();
+        PlayerManager.instance.OnPlayerDeath();
+        //PointsManager.instance.OnPlayerDeath();
+        //SoundManager.instance.OnPlayerDeath();
     }
 }

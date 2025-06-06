@@ -46,6 +46,11 @@ public class TrafficManager : MonoBehaviour
     private float lastSpawnPositionBackDynamic;
     private float lastSpawnPositionPoints;
     public static TrafficManager instance;
+    private float timerFront;
+    private float timerBack;
+    public float frontSpawnIntervalGameOver = 0.5f;
+    public float backSpawnIntervalGameOver = 0.5f;
+    private bool isGameOver = false;
 
     private void Awake()
     {
@@ -65,8 +70,21 @@ public class TrafficManager : MonoBehaviour
 
     private void Update()
     {
-        CheckSpawnTimers();
+        SpawnObstacles();
     }
+
+    public void SpawnObstacles()
+    {
+        if (isGameOver)
+        {
+            SpawnWhileGameOver();
+        }
+        else
+        {
+            CheckSpawnTimers();
+        }
+    }
+
 
     public void CheckSpawnTimers()
     {
@@ -104,13 +122,32 @@ public class TrafficManager : MonoBehaviour
         }
     }
 
+    private void SpawnWhileGameOver()
+    {
+        timerFront += Time.deltaTime;
+        timerBack += Time.deltaTime;
+
+
+        if (timerFront >= frontSpawnIntervalGameOver)
+        {
+            SpawnFrontDynamicCar();
+            timerFront = 0;
+        }
+
+        if (timerBack >= backSpawnIntervalGameOver)
+        {
+            SpawnBackDynamicCar();
+            timerBack = 0;
+        }
+    }
+
     public void SpawnStaticObstacle()
     {
         int randomLaneIndex = Random.Range(0, laneXPositions.Length);
         float laneX = laneXPositions[randomLaneIndex];
 
         spawnPosition = new(laneX, car.transform.position.y,
-           car.transform.position.z + spawnStaticObstacleDistance);
+            car.transform.position.z + spawnStaticObstacleDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
@@ -125,7 +162,7 @@ public class TrafficManager : MonoBehaviour
         float randomOffset = Random.Range(-playerPrefabOffsetSpawn, playerPrefabOffsetSpawn);
 
         spawnPosition = new(laneX + randomOffset, car.transform.position.y,
-           car.transform.position.z + frontSpawnDynamicObstacleDistance);
+            car.transform.position.z + frontSpawnDynamicObstacleDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
@@ -136,6 +173,7 @@ public class TrafficManager : MonoBehaviour
         }
     }
 
+
     public void SpawnBackDynamicCar()
     {
         int randomLaneIndex = Random.Range(2, laneXPositions.Length);
@@ -143,7 +181,7 @@ public class TrafficManager : MonoBehaviour
         float randomOffset = Random.Range(-playerPrefabOffsetSpawn, playerPrefabOffsetSpawn);
 
         spawnPosition = new(laneX + randomOffset, car.transform.position.y,
-           car.transform.position.z + backSpawnDynamicObstacleDistance);
+            car.transform.position.z + backSpawnDynamicObstacleDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
@@ -156,7 +194,7 @@ public class TrafficManager : MonoBehaviour
     {
         float randomXPosition = Random.Range(-pointsSpawnPositionX, pointsSpawnPositionX);
         spawnPosition = new Vector3(randomXPosition, pointsSpawnHeight,
-           car.transform.position.z + pointsSpawnDistance);
+            car.transform.position.z + pointsSpawnDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
@@ -173,6 +211,11 @@ public class TrafficManager : MonoBehaviour
 
 
         return colliders.Length > 0;
+    }
+
+    public void OnPlayerDeath()
+    {
+        isGameOver = true;
     }
 
     private void OnDrawGizmos()

@@ -6,6 +6,7 @@ public class EndgameMenu : MonoBehaviour
     public Image blackBackground;
     public GameObject newHighScoreNotification;
     public DigitRowHandler digitRowHandler;
+
     private void Start()
     {
         ScaleBlackBackground();
@@ -16,9 +17,6 @@ public class EndgameMenu : MonoBehaviour
         blackBackground.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
     }
 
-    private void Update()
-    {
-    }
 
     public void OnRestartButtonPressed()
     {
@@ -45,6 +43,4 @@ public class EndgameMenu : MonoBehaviour
     {
         digitRowHandler.UpdatePointsDisplay(points);
     }
-
-
 }

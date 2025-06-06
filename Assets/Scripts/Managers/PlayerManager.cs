@@ -101,4 +101,11 @@ public class PlayerManager : MonoBehaviour
     {
         playerInstance.GetComponent<PlayerHitDetection>().StartImmunity();
     }
+
+    public void OnPlayerDeath()
+    {
+        playerInstance.GetComponent<PlayerSteering>().enabled = false;
+        Rigidbody rb = playerInstance.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+    }
 }

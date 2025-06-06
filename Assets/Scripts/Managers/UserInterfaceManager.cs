@@ -9,8 +9,8 @@ public class UserInterfaceManager : MonoBehaviour
     public GameObject wrongWayPrefab;
     public GameObject pickupMultiplierPrefab;
     public GameObject healthDisplayPrefab;
-    public GameObject ingameMenuPrefab;
-    public GameObject endgameMenuPrefab;
+    public GameObject inGameMenuPrefab;
+    public GameObject endGameMenuPrefab;
 
     public GameObject pointsMultiplierDisplayPrefab;
     public GameObject pointsDisplayPrefab;
@@ -21,7 +21,8 @@ public class UserInterfaceManager : MonoBehaviour
     private GameObject wrongWay;
     private GameObject pickupMultiplier;
     private GameObject healthDisplay;
-
+    private GameObject inGameMenu;
+    private GameObject controls;
 
     private void Awake()
     {
@@ -30,8 +31,8 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void Activate()
     {
-        _ = Instantiate(controlsPrefab);
-        _ = Instantiate(ingameMenuPrefab);
+        controls = Instantiate(controlsPrefab);
+        inGameMenu = Instantiate(inGameMenuPrefab);
 
         speedMeter = Instantiate(speedMeterPrefab);
         wrongWay = Instantiate(wrongWayPrefab);
@@ -57,10 +58,26 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
-        Time.timeScale = 0;
-        GameObject tmp = Instantiate(endgameMenuPrefab);
+        //Time.timeScale = 0;
+        DisableUI();
+        GameObject tmp = Instantiate(endGameMenuPrefab);
         tmp.GetComponent<EndgameMenu>().UpdateScore();
         PointsManager.instance.SavePlayerScore();
+    }
+
+    public void DisableUI()
+    {
+        controls.SetActive(false);
+        speedMeter.SetActive(false);
+        wrongWay.SetActive(false);
+        pickupMultiplier.SetActive(false);
+        healthDisplay.SetActive(false);
+        inGameMenu.SetActive(false);
+
+        pointsDisplay.SetActive(false);
+
+        healthDisplay.SetActive(false);
+        pointsMultiplierDisplay.SetActive(false);
     }
 
     public void UpdatePointsMultiplierDisplay(int amount)
