@@ -5,8 +5,7 @@ public class FollowCarOnZ : MonoBehaviour
     public GameObject car;
     public Vector3 offset;
 
-
-    void Start()
+    private void Start()
     {
         SetStartPosition();
     }
@@ -14,12 +13,19 @@ public class FollowCarOnZ : MonoBehaviour
     public void SetStartPosition()
     {
         car = PlayerManager.instance.GetPlayerInstance();
-
         transform.position = car.transform.position + offset;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        transform.position = new Vector3(0, car.transform.position.y, car.transform.position.z) + offset;
+        Vector3 basePosition = new Vector3(0, car.transform.position.y, car.transform.position.z) + offset;
+
+
+        if (CameraShake.Instance != null)
+        {
+            basePosition += CameraShake.Instance.GetShakeOffset();
+        }
+
+        transform.position = basePosition;
     }
 }

@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8588475003400544300, guid: 2212032f5e2996e4fb4110436eadb62d, type: 3}
+  crashEffect: {fileID: 1492671386003191, guid: ac1449a6e4debba4eb1c02f2a0d1cc38, type: 3}

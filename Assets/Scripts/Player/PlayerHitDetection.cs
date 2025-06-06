@@ -6,6 +6,11 @@ public class PlayerHitDetection : MonoBehaviour
     private bool isImmune = false;
     private readonly float immunityDuration = 3;
     private float currentImmunityDuration = 0;
+    private readonly float lastBarrierEffectTime = -10f;
+    private readonly float barrierCooldown = 1f;
+
+    public ParticleSystem sparksL, sparksR;
+    private GameObject playerCarPrefab;
 
     private void Start()
     {
@@ -16,26 +21,66 @@ public class PlayerHitDetection : MonoBehaviour
         UpdateImmunity();
     }
 
+    public void SetCarPrefab(GameObject playerCarPrefab)
+    {
+        this.playerCarPrefab = playerCarPrefab;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Wykryto kolizjê z: " + other.gameObject.name, other.gameObject);
+        if (isImmune)
+        {
+            return;
+        }
 
+        Vector3 hitPoint = transform.position;
 
+        if (other is BoxCollider || other is SphereCollider || other is CapsuleCollider ||
+            (other is MeshCollider mc && mc.convex))
+        {
+            hitPoint = other.ClosestPoint(transform.position);
+        }
+
+        EffectManager.instance.SpawnCrashEffect(hitPoint, true);
         if (other.gameObject.layer == 6)
         {
             EffectManager.instance.SpawnAnEffect(gameObject.transform.position, true);
+
+
             SoundManager.instance.PlaySFX("unlock");
         }
 
         if (other.gameObject.layer == 3)
         {
-            if (isImmune)
-            {
-                return;
-            }
+
+            CameraShake.Instance.Shake(0.2f, 0.1f);
             SoundManager.instance.PlaySFX("crash");
             EffectManager.instance.SpawnAnEffect(gameObject.transform.position, false);
             PlayerManager.instance.GetDamaged();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("LeftBarrier"))
+        {
+            sparksL.Play();
+        }
+        if (other.CompareTag("RightBarrier"))
+        {
+            sparksR.Play();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LeftBarrier"))
+        {
+            sparksL.Stop();
+        }
+        if (other.CompareTag("RightBarrier"))
+        {
+            sparksR.Stop();
         }
     }
 
@@ -97,6 +142,6 @@ public class PlayerHitDetection : MonoBehaviour
 
     private void SetCarMaterial(Material materialToSet)
     {
-        transform.GetChild(0).transform.Find("body").GetComponent<MeshRenderer>().material = materialToSet;
+        playerCarPrefab.transform.Find("body").GetComponent<MeshRenderer>().material = materialToSet;
     }
 }

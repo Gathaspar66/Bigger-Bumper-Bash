@@ -60,9 +60,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1654747076572800499, guid: ecc942e25e6b86e46a7556654c14d8dc, type: 3}
+      propertyPath: m_TagString
+      value: RightBarrier
+      objectReference: {fileID: 0}
     - target: {fileID: 7706159816138088579, guid: ecc942e25e6b86e46a7556654c14d8dc, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706159816138088579, guid: ecc942e25e6b86e46a7556654c14d8dc, type: 3}
+      propertyPath: m_TagString
+      value: LeftBarrier
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
