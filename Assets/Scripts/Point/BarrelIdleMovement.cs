@@ -6,13 +6,12 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public float speed = 1;
     float rotationspeed = 0.5f;
-
     Vector3 startPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = transform.position;    
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -24,7 +23,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     void MoveUpAndDown()
     {
-        transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time, 1), transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time, 0.5f), transform.position.z);
     }
 
     void Rotate()
