@@ -30,9 +30,13 @@ public class PlayerHitDetection : MonoBehaviour
     private void Update()
     {
         UpdateImmunity();
+        UpdateTrailEffects();
+    }
+
+    public void UpdateTrailEffects()
+    {
         Transform carTransform = PlayerManager.instance.GetPlayerInstance().transform;
         _ = carTransform.position;
-
 
         float currentVelocity = PlayerSteering.instance.rb.velocity.z;
 

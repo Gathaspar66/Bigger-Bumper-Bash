@@ -7,12 +7,10 @@ public class EffectManager : MonoBehaviour
     private GameObject currentEffect;
     public GameObject crashEffect;
 
-
     private void Awake()
     {
         instance = this;
     }
-
 
     public void SpawnCrashEffect(Vector3 location, bool isPositive = false)
     {

@@ -11,7 +11,6 @@ public class TrafficManager : MonoBehaviour
 
     [Space(25)] //
     [Header("How often objects are spawned")]
-    //
     public float staticObstacleSpawnIntervalDistance = 50f;
 
     public float frontDynamicObstacleSpawnIntervalDistance = 50f;
@@ -20,7 +19,6 @@ public class TrafficManager : MonoBehaviour
 
     [Space(25)] //
     [Header("Prefabs")]
-    //
     public GameObject staticObstaclePrefab;
 
     public GameObject dynamicObstaclePrefab;
@@ -28,7 +26,6 @@ public class TrafficManager : MonoBehaviour
 
     [Space(25)] //
     [Header("Other")]
-    //
     public float playerPrefabOffsetSpawn = 0.3f;
 
     public float pointsSpawnPositionX = 5f;
@@ -85,7 +82,6 @@ public class TrafficManager : MonoBehaviour
         }
     }
 
-
     public void CheckSpawnTimers()
     {
         float distanceTraveledStatic = car.transform.position.z - lastSpawnPositionStatic;
@@ -126,7 +122,6 @@ public class TrafficManager : MonoBehaviour
     {
         timerFront += Time.deltaTime;
         timerBack += Time.deltaTime;
-
 
         if (timerFront >= frontSpawnIntervalGameOver)
         {
@@ -173,7 +168,6 @@ public class TrafficManager : MonoBehaviour
         }
     }
 
-
     public void SpawnBackDynamicCar()
     {
         int randomLaneIndex = Random.Range(2, laneXPositions.Length);
@@ -206,9 +200,7 @@ public class TrafficManager : MonoBehaviour
     {
         Vector3 boxCenter = position + (Vector3.up * raycastHeightOffset);
 
-
         Collider[] colliders = Physics.OverlapBox(boxCenter, boxSize / 2, Quaternion.identity, trafficLayer);
-
 
         return colliders.Length > 0;
     }
