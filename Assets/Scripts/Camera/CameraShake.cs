@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class CameraShake : MonoBehaviour
 {
     private Vector3 shakeOffset = Vector3.zero;
@@ -12,6 +13,11 @@ public class CameraShake : MonoBehaviour
     }
 
     private void Update()
+    {
+        ShakeCheck();
+    }
+
+    private void ShakeCheck()
     {
         if (shakeDuration > 0)
         {
