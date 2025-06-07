@@ -16,6 +16,7 @@ public class RoadManager : MonoBehaviour
     private Transform playerCarTransform;
     private readonly WaitForSeconds waitFor100ms = new(0.1f);
     private const float sectionLength = 60;
+    private bool isGameOver = false;
 
     private void Awake()
     {
@@ -60,7 +61,7 @@ public class RoadManager : MonoBehaviour
 
     private IEnumerator UpdateLessOftenCO()
     {
-        while (true)
+        while (!isGameOver)
         {
             UpdateSectionPositions();
             yield return waitFor100ms;
@@ -106,5 +107,10 @@ public class RoadManager : MonoBehaviour
         }
 
         return sectionsPool[randomIndex];
+    }
+
+    public void OnPlayerDeath()
+    {
+        isGameOver = true;
     }
 }
