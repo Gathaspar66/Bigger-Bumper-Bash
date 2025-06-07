@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -24,12 +25,15 @@ public class SpeedMeter : MonoBehaviour
 
     private void Start()
     {
-        car = PlayerManager.instance.GetPlayerInstance();
+        GeneralSetup();
         SetupBreakpoints();
 
         SetFill(0f);
+    }
 
-
+    private void GeneralSetup()
+    {
+        car = PlayerManager.instance.GetPlayerInstance();
     }
 
     private void Update()
@@ -42,7 +46,6 @@ public class SpeedMeter : MonoBehaviour
         float fill = 0f;
 
         carSpeed = car.GetComponent<Rigidbody>().velocity.z;
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEED, car.GetComponent<Rigidbody>().velocity.z);
         currentSpeedBarGreenSize = 0;
         currentSpeedBarOrangeSize = 0;
         maxSpeed = false;

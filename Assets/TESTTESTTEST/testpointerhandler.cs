@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class testpointerhandler : MonoBehaviour
 {
-    int frame = 0;
     public Image img;
     public Image marker;
 
@@ -21,7 +20,6 @@ public class testpointerhandler : MonoBehaviour
     Bounds ub; //= new Bounds(u.rectTransform.position, u.rectTransform.sizeDelta);
     Bounds db;// = new Bounds(d.rectTransform.position, d.rectTransform.sizeDelta);
 
-    bool doonce = true;
     private void Start()
     {
         lb = new Bounds(l.rectTransform.position, l.rectTransform.sizeDelta);
@@ -74,7 +72,7 @@ public class testpointerhandler : MonoBehaviour
         }
         else
         {
-            print("No touch contacts");
+            Debug.Log("No touch contacts");
         }
     }
 }

@@ -29,7 +29,6 @@ public class PointsManager : MonoBehaviour
     {
         car = PlayerManager.instance.GetPlayerInstance();
         lastCarLocationZ = car.transform.position.z;
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
     }
 
     private void Update()
@@ -51,7 +50,6 @@ public class PointsManager : MonoBehaviour
         points += (currentCarLocationZ - lastCarLocationZ) * pointsMultiplier / 10;
         UserInterfaceManager.instance.UpdatePointsDisplay((int)points);
         lastCarLocationZ = car.transform.position.z;
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
     }
 
     public void AddPoints(float pointValue)
@@ -59,19 +57,16 @@ public class PointsManager : MonoBehaviour
         points += pointValue;
 
         CrateHit();
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.POINTS, points);
     }
 
     public void UpdateSpeedMultiplier(int value)
     {
         speedPointMultiplier = value;
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEEDMULTIPLIER, speedPointMultiplier);
     }
 
     public void UpdateLaneMultiplier(int value)
     {
         lanePointMultiplier = value;
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.LANEMULTIPLIER, lanePointMultiplier);
     }
 
     public void CrateHit()
@@ -86,8 +81,6 @@ public class PointsManager : MonoBehaviour
                 cratePointMultiplier = cratePointMultiplierMax;
             }
         }
-
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
     }
 
     private void CheckCrateMultiplierTimer()
@@ -105,12 +98,9 @@ public class PointsManager : MonoBehaviour
             {
                 cratePointMultiplier -= 1;
             }
-
-            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIER, cratePointMultiplier);
         }
 
         UserInterfaceManager.instance.UpdatePickupMultiplier((int)cratePointMultiplier);
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.CRATEMULTIPLIERTIMER, cratePointMultiplierTimer);
     }
 
     public void SavePlayerScore()

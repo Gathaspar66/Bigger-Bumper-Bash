@@ -21,7 +21,11 @@ public class RoadManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        SetupInAwake();
+    }
 
+    private void SetupInAwake()
+    {
         List<GameObject> tempList = new();
 
         for (int i = 0; i < normalSectionsMultiplier; i++)

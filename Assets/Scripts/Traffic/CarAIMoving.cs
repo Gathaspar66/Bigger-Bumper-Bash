@@ -30,8 +30,13 @@ public class CarAIMoving : MonoBehaviour
 
     private void Start()
     {
-        brakeRaycastDistance = Random.Range(minBrakeRaycastDistance, maxBrakeRaycastDistance);
+        BrakeRaycastSetup();
         SetInitialSpeed();
+    }
+
+    private void BrakeRaycastSetup()
+    {
+        brakeRaycastDistance = Random.Range(minBrakeRaycastDistance, maxBrakeRaycastDistance);
     }
 
     private void FixedUpdate()

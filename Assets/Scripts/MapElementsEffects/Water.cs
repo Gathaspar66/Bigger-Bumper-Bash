@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
 public class Water : MonoBehaviour
@@ -16,6 +17,11 @@ public class Water : MonoBehaviour
     private Vector3[] displacedVerts;
 
     private void Start()
+    {
+        GeneralSetup();
+    }
+
+    private void GeneralSetup()
     {
         if (Camera.main != null)
         {

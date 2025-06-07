@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum SteeringDirection
@@ -18,6 +19,9 @@ public class ControlHandler : MonoBehaviour
 
     public static ControlHandler instance;
 
+    PlayerSteering ps;
+    PlayerHitDetection phd;
+
     private void Awake()
     {
         instance = this;
@@ -25,13 +29,25 @@ public class ControlHandler : MonoBehaviour
 
     private void Start()
     {
-        car = PlayerManager.instance.GetPlayerInstance();
+        GeneralSetup();
     }
 
     private void Update()
     {
-        car.GetComponent<PlayerSteering>().SetInput(input);
-        car.GetComponent<PlayerHitDetection>().SetInput(input);
+        SetInput();
+    }
+
+    private void GeneralSetup()
+    {
+        car = PlayerManager.instance.GetPlayerInstance();
+        ps = car.GetComponent<PlayerSteering>();
+        phd = car.GetComponent<PlayerHitDetection>();
+    }
+
+    private void SetInput()
+    {
+        ps.SetInput(input);
+        phd.SetInput(input);
     }
 
     public void SetInput(SteeringDirection dir)

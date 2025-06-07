@@ -18,6 +18,11 @@ public class FollowCarOnZ : MonoBehaviour
 
     private void LateUpdate()
     {
+        CameraFollow();
+    }
+
+    void CameraFollow()
+    {
         Vector3 basePosition = new Vector3(0, car.transform.position.y, car.transform.position.z) + offset;
 
 
