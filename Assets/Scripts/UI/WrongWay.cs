@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,15 +18,19 @@ public class WrongWay : MonoBehaviour
 
     private void Start()
     {
-        car = PlayerManager.instance.GetPlayerInstance();
+        GeneralSetup();
         HideVisuals();
     }
 
     private void Update()
     {
-        car = PlayerManager.instance.GetPlayerInstance();
         CheckLane();
         UpdateHardLane();
+    }
+
+    private void GeneralSetup()
+    {
+        car = PlayerManager.instance.GetPlayerInstance();
     }
 
     private void CheckLane()
