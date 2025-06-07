@@ -6,8 +6,6 @@ public class PlayerHitDetection : MonoBehaviour
     private bool isImmune = false;
     private readonly float immunityDuration = 3;
     private float currentImmunityDuration = 0;
-    private readonly float lastBarrierEffectTime = -10f;
-    private readonly float barrierCooldown = 1f;
 
     public ParticleSystem sparksL, sparksR;
     private GameObject playerCarPrefab;
@@ -76,7 +74,7 @@ public class PlayerHitDetection : MonoBehaviour
             hitPoint = other.ClosestPoint(transform.position);
         }
 
-        EffectManager.instance.SpawnCrashEffect(hitPoint);
+        EffectManager.instance.SpawnCrashEffect(Effect.CRASH, hitPoint);
         if (other.gameObject.layer == 6)
         {
             SoundManager.instance.PlaySFX("unlock");

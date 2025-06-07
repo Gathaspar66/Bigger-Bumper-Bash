@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Effect : MonoBehaviour
+public class EffectDEPRECATED: MonoBehaviour
 {
     List<string> positiveWords = new List<string>
         { "Bash!", "Smash!", "Wham!", "Boom!", "Whack!", "Bam!", "Slam!", "Bang!", "Pound!" };
