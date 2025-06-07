@@ -12,7 +12,7 @@ public class EffectManager : MonoBehaviour
         instance = this;
     }
 
-    public void SpawnCrashEffect(Vector3 location, bool isPositive = false)
+    public void SpawnCrashEffect(Vector3 location)
     {
         currentEffect = Instantiate(crashEffect, location, Quaternion.identity);
 
