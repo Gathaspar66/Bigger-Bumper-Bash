@@ -690,6 +690,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5464418221873440195, guid: f33b0b320e604094aae6257a3bf9a764, type: 3}
+      propertyPath: barrelEffect
+      value: 
+      objectReference: {fileID: 3832401351901999091, guid: 1ea28dc42435c8b4aa2c31b26d450cf0, type: 3}
+    - target: {fileID: 5464418221873440195, guid: f33b0b320e604094aae6257a3bf9a764, type: 3}
       propertyPath: tireTrailPrefab
       value: 
       objectReference: {fileID: 544749466699133553, guid: dfa57f0c9015aeb49a3f04fbfe1b27b6, type: 3}

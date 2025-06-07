@@ -74,7 +74,7 @@ public class PlayerHitDetection : MonoBehaviour
             hitPoint = other.ClosestPoint(transform.position);
         }
 
-        EffectManager.instance.SpawnCrashEffect(Effect.CRASH, hitPoint);
+        EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
         if (other.gameObject.layer == 6)
         {
             SoundManager.instance.PlaySFX("unlock");
