@@ -70,8 +70,6 @@ public class PlayerSteering : MonoBehaviour
         gameModel.transform.localRotation = Quaternion.Euler(newTiltX, tiltY, tiltZ);
 
 
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "false");
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.BRAKING, "false");
         if (wHeld)
         {
             input.y = 1;
@@ -80,7 +78,6 @@ public class PlayerSteering : MonoBehaviour
         if (input.y > 0)
         {
             Accelerate();
-            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.ACCELLERATING, "true");
         }
         else
         {
@@ -90,8 +87,6 @@ public class PlayerSteering : MonoBehaviour
         if (input.y < 0)
         {
             Brake();
-
-            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.BRAKING, "true");
         }
 
         Steer();
@@ -155,25 +150,11 @@ public class PlayerSteering : MonoBehaviour
                 rb.velocity.y,
                 rb.velocity.z
             );
-
-
-            if (input.x > 0)
-            {
-                DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "right");
-            }
-            else
-            {
-                DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "left");
-            }
         }
         else
         {
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, rb.velocity.y, rb.velocity.z),
-                Time.fixedDeltaTime * 3);
-
-
-            DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.TURNING, "false");
-        }
+                Time.fixedDeltaTime * 3);}
     }
 
 

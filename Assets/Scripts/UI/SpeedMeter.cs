@@ -42,7 +42,6 @@ public class SpeedMeter : MonoBehaviour
         float fill = 0f;
 
         carSpeed = car.GetComponent<Rigidbody>().velocity.z;
-        DebugWindow.instance.UpdateDebugWindow(DebugWindowEnum.SPEED, car.GetComponent<Rigidbody>().velocity.z);
         currentSpeedBarGreenSize = 0;
         currentSpeedBarOrangeSize = 0;
         maxSpeed = false;
