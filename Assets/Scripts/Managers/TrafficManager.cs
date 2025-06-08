@@ -52,7 +52,6 @@ public class TrafficManager : MonoBehaviour
     private float[] frontLanesX;
     private float[] backLanesX;
     private float[] staticObstacleLanesX;
-    private readonly GameConfig gameConfig;
 
     private Lane[] frontLanes;
     private Lane[] backLanes;
@@ -72,7 +71,11 @@ public class TrafficManager : MonoBehaviour
         lastSpawnPositionBackDynamic = car.transform.position.z;
 
         lastSpawnPositionPoints = car.transform.position.z;
+        ConfigureLevelSpawners();
+    }
 
+    public void ConfigureLevelSpawners()
+    {
         if (LevelConfigLoader.instance != null && LevelConfigLoader.instance.IsConfigLoaded())
         {
             Level currentLevel = LevelConfigLoader.instance.gameConfig.levels[0];
