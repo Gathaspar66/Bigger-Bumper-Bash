@@ -29,8 +29,10 @@ public class GameManager : MonoBehaviour
         RoadManager.instance.Activate();
         UserInterfaceManager.instance.Activate();
         TrafficManager.instance.Activate();
+
         PointsManager.instance.Activate();
         SoundManager.instance.Activate();
+
     }
 
     public void PauseGame(bool ifPause)
