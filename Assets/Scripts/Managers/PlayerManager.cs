@@ -16,14 +16,9 @@ public class PlayerManager : MonoBehaviour
     private int playerMaxHealth = 2;
     private int playerHealth;
 
-
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Update()
-    {
     }
 
     public void Activate()

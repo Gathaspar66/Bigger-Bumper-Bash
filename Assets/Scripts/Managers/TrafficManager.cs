@@ -164,7 +164,7 @@ public class TrafficManager : MonoBehaviour
             Quaternion rotation = randomLaneIndex is 0 or 1 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
             _ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
 
-            CarAIMoving.instance.SpawnRandomCar(randomLaneIndex);
+            CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
         }
     }
 
@@ -180,7 +180,7 @@ public class TrafficManager : MonoBehaviour
         if (!IsSpawnLocationClear(spawnPosition))
         {
             _ = Instantiate(dynamicObstaclePrefab, spawnPosition, Quaternion.identity);
-            CarAIMoving.instance.SpawnRandomCar(randomLaneIndex);
+            CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
         }
     }
 

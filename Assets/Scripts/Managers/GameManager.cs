@@ -20,13 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnBasicElementsOfGame();
-
         ActivateManagers();
-    }
-
-    public void SpawnBasicElementsOfGame()
-    {
     }
 
     public void ActivateManagers()
@@ -37,11 +31,6 @@ public class GameManager : MonoBehaviour
         TrafficManager.instance.Activate();
         PointsManager.instance.Activate();
         SoundManager.instance.Activate();
-    }
-
-    public GameObject GetPlayer()
-    {
-        return playerInstance;
     }
 
     public void PauseGame(bool ifPause)
