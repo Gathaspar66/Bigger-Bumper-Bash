@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardLaneSwitchTimerCurrent: 0
+  bonusNumbersList:
+  - {fileID: 21300000, guid: d7bca98878035a94683052703ad35dc0, type: 3}
+  - {fileID: 21300000, guid: 72feeb463a973ea408b8c9263617c46a, type: 3}
+  - {fileID: 21300000, guid: 2c3c67c625b78f44db630747d022479e, type: 3}
   coloredImage: {fileID: 5945768640349541840}
   fillImage: {fileID: 5411847481847663132}
   multiplierImage: {fileID: 8235817567527154986}
