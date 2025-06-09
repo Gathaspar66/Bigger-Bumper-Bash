@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class SpeedMeter : MonoBehaviour
 {
-
-    public TMP_Text text;
-
-
     private readonly float speedBarGreenSize = 100;
     private readonly float speedBarOrangeSize = 100;
     private float currentSpeedBarGreenSize;
@@ -23,6 +19,9 @@ public class SpeedMeter : MonoBehaviour
     public Image speedFillImage;
     public GameObject superSpeed;
 
+    public List<Sprite> speedMultiplierList = new();
+    public Image multiplierValueImage;
+
     private void Start()
     {
         GeneralSetup();
@@ -31,14 +30,19 @@ public class SpeedMeter : MonoBehaviour
         SetFill(0f);
     }
 
-    private void GeneralSetup()
-    {
-        car = PlayerManager.instance.GetPlayerInstance();
-    }
-
     private void Update()
     {
         CalculateSpeed();
+    }
+
+    private void UpdateSpeedMultiplierVisual(int value)
+    {
+        multiplierValueImage.sprite = speedMultiplierList[value - 1];
+    }
+
+    private void GeneralSetup()
+    {
+        car = PlayerManager.instance.GetPlayerInstance();
     }
 
     private void CalculateSpeed()
@@ -73,7 +77,7 @@ public class SpeedMeter : MonoBehaviour
 
         SetFill(fill);
 
-        text.text = "x" + speedMultiplier.ToString();
+        UpdateSpeedMultiplierVisual(speedMultiplier);
 
 
         // redBgBig.SetActive(maxSpeed);
