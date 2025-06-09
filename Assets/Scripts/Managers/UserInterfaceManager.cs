@@ -80,6 +80,11 @@ public class UserInterfaceManager : MonoBehaviour
         pointsMultiplierDisplay.SetActive(false);
     }
 
+    public void OnIngameMenuToggle(bool ifOpen)
+    {
+
+    }
+
     public void UpdatePointsMultiplierDisplay(int amount)
     {
         pointsMultiplierDisplay.GetComponent<PointsMultiplierDisplay>().UpdatePointsMultiplierDisplay(amount);
