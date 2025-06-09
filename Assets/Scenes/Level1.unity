@@ -420,6 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1441534259}
   - component: {fileID: 1441534260}
+  - component: {fileID: 1441534261}
   m_Layer: 0
   m_Name: TrafficManager
   m_TagString: Untagged
@@ -478,6 +479,21 @@ MonoBehaviour:
     m_Bits: 8
   frontSpawnIntervalGameOver: 2
   backSpawnIntervalGameOver: 6
+--- !u!114 &1441534261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441534258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbafcf025fd0afc4691803b91f1d4580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configJson: {fileID: 4900000, guid: 98b287ff818ea2d49b2afb83368c7da8, type: 3}
+  gameConfig:
+    levels: []
 --- !u!1 &1673432933
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +596,6 @@ MonoBehaviour:
   cameraPrefab: {fileID: 7280080578915174522, guid: 45f1f94e9a7014844933124b4811847e, type: 3}
   currentCameraPrefab: {fileID: 0}
   carConfigFile: {fileID: 4900000, guid: f1f9ac60f21ad2045803ba7172c3ec55, type: 3}
-  playerMaxHealth: 1
 --- !u!1 &2048719953
 GameObject:
   m_ObjectHideFlags: 0

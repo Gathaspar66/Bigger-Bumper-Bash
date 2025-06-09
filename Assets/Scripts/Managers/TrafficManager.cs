@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class TrafficManager : MonoBehaviour
@@ -48,6 +49,13 @@ public class TrafficManager : MonoBehaviour
     public float frontSpawnIntervalGameOver = 0.5f;
     public float backSpawnIntervalGameOver = 0.5f;
     private bool isGameOver = false;
+    private float[] frontLanesX;
+    private float[] backLanesX;
+    private float[] staticObstacleLanesX;
+
+    private Lane[] frontLanes;
+    private Lane[] backLanes;
+    private StaticObstacle[] staticObstaclesData;
 
     private void Awake()
     {
@@ -63,6 +71,43 @@ public class TrafficManager : MonoBehaviour
         lastSpawnPositionBackDynamic = car.transform.position.z;
 
         lastSpawnPositionPoints = car.transform.position.z;
+        ConfigureLevelSpawners();
+    }
+
+    public void ConfigureLevelSpawners()
+    {
+        if (LevelConfigLoader.instance != null && LevelConfigLoader.instance.IsConfigLoaded())
+        {
+            Level currentLevel = LevelConfigLoader.instance.gameConfig.levels[0];
+            LevelConfig config = currentLevel.levelConfig;
+
+            Lane[] front = config.lanes
+                .Where(lane => lane.spawner == "Front")
+                .ToArray();
+
+            Lane[] back = config.lanes
+                .Where(lane => lane.spawner == "Back")
+                .ToArray();
+
+            StaticObstacle[] staticObstacles = config.staticObstacles;
+
+            SetSpawnLanes(front, back, staticObstacles);
+        }
+        else
+        {
+            Debug.LogError("LevelConfigLoader not loaded or missing!");
+        }
+    }
+
+    public void SetSpawnLanes(Lane[] front, Lane[] back, StaticObstacle[] staticObstacles)
+    {
+        frontLanes = front;
+        backLanes = back;
+        staticObstaclesData = staticObstacles;
+
+        frontLanesX = front.Select(l => l.positionX).ToArray();
+        backLanesX = back.Select(l => l.positionX).ToArray();
+        staticObstacleLanesX = staticObstacles.Select(s => s.positionX).ToArray();
     }
 
     private void Update()
@@ -138,10 +183,16 @@ public class TrafficManager : MonoBehaviour
 
     public void SpawnStaticObstacle()
     {
-        int randomLaneIndex = Random.Range(0, laneXPositions.Length);
-        float laneX = laneXPositions[randomLaneIndex];
+        if (staticObstacleLanesX == null || staticObstacleLanesX.Length == 0)
+        {
+            Debug.LogWarning("No static obstacle lanes available to spawn.");
+            return;
+        }
 
-        spawnPosition = new(laneX, car.transform.position.y,
+        int randomLaneIndex = Random.Range(0, staticObstacleLanesX.Length);
+        float laneX = staticObstacleLanesX[randomLaneIndex];
+
+        spawnPosition = new Vector3(laneX, car.transform.position.y,
             car.transform.position.z + spawnStaticObstacleDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
@@ -152,35 +203,53 @@ public class TrafficManager : MonoBehaviour
 
     public void SpawnFrontDynamicCar()
     {
-        int randomLaneIndex = Random.Range(0, laneXPositions.Length);
-        float laneX = laneXPositions[randomLaneIndex];
-        float randomOffset = Random.Range(-playerPrefabOffsetSpawn, playerPrefabOffsetSpawn);
+        if (frontLanes == null || frontLanes.Length == 0)
+        {
+            Debug.LogWarning("No front lanes available to spawn.");
+            return;
+        }
 
-        spawnPosition = new(laneX + randomOffset, car.transform.position.y,
+        int randomLaneIndex = Random.Range(0, frontLanes.Length);
+        Lane selectedLane = frontLanes[randomLaneIndex];
+
+        float randomOffset = Random.Range(-playerPrefabOffsetSpawn, playerPrefabOffsetSpawn);
+        spawnPosition = new Vector3(selectedLane.positionX + randomOffset, car.transform.position.y,
             car.transform.position.z + frontSpawnDynamicObstacleDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
-            Quaternion rotation = randomLaneIndex is 0 or 1 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
-            _ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
+            Quaternion rotation = selectedLane.direction == "Backward"
+                ? Quaternion.Euler(0, 180, 0)
+                : Quaternion.identity;
 
-            CarAIMoving.instance.SpawnRandomCar(randomLaneIndex);
+            _ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
+            CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
         }
     }
 
     public void SpawnBackDynamicCar()
     {
-        int randomLaneIndex = Random.Range(2, laneXPositions.Length);
-        float laneX = laneXPositions[randomLaneIndex];
-        float randomOffset = Random.Range(-playerPrefabOffsetSpawn, playerPrefabOffsetSpawn);
+        if (backLanes == null || backLanes.Length == 0)
+        {
+            Debug.LogWarning("No back lanes available to spawn.");
+            return;
+        }
 
-        spawnPosition = new(laneX + randomOffset, car.transform.position.y,
+        int randomLaneIndex = Random.Range(0, backLanes.Length);
+        Lane selectedLane = backLanes[randomLaneIndex];
+
+        float randomOffset = Random.Range(-playerPrefabOffsetSpawn, playerPrefabOffsetSpawn);
+        spawnPosition = new Vector3(selectedLane.positionX + randomOffset, car.transform.position.y,
             car.transform.position.z + backSpawnDynamicObstacleDistance);
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
-            _ = Instantiate(dynamicObstaclePrefab, spawnPosition, Quaternion.identity);
-            CarAIMoving.instance.SpawnRandomCar(randomLaneIndex);
+            Quaternion rotation = selectedLane.direction == "Backward"
+                ? Quaternion.Euler(0, 180, 0)
+                : Quaternion.identity;
+
+            _ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
+            CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
         }
     }
 

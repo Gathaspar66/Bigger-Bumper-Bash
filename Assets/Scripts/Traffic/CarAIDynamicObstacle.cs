@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarAIMoving : MonoBehaviour
+public class CarAIDynamicObstacle : MonoBehaviour
 {
     public float speed;
     public float brakeRaycastDistance;
@@ -13,7 +13,7 @@ public class CarAIMoving : MonoBehaviour
     private float spawnMinSpeed;
     private float spawnMaxSpeed;
     public GameObject[] carPrefabs;
-    public static CarAIMoving instance;
+    public static CarAIDynamicObstacle instance;
     public float minBrakeRaycastDistance;
     public float maxBrakeRaycastDistance;
     //private readonly float collisionOffsetZ = 2.0f;
@@ -73,7 +73,7 @@ public class CarAIMoving : MonoBehaviour
         return speed;
     }
 
-    public void SpawnRandomCar(int randomLaneIndex)
+    public void SpawnRandomCarModel(int randomLaneIndex)
     {
         int randomIndex = Random.Range(0, carPrefabs.Length);
         currentLaneIndex = randomLaneIndex;
@@ -83,7 +83,9 @@ public class CarAIMoving : MonoBehaviour
 
         GameObject spawnedCar = Instantiate(carPrefabs[randomIndex], spawnPosition, transform.rotation);
         spawnedCar.transform.SetParent(transform);
-        ChangeCarBodyColor(spawnedCar);
+
+        spawnedCar.GetComponent<CarModelHandler>().Activate();
+
     }
 
     private void DestroyCarIfTooFar()
@@ -156,31 +158,16 @@ public class CarAIMoving : MonoBehaviour
         return false;
     }
 
-    private void ChangeCarBodyColor(GameObject car)
-    {
-        Transform bodyTransform = car.transform.Find("body");
-        if (bodyTransform != null)
-        {
-            Renderer renderer = bodyTransform.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                Material baseMaterial = carPaintMaterials[Random.Range(0, carPaintMaterials.Count)];
-                Material matInstance = new(baseMaterial);
-                matInstance.SetFloat("_Glossiness", Random.Range(smoothnessRange.x, smoothnessRange.y));
-                matInstance.SetFloat("_Metallic", Random.Range(metallicRange.x, metallicRange.y));
-                renderer.material = matInstance;
-            }
-        }
-    }
+
 
     private void OnDrawGizmos()
     {
-        Vector3 center = carCollider.bounds.center;
-        Vector3 halfExtents = carCollider.bounds.extents + new Vector3(0f, 0f, 1f);
-        _ = Quaternion.identity;
+        //  Vector3 center = carCollider.bounds.center;
+        //    Vector3 halfExtents = carCollider.bounds.extents + new Vector3(0f, 0f, 1f);
+        //   _ = Quaternion.identity;
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(center, halfExtents * 2f);
+        //    Gizmos.color = Color.red;
+        //    Gizmos.DrawWireCube(center, halfExtents * 2f);
 
         //Gizmos.color = Color.red;
         // Vector3 rayOrigin = transform.position + (Vector3.up * raycastOffsetY);
