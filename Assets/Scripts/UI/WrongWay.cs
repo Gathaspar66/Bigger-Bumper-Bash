@@ -21,6 +21,13 @@ public class WrongWay : MonoBehaviour
 
     public float hardLaneProgress = 0;
 
+    float shakeCooldown = 0.5f;
+    float lastShake = 0;
+    float shakeSpeed = 1;
+    bool shakeLeft = false;
+
+    public Vector3 loc;
+
     private void Start()
     {
         GeneralSetup();
@@ -29,8 +36,29 @@ public class WrongWay : MonoBehaviour
 
     private void Update()
     {
+        loc = transform.position;
         CheckLane();
         UpdateHardLane();
+        ShakeLrongWane();
+    }
+
+    void ShakeLrongWane()
+    {
+        if (!hardLane) return;
+
+        if (lastShake + shakeCooldown < Time.time)
+        {
+            lastShake = Time.time;
+            if (shakeLeft)
+            {
+                coloredImage.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, -15));
+            }
+            else
+            {
+                coloredImage.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, 15));
+            }
+            shakeLeft = !shakeLeft;
+        }
     }
 
     private void GeneralSetup()
@@ -67,7 +95,7 @@ public class WrongWay : MonoBehaviour
         {
             hardLaneSwitchTimerCurrent -= Time.deltaTime;
         }
-
+        hardLaneSwitchTimerCurrent = Mathf.Clamp01(hardLaneSwitchTimerCurrent);
         hardLaneProgress = Mathf.Clamp01(hardLaneSwitchTimerCurrent / hardLaneSwitchTimerMax);
         SetFill(hardLaneProgress);
         ShowVisuals();
@@ -80,6 +108,7 @@ public class WrongWay : MonoBehaviour
         }
         else
         {
+            coloredImage.rectTransform.rotation = Quaternion.identity;
             bonusActive = false;
             SetBonus(1);
             NotifyPointsManager(1);
