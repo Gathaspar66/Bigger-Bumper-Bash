@@ -11,11 +11,42 @@ public class PickupMultiplier : MonoBehaviour
     public Image barrelImageGray;
     public Image multiplierValueImage;
 
+    float shakeCooldown = 0.5f;
+    float lastShake = 0;
+    float shakeSpeed = 1;
+    bool shakeLeft = false;
+
+    private void Update()
+    {
+        ShakeBarrel();
+    }
+
+    void ShakeBarrel()
+    {
+        if (shakeSpeed == 1) return;
+
+        if (lastShake + shakeCooldown < Time.time)
+        {
+            lastShake = Time.time;
+            if (shakeLeft)
+            {
+                barrelImageGray.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, -30));
+            }
+            else
+            {
+                barrelImageGray.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, 30));
+            }
+            shakeLeft = !shakeLeft;
+        }
+    }
+
     public void UpdatePickupMultiplierVisual(int value)
     {
         multiplierValueImage.sprite = barrelMultiplier[value - 1];
         barrelImage.sprite = barrelSprites[value - 1];
         barrelImageGray.sprite = barrelSpritesGray[value - 1];
+        shakeSpeed = value;
+        shakeCooldown = 0.5f / value;
     }
 
     public void UpdatePickupMultiplierFill(float value)
