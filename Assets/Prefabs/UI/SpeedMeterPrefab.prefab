@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01636f333fa52f4da437d7ec046942e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
   speedFillImage: {fileID: 1176495838977903899}
   superSpeed: {fileID: 5729953038112130700}
   speedMultiplierList:
