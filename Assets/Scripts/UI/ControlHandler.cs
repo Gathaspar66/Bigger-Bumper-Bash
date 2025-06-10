@@ -20,7 +20,7 @@ public class ControlHandler : MonoBehaviour
     public static ControlHandler instance;
 
     PlayerSteering ps;
-    PlayerHitDetection phd;
+    PlayerPrefabHandler phd;
 
     private void Awake()
     {
@@ -41,7 +41,7 @@ public class ControlHandler : MonoBehaviour
     {
         car = PlayerManager.instance.GetPlayerInstance();
         ps = car.GetComponent<PlayerSteering>();
-        phd = car.GetComponent<PlayerHitDetection>();
+        phd = car.GetComponent<PlayerPrefabHandler>();
     }
 
     private void SetInput()

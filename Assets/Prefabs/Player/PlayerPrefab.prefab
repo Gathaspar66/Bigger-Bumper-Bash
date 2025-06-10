@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1068980787133908836}
   - component: {fileID: 7419151477809295542}
   - component: {fileID: 1421288006978361768}
-  - component: {fileID: 5831812412874202471}
+  - component: {fileID: 2330087974372160625}
   - component: {fileID: 450025254653009301}
   m_Layer: 0
   m_Name: PlayerPrefab
@@ -121,7 +121,7 @@ MonoBehaviour:
   gameModel: {fileID: 0}
   tiltSpeed: 5
   tiltValue: 5
---- !u!114 &5831812412874202471
+--- !u!114 &2330087974372160625
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5432101980971534461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460636d58877af94196d3f564d9ffc38, type: 3}
+  m_Script: {fileID: 11500000, guid: 74e5a8fdfab58d74badece905f367387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   normal: {fileID: 2100000, guid: 66fb998a70f9b004b9021cba53a04bf5, type: 2}
@@ -140,8 +140,8 @@ MonoBehaviour:
   leftTrailRenderer: {fileID: 3963009987135452346}
   rightTrailRenderer: {fileID: 8741861478836002024}
   input: {x: 0, y: 0}
-  leftTireTrail: {fileID: 0}
-  rightTireTrail: {fileID: 0}
+  leftTireTrail: {fileID: 544749466699133553, guid: dfa57f0c9015aeb49a3f04fbfe1b27b6, type: 3}
+  rightTireTrail: {fileID: 544749466699133553, guid: dfa57f0c9015aeb49a3f04fbfe1b27b6, type: 3}
   minForwardVelocity: 0
   maxForwardVelocity: 0
 --- !u!65 &450025254653009301

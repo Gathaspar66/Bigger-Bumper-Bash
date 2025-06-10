@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
     {
         carInstance = Instantiate(unikaczPrefab, playerInstance.transform.position, Quaternion.identity);
         carInstance.transform.SetParent(playerInstance.transform);
-        playerInstance.GetComponent<PlayerHitDetection>().SetCarPrefab(carInstance);
+        playerInstance.GetComponent<PlayerPrefabHandler>().SetCarPrefab(carInstance);
     }
 
     public void SpawnCamera()
@@ -95,7 +95,7 @@ public class PlayerManager : MonoBehaviour
 
     private void StartImmunity()
     {
-        playerInstance.GetComponent<PlayerHitDetection>().StartImmunity();
+        playerInstance.GetComponent<PlayerPrefabHandler>().StartImmunity();
     }
 
     public void OnPlayerDeath()

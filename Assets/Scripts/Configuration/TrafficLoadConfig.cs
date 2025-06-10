@@ -4,7 +4,6 @@ public class LevelConfigLoader : MonoBehaviour
 {
     public static LevelConfigLoader instance;
 
-    [Header("Config JSON file (drag & drop in Inspector)")]
     public TextAsset configJson;
 
     public GameConfig gameConfig;
