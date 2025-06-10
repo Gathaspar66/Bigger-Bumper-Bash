@@ -15,7 +15,7 @@ public class CarAIDynamicObstacle : MonoBehaviour
     public static CarAIDynamicObstacle instance;
     public float minBrakeRaycastDistance;
     public float maxBrakeRaycastDistance;
-
+    private readonly float forwardOffset = 0.5f;
     private Vector3 boxSize;
 
     public LayerMask trafficLayer;
@@ -154,11 +154,16 @@ public class CarAIDynamicObstacle : MonoBehaviour
         carModelHandler.SetRearBrakeLight(isBraking);
     }
 
+    //The method creates a collider that is slightly forwarded by forwardOffset if the collider inside it automatically stops car.
     private bool IsOtherCarInsideCollider(Collider carCollider)
     {
-        Vector3 extendedExtents = carCollider.bounds.extents + new Vector3(0f, 0f, 1f);
+        Vector3 extendedExtents = carCollider.bounds.extents + new Vector3(0f, 0f, 0.5f);
+
+        Vector3 forward = carCollider.transform.forward;
+        Vector3 boxCenter = carCollider.bounds.center + (forward * forwardOffset);
+
         Collider[] hitColliders =
-            Physics.OverlapBox(carCollider.bounds.center, extendedExtents, Quaternion.identity, trafficLayer);
+            Physics.OverlapBox(boxCenter, extendedExtents, carCollider.transform.rotation, trafficLayer);
 
         foreach (Collider hitCollider in hitColliders)
         {
@@ -173,21 +178,33 @@ public class CarAIDynamicObstacle : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Vector3 center = carCollider.bounds.center;
-        Vector3 halfExtents = carCollider.bounds.extents + new Vector3(0f, 0f, 1f);
-        _ = Quaternion.identity;
+        //DrawCubeCheckingInsideCollider();
 
+        //DrawCubeCheckingCarInFrontOF();
+    }
+
+    private void DrawCubeCheckingInsideCollider()
+    {
+        Vector3 extendedExtents = carCollider.bounds.extents + new Vector3(0f, 0f, 0.5f);
+
+        Vector3 boxCenter = carCollider.bounds.center + (carCollider.transform.forward * forwardOffset);
+        Quaternion boxRotation = carCollider.transform.rotation;
+
+        Gizmos.color = Color.green;
+        Gizmos.matrix = Matrix4x4.TRS(boxCenter, boxRotation, Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, extendedExtents * 2f);
+    }
+
+    private void DrawCubeCheckingCarInFrontOF()
+    {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(center, halfExtents * 2f);
-
-        //Gizmos.color = Color.red;
-        // Vector3 rayOrigin = transform.position + (Vector3.up * raycastOffsetY);
-        //  Collider carCollider = GetComponentInChildren<Collider>();
-        // Vector3 carSize = carCollider.bounds.size;
-        //  float halfCarLength = carSize.z / 2f;
-        // Vector3 boxSize = new(1.2f, 1f, brakeRaycastDistance);
-        // Vector3 boxCenter = rayOrigin + (transform.forward * (halfCarLength + (brakeRaycastDistance / 2f)));
-        // Gizmos.DrawRay(rayOrigin, transform.forward * (halfCarLength + brakeRaycastDistance));
-        // Gizmos.DrawWireCube(boxCenter, boxSize);
+        Vector3 rayOrigin = transform.position + (Vector3.up * raycastOffsetY);
+        Collider carCollider = GetComponentInChildren<Collider>();
+        Vector3 carSize = carCollider.bounds.size;
+        float halfCarLength = carSize.z / 2f;
+        Vector3 boxSize = new(1.2f, 1f, brakeRaycastDistance);
+        Vector3 boxCenter = rayOrigin + (transform.forward * (halfCarLength + (brakeRaycastDistance / 2f)));
+        Gizmos.DrawRay(rayOrigin, transform.forward * (halfCarLength + brakeRaycastDistance));
+        Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 }
