@@ -1,41 +1,54 @@
 using UnityEngine;
 
-public class PlayerHitDetection : MonoBehaviour
+public class PlayerPrefabHandler : MonoBehaviour
 {
-    public Material normal, immune;
+    [Header("Car Effects")] //
+    public ParticleSystem sparksL;
+
+    public ParticleSystem sparksR;
+    public TrailRenderer leftTrailRenderer, rightTrailRenderer;
+
+    [Header("Other")] //
+    public Material normal;
+
+    public Material immune;
+
     private bool isImmune = false;
-    private readonly float immunityDuration = 3;
+
+    private readonly float immunityDuration = 2;
     private float currentImmunityDuration = 0;
 
-    public ParticleSystem sparksL, sparksR;
     private GameObject playerCarPrefab;
-    public TrailRenderer leftTrailRenderer;
-    public TrailRenderer rightTrailRenderer;
-    public Vector2 input;
-    public GameObject leftTireTrail;
-    public GameObject rightTireTrail;
-    public float minForwardVelocity;
-    public float maxForwardVelocity;
+
+    private Vector2 input;
+
+    private float minForwardVelocity;
+    private float maxForwardVelocity;
+    private CarModelHandler carModelHandler;
 
     private void Start()
     {
-        leftTrailRenderer.emitting = false;
-        rightTrailRenderer.emitting = false;
-        minForwardVelocity = PlayerSteering.instance.minForwardVelocity;
-        maxForwardVelocity = PlayerSteering.instance.maxForwardVelocity;
+        SetParameters();
     }
 
     private void Update()
     {
         UpdateImmunity();
         UpdateTrailEffects();
+        UpdateBrakeLights();
+    }
+
+    private void SetParameters()
+    {
+        leftTrailRenderer.emitting = false;
+        rightTrailRenderer.emitting = false;
+        minForwardVelocity = PlayerSteering.instance.minForwardVelocity;
+        maxForwardVelocity = PlayerSteering.instance.maxForwardVelocity;
+        carModelHandler = GetComponentInChildren<CarModelHandler>();
     }
 
     public void UpdateTrailEffects()
     {
-        Transform carTransform = PlayerManager.instance.GetPlayerInstance().transform;
-        _ = carTransform.position;
-
         float currentVelocity = PlayerSteering.instance.rb.velocity.z;
 
         bool accelerating = input.y > 0 && currentVelocity < maxForwardVelocity;
@@ -52,6 +65,14 @@ public class PlayerHitDetection : MonoBehaviour
         {
             rightTrailRenderer.emitting = shouldEmit;
         }
+    }
+
+    private void UpdateBrakeLights()
+    {
+        float currentVelocity = PlayerSteering.instance.rb.velocity.z;
+        bool isBraking = input.y < 0 && currentVelocity > minForwardVelocity + 0.01f;
+
+        carModelHandler.SetRearBrakeLight(isBraking);
     }
 
     public void SetCarPrefab(GameObject playerCarPrefab)
@@ -130,20 +151,20 @@ public class PlayerHitDetection : MonoBehaviour
         else
         {
             bool flash = Mathf.PingPong(currentImmunityDuration * 5, 1) > 0.5f;
-            SetCarMaterial(flash ? immune : normal);
+            carModelHandler.SetImmuneCarMaterial(flash ? immune : normal);
         }
     }
 
     public void StartImmunity()
     {
         currentImmunityDuration = immunityDuration;
-        SetCarMaterial(immune);
+        carModelHandler.SetImmuneCarMaterial(immune);
         SetCarImmune(true);
     }
 
     private void EndImmunity()
     {
-        SetCarMaterial(normal);
+        carModelHandler.SetImmuneCarMaterial(normal);
         SetCarImmune(false);
     }
 
@@ -156,10 +177,5 @@ public class PlayerHitDetection : MonoBehaviour
     {
         inputVector.Normalize();
         input = inputVector;
-    }
-
-    private void SetCarMaterial(Material materialToSet)
-    {
-        playerCarPrefab.transform.Find("body").GetComponent<MeshRenderer>().material = materialToSet;
     }
 }

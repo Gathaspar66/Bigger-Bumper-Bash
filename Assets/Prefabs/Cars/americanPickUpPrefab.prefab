@@ -535,9 +535,23 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e58fb4ee9b7980747b650be3f66ca5e8, type: 2}
   - {fileID: 2100000, guid: 7524036e7e6947c42ae28f25d9defe0e, type: 2}
   - {fileID: 2100000, guid: fcb5ce262a3641241ad526da8485aef7, type: 2}
-  smoothnessRange: {x: 0.5, y: 0.8}
-  metallicRange: {x: 0.6, y: 1}
   carBody: {fileID: 2086519504594111200}
+  frontLight: {fileID: 5760212716992451060}
+  glowingFrontLight: {fileID: 2100000, guid: c8a9323daa6199649b2223f878db57e7, type: 2}
+  originalMaterial: {fileID: 2100000, guid: 679e0417e9cd1fc46862443932dc21bf, type: 2}
+  rearLight: {fileID: 4240991707655445558}
+  glowingRearLight: {fileID: 2100000, guid: baa775f1c7338a249b61c30d1dc6fc8a, type: 2}
+  originalRearMaterial: {fileID: 2100000, guid: 3f8eca09f18c54f4289b2f1593761fef, type: 2}
+--- !u!1 &4240991707655445558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1959458328434359572, guid: 1d6ed03261e2f804489a0399ff6c5de2, type: 3}
+  m_PrefabInstance: {fileID: 2443875195726635298}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5760212716992451060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1289716725433405226, guid: 1d6ed03261e2f804489a0399ff6c5de2, type: 3}
+  m_PrefabInstance: {fileID: 2443875195726635298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6660471238197686355
 PrefabInstance:
   m_ObjectHideFlags: 0

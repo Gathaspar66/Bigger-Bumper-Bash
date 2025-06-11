@@ -148,6 +148,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1354009939153525819, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -293,11 +297,25 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e58fb4ee9b7980747b650be3f66ca5e8, type: 2}
   - {fileID: 2100000, guid: 7524036e7e6947c42ae28f25d9defe0e, type: 2}
   - {fileID: 2100000, guid: fcb5ce262a3641241ad526da8485aef7, type: 2}
-  smoothnessRange: {x: 0.5, y: 0.8}
-  metallicRange: {x: 0.6, y: 1}
   carBody: {fileID: 3560421507400607878}
+  frontLight: {fileID: 3080714938035952098}
+  rearLight: {fileID: 5960040538815023465}
+  glowingFrontLight: {fileID: 2100000, guid: c8a9323daa6199649b2223f878db57e7, type: 2}
+  glowingRearLight: {fileID: 2100000, guid: baa775f1c7338a249b61c30d1dc6fc8a, type: 2}
+  originalMaterial: {fileID: 2100000, guid: 679e0417e9cd1fc46862443932dc21bf, type: 2}
+  originalRearMaterial: {fileID: 2100000, guid: 3f8eca09f18c54f4289b2f1593761fef, type: 2}
+--- !u!1 &3080714938035952098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2789804542365293222, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
+  m_PrefabInstance: {fileID: 898333550035272516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3560421507400607878 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4819223349682164798, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
+  m_PrefabInstance: {fileID: 898333550035272516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5960040538815023465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6827972501790018093, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
   m_PrefabInstance: {fileID: 898333550035272516}
   m_PrefabAsset: {fileID: 0}

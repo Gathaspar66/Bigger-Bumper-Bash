@@ -143,6 +143,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2367278123463380490}
   m_SourcePrefab: {fileID: 100100000, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
+--- !u!1 &2031017034516631239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6827972501790018093, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
+  m_PrefabInstance: {fileID: 4822875724093703402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5633759295636568507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
@@ -192,9 +197,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e58fb4ee9b7980747b650be3f66ca5e8, type: 2}
   - {fileID: 2100000, guid: 7524036e7e6947c42ae28f25d9defe0e, type: 2}
   - {fileID: 2100000, guid: fcb5ce262a3641241ad526da8485aef7, type: 2}
-  smoothnessRange: {x: 0.5, y: 0.8}
-  metallicRange: {x: 0.6, y: 1}
   carBody: {fileID: 9219121387423723304}
+  frontLight: {fileID: 8082610117108431332}
+  rearLight: {fileID: 2031017034516631239}
+  glowingFrontLight: {fileID: 2100000, guid: c8a9323daa6199649b2223f878db57e7, type: 2}
+  glowingRearLight: {fileID: 2100000, guid: baa775f1c7338a249b61c30d1dc6fc8a, type: 2}
+  originalMaterial: {fileID: 2100000, guid: 679e0417e9cd1fc46862443932dc21bf, type: 2}
+  originalRearMaterial: {fileID: 2100000, guid: 3f8eca09f18c54f4289b2f1593761fef, type: 2}
+--- !u!1 &8082610117108431332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3658463282652265742, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
+  m_PrefabInstance: {fileID: 4822875724093703402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9219121387423723304 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4819223349682164798, guid: 1d8769c2c68e093409448819d238efb5, type: 3}

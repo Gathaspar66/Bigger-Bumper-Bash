@@ -18,15 +18,15 @@ public class PlayerSteering : MonoBehaviour
 
     [Header("Other")] //
     public Rigidbody rb;
-
+    private readonly CarModelHandler carModelHandler;
     public Transform gameModel;
     private Vector2 input = Vector2.zero;
     private readonly bool wHeld = false;
     public static PlayerSteering instance;
 
     private float targetTiltX = 0f;
-    public float tiltSpeed = 5f;
-    public float tiltValue = 5f;
+    private readonly float tiltSpeed = 5f;
+    private readonly float tiltValue = 5f;
 
     private void Awake()
     {
@@ -131,6 +131,7 @@ public class PlayerSteering : MonoBehaviour
         }
 
         rb.AddForce(rb.transform.forward * brakeMultiplier * input.y);
+        //carModelHandler.SetRearBrakeLight(isBraking);
     }
 
     public void Steer()
@@ -154,7 +155,8 @@ public class PlayerSteering : MonoBehaviour
         else
         {
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, rb.velocity.y, rb.velocity.z),
-                Time.fixedDeltaTime * 3);}
+                Time.fixedDeltaTime * 3);
+        }
     }
 
 
