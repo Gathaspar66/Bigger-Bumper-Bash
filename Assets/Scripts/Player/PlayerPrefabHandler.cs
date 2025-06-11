@@ -25,6 +25,7 @@ public class PlayerPrefabHandler : MonoBehaviour
     private float minForwardVelocity;
     private float maxForwardVelocity;
     private CarModelHandler carModelHandler;
+    public CarAIDynamicObstacle carAIDynamicObstacle;
 
     private void Start()
     {
@@ -107,6 +108,12 @@ public class PlayerPrefabHandler : MonoBehaviour
             SoundManager.instance.PlaySFX("crash");
 
             PlayerManager.instance.GetDamaged();
+
+            CarAIDynamicObstacle aiCar = other.GetComponentInParent<CarAIDynamicObstacle>();
+            if (aiCar != null)
+            {
+                aiCar.StopCarDueToCrash();
+            }
         }
     }
 

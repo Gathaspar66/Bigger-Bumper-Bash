@@ -25,6 +25,8 @@ public class CarAIDynamicObstacle : MonoBehaviour
     private Vector2 metallicRange = new(0.6f, 1f);
     private bool playerDetected = false;
     private CarModelHandler carModelHandler;
+    private bool isStoppedDueToCrash = false;
+    public static EffectManager effectManager;
 
     private void Awake()
     {
@@ -108,7 +110,10 @@ public class CarAIDynamicObstacle : MonoBehaviour
 
     private void MoveCar()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        if (!isStoppedDueToCrash)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
     }
 
     private void DetectOtherCarsAndBrake()
@@ -174,6 +179,14 @@ public class CarAIDynamicObstacle : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void StopCarDueToCrash()
+    {
+        speed = 0f;
+        isStoppedDueToCrash = true;
+
+        EffectManager.instance.SpawnAnEffect(Effect.CRASH_AND_FIRE, transform.position);
     }
 
     private void OnDrawGizmos()

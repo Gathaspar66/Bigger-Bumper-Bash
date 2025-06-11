@@ -89,6 +89,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: smokePrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235754, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
