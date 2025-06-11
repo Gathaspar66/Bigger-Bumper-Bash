@@ -28,11 +28,7 @@ public class PlayerPrefabHandler : MonoBehaviour
 
     private void Start()
     {
-        leftTrailRenderer.emitting = false;
-        rightTrailRenderer.emitting = false;
-        minForwardVelocity = PlayerSteering.instance.minForwardVelocity;
-        maxForwardVelocity = PlayerSteering.instance.maxForwardVelocity;
-        carModelHandler = GetComponentInChildren<CarModelHandler>();
+        SetParameters();
     }
 
     private void Update()
@@ -40,6 +36,15 @@ public class PlayerPrefabHandler : MonoBehaviour
         UpdateImmunity();
         UpdateTrailEffects();
         UpdateBrakeLights();
+    }
+
+    private void SetParameters()
+    {
+        leftTrailRenderer.emitting = false;
+        rightTrailRenderer.emitting = false;
+        minForwardVelocity = PlayerSteering.instance.minForwardVelocity;
+        maxForwardVelocity = PlayerSteering.instance.maxForwardVelocity;
+        carModelHandler = GetComponentInChildren<CarModelHandler>();
     }
 
     public void UpdateTrailEffects()
