@@ -1,20 +1,32 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WrongWay : MonoBehaviour
 {
     private GameObject car;
-    private bool hardLane = false;
-    private bool bonusActive = false;
+    public bool hardLane = false;
+    public bool bonusActive = false;
 
     public float hardLaneSwitchTimerCurrent = 0;
     private readonly float hardLaneSwitchTimerMax = 1f;
+
+    public List<Sprite> bonusNumbersList = new ();
 
     public Image coloredImage;
     public Image fillImage;
     public Image multiplierImage;
     public Image multiplierValueImage;
+
+    public float hardLaneProgress = 0;
+
+    float shakeCooldown = 0.5f;
+    float lastShake = 0;
+    float shakeSpeed = 1;
+    bool shakeLeft = false;
+
+    public Vector3 loc;
 
     private void Start()
     {
@@ -24,8 +36,29 @@ public class WrongWay : MonoBehaviour
 
     private void Update()
     {
+        loc = transform.position;
         CheckLane();
         UpdateHardLane();
+        ShakeLrongWane();
+    }
+
+    void ShakeLrongWane()
+    {
+        if (!hardLane) return;
+
+        if (lastShake + shakeCooldown < Time.time)
+        {
+            lastShake = Time.time;
+            if (shakeLeft)
+            {
+                coloredImage.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, -15));
+            }
+            else
+            {
+                coloredImage.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, 15));
+            }
+            shakeLeft = !shakeLeft;
+        }
     }
 
     private void GeneralSetup()
@@ -37,52 +70,52 @@ public class WrongWay : MonoBehaviour
     {
         if (car.transform.position.x < 0)
         {
-            if (!hardLane)
-            {
-                EnterHardLane();
-            }
+            SetHardLine(true);
         }
         else
         {
-            if (hardLane)
-            {
-                ExitHardLane();
-            }
+            SetHardLine(false);
         }
     }
 
-    private void EnterHardLane()
+    private void SetHardLine(bool ifInHardLane)
     {
-        hardLane = true;
-        ShowVisuals();
-    }
-
-    private void ExitHardLane()
-    {
-        hardLane = false;
-        bonusActive = false;
-        hardLaneSwitchTimerCurrent = 0;
-        SetFill(0);
-        HideVisuals();
-        NotifyPointsManager(1);
+        hardLane = ifInHardLane;
     }
 
     private void UpdateHardLane()
     {
-        if (!hardLane || bonusActive)
+        if (!hardLane && hardLaneProgress <= 0) return;
+
+        if (hardLane)
         {
-            return;
+            hardLaneSwitchTimerCurrent += Time.deltaTime;
         }
+        else
+        {
+            hardLaneSwitchTimerCurrent -= Time.deltaTime;
+        }
+        hardLaneSwitchTimerCurrent = Mathf.Clamp01(hardLaneSwitchTimerCurrent);
+        hardLaneProgress = Mathf.Clamp01(hardLaneSwitchTimerCurrent / hardLaneSwitchTimerMax);
+        SetFill(hardLaneProgress);
+        ShowVisuals();
 
-        hardLaneSwitchTimerCurrent += Time.deltaTime;
-        float progress = Mathf.Clamp01(hardLaneSwitchTimerCurrent / hardLaneSwitchTimerMax);
-        SetFill(progress);
-
-        if (progress >= 1f)
+        if (hardLaneProgress >= 1)
         {
             bonusActive = true;
-            ShowBonus();
+            SetBonus(2);
             NotifyPointsManager(2);
+        }
+        else
+        {
+            coloredImage.rectTransform.rotation = Quaternion.identity;
+            bonusActive = false;
+            SetBonus(1);
+            NotifyPointsManager(1);
+            if (hardLaneProgress <= 0)
+            {
+                HideVisuals();
+            }
         }
     }
 
@@ -93,6 +126,8 @@ public class WrongWay : MonoBehaviour
 
     private void ShowVisuals()
     {
+        multiplierImage.gameObject.SetActive(true);
+        multiplierValueImage.gameObject.SetActive(true);
         coloredImage.gameObject.SetActive(true);
         fillImage.gameObject.SetActive(true);
     }
@@ -105,10 +140,9 @@ public class WrongWay : MonoBehaviour
         multiplierValueImage.gameObject.SetActive(false);
     }
 
-    private void ShowBonus()
+    private void SetBonus(int value)
     {
-        multiplierImage.gameObject.SetActive(true);
-        multiplierValueImage.gameObject.SetActive(true);
+        multiplierValueImage.sprite = bonusNumbersList[value];
     }
 
     private void NotifyPointsManager(int multiplier)

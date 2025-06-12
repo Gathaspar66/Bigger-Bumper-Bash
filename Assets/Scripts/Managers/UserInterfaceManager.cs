@@ -46,11 +46,6 @@ public class UserInterfaceManager : MonoBehaviour
             PlayerManager.instance.GetPlayerMaxHealth());
     }
 
-    public void UpdatePickupMultiplier(int value)
-    {
-        pickupMultiplier.GetComponent<PickupMultiplier>().UpdatePickupMultiplier(value);
-    }
-
     public void UpdateHealthDisplay(int amount, int maxAmount)
     {
         healthDisplay.GetComponent<HealthDisplay>().UpdateHealthVisuals(amount, maxAmount);
@@ -80,11 +75,6 @@ public class UserInterfaceManager : MonoBehaviour
         pointsMultiplierDisplay.SetActive(false);
     }
 
-    public void OnIngameMenuToggle(bool ifOpen)
-    {
-
-    }
-
     public void UpdatePointsMultiplierDisplay(int amount)
     {
         pointsMultiplierDisplay.GetComponent<PointsMultiplierDisplay>().UpdatePointsMultiplierDisplay(amount);
@@ -93,5 +83,15 @@ public class UserInterfaceManager : MonoBehaviour
     public void UpdatePointsDisplay(int amount)
     {
         pointsDisplay.GetComponent<PointsDisplay>().SetDigits(amount);
+    }
+
+    public void UpdatePickupMultiplierVisual(int value)
+    {
+        pickupMultiplier.GetComponent<PickupMultiplier>().UpdatePickupMultiplierVisual(value);
+    }
+
+    public void UpdatePickupMultiplierFill(float value)
+    {
+        pickupMultiplier.GetComponent<PickupMultiplier>().UpdatePickupMultiplierFill(value);
     }
 }

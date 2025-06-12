@@ -99,8 +99,9 @@ public class PointsManager : MonoBehaviour
                 cratePointMultiplier -= 1;
             }
         }
-
-        UserInterfaceManager.instance.UpdatePickupMultiplier((int)cratePointMultiplier);
+        float progress = Mathf.Clamp01(cratePointMultiplierTimer / cratePointMultiplierTimerMax);
+        UserInterfaceManager.instance.UpdatePickupMultiplierFill(progress);
+        UserInterfaceManager.instance.UpdatePickupMultiplierVisual((int)cratePointMultiplier);
     }
 
     public void SavePlayerScore()
