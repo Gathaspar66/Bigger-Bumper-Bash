@@ -712,6 +712,10 @@ PrefabInstance:
       propertyPath: tireTrailPrefab
       value: 
       objectReference: {fileID: 544749466699133553, guid: dfa57f0c9015aeb49a3f04fbfe1b27b6, type: 3}
+    - target: {fileID: 5464418221873440195, guid: f33b0b320e604094aae6257a3bf9a764, type: 3}
+      propertyPath: crashAndFireEffect
+      value: 
+      objectReference: {fileID: 6247273656231086080, guid: d868fcfe1c413964ab3ebd599d8ac918, type: 3}
     - target: {fileID: 8332406927487935370, guid: f33b0b320e604094aae6257a3bf9a764, type: 3}
       propertyPath: m_Name
       value: EffectManager
