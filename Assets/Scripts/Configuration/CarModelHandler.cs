@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CarModelHandler : MonoBehaviour
 {
-
-
     [Header("Car Elements")] //
-    public GameObject carBody;
+    public List<GameObject> carBody = new();
+    public List<GameObject> damagedBase = new();
+    public List<GameObject> damagedSmall = new();
+    public List<GameObject> damagedBig = new();
+    public List<GameObject> damagedDestroyed = new();
+    public List<List<GameObject>> listOfListsCarDamageParts = new();
 
     public GameObject frontLight;
     public GameObject rearLight;
@@ -26,9 +29,35 @@ public class CarModelHandler : MonoBehaviour
 
     private bool isBlinking = false;
 
-    public void Activate()
+    public void RandomizeBodyColor()
     {
         ChangeCarBodyColor();
+    }
+
+    public void SetCarDamagedLists()
+    {
+        listOfListsCarDamageParts.Add(damagedDestroyed);
+        listOfListsCarDamageParts.Add(damagedBig);
+        listOfListsCarDamageParts.Add(damagedSmall);
+        listOfListsCarDamageParts.Add(damagedBase);
+    }
+
+    public void UpdatePlayerDamagedState(int health)
+    {
+        foreach (List<GameObject> i in listOfListsCarDamageParts)
+        {
+            DisableAllDamagedState(i, false);
+        }
+        health = Mathf.Clamp(health, 0, 3); //multihit on death protection
+        DisableAllDamagedState(listOfListsCarDamageParts[health], false);
+    }
+
+    void DisableAllDamagedState(List<GameObject> list, bool enable)
+    {
+        foreach (GameObject i in list)
+        {
+            i.SetActive(enable);
+        }
     }
 
     public void BlinkFrontLights()
@@ -37,7 +66,6 @@ public class CarModelHandler : MonoBehaviour
         {
             return;
         }
-
         _ = StartCoroutine(BlinkCoroutine());
     }
 
@@ -67,19 +95,22 @@ public class CarModelHandler : MonoBehaviour
 
     public void ChangeCarBodyColor()
     {
-        frontLightRenderer = frontLight.GetComponent<Renderer>();
-
-        Renderer renderer = carBody.GetComponent<Renderer>();
-
+        //frontLightRenderer = frontLight.GetComponent<Renderer>();
         Material baseMaterial = carPaintMaterials[Random.Range(0, carPaintMaterials.Count)];
-        Material matInstance = new(baseMaterial);
-        renderer.material = matInstance;
+        foreach (GameObject currentCarBodyElement in carBody)
+        {
+            Renderer renderer = currentCarBodyElement.GetComponent<Renderer>();
+            Material matInstance = new(baseMaterial);
+            renderer.material = matInstance;
+        }
     }
 
     public void SetImmuneCarMaterial(Material materialToSet)
     {
-        MeshRenderer carRenderer = carBody.GetComponent<MeshRenderer>();
-
-        carRenderer.material = materialToSet;
+        foreach (GameObject currentCarBodyElement in carBody)
+        {
+            MeshRenderer carRenderer = currentCarBodyElement.GetComponent<MeshRenderer>();
+            carRenderer.material = materialToSet;
+        }
     }
 }

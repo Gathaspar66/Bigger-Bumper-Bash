@@ -186,6 +186,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d543310854a0f46a6756e24747ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carBody:
+  - {fileID: 9219121387423723304}
+  damagedBase: []
+  damagedSmall: []
+  damagedBig: []
+  damagedDestroyed: []
+  frontLight: {fileID: 8082610117108431332}
+  rearLight: {fileID: 2031017034516631239}
   carPaintMaterials:
   - {fileID: 2100000, guid: 6a78446394652dc4291dfc344d7490e4, type: 2}
   - {fileID: 2100000, guid: 06bb3d477c92f034784e6913c74e2ff8, type: 2}
@@ -197,9 +205,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e58fb4ee9b7980747b650be3f66ca5e8, type: 2}
   - {fileID: 2100000, guid: 7524036e7e6947c42ae28f25d9defe0e, type: 2}
   - {fileID: 2100000, guid: fcb5ce262a3641241ad526da8485aef7, type: 2}
-  carBody: {fileID: 9219121387423723304}
-  frontLight: {fileID: 8082610117108431332}
-  rearLight: {fileID: 2031017034516631239}
   glowingFrontLight: {fileID: 2100000, guid: c8a9323daa6199649b2223f878db57e7, type: 2}
   glowingRearLight: {fileID: 2100000, guid: baa775f1c7338a249b61c30d1dc6fc8a, type: 2}
   originalMaterial: {fileID: 2100000, guid: 679e0417e9cd1fc46862443932dc21bf, type: 2}

@@ -27,10 +27,6 @@ public class PlayerPrefabHandler : MonoBehaviour
     private CarModelHandler carModelHandler;
     public CarAIDynamicObstacle carAIDynamicObstacle;
 
-    private void Start()
-    {
-        SetParameters();
-    }
 
     private void Update()
     {
@@ -39,13 +35,14 @@ public class PlayerPrefabHandler : MonoBehaviour
         UpdateBrakeLights();
     }
 
-    private void SetParameters()
+    public void SetParameters()
     {
         leftTrailRenderer.emitting = false;
         rightTrailRenderer.emitting = false;
         minForwardVelocity = PlayerSteering.instance.minForwardVelocity;
         maxForwardVelocity = PlayerSteering.instance.maxForwardVelocity;
         carModelHandler = GetComponentInChildren<CarModelHandler>();
+        carModelHandler.SetCarDamagedLists();
     }
 
     public void UpdateTrailEffects()
@@ -184,5 +181,10 @@ public class PlayerPrefabHandler : MonoBehaviour
     {
         inputVector.Normalize();
         input = inputVector;
+    }
+
+    public void UpdatePlayerDamagedState(int health)
+    {
+        carModelHandler.UpdatePlayerDamagedState(health);
     }
 }

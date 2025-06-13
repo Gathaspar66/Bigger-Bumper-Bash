@@ -55,6 +55,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFX(string id)
     {
+        return;
         if (soundMap.TryGetValue(id, out AudioClip clip))
         {
             GameObject tempAudio = new("SFX_" + id);
@@ -73,6 +74,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(string id)
     {
+        return;
         if (soundMap.TryGetValue(id, out AudioClip clip))
         {
             if (musicSource.clip != clip)
