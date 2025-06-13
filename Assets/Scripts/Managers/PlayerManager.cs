@@ -75,19 +75,18 @@ public class PlayerManager : MonoBehaviour
     public void GetDamaged()
     {
         playerHealth -= 1;
+        UpdatePlayerDamagedState();
         UserInterfaceManager.instance.UpdateHealthDisplay(playerHealth, playerMaxHealth);
         if (playerHealth <= 0)
         {
             GameManager.instance.OnPlayerDeath();
             return;
         }
-        UpdatePlayerDamagedState();
         StartImmunity();
     }
 
     void UpdatePlayerDamagedState()
     {
-        print(playerHealth);
         playerInstance.GetComponent<PlayerPrefabHandler>().UpdatePlayerDamagedState(playerHealth);
     }
 

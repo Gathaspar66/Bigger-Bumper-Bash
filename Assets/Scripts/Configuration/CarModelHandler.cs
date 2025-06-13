@@ -29,9 +29,11 @@ public class CarModelHandler : MonoBehaviour
 
     private bool isBlinking = false;
 
-    public void RandomizeBodyColor()
+    public void SetupAICarModel()
     {
         ChangeCarBodyColor();
+        SetCarDamagedLists();
+        UpdatePlayerDamagedState(3);
     }
 
     public void SetCarDamagedLists()
@@ -46,13 +48,13 @@ public class CarModelHandler : MonoBehaviour
     {
         foreach (List<GameObject> i in listOfListsCarDamageParts)
         {
-            DisableAllDamagedState(i, false);
+            SetCarDamagedState(i, false);
         }
         health = Mathf.Clamp(health, 0, 3); //multihit on death protection
-        DisableAllDamagedState(listOfListsCarDamageParts[health], false);
+        SetCarDamagedState(listOfListsCarDamageParts[health], true);
     }
 
-    void DisableAllDamagedState(List<GameObject> list, bool enable)
+    void SetCarDamagedState(List<GameObject> list, bool enable)
     {
         foreach (GameObject i in list)
         {
@@ -95,7 +97,8 @@ public class CarModelHandler : MonoBehaviour
 
     public void ChangeCarBodyColor()
     {
-        //frontLightRenderer = frontLight.GetComponent<Renderer>();
+        frontLightRenderer = frontLight.GetComponent<Renderer>();
+
         Material baseMaterial = carPaintMaterials[Random.Range(0, carPaintMaterials.Count)];
         foreach (GameObject currentCarBodyElement in carBody)
         {

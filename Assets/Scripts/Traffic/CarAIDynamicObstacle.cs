@@ -96,7 +96,7 @@ public class CarAIDynamicObstacle : MonoBehaviour
         GameObject spawnedCar = Instantiate(carPrefabs[randomIndex], spawnPosition, transform.rotation);
         spawnedCar.transform.SetParent(transform);
 
-        spawnedCar.GetComponent<CarModelHandler>().RandomizeBodyColor();
+        spawnedCar.GetComponent<CarModelHandler>().SetupAICarModel();
     }
 
     private void DestroyCarIfTooFar()
