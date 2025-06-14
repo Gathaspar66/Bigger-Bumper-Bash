@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CarModelHandler : MonoBehaviour
 {
-
-
     [Header("Car Elements")] //
     public GameObject carBody;
 
@@ -14,6 +12,7 @@ public class CarModelHandler : MonoBehaviour
 
     [Header("Car Materials")] //
     public List<Material> carPaintMaterials;
+
     public Material glowingFrontLight;
 
     public Material glowingRearLight;
