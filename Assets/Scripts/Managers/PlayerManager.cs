@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
         carConfigs = JsonUtility.FromJson<CarConfigDictionary>(carConfigFile.text);
         config = carConfigs.Unikacz;
         playerInstance.GetComponent<PlayerSteering>().LoadCarSettings(config);
+        playerInstance.GetComponent<PlayerPrefabHandler>().SetParameters();
     }
 
     public void SpawnPlayerPrefab()
@@ -49,7 +50,6 @@ public class PlayerManager : MonoBehaviour
         carInstance = Instantiate(unikaczPrefab, playerInstance.transform.position, Quaternion.identity);
         carInstance.transform.SetParent(playerInstance.transform);
         playerInstance.GetComponent<PlayerPrefabHandler>().SetCarPrefab(carInstance);
-        playerInstance.GetComponent<PlayerPrefabHandler>().SetParameters();
     }
 
     public void SpawnCamera()

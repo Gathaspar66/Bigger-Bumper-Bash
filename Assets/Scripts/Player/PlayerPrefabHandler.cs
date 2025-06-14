@@ -43,7 +43,6 @@ public class PlayerPrefabHandler : MonoBehaviour
         maxForwardVelocity = PlayerSteering.instance.maxForwardVelocity;
         carModelHandler = GetComponentInChildren<CarModelHandler>();
         carModelHandler.SetCarDamagedLists();
-        print(minForwardVelocity + " " + maxForwardVelocity);
     }
 
     public void UpdateTrailEffects()
@@ -52,10 +51,8 @@ public class PlayerPrefabHandler : MonoBehaviour
 
         bool accelerating = input.y > 0 && currentVelocity < maxForwardVelocity;
         bool braking = input.y < 0 && currentVelocity > minForwardVelocity;
-        print(input + " " + currentVelocity);
 
         bool shouldEmit = accelerating || braking;
-
         if (leftTrailRenderer != null)
         {
             leftTrailRenderer.emitting = shouldEmit;
