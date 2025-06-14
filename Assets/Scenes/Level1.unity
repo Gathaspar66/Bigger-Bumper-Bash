@@ -778,6 +778,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: crashClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f7b4faeafdbfa14b8a16e604ce8b83b, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: sleepClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7abc9754b6819dd4ea1cad3e27a27ba4, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: level1Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7abc9754b6819dd4ea1cad3e27a27ba4, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: pointsClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b6af19731b5ccc941808b522805619b5, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: sounds.Array.size
       value: 3
       objectReference: {fileID: 0}
