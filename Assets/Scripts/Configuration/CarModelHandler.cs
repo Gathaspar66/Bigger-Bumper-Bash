@@ -29,6 +29,8 @@ public class CarModelHandler : MonoBehaviour
 
     private bool isBlinking = false;
 
+    public Animator unikaczAnimator;
+
     public void SetupAICarModel()
     {
         ChangeCarBodyColor();
@@ -52,6 +54,10 @@ public class CarModelHandler : MonoBehaviour
         }
         health = Mathf.Clamp(health, 0, 3); //multihit on death protection
         SetCarDamagedState(listOfListsCarDamageParts[health], true);
+        if (health <= 0)
+        {
+            gameObject.GetComponent<Animator>().speed = 0.1f;
+        }
     }
 
     void SetCarDamagedState(List<GameObject> list, bool enable)
