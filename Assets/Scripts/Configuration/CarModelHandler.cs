@@ -31,6 +31,8 @@ public class CarModelHandler : MonoBehaviour
 
     public Animator unikaczAnimator;
 
+    PlayerPrefabHandler pph;
+
     public void SetupAICarModel()
     {
         ChangeCarBodyColor();
@@ -46,6 +48,11 @@ public class CarModelHandler : MonoBehaviour
         listOfListsCarDamageParts.Add(damagedBase);
     }
 
+    internal void SetPlayerPrefabHandler(PlayerPrefabHandler playerPrefabHandler)
+    {
+        pph = playerPrefabHandler;
+    }
+
     public void UpdatePlayerDamagedState(int health)
     {
         foreach (List<GameObject> i in listOfListsCarDamageParts)
@@ -57,7 +64,11 @@ public class CarModelHandler : MonoBehaviour
         if (health <= 0)
         {
             gameObject.GetComponent<Animator>().speed = 0.1f;
+            EffectManager.instance.SpawnAnEffect(Effect.CRASH_AND_FIRE,
+                pph.gameObject.transform.position + new Vector3(0, 0.750999987f, 1.20599997f));
         }
+        
+        if (pph != null) pph.SetSmokeParticle(health == 1);
     }
 
     void SetCarDamagedState(List<GameObject> list, bool enable)

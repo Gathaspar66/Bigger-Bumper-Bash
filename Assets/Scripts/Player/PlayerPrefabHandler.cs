@@ -4,8 +4,8 @@ public class PlayerPrefabHandler : MonoBehaviour
 {
     [Header("Car Effects")] //
     public ParticleSystem sparksL;
-
     public ParticleSystem sparksR;
+    public ParticleSystem smokePrefab;
     public TrailRenderer leftTrailRenderer, rightTrailRenderer;
 
     [Header("Other")] //
@@ -43,6 +43,7 @@ public class PlayerPrefabHandler : MonoBehaviour
         maxForwardVelocity = PlayerSteering.instance.maxForwardVelocity;
         carModelHandler = GetComponentInChildren<CarModelHandler>();
         carModelHandler.SetCarDamagedLists();
+        carModelHandler.SetPlayerPrefabHandler(this);
     }
 
     public void UpdateTrailEffects()
@@ -185,5 +186,17 @@ public class PlayerPrefabHandler : MonoBehaviour
     public void UpdatePlayerDamagedState(int health)
     {
         carModelHandler.UpdatePlayerDamagedState(health);
+    }
+
+    public void SetSmokeParticle(bool ifActive)
+    {
+        if (ifActive)
+        {
+            smokePrefab.Play();
+        }
+        else
+        {
+            smokePrefab.Stop();
+        }
     }
 }
