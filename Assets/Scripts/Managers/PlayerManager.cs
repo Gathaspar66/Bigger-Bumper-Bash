@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     public TextAsset carConfigFile;
     private int playerMaxHealth = 2;
     private int playerHealth;
+    unikaczhandler unikhan;
+
 
     private void Awake()
     {
@@ -47,7 +49,10 @@ public class PlayerManager : MonoBehaviour
     {
         carInstance = Instantiate(unikaczPrefab, playerInstance.transform.position, Quaternion.identity);
         carInstance.transform.SetParent(playerInstance.transform);
-        playerInstance.GetComponent<PlayerPrefabHandler>().SetCarPrefab(carInstance);
+
+        unikhan = carInstance.GetComponent<unikaczhandler>();
+        playerInstance.GetComponent<PlayerHitDetection>().SetCarPrefab(carInstance);
+
     }
 
     public void SpawnCamera()
@@ -74,6 +79,7 @@ public class PlayerManager : MonoBehaviour
     {
         playerHealth -= 1;
         UserInterfaceManager.instance.UpdateHealthDisplay(playerHealth, playerMaxHealth);
+        unikhan.SetBroken(playerHealth);
         if (playerHealth <= 0)
         {
             GameManager.instance.OnPlayerDeath();
