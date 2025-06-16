@@ -1,21 +1,31 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum SoundEffect
+{
+    POINTS_SOUND,
+    CRASH_SOUND,
+    LEVEL1_MUSIC,
+    Default
+}
+
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;
-    [Header("Sound Configuration")] public List<Sound> sounds = new();
+    [Header("Audio Clips")] //
+    public AudioClip pointsClip;
 
-    [Header("Audio Sources")] public AudioSource sfxSource;
+    public AudioClip crashClip;
+    public AudioClip level1Clip;
+
+    [Header("Other")] //
+    public AudioSource sfxSource;
+
     public AudioSource musicSource;
-
-    private readonly Dictionary<string, AudioClip> soundMap = new();
+    public static SoundManager instance;
 
     private void Awake()
     {
         instance = this;
-        InitializeSoundMap();
     }
 
     public void Activate()
@@ -25,69 +35,61 @@ public class SoundManager : MonoBehaviour
         switch (currentScene)
         {
             case "MainMenu":
-                PlayMusic("sleep");
-                break;
-
             case "Level1":
-                PlayMusic("sleep");
+                PlayMusic(SoundEffect.LEVEL1_MUSIC);
                 break;
 
             default:
-                PlayMusic("default");
+                PlayMusic(SoundEffect.Default);
                 break;
         }
     }
 
-    private void InitializeSoundMap()
+    public void PlaySFX(SoundEffect effect)
     {
-        foreach (Sound sound in sounds)
+        AudioClip clip = GetClip(effect);
+        if (clip != null)
         {
-            if (!soundMap.ContainsKey(sound.id))
-            {
-                soundMap[sound.id] = sound.clip;
-            }
-            else
-            {
-                Debug.LogWarning($"Duplicate sound ID found: {sound.id}");
-            }
-        }
-    }
 
-    public void PlaySFX(string id)
-    {
-        return;
-        if (soundMap.TryGetValue(id, out AudioClip clip))
-        {
-            GameObject tempAudio = new("SFX_" + id);
-            AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
-            audioSource.clip = clip;
-            audioSource.volume = 0.1f;
-            audioSource.Play();
-
+            GameObject tempAudio = new("SFX_" + effect);
+            AudioSource source = tempAudio.AddComponent<AudioSource>();
+            source.clip = clip;
+            source.volume = 0.01f;
+            source.Play();
             Destroy(tempAudio, clip.length);
         }
         else
         {
-            Debug.LogWarning($"SFX with ID '{id}' not found.");
+            Debug.LogWarning($"Clip for {effect} not assigned.");
         }
     }
 
-    public void PlayMusic(string id)
+    public void PlayMusic(SoundEffect effect)
     {
-        return;
-        if (soundMap.TryGetValue(id, out AudioClip clip))
+
+        AudioClip clip = GetClip(effect);
+        if (clip != null && musicSource.clip != clip)
         {
-            if (musicSource.clip != clip)
-            {
-                musicSource.clip = clip;
-                musicSource.loop = true;
-                musicSource.Play();
-            }
+            musicSource.clip = clip;
+            musicSource.loop = true;
+            musicSource.Play();
         }
-        else
+        else if (clip == null)
         {
-            Debug.LogWarning($"Music with ID '{id}' not found.");
+            Debug.LogWarning($"Music clip for {effect} not assigned.");
         }
+    }
+
+    private AudioClip GetClip(SoundEffect effect)
+    {
+        return effect switch
+        {
+            SoundEffect.POINTS_SOUND => pointsClip,
+            SoundEffect.CRASH_SOUND => crashClip,
+            SoundEffect.LEVEL1_MUSIC => level1Clip,
+
+            _ => null,
+        };
     }
 
     public void StopMusic()

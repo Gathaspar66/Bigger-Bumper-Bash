@@ -17,6 +17,7 @@ public class CarModelHandler : MonoBehaviour
 
     [Header("Car Materials")] //
     public List<Material> carPaintMaterials;
+
     public Material glowingFrontLight;
 
     public Material glowingRearLight;
