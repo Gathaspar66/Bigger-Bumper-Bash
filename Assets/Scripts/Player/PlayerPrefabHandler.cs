@@ -96,13 +96,13 @@ public class PlayerPrefabHandler : MonoBehaviour
         EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
         if (other.gameObject.layer == 6)
         {
-            SoundManager.instance.PlaySFX(SoundEffect.CRASH_SOUND);
+            SoundManager.instance.PlaySFX(SoundEffect.POINTS_SOUND);
         }
 
         if (other.gameObject.layer == 3)
         {
             CameraShake.Instance.Shake(0.2f, 0.1f);
-            SoundManager.instance.PlaySFX(SoundEffect.POINTS_SOUND);
+            SoundManager.instance.PlaySFX(SoundEffect.CRASH_SOUND);
 
             PlayerManager.instance.GetDamaged();
 
