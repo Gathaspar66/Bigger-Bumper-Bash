@@ -50,6 +50,7 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = GetClip(effect);
         if (clip != null)
         {
+
             GameObject tempAudio = new("SFX_" + effect);
             AudioSource source = tempAudio.AddComponent<AudioSource>();
             source.clip = clip;
@@ -65,6 +66,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(SoundEffect effect)
     {
+
         AudioClip clip = GetClip(effect);
         if (clip != null && musicSource.clip != clip)
         {

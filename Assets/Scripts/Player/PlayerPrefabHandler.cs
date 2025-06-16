@@ -4,8 +4,8 @@ public class PlayerPrefabHandler : MonoBehaviour
 {
     [Header("Car Effects")] //
     public ParticleSystem sparksL;
-
     public ParticleSystem sparksR;
+    public ParticleSystem smokePrefab;
     public TrailRenderer leftTrailRenderer, rightTrailRenderer;
 
     [Header("Other")] //
@@ -27,10 +27,6 @@ public class PlayerPrefabHandler : MonoBehaviour
     private CarModelHandler carModelHandler;
     public CarAIDynamicObstacle carAIDynamicObstacle;
 
-    private void Start()
-    {
-        SetParameters();
-    }
 
     private void Update()
     {
@@ -39,13 +35,15 @@ public class PlayerPrefabHandler : MonoBehaviour
         UpdateBrakeLights();
     }
 
-    private void SetParameters()
+    public void SetParameters()
     {
         leftTrailRenderer.emitting = false;
         rightTrailRenderer.emitting = false;
         minForwardVelocity = PlayerSteering.instance.minForwardVelocity;
         maxForwardVelocity = PlayerSteering.instance.maxForwardVelocity;
         carModelHandler = GetComponentInChildren<CarModelHandler>();
+        carModelHandler.SetCarDamagedLists();
+        carModelHandler.SetPlayerPrefabHandler(this);
     }
 
     public void UpdateTrailEffects()
@@ -56,7 +54,6 @@ public class PlayerPrefabHandler : MonoBehaviour
         bool braking = input.y < 0 && currentVelocity > minForwardVelocity;
 
         bool shouldEmit = accelerating || braking;
-
         if (leftTrailRenderer != null)
         {
             leftTrailRenderer.emitting = shouldEmit;
@@ -184,5 +181,22 @@ public class PlayerPrefabHandler : MonoBehaviour
     {
         inputVector.Normalize();
         input = inputVector;
+    }
+
+    public void UpdatePlayerDamagedState(int health)
+    {
+        carModelHandler.UpdatePlayerDamagedState(health);
+    }
+
+    public void SetSmokeParticle(bool ifActive)
+    {
+        if (ifActive)
+        {
+            smokePrefab.Play();
+        }
+        else
+        {
+            smokePrefab.Stop();
+        }
     }
 }

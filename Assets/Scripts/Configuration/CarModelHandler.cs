@@ -5,7 +5,12 @@ using UnityEngine;
 public class CarModelHandler : MonoBehaviour
 {
     [Header("Car Elements")] //
-    public GameObject carBody;
+    public List<GameObject> carBody = new();
+    public List<GameObject> damagedBase = new();
+    public List<GameObject> damagedSmall = new();
+    public List<GameObject> damagedBig = new();
+    public List<GameObject> damagedDestroyed = new();
+    public List<List<GameObject>> listOfListsCarDamageParts = new();
 
     public GameObject frontLight;
     public GameObject rearLight;
@@ -25,9 +30,54 @@ public class CarModelHandler : MonoBehaviour
 
     private bool isBlinking = false;
 
-    public void Activate()
+    public Animator unikaczAnimator;
+
+    PlayerPrefabHandler pph;
+
+    public void SetupAICarModel()
     {
         ChangeCarBodyColor();
+        SetCarDamagedLists();
+        UpdatePlayerDamagedState(3);
+    }
+
+    public void SetCarDamagedLists()
+    {
+        listOfListsCarDamageParts.Add(damagedDestroyed);
+        listOfListsCarDamageParts.Add(damagedBig);
+        listOfListsCarDamageParts.Add(damagedSmall);
+        listOfListsCarDamageParts.Add(damagedBase);
+    }
+
+    internal void SetPlayerPrefabHandler(PlayerPrefabHandler playerPrefabHandler)
+    {
+        pph = playerPrefabHandler;
+    }
+
+    public void UpdatePlayerDamagedState(int health)
+    {
+        foreach (List<GameObject> i in listOfListsCarDamageParts)
+        {
+            SetCarDamagedState(i, false);
+        }
+        health = Mathf.Clamp(health, 0, 3); //multihit on death protection
+        SetCarDamagedState(listOfListsCarDamageParts[health], true);
+        if (health <= 0)
+        {
+            gameObject.GetComponent<Animator>().speed = 0.1f;
+            EffectManager.instance.SpawnAnEffect(Effect.CRASH_AND_FIRE,
+                pph.gameObject.transform.position + new Vector3(0, 0.750999987f, 1.20599997f));
+        }
+        
+        if (pph != null) pph.SetSmokeParticle(health == 1);
+    }
+
+    void SetCarDamagedState(List<GameObject> list, bool enable)
+    {
+        foreach (GameObject i in list)
+        {
+            i.SetActive(enable);
+        }
     }
 
     public void BlinkFrontLights()
@@ -36,7 +86,6 @@ public class CarModelHandler : MonoBehaviour
         {
             return;
         }
-
         _ = StartCoroutine(BlinkCoroutine());
     }
 
@@ -68,17 +117,21 @@ public class CarModelHandler : MonoBehaviour
     {
         frontLightRenderer = frontLight.GetComponent<Renderer>();
 
-        Renderer renderer = carBody.GetComponent<Renderer>();
-
         Material baseMaterial = carPaintMaterials[Random.Range(0, carPaintMaterials.Count)];
-        Material matInstance = new(baseMaterial);
-        renderer.material = matInstance;
+        foreach (GameObject currentCarBodyElement in carBody)
+        {
+            Renderer renderer = currentCarBodyElement.GetComponent<Renderer>();
+            Material matInstance = new(baseMaterial);
+            renderer.material = matInstance;
+        }
     }
 
     public void SetImmuneCarMaterial(Material materialToSet)
     {
-        MeshRenderer carRenderer = carBody.GetComponent<MeshRenderer>();
-
-        carRenderer.material = materialToSet;
+        foreach (GameObject currentCarBodyElement in carBody)
+        {
+            MeshRenderer carRenderer = currentCarBodyElement.GetComponent<MeshRenderer>();
+            carRenderer.material = materialToSet;
+        }
     }
 }

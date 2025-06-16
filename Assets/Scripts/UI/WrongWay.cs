@@ -23,7 +23,6 @@ public class WrongWay : MonoBehaviour
 
     float shakeCooldown = 0.5f;
     float lastShake = 0;
-    float shakeSpeed = 1;
     bool shakeLeft = false;
 
     public Vector3 loc;

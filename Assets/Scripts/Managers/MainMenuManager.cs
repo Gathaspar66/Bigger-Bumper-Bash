@@ -41,10 +41,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnGameStartButtonPressed()
     {
-        print(livesInputField.text);
-        print(int.Parse(livesInputField.text));
         PlayerPrefs.SetInt("playerLives", int.Parse(livesInputField.text));
-        print(livesInputField);
         SceneManager.LoadScene("Level1");
     }
 

@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     private CarConfigDictionary carConfigs;
     public TextAsset carConfigFile;
     private int playerMaxHealth = 2;
-    private int playerHealth;
+    public int playerHealth;
 
     private void Awake()
     {
@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour
         SpawnPlayerPrefab();
         SpawnCar();
         LoadConfig();
+        UpdatePlayerDamagedState();
         SpawnCamera();
     }
 
@@ -36,6 +37,7 @@ public class PlayerManager : MonoBehaviour
         carConfigs = JsonUtility.FromJson<CarConfigDictionary>(carConfigFile.text);
         config = carConfigs.Unikacz;
         playerInstance.GetComponent<PlayerSteering>().LoadCarSettings(config);
+        playerInstance.GetComponent<PlayerPrefabHandler>().SetParameters();
     }
 
     public void SpawnPlayerPrefab()
@@ -73,14 +75,19 @@ public class PlayerManager : MonoBehaviour
     public void GetDamaged()
     {
         playerHealth -= 1;
+        UpdatePlayerDamagedState();
         UserInterfaceManager.instance.UpdateHealthDisplay(playerHealth, playerMaxHealth);
         if (playerHealth <= 0)
         {
             GameManager.instance.OnPlayerDeath();
             return;
         }
-
         StartImmunity();
+    }
+
+    void UpdatePlayerDamagedState()
+    {
+        playerInstance.GetComponent<PlayerPrefabHandler>().UpdatePlayerDamagedState(playerHealth);
     }
 
     public int GetPlayerHealth()

@@ -37,6 +37,7 @@ Transform:
   - {fileID: 3605681548417473414}
   - {fileID: 289881473667460028}
   - {fileID: 5452726165864317934}
+  - {fileID: 6133598356704945149}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7419151477809295542
@@ -119,8 +120,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   rb: {fileID: 7419151477809295542}
   gameModel: {fileID: 0}
-  tiltSpeed: 5
-  tiltValue: 5
 --- !u!114 &2330087974372160625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,17 +132,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e5a8fdfab58d74badece905f367387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {fileID: 2100000, guid: 66fb998a70f9b004b9021cba53a04bf5, type: 2}
-  immune: {fileID: 2100000, guid: 73ca67a0e05e25743b473a1c7f476d0b, type: 2}
   sparksL: {fileID: 6819510023049198459}
   sparksR: {fileID: 7274784412609214836}
+  smokePrefab: {fileID: 6133598356704945139}
   leftTrailRenderer: {fileID: 3963009987135452346}
   rightTrailRenderer: {fileID: 8741861478836002024}
-  input: {x: 0, y: 0}
-  leftTireTrail: {fileID: 544749466699133553, guid: dfa57f0c9015aeb49a3f04fbfe1b27b6, type: 3}
-  rightTireTrail: {fileID: 544749466699133553, guid: dfa57f0c9015aeb49a3f04fbfe1b27b6, type: 3}
-  minForwardVelocity: 0
-  maxForwardVelocity: 0
+  normal: {fileID: 2100000, guid: 66fb998a70f9b004b9021cba53a04bf5, type: 2}
+  immune: {fileID: 2100000, guid: 73ca67a0e05e25743b473a1c7f476d0b, type: 2}
+  carAIDynamicObstacle: {fileID: 0}
 --- !u!65 &450025254653009301
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -165,6 +161,73 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2, y: 0.7180454, z: 3.2231183}
   m_Center: {x: 0, y: 0.6333066, z: 0}
+--- !u!1001 &2602208270305582105
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1068980787133908836}
+    m_Modifications:
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.967
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.456
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9617157
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.27404928
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -31.811
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143086019260235751, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+      propertyPath: m_Name
+      value: smokePrefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+--- !u!198 &6133598356704945139 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8143086019260235754, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+  m_PrefabInstance: {fileID: 2602208270305582105}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6133598356704945149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
+  m_PrefabInstance: {fileID: 2602208270305582105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4445500359220783213
 PrefabInstance:
   m_ObjectHideFlags: 0
