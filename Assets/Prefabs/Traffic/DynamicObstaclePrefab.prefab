@@ -44,30 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef436304118f6974a9fe493a1ebbdd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  brakeRaycastDistance: 0
-  raycastOffsetY: 0.51
   carPrefabs:
-  - {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
-  - {fileID: 51488253964336661, guid: 4e24d6dcdb5b80e4393393754dab6978, type: 3}
   - {fileID: 3254706542479514739, guid: c245eb74ca6ab3242a96f51b647e277f, type: 3}
   - {fileID: 5633759295636568507, guid: 82ddd66021183fd469a7bfa30b2c2453, type: 3}
+  - {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
+  - {fileID: 51488253964336661, guid: 4e24d6dcdb5b80e4393393754dab6978, type: 3}
   minBrakeRaycastDistance: 3
   maxBrakeRaycastDistance: 8
   trafficLayer:
     serializedVersion: 2
     m_Bits: 8
-  carCollider: {fileID: 0}
-  carPaintMaterials:
-  - {fileID: 2100000, guid: 6a78446394652dc4291dfc344d7490e4, type: 2}
-  - {fileID: 2100000, guid: 06bb3d477c92f034784e6913c74e2ff8, type: 2}
-  - {fileID: 2100000, guid: 03bf05b647e9f3f4e84d0262de6b5c86, type: 2}
-  - {fileID: 2100000, guid: 45d6670d19b8ca84e9211d89f442ce4d, type: 2}
-  - {fileID: 2100000, guid: 5d5dc06c04e704d47921810ef980642e, type: 2}
-  - {fileID: 2100000, guid: bf910fe424fe74d4c836aa460ddb55c9, type: 2}
-  - {fileID: 2100000, guid: b09d6656c60eb90489c76fac4bda92ad, type: 2}
-  - {fileID: 2100000, guid: e58fb4ee9b7980747b650be3f66ca5e8, type: 2}
-  - {fileID: 2100000, guid: 7524036e7e6947c42ae28f25d9defe0e, type: 2}
-  - {fileID: 2100000, guid: fcb5ce262a3641241ad526da8485aef7, type: 2}
-  smoothnessRange: {x: 0.5, y: 0.8}
-  metallicRange: {x: 0.6, y: 1}

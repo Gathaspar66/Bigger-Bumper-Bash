@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1354009939153525819, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -341,6 +345,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7266573895413522596}
+
   m_SourcePrefab: {fileID: 100100000, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
 --- !u!1 &51488253964336661 stripped
 GameObject:
@@ -793,3 +798,4 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8143086019260235748, guid: 29ef266d04dbd5b4e8ac0f07e34fd7d0, type: 3}
   m_PrefabInstance: {fileID: 7212232191095902621}
   m_PrefabAsset: {fileID: 0}
+

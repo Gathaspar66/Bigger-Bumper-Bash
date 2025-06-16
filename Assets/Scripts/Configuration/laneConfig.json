@@ -1,0 +1,39 @@
+{
+  "levels": [
+    {
+      "levelName": "Level1",
+      "levelConfig": {
+        "lanes": [
+          { "name": "1F", "positionX": -4.85, "spawner": "Front", "direction": "Backward" },
+          { "name": "2F", "positionX": -1.75, "spawner": "Front", "direction": "Backward" },
+          { "name": "3F", "positionX": 1.75, "spawner": "Front", "direction": "Forward" },
+          { "name": "4F", "positionX": 4.85, "spawner": "Front", "direction": "Forward" },
+          { "name": "1B", "positionX": 1.75, "spawner": "Back", "direction": "Forward" },
+          { "name": "2B", "positionX": 4.85, "spawner": "Back", "direction": "Forward" }
+        ],
+        "staticObstacles": [
+          { "name": "S1", "positionX": -4.85 },
+          { "name": "S2", "positionX": -1.75 },
+          { "name": "S3", "positionX": 1.75 },
+          { "name": "S4", "positionX": 4.85 }
+        ]
+      }
+    },
+    {
+      "levelName": "Level2",
+      "levelConfig": {
+        "lanes": [
+         { "name": "1F", "positionX": -4.85, "spawner": "Front", "direction": "Backward" },
+          { "name": "2F", "positionX": -1.75, "spawner": "Front", "direction": "Backward" },
+          { "name": "3F", "positionX": 1.75, "spawner": "Front", "direction": "Backward" },
+          { "name": "4F", "positionX": 4.85, "spawner": "Front", "direction": "Backward" }
+        ],
+        "staticObstacles": [
+          { "name": "S1", "positionX": -2.5 },
+          { "name": "S2", "positionX": 0.0 },
+          { "name": "S3", "positionX": 2.5 }
+        ]
+      }
+    }
+  ]
+}
