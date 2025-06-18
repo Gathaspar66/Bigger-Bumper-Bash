@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager instance;
-
     public GameObject aboutPanel;
 
     private void Awake()
@@ -48,7 +47,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ToggleSound(bool enableSound)
     {
-        print("toggle sound button pressed: " + enableSound);
+        SoundManager.instance.ToggleSound(enableSound);
     }
 
     public void OnQuitGamePressed()
