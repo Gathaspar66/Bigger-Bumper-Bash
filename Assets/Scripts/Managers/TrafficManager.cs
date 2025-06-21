@@ -28,7 +28,7 @@ public class TrafficManager : MonoBehaviour
     [Space(25)] //
     [Header("Other")]
     public float playerPrefabOffsetSpawn = 0.3f;
-
+    public float staticPrefabOffsetSpawn = 0.5f;
     public float pointsSpawnPositionX = 5f;
     public float pointsSpawnHeight = 0.5f;
     public float[] laneXPositions = { -4.85f, -1.75f, 1.75f, 4.85f };
@@ -188,9 +188,9 @@ public class TrafficManager : MonoBehaviour
             Debug.LogWarning("No static obstacle lanes available to spawn.");
             return;
         }
-
+        float randomOffset = Random.Range(-staticPrefabOffsetSpawn, staticPrefabOffsetSpawn);
         int randomLaneIndex = Random.Range(0, staticObstacleLanesX.Length);
-        float laneX = staticObstacleLanesX[randomLaneIndex];
+        float laneX = staticObstacleLanesX[randomLaneIndex] + randomOffset;
 
         spawnPosition = new Vector3(laneX, car.transform.position.y,
             car.transform.position.z + spawnStaticObstacleDistance);
