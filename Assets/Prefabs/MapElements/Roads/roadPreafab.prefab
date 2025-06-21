@@ -48,10 +48,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: ecc942e25e6b86e46a7556654c14d8dc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e8a96b02b04ef543a639fdda17d091a, type: 2}
     - target: {fileID: -2514646996113137737, guid: ecc942e25e6b86e46a7556654c14d8dc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 70620190b40d1bb46af38f57e0304b13, type: 2}
+    - target: {fileID: 404399363173187417, guid: ecc942e25e6b86e46a7556654c14d8dc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e8a96b02b04ef543a639fdda17d091a, type: 2}
     - target: {fileID: 919132149155446097, guid: ecc942e25e6b86e46a7556654c14d8dc, type: 3}
       propertyPath: m_Name
       value: roadPreafab
@@ -64,6 +72,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: RightBarrier
       objectReference: {fileID: 0}
+    - target: {fileID: 5499214913858182403, guid: ecc942e25e6b86e46a7556654c14d8dc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e8a96b02b04ef543a639fdda17d091a, type: 2}
     - target: {fileID: 7706159816138088579, guid: ecc942e25e6b86e46a7556654c14d8dc, type: 3}
       propertyPath: m_Layer
       value: 3
