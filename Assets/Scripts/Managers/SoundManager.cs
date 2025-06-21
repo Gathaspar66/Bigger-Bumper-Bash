@@ -34,6 +34,9 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager instance;
     public Toggle myToggle;
+    public Sprite soundOnSprite;
+    public Sprite soundOffSprite;
+    public Image soundIcon;
     private void Awake()
     {
         instance = this;
@@ -109,9 +112,16 @@ public class SoundManager : MonoBehaviour
     public void ToggleSound(bool enableSound)
     {
 
-        _ = enableSound ? audioMixer.SetFloat("MainMusic", 0f) : audioMixer.SetFloat("MainMusic", -80f);
-        Debug.Log("Z OnValueChanged: " + enableSound);
-        Debug.Log("Actual Toggle value: " + myToggle.isOn);
+        if (enableSound)
+        {
+            _ = audioMixer.SetFloat("MainMusic", 0f);
+            soundIcon.sprite = soundOnSprite;
+        }
+        else
+        {
+            _ = audioMixer.SetFloat("MainMusic", -80f);
+            soundIcon.sprite = soundOffSprite;
+        }
     }
 
     public void StopMusic()
