@@ -1,14 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
-using System;
 
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager instance;
-
     public GameObject aboutPanel;
-    public TMP_InputField livesInputField;
 
     private void Awake()
     {
@@ -19,17 +15,6 @@ public class MainMenuManager : MonoBehaviour
     {
         ActivateManagers();
         UpdateHighScoreText();
-        SetupLivesInputField();
-    }
-
-    private void SetupLivesInputField()
-    {
-        livesInputField.text = PlayerPrefs.GetInt("playerLives").ToString();
-        if (livesInputField.text == "0")
-        {
-            PlayerPrefs.SetInt("playerLives", 3);
-            livesInputField.text = PlayerPrefs.GetInt("playerLives").ToString();
-        }
     }
 
     public void ActivateManagers()
@@ -41,7 +26,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnGameStartButtonPressed()
     {
-        PlayerPrefs.SetInt("playerLives", int.Parse(livesInputField.text));
         SceneManager.LoadScene("Level1");
     }
 
@@ -63,7 +47,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ToggleSound(bool enableSound)
     {
-        print("toggle sound button pressed: " + enableSound);
+        SoundManager.instance.ToggleSound(enableSound);
     }
 
     public void OnQuitGamePressed()

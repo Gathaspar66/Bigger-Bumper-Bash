@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum SoundEffect
 {
@@ -11,18 +13,30 @@ public enum SoundEffect
 
 public class SoundManager : MonoBehaviour
 {
-    [Header("Audio Clips")] //
+    [Header("Audio Clips")]//
     public AudioClip pointsClip;
 
     public AudioClip crashClip;
     public AudioClip level1Clip;
 
-    [Header("Other")] //
+    [Header("Audio Sources")]//
     public AudioSource sfxSource;
 
     public AudioSource musicSource;
-    public static SoundManager instance;
 
+    [Header("Audio Mixer Groups")]//
+    public AudioMixerGroup sfxMixerGroup;
+
+    public AudioMixerGroup musicMixerGroup;
+
+    [Header("Audio Mixer")]//
+    public AudioMixer audioMixer;
+
+    public static SoundManager instance;
+    public Toggle myToggle;
+    public Sprite soundOnSprite;
+    public Sprite soundOffSprite;
+    public Image soundIcon;
     private void Awake()
     {
         instance = this;
@@ -35,6 +49,9 @@ public class SoundManager : MonoBehaviour
         switch (currentScene)
         {
             case "MainMenu":
+                PlayMusic(SoundEffect.LEVEL1_MUSIC);
+                break;
+
             case "Level1":
                 PlayMusic(SoundEffect.LEVEL1_MUSIC);
                 break;
@@ -50,9 +67,9 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = GetClip(effect);
         if (clip != null)
         {
-
             GameObject tempAudio = new("SFX_" + effect);
             AudioSource source = tempAudio.AddComponent<AudioSource>();
+            source.outputAudioMixerGroup = sfxMixerGroup;
             source.clip = clip;
             source.volume = 0.01f;
             source.Play();
@@ -66,10 +83,10 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(SoundEffect effect)
     {
-
         AudioClip clip = GetClip(effect);
         if (clip != null && musicSource.clip != clip)
         {
+            musicSource.outputAudioMixerGroup = musicMixerGroup;
             musicSource.clip = clip;
             musicSource.loop = true;
             musicSource.Play();
@@ -90,6 +107,21 @@ public class SoundManager : MonoBehaviour
 
             _ => null,
         };
+    }
+
+    public void ToggleSound(bool enableSound)
+    {
+
+        if (enableSound)
+        {
+            _ = audioMixer.SetFloat("MainMusic", 0f);
+            soundIcon.sprite = soundOnSprite;
+        }
+        else
+        {
+            _ = audioMixer.SetFloat("MainMusic", -80f);
+            soundIcon.sprite = soundOffSprite;
+        }
     }
 
     public void StopMusic()

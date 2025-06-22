@@ -46,7 +46,8 @@ public class PickupMultiplier : MonoBehaviour
         barrelImage.sprite = barrelSprites[value - 1];
         barrelImageGray.sprite = barrelSpritesGray[value - 1];
         shakeSpeed = value;
-        shakeCooldown = 0.5f / value;
+        //base cd + scaling cd, the bigger scaling, the bigger increase with level
+        shakeCooldown = 0.15f + 0.35f / value;
     }
 
     public void UpdatePickupMultiplierFill(float value)
