@@ -13,8 +13,8 @@ public class PlayerManager : MonoBehaviour
     private CarConfig config;
     private CarConfigDictionary carConfigs;
     public TextAsset carConfigFile;
-    private int playerMaxHealth = 2;
-    public int playerHealth;
+    public int playerMaxHealth;
+    private int playerHealth;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Activate()
     {
-        playerMaxHealth = PlayerPrefs.GetInt("playerLives");
+        //playerMaxHealth = PlayerPrefs.GetInt("playerLives");
         playerHealth = playerMaxHealth;
         SpawnPlayerPrefab();
         SpawnCar();
@@ -85,7 +85,7 @@ public class PlayerManager : MonoBehaviour
         StartImmunity();
     }
 
-    void UpdatePlayerDamagedState()
+    private void UpdatePlayerDamagedState()
     {
         playerInstance.GetComponent<PlayerPrefabHandler>().UpdatePlayerDamagedState(playerHealth);
     }

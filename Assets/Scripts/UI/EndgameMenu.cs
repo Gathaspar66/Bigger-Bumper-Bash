@@ -4,8 +4,13 @@ using UnityEngine.UI;
 public class EndgameMenu : MonoBehaviour
 {
     public Image blackBackground;
-    public GameObject newHighScoreNotification;
+    //public GameObject newHighScoreNotification;
     public DigitRowHandler digitRowHandler;
+
+
+    public Image scoreImage;
+    // public Sprite normalScoreSprite;
+    public Sprite highScoreSprite;
 
     private void Start()
     {
@@ -33,7 +38,8 @@ public class EndgameMenu : MonoBehaviour
         int points = PointsManager.instance.GetPoints();
         if (points > PlayerPrefs.GetInt("highScore"))
         {
-            newHighScoreNotification.SetActive(true);
+            scoreImage.sprite = highScoreSprite;
+            scoreImage.color = new Color(255f, 163f, 0f);
         }
 
         UpdatePointsDisplay(points);

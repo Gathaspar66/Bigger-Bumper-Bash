@@ -467,6 +467,7 @@ MonoBehaviour:
   dynamicObstaclePrefab: {fileID: 121954177195123221, guid: 76c696841b6af984f8a73350970feb1c, type: 3}
   pointsPrefab: {fileID: 6160970351542831283, guid: b62827d41be3d5e44b782b096e59f322, type: 3}
   playerPrefabOffsetSpawn: 0.4
+  staticPrefabOffsetSpawn: 0.5
   pointsSpawnPositionX: 5
   pointsSpawnHeight: 0.5
   laneXPositions:
@@ -596,7 +597,7 @@ MonoBehaviour:
   cameraPrefab: {fileID: 7280080578915174522, guid: 45f1f94e9a7014844933124b4811847e, type: 3}
   currentCameraPrefab: {fileID: 0}
   carConfigFile: {fileID: 4900000, guid: f1f9ac60f21ad2045803ba7172c3ec55, type: 3}
-  playerHealth: 0
+  playerMaxHealth: 1
 --- !u!1 &2048719953
 GameObject:
   m_ObjectHideFlags: 0
