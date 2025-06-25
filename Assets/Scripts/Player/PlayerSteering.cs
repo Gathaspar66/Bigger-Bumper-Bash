@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static CarConfiguration;
@@ -27,6 +28,8 @@ public class PlayerSteering : MonoBehaviour
     private float targetTiltX = 0f;
     private readonly float tiltSpeed = 5f;
     private readonly float tiltValue = 5f;
+
+    bool isPlayerDead = false;
 
     private void Awake()
     {
@@ -120,6 +123,11 @@ public class PlayerSteering : MonoBehaviour
         rb.AddForce(rb.transform.forward * acceleationMultiplier * input.y);
     }
 
+    internal void SetPlayerDead(bool isDead)
+    {
+        isPlayerDead = isDead;
+    }
+
     public void Brake()
     {
         targetTiltX = tiltValue;
@@ -136,6 +144,8 @@ public class PlayerSteering : MonoBehaviour
 
     public void Steer()
     {
+        if (isPlayerDead) return;
+
         if (Mathf.Abs(input.x) > 0)
         {
             float currentSpeed = rb.velocity.z;

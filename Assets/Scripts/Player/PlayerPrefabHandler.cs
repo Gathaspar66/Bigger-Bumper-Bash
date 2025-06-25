@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerPrefabHandler : MonoBehaviour
@@ -26,6 +27,8 @@ public class PlayerPrefabHandler : MonoBehaviour
     private float maxForwardVelocity;
     private CarModelHandler carModelHandler;
     public CarAIDynamicObstacle carAIDynamicObstacle;
+
+    bool isPlayerDead = false;
 
 
     private void Update()
@@ -80,6 +83,7 @@ public class PlayerPrefabHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isPlayerDead) return;
         if (isImmune)
         {
             return;
@@ -112,6 +116,11 @@ public class PlayerPrefabHandler : MonoBehaviour
                 aiCar.StopCarDueToCrash();
             }
         }
+    }
+
+    internal void SetPlayerDead(bool isDead)
+    {
+        isPlayerDead = isDead;
     }
 
     private void OnTriggerStay(Collider other)
