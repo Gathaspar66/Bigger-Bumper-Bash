@@ -3227,7 +3227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6773394270175726681, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: m_Volume
-      value: 0.067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6773394270175726681, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -3261,6 +3261,22 @@ PrefabInstance:
       propertyPath: musicMixerGroup
       value: 
       objectReference: {fileID: -6640495835944708360, guid: 900cf862045178842b59bd94b5fb2583, type: 2}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a3b94bb4f2e8da4a9481d88317d0770, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 27f34c488ca01a4438facb91f6274694, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 00aa20fa620180c438b3fad892c0a863, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

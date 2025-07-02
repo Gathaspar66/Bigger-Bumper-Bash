@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -17,7 +18,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip pointsClip;
 
     public AudioClip crashClip;
-    public AudioClip level1Clip;
+    public List<AudioClip> levelClipsList;
 
     [Header("Audio Sources")]//
     public AudioSource sfxSource;
@@ -71,7 +72,7 @@ public class SoundManager : MonoBehaviour
             AudioSource source = tempAudio.AddComponent<AudioSource>();
             source.outputAudioMixerGroup = sfxMixerGroup;
             source.clip = clip;
-            source.volume = 0.01f;
+            source.volume = 01.01f;
             source.Play();
             Destroy(tempAudio, clip.length);
         }
@@ -99,11 +100,12 @@ public class SoundManager : MonoBehaviour
 
     private AudioClip GetClip(SoundEffect effect)
     {
+        AudioClip levelClip = levelClipsList[Random.Range(0, levelClipsList.Count)];
         return effect switch
         {
             SoundEffect.POINTS_SOUND => pointsClip,
             SoundEffect.CRASH_SOUND => crashClip,
-            SoundEffect.LEVEL1_MUSIC => level1Clip,
+            SoundEffect.LEVEL1_MUSIC => levelClip,
 
             _ => null,
         };

@@ -780,13 +780,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6773394270175726681, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773394270175726681, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: -6640495835944708360, guid: 900cf862045178842b59bd94b5fb2583, type: 2}
     - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: crashClip
       value: 
-      objectReference: {fileID: 8300000, guid: 0f7b4faeafdbfa14b8a16e604ce8b83b, type: 3}
+      objectReference: {fileID: 8300000, guid: 820972c1590dd9b4996b9ed4a9ad9c55, type: 3}
     - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: sleepClip
       value: 
@@ -802,7 +806,7 @@ PrefabInstance:
     - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: pointsClip
       value: 
-      objectReference: {fileID: 8300000, guid: b6af19731b5ccc941808b522805619b5, type: 3}
+      objectReference: {fileID: 8300000, guid: 8b880237bfa721141b0263598fdca12e, type: 3}
     - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: sfxMixerGroup
       value: 
@@ -824,6 +828,10 @@ PrefabInstance:
       value: unlock
       objectReference: {fileID: 0}
     - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: sounds.Array.data[1].clip
       value: 
       objectReference: {fileID: 8300000, guid: 0f7b4faeafdbfa14b8a16e604ce8b83b, type: 3}
@@ -831,9 +839,21 @@ PrefabInstance:
       propertyPath: sounds.Array.data[2].clip
       value: 
       objectReference: {fileID: 8300000, guid: b6af19731b5ccc941808b522805619b5, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a3b94bb4f2e8da4a9481d88317d0770, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 27f34c488ca01a4438facb91f6274694, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 00aa20fa620180c438b3fad892c0a863, type: 3}
     - target: {fileID: 7860614666529676343, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: m_Volume
-      value: 0.031
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7860614666529676343, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: OutputAudioMixerGroup
