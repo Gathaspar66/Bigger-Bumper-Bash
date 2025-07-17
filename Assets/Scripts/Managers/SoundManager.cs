@@ -133,4 +133,9 @@ public class SoundManager : MonoBehaviour
             musicSource.Stop();
         }
     }
+
+    public void AdjustEngineSound(float value)
+    {
+        PlayerSoundsHandler.instance.AdjustEngineSound(value);
+    }
 }
