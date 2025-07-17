@@ -57,6 +57,7 @@ public class PlayerPrefabHandler : MonoBehaviour
         bool braking = input.y < 0 && currentVelocity > minForwardVelocity;
 
         bool shouldEmit = accelerating || braking;
+
         if (leftTrailRenderer != null)
         {
             leftTrailRenderer.emitting = shouldEmit;
@@ -66,6 +67,8 @@ public class PlayerPrefabHandler : MonoBehaviour
         {
             rightTrailRenderer.emitting = shouldEmit;
         }
+        SoundManager.instance.PlayerCarAccelerateSound(accelerating);
+        SoundManager.instance.PlayerCarBreakSound(braking);
     }
 
     private void UpdateBrakeLights()

@@ -138,4 +138,14 @@ public class SoundManager : MonoBehaviour
     {
         PlayerSoundsHandler.instance.AdjustEngineSound(value);
     }
+
+    internal void PlayerCarAccelerateSound(bool accelerating)
+    {
+        PlayerSoundsHandler.instance.PlayerCarAccelerateSound(accelerating);
+    }
+
+    internal void PlayerCarBreakSound(bool braking)
+    {
+        PlayerSoundsHandler.instance.PlayerCarBreakSound(braking);
+    }
 }
