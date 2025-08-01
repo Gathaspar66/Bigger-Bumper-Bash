@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerPrefabHandler : MonoBehaviour
@@ -27,8 +26,7 @@ public class PlayerPrefabHandler : MonoBehaviour
     private float maxForwardVelocity;
     private CarModelHandler carModelHandler;
     public CarAIDynamicObstacle carAIDynamicObstacle;
-
-    bool isPlayerDead = false;
+    private bool isPlayerDead = false;
 
 
     private void Update()
@@ -86,7 +84,11 @@ public class PlayerPrefabHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isPlayerDead) return;
+        if (isPlayerDead)
+        {
+            return;
+        }
+
         if (isImmune)
         {
             return;
@@ -103,13 +105,13 @@ public class PlayerPrefabHandler : MonoBehaviour
         EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
         if (other.gameObject.layer == 6)
         {
-            SoundManager.instance.PlaySFX(SoundEffect.POINTS_SOUND);
+            SoundManager.instance.PlayPointsSound();
         }
 
         if (other.gameObject.layer == 3)
         {
             CameraShake.Instance.Shake(0.2f, 0.1f);
-            SoundManager.instance.PlaySFX(SoundEffect.CRASH_SOUND);
+            SoundManager.instance.PlayCrashSound();
 
             PlayerManager.instance.GetDamaged();
 
@@ -131,11 +133,13 @@ public class PlayerPrefabHandler : MonoBehaviour
         if (other.CompareTag("LeftBarrier"))
         {
             sparksL.Play();
+            SoundManager.instance.StartBarrierScrape();
         }
 
         if (other.CompareTag("RightBarrier"))
         {
             sparksR.Play();
+            SoundManager.instance.StartBarrierScrape();
         }
     }
 
@@ -144,11 +148,13 @@ public class PlayerPrefabHandler : MonoBehaviour
         if (other.CompareTag("LeftBarrier"))
         {
             sparksL.Stop();
+            SoundManager.instance.StopBarrierScrape();
         }
 
         if (other.CompareTag("RightBarrier"))
         {
             sparksR.Stop();
+            SoundManager.instance.StopBarrierScrape();
         }
     }
 

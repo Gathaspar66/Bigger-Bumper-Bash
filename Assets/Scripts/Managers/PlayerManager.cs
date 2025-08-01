@@ -109,6 +109,7 @@ public class PlayerManager : MonoBehaviour
     {
         playerInstance.GetComponent<PlayerPrefabHandler>().SetPlayerDead(true);
         playerInstance.GetComponent<PlayerSteering>().SetPlayerDead(true);
+
         Rigidbody rb = playerInstance.GetComponent<Rigidbody>();
         rb.isKinematic = true;
     }

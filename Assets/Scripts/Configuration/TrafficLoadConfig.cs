@@ -17,7 +17,6 @@ public class LevelConfigLoader : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
 
         LoadConfigFromTextAsset();
     }
