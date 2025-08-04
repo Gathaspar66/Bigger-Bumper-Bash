@@ -4,6 +4,7 @@ public class PlayerPrefabHandler : MonoBehaviour
 {
     [Header("Car Effects")] //
     public ParticleSystem sparksL;
+
     public ParticleSystem sparksR;
     public ParticleSystem smokePrefab;
     public TrailRenderer leftTrailRenderer, rightTrailRenderer;
@@ -27,7 +28,6 @@ public class PlayerPrefabHandler : MonoBehaviour
     private CarModelHandler carModelHandler;
     public CarAIDynamicObstacle carAIDynamicObstacle;
     private bool isPlayerDead = false;
-
 
     private void Update()
     {
@@ -88,7 +88,10 @@ public class PlayerPrefabHandler : MonoBehaviour
         {
             return;
         }
-
+        if (other.gameObject.layer == 6)
+        {
+            SoundManager.instance.PlayPointsSound();
+        }
         if (isImmune)
         {
             return;
@@ -102,17 +105,13 @@ public class PlayerPrefabHandler : MonoBehaviour
             hitPoint = other.ClosestPoint(transform.position);
         }
 
-        EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
-        if (other.gameObject.layer == 6)
-        {
-            SoundManager.instance.PlayPointsSound();
-        }
+
 
         if (other.gameObject.layer == 3)
         {
             CameraShake.Instance.Shake(0.2f, 0.1f);
             SoundManager.instance.PlayCrashSound();
-
+            EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
             PlayerManager.instance.GetDamaged();
 
             CarAIDynamicObstacle aiCar = other.GetComponentInParent<CarAIDynamicObstacle>();
