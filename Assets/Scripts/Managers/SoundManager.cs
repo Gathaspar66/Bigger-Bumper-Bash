@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -8,21 +9,21 @@ public enum SoundEffect
     POINTS_SOUND,
     CRASH_SOUND,
     LEVEL1_MUSIC,
+    BARRIER_SCRAPE,
     Default
 }
 
 public class SoundManager : MonoBehaviour
 {
     [Header("Audio Clips")]//
-    public AudioClip pointsClip;
-
-    public AudioClip crashClip;
-    public AudioClip level1Clip;
+    public List<AudioClip> levelClipsList;
 
     [Header("Audio Sources")]//
-    public AudioSource sfxSource;
-
     public AudioSource musicSource;
+
+    public AudioSource crashSource;
+    public AudioSource pointsSource;
+    public AudioSource barrierScrapeSource;
 
     [Header("Audio Mixer Groups")]//
     public AudioMixerGroup sfxMixerGroup;
@@ -37,6 +38,7 @@ public class SoundManager : MonoBehaviour
     public Sprite soundOnSprite;
     public Sprite soundOffSprite;
     public Image soundIcon;
+    private bool isAlive = true;
     private void Awake()
     {
         instance = this;
@@ -62,23 +64,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(SoundEffect effect)
+    public void PlayCrashSound()
     {
-        AudioClip clip = GetClip(effect);
-        if (clip != null)
-        {
-            GameObject tempAudio = new("SFX_" + effect);
-            AudioSource source = tempAudio.AddComponent<AudioSource>();
-            source.outputAudioMixerGroup = sfxMixerGroup;
-            source.clip = clip;
-            source.volume = 0.01f;
-            source.Play();
-            Destroy(tempAudio, clip.length);
-        }
-        else
-        {
-            Debug.LogWarning($"Clip for {effect} not assigned.");
-        }
+        crashSource.Play();
+    }
+
+    public void PlayPointsSound()
+    {
+        pointsSource.Play();
     }
 
     public void PlayMusic(SoundEffect effect)
@@ -99,11 +92,10 @@ public class SoundManager : MonoBehaviour
 
     private AudioClip GetClip(SoundEffect effect)
     {
+        AudioClip levelClip = levelClipsList[Random.Range(0, levelClipsList.Count)];
         return effect switch
         {
-            SoundEffect.POINTS_SOUND => pointsClip,
-            SoundEffect.CRASH_SOUND => crashClip,
-            SoundEffect.LEVEL1_MUSIC => level1Clip,
+            SoundEffect.LEVEL1_MUSIC => levelClip,
 
             _ => null,
         };
@@ -111,7 +103,6 @@ public class SoundManager : MonoBehaviour
 
     public void ToggleSound(bool enableSound)
     {
-
         if (enableSound)
         {
             _ = audioMixer.SetFloat("MainMusic", 0f);
@@ -130,5 +121,46 @@ public class SoundManager : MonoBehaviour
         {
             musicSource.Stop();
         }
+    }
+
+    public void StartBarrierScrape()
+    {
+        if (!isAlive)
+        {
+            return;
+        }
+
+        if (!barrierScrapeSource.isPlaying)
+        {
+            barrierScrapeSource.Play();
+        }
+    }
+
+    public void StopBarrierScrape()
+    {
+        if (barrierScrapeSource.isPlaying)
+        {
+            barrierScrapeSource.Stop();
+        }
+    }
+
+    public void AdjustEngineSound(float value)
+    {
+        PlayerSoundsHandler.instance.AdjustEngineSound(value);
+    }
+
+    internal void PlayerCarAccelerateSound(bool accelerating)
+    {
+        PlayerSoundsHandler.instance.PlayerCarAccelerateSound(accelerating);
+    }
+
+    internal void PlayerCarBreakSound(bool braking)
+    {
+        PlayerSoundsHandler.instance.PlayerCarBreakSound(braking);
+    }
+    public void OnPlayerDeath()
+    {
+        StopBarrierScrape();
+        isAlive = false;
     }
 }

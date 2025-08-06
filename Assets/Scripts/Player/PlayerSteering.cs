@@ -107,6 +107,8 @@ public class PlayerSteering : MonoBehaviour
         {
             targetTiltX = 0f;
         }
+
+        SoundManager.instance.AdjustEngineSound(rb.velocity.z/maxForwardVelocity);
     }
 
     public void Accelerate()

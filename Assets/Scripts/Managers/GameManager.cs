@@ -65,6 +65,6 @@ public class GameManager : MonoBehaviour
         TrafficManager.instance.OnPlayerDeath();
         PlayerManager.instance.OnPlayerDeath();
         //PointsManager.instance.OnPlayerDeath();
-        //SoundManager.instance.OnPlayerDeath();
+        SoundManager.instance.OnPlayerDeath();
     }
 }

@@ -1,10 +1,10 @@
-using System;
 using UnityEngine;
 
 public class PlayerPrefabHandler : MonoBehaviour
 {
     [Header("Car Effects")] //
     public ParticleSystem sparksL;
+
     public ParticleSystem sparksR;
     public ParticleSystem smokePrefab;
     public TrailRenderer leftTrailRenderer, rightTrailRenderer;
@@ -27,9 +27,7 @@ public class PlayerPrefabHandler : MonoBehaviour
     private float maxForwardVelocity;
     private CarModelHandler carModelHandler;
     public CarAIDynamicObstacle carAIDynamicObstacle;
-
-    bool isPlayerDead = false;
-
+    private bool isPlayerDead = false;
 
     private void Update()
     {
@@ -57,6 +55,7 @@ public class PlayerPrefabHandler : MonoBehaviour
         bool braking = input.y < 0 && currentVelocity > minForwardVelocity;
 
         bool shouldEmit = accelerating || braking;
+
         if (leftTrailRenderer != null)
         {
             leftTrailRenderer.emitting = shouldEmit;
@@ -66,6 +65,8 @@ public class PlayerPrefabHandler : MonoBehaviour
         {
             rightTrailRenderer.emitting = shouldEmit;
         }
+        SoundManager.instance.PlayerCarAccelerateSound(accelerating);
+        SoundManager.instance.PlayerCarBreakSound(braking);
     }
 
     private void UpdateBrakeLights()
@@ -83,7 +84,14 @@ public class PlayerPrefabHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isPlayerDead) return;
+        if (isPlayerDead)
+        {
+            return;
+        }
+        if (other.gameObject.layer == 6)
+        {
+            SoundManager.instance.PlayPointsSound();
+        }
         if (isImmune)
         {
             return;
@@ -97,17 +105,13 @@ public class PlayerPrefabHandler : MonoBehaviour
             hitPoint = other.ClosestPoint(transform.position);
         }
 
-        EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
-        if (other.gameObject.layer == 6)
-        {
-            SoundManager.instance.PlaySFX(SoundEffect.POINTS_SOUND);
-        }
+
 
         if (other.gameObject.layer == 3)
         {
             CameraShake.Instance.Shake(0.2f, 0.1f);
-            SoundManager.instance.PlaySFX(SoundEffect.CRASH_SOUND);
-
+            SoundManager.instance.PlayCrashSound();
+            EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
             PlayerManager.instance.GetDamaged();
 
             CarAIDynamicObstacle aiCar = other.GetComponentInParent<CarAIDynamicObstacle>();
@@ -128,11 +132,13 @@ public class PlayerPrefabHandler : MonoBehaviour
         if (other.CompareTag("LeftBarrier"))
         {
             sparksL.Play();
+            SoundManager.instance.StartBarrierScrape();
         }
 
         if (other.CompareTag("RightBarrier"))
         {
             sparksR.Play();
+            SoundManager.instance.StartBarrierScrape();
         }
     }
 
@@ -141,11 +147,13 @@ public class PlayerPrefabHandler : MonoBehaviour
         if (other.CompareTag("LeftBarrier"))
         {
             sparksL.Stop();
+            SoundManager.instance.StopBarrierScrape();
         }
 
         if (other.CompareTag("RightBarrier"))
         {
             sparksR.Stop();
+            SoundManager.instance.StopBarrierScrape();
         }
     }
 
