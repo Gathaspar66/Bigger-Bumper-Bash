@@ -748,7 +748,7 @@ MonoBehaviour:
   frontSpawnDynamicObstacleDistance: 100
   backSpawnDynamicObstacleDistance: -10
   pointsSpawnDistance: 50
-  staticObstacleSpawnIntervalDistance: 400000
+  staticObstacleSpawnIntervalDistance: 20
   frontDynamicObstacleSpawnIntervalDistance: 10
   backDynamicObstacleSpawnIntervalDistance: 10
   pointsSpawnIntervalDistance: 10

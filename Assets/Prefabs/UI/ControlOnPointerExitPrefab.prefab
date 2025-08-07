@@ -85,7 +85,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3323428444918784021}
   - component: {fileID: 749584296129135198}
-  - component: {fileID: 5178756593797401665}
   m_Layer: 0
   m_Name: ControlOnPointerExitPrefab
   m_TagString: Untagged
@@ -122,20 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugArea: {fileID: 2910418498157325722}
---- !u!114 &5178756593797401665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942652076201249849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6805a8ebe0736ab4586c670b603b286e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slideDuration: 2
-  slideFrom: 3
 --- !u!1 &1948580669607468310
 GameObject:
   m_ObjectHideFlags: 0

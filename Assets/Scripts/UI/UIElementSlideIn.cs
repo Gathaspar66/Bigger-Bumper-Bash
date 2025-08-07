@@ -32,7 +32,7 @@ public class UISlideInSimple : MonoBehaviour
                 continue;
             }
 
-            if (child.childCount > 0 && child.GetComponent<HorizontalLayoutGroup>() == null)
+            if (child.childCount > 0 && child.GetComponent<HorizontalLayoutGroup>() == null && child.GetComponent<GridLayoutGroup>() == null)
             {
                 SlideAllChildren(child);
             }
