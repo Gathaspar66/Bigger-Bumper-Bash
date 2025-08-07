@@ -188,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1734877777335830171}
   - component: {fileID: 7267193788851075195}
+  - component: {fileID: 4438322299707059771}
   m_Layer: 0
   m_Name: PointsDisplayPrefab
   m_TagString: Untagged
@@ -224,6 +225,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   digitRowHandler: {fileID: 8716957447383219977}
+--- !u!114 &4438322299707059771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451096820670422793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6805a8ebe0736ab4586c670b603b286e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slideDuration: 2
+  slideFrom: 0
 --- !u!1001 &318008915586952442
 PrefabInstance:
   m_ObjectHideFlags: 0

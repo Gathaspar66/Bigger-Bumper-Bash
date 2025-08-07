@@ -87,6 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7008768926357959161}
   - component: {fileID: 7058411071833737246}
+  - component: {fileID: 6125507441790087932}
   m_Layer: 0
   m_Name: SpeedMeterPrefab
   m_TagString: Untagged
@@ -129,6 +130,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2c3c67c625b78f44db630747d022479e, type: 3}
   - {fileID: 21300000, guid: d2affed5b61bd6247a413eb9635df7c6, type: 3}
   multiplierValueImage: {fileID: 1295013830467878573}
+--- !u!114 &6125507441790087932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771094033834645513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6805a8ebe0736ab4586c670b603b286e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slideDuration: 2
+  slideFrom: 1
 --- !u!1 &2164104692366991228
 GameObject:
   m_ObjectHideFlags: 0

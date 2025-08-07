@@ -264,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1734877777335830171}
   - component: {fileID: 5286464280007060708}
+  - component: {fileID: -4399317290604526283}
   m_Layer: 0
   m_Name: PointsMultiplierPrefab
   m_TagString: Untagged
@@ -301,6 +302,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   digitRowHandler: {fileID: 4591548651909036596}
   MaxMultiplierImage: {fileID: 1628409665898716109}
+--- !u!114 &-4399317290604526283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451096820670422793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6805a8ebe0736ab4586c670b603b286e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slideDuration: 2
+  slideFrom: 2
 --- !u!1001 &4839510163402090951
 PrefabInstance:
   m_ObjectHideFlags: 0
