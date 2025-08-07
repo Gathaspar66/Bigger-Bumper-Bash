@@ -224,7 +224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.2, y: 6.5}
+  m_AnchoredPosition: {x: -8.9, y: 6.5}
   m_SizeDelta: {x: 159.5, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &38159344
@@ -282,7 +282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &59508942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1118, y: -346}
+  m_AnchoredPosition: {x: -748, y: -346}
   m_SizeDelta: {x: 2700, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &59508943
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 91576164}
   - component: {fileID: 91576163}
   m_Layer: 5
-  m_Name: MenuButton
+  m_Name: SettingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,9 +377,9 @@ RectTransform:
   - {fileID: 59508942}
   m_Father: {fileID: 1089197305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1100, y: 350}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -200, y: -170}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91576163
@@ -1569,8 +1569,8 @@ RectTransform:
   - {fileID: 1706210926}
   - {fileID: 1607091633}
   - {fileID: 927910543}
-  - {fileID: 91576162}
   - {fileID: 1891649067}
+  - {fileID: 91576162}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2538,7 +2538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1118, y: 346}
+  m_AnchoredPosition: {x: 746, y: 346}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1745346335
@@ -2895,7 +2895,7 @@ GameObject:
   - component: {fileID: 1891649069}
   - component: {fileID: 1891649068}
   m_Layer: 5
-  m_Name: SettingsButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3025,31 +3025,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 153651631707033390, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.437
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 153651631707033390, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 153651631707033390, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.437
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 705405501322411589, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.437
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 705405501322411589, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1306421859522200860, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.437
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1306421859522200860, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1478507690078591986, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_Pivot.x
@@ -3133,15 +3133,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8123402327063817111, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.437
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8123402327063817111, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8123402327063817111, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.437
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8812305516931929707, guid: 84ef661a46bc6a84d803e349499ae3d5, type: 3}
       propertyPath: m_Name
