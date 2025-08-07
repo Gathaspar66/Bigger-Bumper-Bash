@@ -42,25 +42,25 @@ public class ControlsTouchPosition : MonoBehaviour
             {
                 Touch touch = Input.GetTouch(i);
 
-                if (lb.Contains(touch.position))
+                if (RectTransformUtility.RectangleContainsScreenPoint(l.rectTransform, touch.position, null))
                 {
                     l.color = new Color(1f, 1f, 1f, 1f);
                     handler.SetInput(SteeringDirection.LEFT);
                 }
 
-                if (rb.Contains(touch.position))
+                if (RectTransformUtility.RectangleContainsScreenPoint(r.rectTransform, touch.position, null))
                 {
                     r.color = new Color(1f, 1f, 1f, 1f);
                     handler.SetInput(SteeringDirection.RIGHT);
                 }
 
-                if (ub.Contains(touch.position))
+                if (RectTransformUtility.RectangleContainsScreenPoint(u.rectTransform, touch.position, null))
                 {
                     u.color = new Color(1f, 1f, 1f, 1f);
                     handler.SetInput(SteeringDirection.ACCELERATE);
                 }
 
-                if (db.Contains(touch.position))
+                if (RectTransformUtility.RectangleContainsScreenPoint(d.rectTransform, touch.position, null))
                 {
                     d.color = new Color(1f, 1f, 1f, 1f);
                     handler.SetInput(SteeringDirection.BRAKE);
