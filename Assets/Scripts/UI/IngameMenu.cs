@@ -27,6 +27,7 @@ public class IngameMenu : MonoBehaviour
         isMenuOpen = !isMenuOpen;
         GameManager.instance.PauseGame(isMenuOpen);
         ingameMenu.SetActive(isMenuOpen);
+        SoundManager.instance.ToggleEngineSound(isMenuOpen);
     }
 
     public void OnRestartButtonPressed()

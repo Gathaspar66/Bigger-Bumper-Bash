@@ -49,6 +49,11 @@ public class PlayerSoundsHandler : MonoBehaviour
         }
     }
 
+    internal void ToggleEngineSound(bool muteEngine)
+    {
+        engineAudioSource.mute = muteEngine;
+    }
+
     internal void PlayerCarBreakSound(bool braking)
     {
         if (!braking)

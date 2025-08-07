@@ -1,10 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager instance;
     public GameObject aboutPanel;
+    public GameObject mainMenuIngameMenu;
+    public AudioMixer am;
 
     private void Awake()
     {
@@ -15,6 +19,13 @@ public class MainMenuManager : MonoBehaviour
     {
         ActivateManagers();
         UpdateHighScoreText();
+        LoadSoundVolumeSettings();
+    }
+
+    private void LoadSoundVolumeSettings()
+    {
+        am.SetFloat("Music", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("musicVolume"), 0.0001f, 1f)) * 20f);
+        am.SetFloat("SFX", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("soundVolume"), 0.0001f, 1f)) * 20f);
     }
 
     public void ActivateManagers()
@@ -54,5 +65,15 @@ public class MainMenuManager : MonoBehaviour
     {
         print("quit button pressed: ");
         Application.Quit();
+    }
+
+    public void OnSettingsButtonPressed()
+    {
+        mainMenuIngameMenu.SetActive(true);
+    }
+
+    public void OnSettingsCloseButtonPressed()
+    {
+        mainMenuIngameMenu.SetActive(false);
     }
 }
