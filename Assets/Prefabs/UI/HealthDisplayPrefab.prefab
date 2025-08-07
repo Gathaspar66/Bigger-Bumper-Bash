@@ -172,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1734877777335830171}
   - component: {fileID: 3603007234316421073}
+  - component: {fileID: -8464140779267624124}
   m_Layer: 0
   m_Name: HealthDisplayPrefab
   m_TagString: Untagged
@@ -210,3 +211,17 @@ MonoBehaviour:
   healthPrefab: {fileID: 2142881156711533340, guid: 3c6cee9d665492e4c9fea4b5f0e6c931, type: 3}
   emptyHealthPrefab: {fileID: 1980715740553185180, guid: 1f17713b4b1df4b418f953fee1496ca3, type: 3}
   healthOrganizer: {fileID: 1499391982800640659}
+--- !u!114 &-8464140779267624124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451096820670422793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6805a8ebe0736ab4586c670b603b286e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slideDuration: 2
+  slideFrom: 2
