@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3323428444918784021}
   - component: {fileID: 749584296129135198}
-  - component: {fileID: 5178756593797401665}
+  - component: {fileID: -6782474927954314815}
   m_Layer: 0
   m_Name: ControlOnPointerExitPrefab
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugArea: {fileID: 2910418498157325722}
---- !u!114 &5178756593797401665
+--- !u!114 &-6782474927954314815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
