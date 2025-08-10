@@ -9,6 +9,7 @@ public class TrafficManager : MonoBehaviour
     public float frontSpawnDynamicObstacleDistance = 100f;
     public float backSpawnDynamicObstacleDistance = -10f;
     public float pointsSpawnDistance = 50f;
+    public float healthSpawnDistance = 50f;
 
     [Space(25)] //
     [Header("How often objects are spawned")]
@@ -17,14 +18,14 @@ public class TrafficManager : MonoBehaviour
     public float frontDynamicObstacleSpawnIntervalDistance = 50f;
     public float backDynamicObstacleSpawnIntervalDistance = 50f;
     public float pointsSpawnIntervalDistance = 30;
-
+    public float healthSpawnIntervalDistance = 100;
     [Space(25)] //
     [Header("Prefabs")]
     public GameObject staticObstaclePrefab;
 
     public GameObject dynamicObstaclePrefab;
     public GameObject pointsPrefab;
-
+    public GameObject healthPrefab;
     [Space(25)] //
     [Header("Other")]
     public float playerPrefabOffsetSpawn = 0.3f;
@@ -43,6 +44,7 @@ public class TrafficManager : MonoBehaviour
     private float lastSpawnPositionFrontDynamic;
     private float lastSpawnPositionBackDynamic;
     private float lastSpawnPositionPoints;
+    private float lastSpawnPositionHealth;
     public static TrafficManager instance;
     private float timerFront;
     private float timerBack;
@@ -132,8 +134,8 @@ public class TrafficManager : MonoBehaviour
         float distanceTraveledStatic = car.transform.position.z - lastSpawnPositionStatic;
         float distanceTraveledFrontDynamic = car.transform.position.z - lastSpawnPositionFrontDynamic;
         float distanceTraveledBackDynamic = car.transform.position.z - lastSpawnPositionBackDynamic;
-        float distanceTraveledPints = car.transform.position.z - lastSpawnPositionPoints;
-
+        float distanceTraveledPoints = car.transform.position.z - lastSpawnPositionPoints;
+        float distanceTraveledHealth = car.transform.position.z - lastSpawnPositionHealth;
         if (distanceTraveledStatic >= staticObstacleSpawnIntervalDistance)
         {
             SpawnStaticObstacle();
@@ -155,10 +157,16 @@ public class TrafficManager : MonoBehaviour
             return;
         }
 
-        if (distanceTraveledPints >= pointsSpawnIntervalDistance)
+        if (distanceTraveledPoints >= pointsSpawnIntervalDistance)
         {
-            SpawnPointsPrefab();
+            SpawnPointsPrefab(pointsPrefab);
             lastSpawnPositionPoints = car.transform.position.z;
+            return;
+        }
+        if (distanceTraveledHealth >= healthSpawnIntervalDistance)
+        {
+            SpawnPointsPrefab(healthPrefab);
+            lastSpawnPositionHealth = car.transform.position.z;
             return;
         }
     }
@@ -253,7 +261,7 @@ public class TrafficManager : MonoBehaviour
         }
     }
 
-    private void SpawnPointsPrefab()
+    private void SpawnPointsPrefab(GameObject spawnBonus)
     {
         float randomXPosition = Random.Range(-pointsSpawnPositionX, pointsSpawnPositionX);
         spawnPosition = new Vector3(randomXPosition, pointsSpawnHeight,
@@ -261,7 +269,7 @@ public class TrafficManager : MonoBehaviour
 
         if (!IsSpawnLocationClear(spawnPosition))
         {
-            _ = Instantiate(pointsPrefab, spawnPosition, Quaternion.identity);
+            _ = Instantiate(spawnBonus, spawnPosition, Quaternion.identity);
         }
     }
 
