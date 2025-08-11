@@ -10,6 +10,9 @@ public class MainMenuManager : MonoBehaviour
     public GameObject mainMenuIngameMenu;
     public AudioMixer am;
 
+    public GameObject menuButton;
+    public GameObject aboutMenu;
+
     private void Awake()
     {
         instance = this;
@@ -70,10 +73,13 @@ public class MainMenuManager : MonoBehaviour
     public void OnSettingsButtonPressed()
     {
         mainMenuIngameMenu.SetActive(true);
+        aboutMenu.SetActive(false);
+        menuButton.SetActive(false);
     }
 
     public void OnSettingsCloseButtonPressed()
     {
         mainMenuIngameMenu.SetActive(false);
+        menuButton.SetActive(true);
     }
 }

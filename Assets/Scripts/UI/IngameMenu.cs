@@ -8,6 +8,9 @@ public class IngameMenu : MonoBehaviour
 {
     public GameObject ingameMenu;
 
+    public GameObject menuOpenButton;
+    public GameObject menuCloseButton;
+
     bool isMenuOpen = false;
 
     // Start is called before the first frame update
@@ -22,12 +25,23 @@ public class IngameMenu : MonoBehaviour
         
     }
 
-    public void ToggleIngameMenu()
+    public void OpenIngameMenu()
     {
-        isMenuOpen = !isMenuOpen;
-        GameManager.instance.PauseGame(isMenuOpen);
-        ingameMenu.SetActive(isMenuOpen);
-        SoundManager.instance.ToggleEngineSound(isMenuOpen);
+        GameManager.instance.PauseGame(true);
+        ingameMenu.SetActive(true);
+        menuOpenButton.SetActive(false);
+        menuCloseButton.SetActive(true);
+        SoundManager.instance.MuteEngineSound(true);
+    }
+
+    public void CloseIngameMenu()
+    {
+        GameManager.instance.PauseGame(false);
+        ingameMenu.SetActive(false);
+        menuOpenButton.SetActive(true);
+        menuCloseButton.SetActive(false);
+        SoundManager.instance.MuteEngineSound(false);
+
     }
 
     public void OnRestartButtonPressed()
