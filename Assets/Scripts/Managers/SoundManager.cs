@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Mixer Groups")]//
     public AudioMixerGroup sfxMixerGroup;
 
-    internal void ToggleEngineSound(bool muteEngine)
+    internal void MuteEngineSound(bool muteEngine)
     {
         PlayerSoundsHandler.instance.ToggleEngineSound(muteEngine);
     }
