@@ -1,0 +1,7 @@
+{
+  "cars": [
+    { "carType": "UNIKACZ", "nazwa": "Unikacz", "hp": 3 },
+    { "carType": "OGIER", "nazwa": "Ogier", "hp": 2 },
+    { "carType": "MOTORCAR", "nazwa": "Motorcar", "hp": 1 }
+  ]
+}
