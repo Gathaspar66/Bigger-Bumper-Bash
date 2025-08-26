@@ -1,7 +1,43 @@
 {
   "cars": [
-    { "carType": "UNIKACZ", "nazwa": "Unikacz", "hp": 3 },
-    { "carType": "OGIER", "nazwa": "Ogier", "hp": 2 },
-    { "carType": "MOTORCAR", "nazwa": "Motorcar", "hp": 1 }
+    {
+      "carType": "UNIKACZ",
+      "name": "Unikacz",
+      "hp": 3,
+      "acceleationMultiplier": 30.0,
+      "brakeMultiplier": 15.0,
+      "steeringMultiplier": 5.0,
+      "maxForwardVelocity": 20.0,
+      "maxSteerVelocity": 2.0,
+      "minForwardVelocity": 10.0,
+      "isUnlocked": true,
+      "isAvailableForPlayer": true
+    },
+    {
+      "carType": "OGIER",
+      "name": "Ogier",
+      "hp": 4,
+      "acceleationMultiplier": 30.0,
+      "brakeMultiplier": 15.0,
+      "steeringMultiplier": 5.0,
+      "maxForwardVelocity": 20.0,
+      "maxSteerVelocity": 2.0,
+      "minForwardVelocity": 10.0,
+      "isUnlocked": true,
+      "isAvailableForPlayer": true
+    },
+    {
+      "carType": "MOTORCAR",
+      "name": "Motorcar",
+      "hp": 5,
+      "acceleationMultiplier": 30.0,
+      "brakeMultiplier": 15.0,
+      "steeringMultiplier": 5.0,
+      "maxForwardVelocity": 20.0,
+      "maxSteerVelocity": 2.0,
+      "minForwardVelocity": 10.0,
+      "isUnlocked": true,
+      "isAvailableForPlayer": true
+    }
   ]
 }

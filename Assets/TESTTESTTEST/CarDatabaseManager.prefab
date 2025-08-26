@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carJsonFile: {fileID: 4900000, guid: 14d6f2632bf4c124c8009890e96d2613, type: 3}
   carObjects:
-  - {fileID: 11400000, guid: 6b2535cde2603ea408a390f4740509b6, type: 2}
-  - {fileID: 11400000, guid: b7f1212f7d21826419486796b54fed4c, type: 2}
   - {fileID: 11400000, guid: b29623e29b5f93d459e063e0dcb154ed, type: 2}
+  - {fileID: 11400000, guid: b7f1212f7d21826419486796b54fed4c, type: 2}
+  - {fileID: 11400000, guid: 6b2535cde2603ea408a390f4740509b6, type: 2}

@@ -47,7 +47,7 @@ public class CarDatabaseManager : MonoBehaviour
 
         foreach (CarDataModel car in cars)
         {
-            Debug.Log($"CarType: {car.carType}, Nazwa: {car.nazwa}, HP: {car.hp}");
+            Debug.Log($"CarType: {car.carType}, Nazwa: {car.name}, HP: {car.hp}");
         }
     }
 
@@ -59,9 +59,20 @@ public class CarDatabaseManager : MonoBehaviour
             {
                 if (carSO.carType == car.carType)
                 {
-                    carSO.nazwa = car.nazwa;
+                    carSO.name = car.name;
                     carSO.hp = car.hp;
-                    break; // ju¿ znaleziono pasuj¹cy model
+
+                    carSO.acceleationMultiplier = car.acceleationMultiplier;
+                    carSO.brakeMultiplier = car.brakeMultiplier;
+                    carSO.steeringMultiplier = car.steeringMultiplier;
+                    carSO.maxForwardVelocity = car.maxForwardVelocity;
+                    carSO.maxSteerVelocity = car.maxSteerVelocity;
+                    carSO.minForwardVelocity = car.minForwardVelocity;
+
+                    carSO.isUnlocked = car.isUnlocked;
+                    carSO.isAvailable = car.isAvailable;
+
+                    break;
                 }
             }
         }

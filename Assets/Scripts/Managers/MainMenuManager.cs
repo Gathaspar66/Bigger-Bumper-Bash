@@ -13,18 +13,23 @@ public class MainMenuManager : MonoBehaviour
 
     public GameObject menuButton;
     public GameObject aboutMenu;
+
     [Header("Car Preview")]
-    public Transform carChoiceContainer;  // miejsce, gdzie spawnuj¹ siê auta
+    public Transform carChoiceContainer;
+
     private int currentCarIndex = 0;
     private GameObject spawnedCar;
 
     [Header("Car Info UI")]
     public TMP_Text carNameText;
+
     public TMP_Text carHpText;
+
     private void Awake()
     {
         instance = this;
     }
+
     private List<CarData> CarObjects => CarDatabaseManager.instance != null ? CarDatabaseManager.instance.carObjects : new List<CarData>();
 
     private void Start()
@@ -140,7 +145,6 @@ public class MainMenuManager : MonoBehaviour
 
         CarData car = cars[index];
 
-
         if (car.prefabAuta != null)
         {
             spawnedCar = Instantiate(
@@ -149,20 +153,19 @@ public class MainMenuManager : MonoBehaviour
                 carChoiceContainer.rotation,
                 carChoiceContainer
             );
-            spawnedCar.name = car.nazwa;
+            spawnedCar.name = car.name;
         }
-
 
         if (carNameText != null)
         {
-            carNameText.text = car.nazwa;
+            carNameText.text = car.name;
         }
 
         if (carHpText != null)
         {
             carHpText.text = "HP: " + car.hp.ToString();
         }
+        PlayerPrefs.SetInt("SelectedCar", (int)car.carType);
+        PlayerPrefs.Save();
     }
-
-
 }

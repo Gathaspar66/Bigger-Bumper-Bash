@@ -5,8 +5,18 @@ using UnityEngine;
 public class CarDataModel
 {
     public CarType carType;
-    public string nazwa;
+    public string name;
     public int hp;
+
+    public float acceleationMultiplier;
+    public float brakeMultiplier;
+    public float steeringMultiplier;
+    public float maxForwardVelocity;
+    public float maxSteerVelocity;
+    public float minForwardVelocity;
+
+    public bool isUnlocked;
+    public bool isAvailable;
 }
 
 [System.Serializable]
@@ -19,8 +29,18 @@ public class CarDataWrapperJson
 public class CarDataWrapperJsonItem
 {
     public string carType;
-    public string nazwa;
+    public string name;
     public int hp;
+
+    public float acceleationMultiplier;
+    public float brakeMultiplier;
+    public float steeringMultiplier;
+    public float maxForwardVelocity;
+    public float maxSteerVelocity;
+    public float minForwardVelocity;
+
+    public bool isUnlocked;
+    public bool isAvailable;
 }
 
 public static class CarDataLoader
@@ -36,12 +56,6 @@ public static class CarDataLoader
     {
         List<CarDataModel> carList = new();
 
-        if (jsonFile == null)
-        {
-            Debug.LogWarning("Nie podano pliku JSON!");
-            return carList;
-        }
-
         CarDataWrapperJson wrapper = JsonUtility.FromJson<CarDataWrapperJson>(jsonFile.text);
 
         if (wrapper != null && wrapper.cars != null)
@@ -50,27 +64,21 @@ public static class CarDataLoader
             {
                 CarDataModel car = new()
                 {
-                    nazwa = jsonCar.nazwa,
-                    hp = jsonCar.hp
+                    name = jsonCar.name,
+                    hp = jsonCar.hp,
+                    acceleationMultiplier = jsonCar.acceleationMultiplier,
+                    brakeMultiplier = jsonCar.brakeMultiplier,
+                    steeringMultiplier = jsonCar.steeringMultiplier,
+                    maxForwardVelocity = jsonCar.maxForwardVelocity,
+                    maxSteerVelocity = jsonCar.maxSteerVelocity,
+                    minForwardVelocity = jsonCar.minForwardVelocity,
+                    isUnlocked = jsonCar.isUnlocked,
+                    isAvailable = jsonCar.isAvailable,
+                    carType = (CarType)System.Enum.Parse(typeof(CarType), jsonCar.carType.ToUpper())
                 };
 
-                try
-                {
-                    car.carType = (CarType)System.Enum.Parse(typeof(CarType), jsonCar.carType.ToUpper());
-                }
-                catch
-                {
-                    Debug.LogWarning($"Nie uda³o siê sparsowaæ enumu dla {jsonCar.nazwa}, ustawiam OGIER domyœlnie");
-                    car.carType = CarType.OGIER;
-                }
-
                 carList.Add(car);
-                Debug.Log($"Loaded car: {car.carType} - {car.nazwa} - {car.hp}");
             }
-        }
-        else
-        {
-            Debug.LogWarning("Nie uda³o siê sparsowaæ JSON lub brak samochodów w pliku!");
         }
 
         isLoaded = true;

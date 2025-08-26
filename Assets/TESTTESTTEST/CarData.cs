@@ -2,20 +2,33 @@ using UnityEngine;
 
 public enum CarType
 {
-    OGIER,
     UNIKACZ,
+    OGIER,
     MOTORCAR
 }
 
 [CreateAssetMenu]
 public class CarData : ScriptableObject
 {
-    [Header("Dane Auta")]
+    [Header("Basic Car Info")]
     public CarType carType;
-
-    public string nazwa;
+    public new string name;
     public int hp;
 
-    [Header("Prefab Auta")]
+    [Header("Car Physics")]
+    public float acceleationMultiplier;
+
+    public float brakeMultiplier;
+    public float steeringMultiplier;
+    public float maxForwardVelocity;
+    public float maxSteerVelocity;
+    public float minForwardVelocity;
+
+    [Header("Car Availability")]
+    public bool isUnlocked;
+
+    public bool isAvailable;
+
+    [Header("Car Prefab")]
     public GameObject prefabAuta;
 }

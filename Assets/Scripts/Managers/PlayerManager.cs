@@ -1,20 +1,20 @@
 using UnityEngine;
-using static CarConfiguration;
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     public GameObject playerPrefab;
-    public GameObject unikaczPrefab;
+
     private GameObject playerInstance;
+
     private GameObject carInstance;
     public Camera cameraPrefab;
     public Camera currentCameraPrefab;
-    private CarConfig config;
-    private CarConfigDictionary carConfigs;
-    public TextAsset carConfigFile;
+
     public int playerMaxHealth;
+
     private int playerHealth;
+    public CarData selectedCarData;
 
     private void Awake()
     {
@@ -23,7 +23,6 @@ public class PlayerManager : MonoBehaviour
 
     public void Activate()
     {
-        //playerMaxHealth = PlayerPrefs.GetInt("playerLives");
         playerHealth = playerMaxHealth;
         SpawnPlayerPrefab();
         SpawnCar();
@@ -34,9 +33,7 @@ public class PlayerManager : MonoBehaviour
 
     private void LoadConfig()
     {
-        carConfigs = JsonUtility.FromJson<CarConfigDictionary>(carConfigFile.text);
-        config = carConfigs.Unikacz;
-        playerInstance.GetComponent<PlayerSteering>().LoadCarSettings(config);
+        playerInstance.GetComponent<PlayerSteering>().LoadCarSettings(selectedCarData);
         playerInstance.GetComponent<PlayerPrefabHandler>().SetParameters();
     }
 
@@ -47,9 +44,25 @@ public class PlayerManager : MonoBehaviour
 
     public void SpawnCar()
     {
-        carInstance = Instantiate(unikaczPrefab, playerInstance.transform.position, Quaternion.identity);
+        CarType selectedCar = (CarType)PlayerPrefs.GetInt("SelectedCar", (int)CarType.UNIKACZ);
+        selectedCarData = null;
+
+        foreach (CarData car in CarDatabaseManager.instance.carObjects)
+        {
+            if (car.carType == selectedCar)
+            {
+                selectedCarData = car;
+                break;
+            }
+        }
+
+        carInstance = Instantiate(selectedCarData.prefabAuta, playerInstance.transform.position, Quaternion.identity);
         carInstance.transform.SetParent(playerInstance.transform);
+
         playerInstance.GetComponent<PlayerPrefabHandler>().SetCarPrefab(carInstance);
+
+        playerMaxHealth = selectedCarData.hp;
+        playerHealth = playerMaxHealth;
     }
 
     public void SpawnCamera()

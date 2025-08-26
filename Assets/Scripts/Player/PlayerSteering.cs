@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static CarConfiguration;
-
 
 public class PlayerSteering : MonoBehaviour
 {
@@ -19,6 +16,7 @@ public class PlayerSteering : MonoBehaviour
 
     [Header("Other")] //
     public Rigidbody rb;
+
     private readonly CarModelHandler carModelHandler;
     public Transform gameModel;
     private Vector2 input = Vector2.zero;
@@ -29,7 +27,7 @@ public class PlayerSteering : MonoBehaviour
     private readonly float tiltSpeed = 5f;
     private readonly float tiltValue = 5f;
 
-    bool isPlayerDead = false;
+    private bool isPlayerDead = false;
 
     private void Awake()
     {
@@ -42,15 +40,14 @@ public class PlayerSteering : MonoBehaviour
         rb.velocity = new Vector3(0, 0, minForwardVelocity);
     }
 
-
-    public void LoadCarSettings(CarConfig config)
+    public void LoadCarSettings(CarData carData)
     {
-        acceleationMultiplier = config.acceleationMultiplier;
-        brakeMultiplier = config.brakeMultiplier;
-        steeringMultiplier = config.steeringMultiplier;
-        maxForwardVelocity = config.maxForwardVelocity;
-        maxSteerVelocity = config.maxSteerVelocity;
-        minForwardVelocity = config.minForwardVelocity;
+        acceleationMultiplier = carData.acceleationMultiplier;
+        brakeMultiplier = carData.brakeMultiplier;
+        steeringMultiplier = carData.steeringMultiplier;
+        minForwardVelocity = carData.minForwardVelocity;
+        maxForwardVelocity = carData.maxForwardVelocity;
+        maxSteerVelocity = carData.maxSteerVelocity;
     }
 
     private void Update()
@@ -71,7 +68,6 @@ public class PlayerSteering : MonoBehaviour
         float tiltZ = rb.velocity.x * 1f;
 
         gameModel.transform.localRotation = Quaternion.Euler(newTiltX, tiltY, tiltZ);
-
 
         if (wHeld)
         {
@@ -108,13 +104,12 @@ public class PlayerSteering : MonoBehaviour
             targetTiltX = 0f;
         }
 
-        SoundManager.instance.AdjustEngineSound(rb.velocity.z/maxForwardVelocity);
+        SoundManager.instance.AdjustEngineSound(rb.velocity.z / maxForwardVelocity);
     }
 
     public void Accelerate()
     {
         targetTiltX = -tiltValue;
-
 
         rb.drag = 0;
         if (rb.velocity.z >= maxForwardVelocity)
@@ -134,7 +129,6 @@ public class PlayerSteering : MonoBehaviour
     {
         targetTiltX = tiltValue;
 
-
         if (rb.velocity.z <= 0)
         {
             return;
@@ -146,17 +140,18 @@ public class PlayerSteering : MonoBehaviour
 
     public void Steer()
     {
-        if (isPlayerDead) return;
+        if (isPlayerDead)
+        {
+            return;
+        }
 
         if (Mathf.Abs(input.x) > 0)
         {
             float currentSpeed = rb.velocity.z;
 
-
             float dynamicSteeringMultiplier = steeringMultiplierCurve.Evaluate(currentSpeed);
 
             float targetXVelocity = input.x * dynamicSteeringMultiplier;
-
 
             rb.velocity = new Vector3(
                 Mathf.Lerp(rb.velocity.x, targetXVelocity, Time.fixedDeltaTime * 5),
@@ -170,7 +165,6 @@ public class PlayerSteering : MonoBehaviour
                 Time.fixedDeltaTime * 3);
         }
     }
-
 
     public void SetInput(Vector2 inputVector)
     {
