@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OgierDataSO
   m_EditorClassIdentifier: 
   carType: 0
-  name: Unikacz
+  name: Unikacz pk jp 2137%
   hp: 3
   acceleationMultiplier: 30
   brakeMultiplier: 15
@@ -22,5 +22,5 @@ MonoBehaviour:
   maxSteerVelocity: 2
   minForwardVelocity: 10
   isUnlocked: 1
-  isAvailable: 0
+  isAvailable: 1
   prefabAuta: {fileID: 51488253964336661, guid: 4e24d6dcdb5b80e4393393754dab6978, type: 3}

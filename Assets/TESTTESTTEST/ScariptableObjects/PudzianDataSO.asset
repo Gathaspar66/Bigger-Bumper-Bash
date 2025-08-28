@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a6888e9e46d1a840bda914e95514cf9, type: 3}
-  m_Name: UnikaczDataSO
+  m_Name: PudzianDataSO
   m_EditorClassIdentifier: 
-  carType: 1
-  name: Ogier Sport
+  carType: 3
+  name: Ogier
   hp: 4
   acceleationMultiplier: 30
   brakeMultiplier: 15
@@ -23,4 +23,4 @@ MonoBehaviour:
   minForwardVelocity: 10
   isUnlocked: 1
   isAvailable: 1
-  prefabAuta: {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
+  prefabAuta: {fileID: 3504747680130670635, guid: f51d0e06b675ac244997bce6b1d12c4d, type: 3}

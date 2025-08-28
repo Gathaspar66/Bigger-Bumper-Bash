@@ -10,8 +10,6 @@ public class PlayerPrefabHandler : MonoBehaviour
     public TrailRenderer leftTrailRenderer, rightTrailRenderer;
 
     [Header("Other")] //
-    public Material normal;
-
     public Material immune;
 
     private bool isImmune = false;
@@ -45,6 +43,7 @@ public class PlayerPrefabHandler : MonoBehaviour
         carModelHandler = GetComponentInChildren<CarModelHandler>();
         carModelHandler.SetCarDamagedLists();
         carModelHandler.SetPlayerPrefabHandler(this);
+        carModelHandler.SetupImmuneMaterial();
     }
 
     public void UpdateTrailEffects()
@@ -104,8 +103,6 @@ public class PlayerPrefabHandler : MonoBehaviour
         {
             hitPoint = other.ClosestPoint(transform.position);
         }
-
-
 
         if (other.gameObject.layer == 3)
         {
@@ -172,20 +169,20 @@ public class PlayerPrefabHandler : MonoBehaviour
         else
         {
             bool flash = Mathf.PingPong(currentImmunityDuration * 5, 1) > 0.5f;
-            carModelHandler.SetImmuneCarMaterial(flash ? immune : normal);
+            carModelHandler.SetImmuneCarMaterial(flash ? carModelHandler.immuneMaterial : carModelHandler.normalMaterial);
         }
     }
 
     public void StartImmunity()
     {
         currentImmunityDuration = immunityDuration;
-        carModelHandler.SetImmuneCarMaterial(immune);
+        carModelHandler.SetImmuneCarMaterial(carModelHandler.immuneMaterial);
         SetCarImmune(true);
     }
 
     private void EndImmunity()
     {
-        carModelHandler.SetImmuneCarMaterial(normal);
+        carModelHandler.SetImmuneCarMaterial(carModelHandler.normalMaterial);
         SetCarImmune(false);
     }
 

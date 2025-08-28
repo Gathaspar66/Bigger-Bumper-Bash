@@ -4,7 +4,9 @@ public enum CarType
 {
     UNIKACZ,
     OGIER,
-    MOTORCAR
+    MOTORCAR,
+    PUDZIAN,
+    PICKUP
 }
 
 [CreateAssetMenu]

@@ -6,6 +6,7 @@ public class CarModelHandler : MonoBehaviour
 {
     [Header("Car Elements")] //
     public List<GameObject> carBody = new();
+
     public List<GameObject> damagedBase = new();
     public List<GameObject> damagedSmall = new();
     public List<GameObject> damagedBig = new();
@@ -32,7 +33,13 @@ public class CarModelHandler : MonoBehaviour
 
     public Animator unikaczAnimator;
 
-    PlayerPrefabHandler pph;
+    private PlayerPrefabHandler pph;
+
+    [HideInInspector]
+    public Material normalMaterial;
+
+    [HideInInspector]
+    public Material immuneMaterial;
 
     public void SetupAICarModel()
     {
@@ -68,11 +75,14 @@ public class CarModelHandler : MonoBehaviour
             EffectManager.instance.SpawnAnEffect(Effect.CRASH_AND_FIRE,
                 pph.gameObject.transform.position + new Vector3(0, 0.750999987f, 1.20599997f));
         }
-        
-        if (pph != null) pph.SetSmokeParticle(health == 1);
+
+        if (pph != null)
+        {
+            pph.SetSmokeParticle(health == 1);
+        }
     }
 
-    void SetCarDamagedState(List<GameObject> list, bool enable)
+    private void SetCarDamagedState(List<GameObject> list, bool enable)
     {
         foreach (GameObject i in list)
         {
@@ -123,6 +133,33 @@ public class CarModelHandler : MonoBehaviour
             Renderer renderer = currentCarBodyElement.GetComponent<Renderer>();
             Material matInstance = new(baseMaterial);
             renderer.material = matInstance;
+        }
+    }
+
+    public void SetupImmuneMaterial()
+    {
+        Material baseMat = carBody[0].GetComponent<Renderer>().material;
+
+        normalMaterial = baseMat;
+
+        immuneMaterial = new Material(baseMat);
+
+        immuneMaterial.SetFloat("_Mode", 3);
+        immuneMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        immuneMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        immuneMaterial.SetInt("_ZWrite", 0);
+        immuneMaterial.DisableKeyword("_ALPHATEST_ON");
+        immuneMaterial.EnableKeyword("_ALPHABLEND_ON");
+        immuneMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        immuneMaterial.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+
+        Color c = baseMat.color;
+        c.a = 128f / 255f;
+        immuneMaterial.color = c;
+
+        if (immuneMaterial.HasProperty("_Metallic"))
+        {
+            immuneMaterial.SetFloat("_Metallic", 0f);
         }
     }
 

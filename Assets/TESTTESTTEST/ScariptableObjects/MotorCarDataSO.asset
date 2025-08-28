@@ -13,6 +13,14 @@ MonoBehaviour:
   m_Name: MotorCarDataSO
   m_EditorClassIdentifier: 
   carType: 2
-  nazwa: 
-  hp: 0
+  name: Motorcar 17
+  hp: 5
+  acceleationMultiplier: 30
+  brakeMultiplier: 15
+  steeringMultiplier: 5
+  maxForwardVelocity: 20
+  maxSteerVelocity: 2
+  minForwardVelocity: 10
+  isUnlocked: 1
+  isAvailable: 1
   prefabAuta: {fileID: 5633759295636568507, guid: 82ddd66021183fd469a7bfa30b2c2453, type: 3}

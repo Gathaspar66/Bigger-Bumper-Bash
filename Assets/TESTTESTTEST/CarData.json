@@ -2,7 +2,7 @@
   "cars": [
     {
       "carType": "UNIKACZ",
-      "name": "Unikacz",
+      "name": "Unikacz pk jp 2137%",
       "hp": 3,
       "acceleationMultiplier": 30.0,
       "brakeMultiplier": 15.0,
@@ -15,7 +15,7 @@
     },
     {
       "carType": "OGIER",
-      "name": "Ogier",
+      "name": "Ogier Sport",
       "hp": 4,
       "acceleationMultiplier": 30.0,
       "brakeMultiplier": 15.0,
@@ -28,7 +28,33 @@
     },
     {
       "carType": "MOTORCAR",
-      "name": "Motorcar",
+      "name": "Motorcar 17",
+      "hp": 5,
+      "acceleationMultiplier": 30.0,
+      "brakeMultiplier": 15.0,
+      "steeringMultiplier": 5.0,
+      "maxForwardVelocity": 20.0,
+      "maxSteerVelocity": 2.0,
+      "minForwardVelocity": 10.0,
+      "isUnlocked": true,
+      "isAvailableForPlayer": true
+    },
+  {
+      "carType": "PUDZIAN",
+      "name": "pudzian",
+      "hp": 5,
+      "acceleationMultiplier": 30.0,
+      "brakeMultiplier": 15.0,
+      "steeringMultiplier": 5.0,
+      "maxForwardVelocity": 20.0,
+      "maxSteerVelocity": 2.0,
+      "minForwardVelocity": 10.0,
+      "isUnlocked": true,
+      "isAvailableForPlayer": true
+    },
+ {
+      "carType": "PICKUP",
+      "name": "PICKUP",
       "hp": 5,
       "acceleationMultiplier": 30.0,
       "brakeMultiplier": 15.0,

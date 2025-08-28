@@ -155,6 +155,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6985660554509939846}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -9157076856739481495}
   m_SourcePrefab: {fileID: 100100000, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
 --- !u!1 &3504747680130670635 stripped
 GameObject:
@@ -182,3 +185,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.1408166, z: 2.2871594}
   m_Center: {x: 0, y: 0.5704685, z: 0.33945155}
+--- !u!114 &-9157076856739481495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3504747680130670635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d543310854a0f46a6756e24747ac49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carBody: []
+  damagedBase: []
+  damagedSmall: []
+  damagedBig: []
+  damagedDestroyed: []
+  frontLight: {fileID: 0}
+  rearLight: {fileID: 0}
+  carPaintMaterials: []
+  glowingFrontLight: {fileID: 0}
+  glowingRearLight: {fileID: 0}
+  originalMaterial: {fileID: 0}
+  originalRearMaterial: {fileID: 0}
+  unikaczAnimator: {fileID: 0}
