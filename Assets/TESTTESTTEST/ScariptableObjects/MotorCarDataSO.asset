@@ -21,7 +21,7 @@ MonoBehaviour:
   maxForwardVelocity: 20
   maxSteerVelocity: 2
   minForwardVelocity: 10
-  isUnlocked: 0
+  isUnlocked: 1
   isAvailable: 1
   spawnForAI: 1
   carPrefab: {fileID: 5633759295636568507, guid: 82ddd66021183fd469a7bfa30b2c2453, type: 3}
