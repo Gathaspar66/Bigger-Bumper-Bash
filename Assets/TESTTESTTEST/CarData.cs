@@ -27,10 +27,16 @@ public class CarData : ScriptableObject
     public float minForwardVelocity;
 
     [Header("Car Availability")]
+    [Tooltip("Whether the car is unlocked in-game – not loaded from JSON, set dynamically during gameplay.")]
     public bool isUnlocked;
 
+    [Tooltip("Whether the car is available for the player to drive – loaded from JSON.")]
     public bool isAvailable;
-
+    public bool spawnForAI;
     [Header("Car Prefab")]
-    public GameObject prefabAuta;
+    public GameObject carPrefab;
+    [Header("Other")]
+    public string textToUnlock;
+
+
 }

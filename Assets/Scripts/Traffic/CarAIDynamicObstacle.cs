@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CarAIDynamicObstacle : MonoBehaviour
@@ -23,10 +24,11 @@ public class CarAIDynamicObstacle : MonoBehaviour
 
     private Vector2 smoothnessRange = new(0.5f, 0.8f);
     private Vector2 metallicRange = new(0.6f, 1f);
-    private bool playerDetected = false;
+
     private CarModelHandler carModelHandler;
     private bool isStoppedDueToCrash = false;
     public static EffectManager effectManager;
+    public List<CarData> carPool;
 
     private void Awake()
     {
@@ -99,6 +101,27 @@ public class CarAIDynamicObstacle : MonoBehaviour
         spawnedCar.GetComponent<CarModelHandler>().SetupAICarModel();
     }
 
+    public void SpawnRandomCarFromDatabase(int randomLaneIndex)
+    {
+        carPool = CarDatabaseManager.instance.GetAICarPool();
+
+        int randomCarIndex = Random.Range(0, carPool.Count);
+        CarData selectedCar = carPool[randomCarIndex];
+
+        currentLaneIndex = randomLaneIndex;
+
+        Vector3 spawnPosition = transform.position;
+
+        GameObject spawnedCar = Instantiate(selectedCar.carPrefab, spawnPosition, transform.rotation);
+        spawnedCar.transform.SetParent(transform);
+
+        CarModelHandler handler = spawnedCar.GetComponent<CarModelHandler>();
+        if (handler != null)
+        {
+            handler.SetupAICarModel();
+        }
+    }
+
     private void DestroyCarIfTooFar()
     {
         GameObject player = PlayerManager.instance.GetPlayerInstance();
@@ -137,12 +160,8 @@ public class CarAIDynamicObstacle : MonoBehaviour
             {
                 continue;
             }
-            if (hitCollider.CompareTag("Player"))
-            {
-                playerDetected = true;
+            carModelHandler?.BlinkFrontLights();
 
-                carModelHandler?.BlinkFrontLights();
-            }
             detectedCars++;
         }
 

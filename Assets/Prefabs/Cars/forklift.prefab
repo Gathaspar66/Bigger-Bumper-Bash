@@ -159,6 +159,21 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -9157076856739481495}
   m_SourcePrefab: {fileID: 100100000, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
+--- !u!1 &107129018241791672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4819223349682164798, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
+  m_PrefabInstance: {fileID: 4351098068194368890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1003509431293508621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5652270277810331273, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
+  m_PrefabInstance: {fileID: 4351098068194368890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1258305323919440302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3248312102727607508, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
+  m_PrefabInstance: {fileID: 4351098068194368890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3504747680130670635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
@@ -197,16 +212,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d543310854a0f46a6756e24747ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carBody: []
+  carBody:
+  - {fileID: 107129018241791672}
   damagedBase: []
   damagedSmall: []
   damagedBig: []
   damagedDestroyed: []
-  frontLight: {fileID: 0}
-  rearLight: {fileID: 0}
+  frontLight: {fileID: 1258305323919440302}
+  rearLight: {fileID: 1003509431293508621}
   carPaintMaterials: []
-  glowingFrontLight: {fileID: 0}
-  glowingRearLight: {fileID: 0}
+  glowingFrontLight: {fileID: 2100000, guid: c8a9323daa6199649b2223f878db57e7, type: 2}
+  glowingRearLight: {fileID: 2100000, guid: baa775f1c7338a249b61c30d1dc6fc8a, type: 2}
   originalMaterial: {fileID: 0}
   originalRearMaterial: {fileID: 0}
   unikaczAnimator: {fileID: 0}
+  normalMaterial: {fileID: 0}
+  immuneMaterial: {fileID: 0}

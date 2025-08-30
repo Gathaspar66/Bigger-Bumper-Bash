@@ -10,8 +10,8 @@
       "maxForwardVelocity": 20.0,
       "maxSteerVelocity": 2.0,
       "minForwardVelocity": 10.0,
-      "isUnlocked": true,
-      "isAvailableForPlayer": true
+      "isAvailableForPlayer": true,
+      "spawnForAI": true
     },
     {
       "carType": "OGIER",
@@ -23,8 +23,8 @@
       "maxForwardVelocity": 20.0,
       "maxSteerVelocity": 2.0,
       "minForwardVelocity": 10.0,
-      "isUnlocked": true,
-      "isAvailableForPlayer": true
+      "isAvailableForPlayer": true,
+      "spawnForAI": true
     },
     {
       "carType": "MOTORCAR",
@@ -36,21 +36,21 @@
       "maxForwardVelocity": 20.0,
       "maxSteerVelocity": 2.0,
       "minForwardVelocity": 10.0,
-      "isUnlocked": true,
-      "isAvailableForPlayer": true
+      "isAvailableForPlayer": true,
+      "spawnForAI": true
     },
   {
       "carType": "PUDZIAN",
       "name": "pudzian",
       "hp": 5,
       "acceleationMultiplier": 30.0,
-      "brakeMultiplier": 15.0,
+      "brakeMultiplier": 30.0,
       "steeringMultiplier": 5.0,
       "maxForwardVelocity": 20.0,
       "maxSteerVelocity": 2.0,
       "minForwardVelocity": 10.0,
-      "isUnlocked": true,
-      "isAvailableForPlayer": true
+      "isAvailableForPlayer": true,
+      "spawnForAI": false
     },
  {
       "carType": "PICKUP",
@@ -62,8 +62,8 @@
       "maxForwardVelocity": 20.0,
       "maxSteerVelocity": 2.0,
       "minForwardVelocity": 10.0,
-      "isUnlocked": true,
-      "isAvailableForPlayer": true
+      "isAvailableForPlayer": true,
+      "spawnForAI": true
     }
   ]
 }

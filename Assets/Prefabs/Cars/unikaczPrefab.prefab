@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 946056353082164652, guid: 25e8bcde996489747a0c2d68f226ab1e, type: 3}
       propertyPath: m_IsActive
@@ -457,6 +457,8 @@ MonoBehaviour:
   originalMaterial: {fileID: 2100000, guid: 679e0417e9cd1fc46862443932dc21bf, type: 2}
   originalRearMaterial: {fileID: 2100000, guid: 3f8eca09f18c54f4289b2f1593761fef, type: 2}
   unikaczAnimator: {fileID: 4957568628704121746}
+  normalMaterial: {fileID: 0}
+  immuneMaterial: {fileID: 0}
 --- !u!95 &4957568628704121746
 Animator:
   serializedVersion: 5

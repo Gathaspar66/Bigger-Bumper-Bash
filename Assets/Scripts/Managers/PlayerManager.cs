@@ -56,7 +56,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        carInstance = Instantiate(selectedCarData.prefabAuta, playerInstance.transform.position, Quaternion.identity);
+        carInstance = Instantiate(selectedCarData.carPrefab, playerInstance.transform.position, Quaternion.identity);
         carInstance.transform.SetParent(playerInstance.transform);
 
         playerInstance.GetComponent<PlayerPrefabHandler>().SetCarPrefab(carInstance);

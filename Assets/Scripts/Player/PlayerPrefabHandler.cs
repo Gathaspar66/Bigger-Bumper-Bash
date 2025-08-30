@@ -90,6 +90,7 @@ public class PlayerPrefabHandler : MonoBehaviour
         if (other.gameObject.layer == 6)
         {
             SoundManager.instance.PlayPointsSound();
+            AddCollectedBarrel();
         }
         if (isImmune)
         {
@@ -119,6 +120,23 @@ public class PlayerPrefabHandler : MonoBehaviour
         }
     }
 
+    private void AddCollectedBarrel()
+    {
+        int barrels = PlayerPrefs.GetInt("CollectedBarrels", 0);
+        barrels++;
+        print(barrels);
+        PlayerPrefs.SetInt("CollectedBarrels", barrels);
+        PlayerPrefs.Save();
+    }
+
+    private void AddHitBarrier()
+    {
+        int hitBarriers = PlayerPrefs.GetInt("HitBarriers", 0);
+        hitBarriers++;
+        PlayerPrefs.SetInt("HitBarriers", hitBarriers);
+        PlayerPrefs.Save();
+    }
+
     internal void SetPlayerDead(bool isDead)
     {
         isPlayerDead = isDead;
@@ -145,12 +163,14 @@ public class PlayerPrefabHandler : MonoBehaviour
         {
             sparksL.Stop();
             SoundManager.instance.StopBarrierScrape();
+            AddHitBarrier();
         }
 
         if (other.CompareTag("RightBarrier"))
         {
             sparksR.Stop();
             SoundManager.instance.StopBarrierScrape();
+            AddHitBarrier();
         }
     }
 

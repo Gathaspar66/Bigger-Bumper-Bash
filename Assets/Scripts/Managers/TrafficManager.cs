@@ -57,6 +57,8 @@ public class TrafficManager : MonoBehaviour
     private Lane[] backLanes;
     private StaticObstacle[] staticObstaclesData;
 
+
+
     private void Awake()
     {
         instance = this;
@@ -223,7 +225,8 @@ public class TrafficManager : MonoBehaviour
                 : Quaternion.identity;
 
             _ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
-            CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
+            // CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
+            CarAIDynamicObstacle.instance.SpawnRandomCarFromDatabase(randomLaneIndex);
         }
     }
 
@@ -249,7 +252,9 @@ public class TrafficManager : MonoBehaviour
                 : Quaternion.identity;
 
             _ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
-            CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
+            //CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
+            CarAIDynamicObstacle.instance.SpawnRandomCarFromDatabase(randomLaneIndex);
+
         }
     }
 

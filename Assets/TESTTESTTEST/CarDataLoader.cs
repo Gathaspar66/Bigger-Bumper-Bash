@@ -17,6 +17,7 @@ public class CarDataModel
 
     public bool isUnlocked;
     public bool isAvailable;
+    public bool spawnForAI;
 }
 
 [System.Serializable]
@@ -40,7 +41,8 @@ public class CarDataWrapperJsonItem
     public float minForwardVelocity;
 
     public bool isUnlocked;
-    public bool isAvailable;
+    public bool isAvailableForPlayer;
+    public bool spawnForAI;
 }
 
 public static class CarDataLoader
@@ -72,8 +74,9 @@ public static class CarDataLoader
                     maxForwardVelocity = jsonCar.maxForwardVelocity,
                     maxSteerVelocity = jsonCar.maxSteerVelocity,
                     minForwardVelocity = jsonCar.minForwardVelocity,
-                    isUnlocked = jsonCar.isUnlocked,
-                    isAvailable = jsonCar.isAvailable,
+                    //isUnlocked = jsonCar.isUnlocked,
+                    isAvailable = jsonCar.isAvailableForPlayer,
+                    spawnForAI = jsonCar.spawnForAI,
                     carType = (CarType)System.Enum.Parse(typeof(CarType), jsonCar.carType.ToUpper())
                 };
 

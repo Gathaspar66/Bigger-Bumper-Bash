@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6888e9e46d1a840bda914e95514cf9, type: 3}
   m_Name: UnikaczDataSO
   m_EditorClassIdentifier: 
-  carType: 1
-  name: Ogier Sport
-  hp: 4
+  carType: 0
+  name: Unikacz pk jp 2137%
+  hp: 3
   acceleationMultiplier: 30
   brakeMultiplier: 15
   steeringMultiplier: 5
@@ -23,4 +23,5 @@ MonoBehaviour:
   minForwardVelocity: 10
   isUnlocked: 1
   isAvailable: 1
-  prefabAuta: {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
+  spawnForAI: 1
+  carPrefab: {fileID: 51488253964336661, guid: 4e24d6dcdb5b80e4393393754dab6978, type: 3}

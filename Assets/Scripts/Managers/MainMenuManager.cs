@@ -1,8 +1,9 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class MainMenuManager : MonoBehaviour
 
     public GameObject menuButton;
     public GameObject aboutMenu;
+    public Button startButton;
+    public GameObject isCarChooseViewOpen;
+    private Image startButtonImage;
+    public TMP_Text carStatus;
+    public Color activeColor = Color.green;
+    public Color inactiveColor = Color.white;
+    public TMP_Text textToUnlock;
 
     [Header("Car Preview")]
     public Transform carChoiceContainer;
@@ -37,11 +45,30 @@ public class MainMenuManager : MonoBehaviour
         ActivateManagers();
         UpdateHighScoreText();
         LoadSoundVolumeSettings();
-        if (CarObjects.Count > 0)
+
+        LoadSelectedCar();
+
+        startButtonImage = startButton.GetComponent<Image>();
+        ShowCar(currentCarIndex);
+    }
+
+    private void LoadSelectedCar()
+    {
+        int savedCarType = PlayerPrefs.GetInt("SelectedCar", -1);
+
+        if (savedCarType != -1)
         {
-            currentCarIndex = 0;
-            ShowCar(currentCarIndex);
+            for (int i = 0; i < CarObjects.Count; i++)
+            {
+                if ((int)CarObjects[i].carType == savedCarType)
+                {
+                    currentCarIndex = i;
+                    return;
+                }
+            }
         }
+
+        currentCarIndex = 0;
     }
 
     private void LoadSoundVolumeSettings()
@@ -105,22 +132,12 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnNextCar()
     {
-        if (CarObjects.Count == 0)
-        {
-            return;
-        }
-
         currentCarIndex = (currentCarIndex + 1) % CarObjects.Count;
         ShowCar(currentCarIndex);
     }
 
     public void OnPreviousCar()
     {
-        if (CarObjects.Count == 0)
-        {
-            return;
-        }
-
         currentCarIndex--;
         if (currentCarIndex < 0)
         {
@@ -145,10 +162,10 @@ public class MainMenuManager : MonoBehaviour
 
         CarData car = cars[index];
 
-        if (car.prefabAuta != null)
+        if (car.carPrefab != null)
         {
             spawnedCar = Instantiate(
-                car.prefabAuta,
+                car.carPrefab,
                 carChoiceContainer.position,
                 carChoiceContainer.rotation,
                 carChoiceContainer
@@ -165,7 +182,29 @@ public class MainMenuManager : MonoBehaviour
         {
             carHpText.text = "HP: " + car.hp.ToString();
         }
+
+        HandleLockedCarState(car);
+
         PlayerPrefs.SetInt("SelectedCar", (int)car.carType);
         PlayerPrefs.Save();
+    }
+
+    private void HandleLockedCarState(CarData car)
+    {
+        if (car.isUnlocked)
+        {
+            carStatus.text = "";
+            textToUnlock.text = "";
+            startButtonImage.color = inactiveColor;
+            startButton.interactable = true;
+
+        }
+        else
+        {
+            carStatus.text = "LOCKED";
+            textToUnlock.text = car.textToUnlock;
+            startButton.interactable = false;
+            startButtonImage.color = activeColor;
+        }
     }
 }

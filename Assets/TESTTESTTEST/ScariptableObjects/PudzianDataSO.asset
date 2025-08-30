@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: PudzianDataSO
   m_EditorClassIdentifier: 
   carType: 3
-  name: Ogier
-  hp: 4
+  name: pudzian
+  hp: 5
   acceleationMultiplier: 30
-  brakeMultiplier: 15
+  brakeMultiplier: 30
   steeringMultiplier: 5
   maxForwardVelocity: 20
   maxSteerVelocity: 2
   minForwardVelocity: 10
-  isUnlocked: 1
+  isUnlocked: 0
   isAvailable: 1
-  prefabAuta: {fileID: 3504747680130670635, guid: f51d0e06b675ac244997bce6b1d12c4d, type: 3}
+  spawnForAI: 0
+  carPrefab: {fileID: 3504747680130670635, guid: f51d0e06b675ac244997bce6b1d12c4d, type: 3}
+  textToUnlock: UNLOCK THE REST OF THE CARS TO UNLOCK

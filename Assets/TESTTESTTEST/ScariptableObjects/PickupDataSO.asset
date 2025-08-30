@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PickupDataSO
   m_EditorClassIdentifier: 
   carType: 4
-  name: Ogier
-  hp: 4
+  name: PICKUP
+  hp: 5
   acceleationMultiplier: 30
   brakeMultiplier: 15
   steeringMultiplier: 5
@@ -23,4 +23,6 @@ MonoBehaviour:
   minForwardVelocity: 10
   isUnlocked: 1
   isAvailable: 1
-  prefabAuta: {fileID: 3254706542479514739, guid: c245eb74ca6ab3242a96f51b647e277f, type: 3}
+  spawnForAI: 1
+  carPrefab: {fileID: 3254706542479514739, guid: c245eb74ca6ab3242a96f51b647e277f, type: 3}
+  textToUnlock: REACH 10000 POINTS  TO UNLOCK
