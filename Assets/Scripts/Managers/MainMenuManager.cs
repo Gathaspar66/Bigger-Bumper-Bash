@@ -42,6 +42,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 120;
         ActivateManagers();
         UpdateHighScoreText();
         LoadSoundVolumeSettings();

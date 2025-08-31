@@ -149,7 +149,7 @@ public class PlayerSteering : MonoBehaviour
         {
             float currentSpeed = rb.velocity.z;
 
-            float dynamicSteeringMultiplier = steeringMultiplierCurve.Evaluate(currentSpeed);
+            float dynamicSteeringMultiplier = steeringMultiplierCurve.Evaluate(currentSpeed) * steeringMultiplier;
 
             float targetXVelocity = input.x * dynamicSteeringMultiplier;
 

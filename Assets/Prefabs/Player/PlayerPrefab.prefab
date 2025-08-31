@@ -137,7 +137,6 @@ MonoBehaviour:
   smokePrefab: {fileID: 6133598356704945139}
   leftTrailRenderer: {fileID: 3963009987135452346}
   rightTrailRenderer: {fileID: 8741861478836002024}
-  normal: {fileID: 2100000, guid: 66fb998a70f9b004b9021cba53a04bf5, type: 2}
   immune: {fileID: 2100000, guid: 73ca67a0e05e25743b473a1c7f476d0b, type: 2}
   carAIDynamicObstacle: {fileID: 0}
 --- !u!65 &450025254653009301

@@ -1201,7 +1201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: levelClipsList.Array.size
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: sounds.Array.data[1].clip
@@ -1223,6 +1223,22 @@ PrefabInstance:
       propertyPath: levelClipsList.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 00aa20fa620180c438b3fad892c0a863, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e35bfde55ccc374f8a57a7a96491da8, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8bec27acc251d5b4491e40443de29f94, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 40b61242437fb804daca9ac669362e0b, type: 3}
+    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
+      propertyPath: levelClipsList.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 49a593b91b03f7047934693676758111, type: 3}
     - target: {fileID: 7860614666529676343, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
       propertyPath: Loop
       value: 0
