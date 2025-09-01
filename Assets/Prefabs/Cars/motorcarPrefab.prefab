@@ -236,7 +236,7 @@ PrefabInstance:
       addedObject: {fileID: 2367278123463380490}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6061373079559043837}
+      addedObject: {fileID: -4296201702354666799}
   m_SourcePrefab: {fileID: 100100000, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
 --- !u!1 &166468330878706686 stripped
 GameObject:
@@ -377,7 +377,7 @@ MonoBehaviour:
   unikaczAnimator: {fileID: 0}
   normalMaterial: {fileID: 0}
   immuneMaterial: {fileID: 0}
---- !u!95 &6061373079559043837
+--- !u!95 &-4296201702354666799
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
