@@ -236,6 +236,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3248312102727607508, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3537537226262052961, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -312,6 +316,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cd80add5f1391e04896b3c800858a63d, type: 2}
+    - target: {fileID: 7960717038692229355, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 679e0417e9cd1fc46862443932dc21bf, type: 2}
     - target: {fileID: 8422480816086026210, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -342,6 +350,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5695661351321384210}
   m_SourcePrefab: {fileID: 100100000, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
+--- !u!1 &88182235857478177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4802106153375498405, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
+  m_PrefabInstance: {fileID: 4351098068194368890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &107129018241791672 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4819223349682164798, guid: f372a0e4fa475684cbc0ef9b17a9dedc, type: 3}
@@ -460,6 +473,7 @@ MonoBehaviour:
   - {fileID: 966631288239377164}
   - {fileID: 1369084241654251463}
   - {fileID: 528004660136501942}
+  - {fileID: 88182235857478177}
   damagedSmall:
   - {fileID: 8294983801075496284}
   - {fileID: 2047320310800217349}
@@ -471,6 +485,7 @@ MonoBehaviour:
   - {fileID: 3920798876867234518}
   - {fileID: 1369084241654251463}
   - {fileID: 528004660136501942}
+  - {fileID: 1258305323919440302}
   damagedBig:
   - {fileID: 8294983801075496284}
   - {fileID: 2047320310800217349}
@@ -482,6 +497,7 @@ MonoBehaviour:
   - {fileID: 3920798876867234518}
   - {fileID: 4327020926491763136}
   - {fileID: 7714006793901334217}
+  - {fileID: 1258305323919440302}
   damagedDestroyed:
   - {fileID: 8294983801075496284}
   - {fileID: 2047320310800217349}
@@ -493,13 +509,14 @@ MonoBehaviour:
   - {fileID: 3920798876867234518}
   - {fileID: 9060568670363060400}
   - {fileID: 5185512519153122061}
+  - {fileID: 1258305323919440302}
   frontLight: {fileID: 1258305323919440302}
   rearLight: {fileID: 1003509431293508621}
   carPaintMaterials: []
   glowingFrontLight: {fileID: 2100000, guid: c8a9323daa6199649b2223f878db57e7, type: 2}
   glowingRearLight: {fileID: 2100000, guid: baa775f1c7338a249b61c30d1dc6fc8a, type: 2}
-  originalMaterial: {fileID: 0}
-  originalRearMaterial: {fileID: 0}
+  originalMaterial: {fileID: 2100000, guid: 679e0417e9cd1fc46862443932dc21bf, type: 2}
+  originalRearMaterial: {fileID: 2100000, guid: 3f8eca09f18c54f4289b2f1593761fef, type: 2}
   unikaczAnimator: {fileID: 0}
   normalMaterial: {fileID: 0}
   immuneMaterial: {fileID: 0}
