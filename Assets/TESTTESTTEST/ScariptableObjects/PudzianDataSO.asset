@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carType: 3
   name: pudzian
-  hp: 5
-  acceleationMultiplier: 30
+  hp: 6
+  acceleationMultiplier: 20
   brakeMultiplier: 30
-  steeringMultiplier: 5
-  maxForwardVelocity: 20
-  maxSteerVelocity: 2
+  steeringMultiplier: 1.5
+  maxForwardVelocity: 13
+  maxSteerVelocity: 1
   minForwardVelocity: 10
   isUnlocked: 0
   isAvailable: 1

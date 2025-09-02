@@ -21,17 +21,21 @@ public class MainMenuManager : MonoBehaviour
     public Color activeColor = Color.green;
     public Color inactiveColor = Color.white;
     public TMP_Text textToUnlock;
-
+    public Light sceneDirectionalLight;
     [Header("Car Preview")]
     public Transform carChoiceContainer;
 
     private int currentCarIndex = 0;
     private GameObject spawnedCar;
 
-    [Header("Car Info UI")]
-    public TMP_Text carNameText;
+    [Header("Stat Bars")]
+    public ColorBar hpBar;
 
-    public TMP_Text carHpText;
+    public ColorBar speedBar;
+    public ColorBar handlingBar;
+    public ColorBar accelerationBar;
+    public ColorBar torqueBar;
+    private CarData car;
 
     private void Awake()
     {
@@ -50,6 +54,7 @@ public class MainMenuManager : MonoBehaviour
         LoadSelectedCar();
 
         startButtonImage = startButton.GetComponent<Image>();
+
         ShowCar(currentCarIndex);
     }
 
@@ -161,7 +166,7 @@ public class MainMenuManager : MonoBehaviour
             return;
         }
 
-        CarData car = cars[index];
+        car = cars[index];
 
         if (car.carPrefab != null)
         {
@@ -174,31 +179,22 @@ public class MainMenuManager : MonoBehaviour
             spawnedCar.name = car.name;
         }
 
-        if (carNameText != null)
-        {
-            carNameText.text = car.name;
-        }
-
-        if (carHpText != null)
-        {
-            carHpText.text = "HP: " + car.hp.ToString();
-        }
-
-        HandleLockedCarState(car);
+        HandleLockedCarState();
+        SetCarStats();
 
         PlayerPrefs.SetInt("SelectedCar", (int)car.carType);
         PlayerPrefs.Save();
     }
 
-    private void HandleLockedCarState(CarData car)
+    private void HandleLockedCarState()
     {
         if (car.isUnlocked)
         {
             carStatus.text = "";
-            textToUnlock.text = "";
+            textToUnlock.text = car.name;
             startButtonImage.color = inactiveColor;
             startButton.interactable = true;
-
+            sceneDirectionalLight.intensity = 2f;
         }
         else
         {
@@ -206,6 +202,61 @@ public class MainMenuManager : MonoBehaviour
             textToUnlock.text = car.textToUnlock;
             startButton.interactable = false;
             startButtonImage.color = activeColor;
+            sceneDirectionalLight.intensity = 0f;
         }
+    }
+
+    public void SetCarStats()
+    {
+        UpdateHpBar(car.hp);
+        UpdateAccelerationBar((int)car.acceleationMultiplier);
+        UpdateSpeedBar((int)car.maxForwardVelocity);
+        UpdateHandlingBar((int)car.brakeMultiplier);
+        UpdateTorqueBar(car.steeringMultiplier);
+    }
+
+    private void UpdateHpBar(int hp)
+    {
+        int min = 0;
+        int step = 1;
+
+        int activeSegments = Mathf.Clamp((hp - min) / step, 0, hpBar.maxSegments);
+        hpBar.SetValue(activeSegments);
+    }
+
+    private void UpdateSpeedBar(int speed)
+    {
+        int min = 10;
+        int step = 3;
+
+        int activeSegments = Mathf.Clamp((speed - min) / step, 0, speedBar.maxSegments);
+        speedBar.SetValue(activeSegments);
+    }
+
+    private void UpdateHandlingBar(int handling)
+    {
+        int min = 10;
+        int step = 10;
+
+        int activeSegments = Mathf.Clamp((handling - min) / step, 0, handlingBar.maxSegments);
+        handlingBar.SetValue(activeSegments);
+    }
+
+    private void UpdateAccelerationBar(int handling)
+    {
+        int min = 10;
+        int step = 10;
+
+        int activeSegments = Mathf.Clamp((handling - min) / step, 0, accelerationBar.maxSegments);
+        accelerationBar.SetValue(activeSegments);
+    }
+
+    private void UpdateTorqueBar(float handling)
+    {
+        float min = 0.9f;
+        float step = 0.1f;
+
+        int activeSegments = Mathf.Clamp(Mathf.FloorToInt((handling - min) / step), 0, torqueBar.maxSegments);
+        torqueBar.SetValue(activeSegments);
     }
 }

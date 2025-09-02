@@ -90,6 +90,7 @@ public class UISlideController : MonoBehaviour
         Vector2 targetPos = originalPositions[el.rect];
         Vector2 startPos = GetOffscreenPosition(el, targetPos);
         el.rect.gameObject.SetActive(true);
+
         el.rect.anchoredPosition = startPos;
 
         float t = 0f;
@@ -102,6 +103,7 @@ public class UISlideController : MonoBehaviour
         }
 
         el.rect.anchoredPosition = targetPos;
+
     }
 
     private IEnumerator SlideOut(SlideElement el)
