@@ -7,7 +7,7 @@
       "acceleationMultiplier": 30.0,
       "brakeMultiplier": 20.0,
       "steeringMultiplier": 1.0,
-      "maxForwardVelocity": 20.0,
+      "maxForwardVelocity": 22.0,
       "maxSteerVelocity": 12.0,
       "minForwardVelocity": 10.0,
       "isAvailableForPlayer": true,

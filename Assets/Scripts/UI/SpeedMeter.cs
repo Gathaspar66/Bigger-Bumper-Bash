@@ -6,28 +6,31 @@ using UnityEngine.UI;
 
 public class SpeedMeter : MonoBehaviour
 {
-    private readonly float speedBarGreenSize = 100;
-    private readonly float speedBarOrangeSize = 100;
-    private float currentSpeedBarGreenSize;
-    private float currentSpeedBarOrangeSize;
+    //WARNING
+    //Speedometer has been set up for linear, hard set car stat values (6 set segments)!
+    //if curves/varied values for levels are set, speedometer needs adaptation for dynamic
+    //values (e.g. level speed 6, but one car is 28 other is 30, SO change to contain
+    //level, and fill bar calculate from speed, not as currently, from segment)
     private float carSpeed = 0;
     private int speedMultiplier = 1;
-    private bool maxSpeed;
+    private bool maxSpeedAchieved;
+    float maxSpeed;
+    float maxBarFill;
     private GameObject car;
-    private List<float> breakpoints;
+    private List<float> breakpoints = new();
+    private List<float> meterBreakpoints = new();
 
     public Image speedFillImage;
     public GameObject superSpeed;
 
-    public List<Sprite> speedMultiplierList = new();
+    public List<Sprite> speedMultiplierList;
     public Image multiplierValueImage;
+
+    public List<GameObject> speedMeterSegments = new();
 
     private void Start()
     {
         GeneralSetup();
-        SetupBreakpoints();
-
-        SetFill(0f);
     }
 
     private void Update()
@@ -42,7 +45,16 @@ public class SpeedMeter : MonoBehaviour
 
     private void GeneralSetup()
     {
+        SetupBreakpoints();
         car = PlayerManager.instance.GetPlayerInstance();
+        maxSpeed = PlayerManager.instance.selectedCarData.maxForwardVelocity;
+        for(int i = 0; i < Mathf.Clamp((maxSpeed - 10) / 3, 0, 6); i++)
+        {
+            speedMeterSegments[i].SetActive(true);
+        }
+        print("max speed " + maxSpeed);
+        print("segments count " + (int)Mathf.Clamp((maxSpeed - 10) / 3, 0, 6));
+        maxBarFill = meterBreakpoints[(int)Mathf.Clamp((maxSpeed - 10) / 3, 0, 6)];
     }
 
     private void CalculateSpeed()
@@ -50,38 +62,36 @@ public class SpeedMeter : MonoBehaviour
         float fill = 0f;
 
         carSpeed = car.GetComponent<Rigidbody>().velocity.z;
-        currentSpeedBarGreenSize = 0;
-        currentSpeedBarOrangeSize = 0;
-        maxSpeed = false;
+        maxSpeedAchieved = false;
         speedMultiplier = 1;
-
+        
         if (carSpeed >= breakpoints[0])
         {
-            fill = Mathf.Clamp01((carSpeed - breakpoints[0]) / (breakpoints[2] - breakpoints[0]));
-            currentSpeedBarGreenSize =
-                Mathf.Clamp((carSpeed - breakpoints[0]) / (breakpoints[1] - breakpoints[0]) * speedBarGreenSize, 0,
-                    speedBarGreenSize);
-            if (carSpeed >= breakpoints[1])
+            print(" speed " + carSpeed + " maxspeed " + maxSpeed + " maxbarfill " + maxBarFill);
+            fill = Mathf.Clamp01((carSpeed - 10) / (maxSpeed - 10));
+            print("fill " + fill);
+            fill = fill * maxBarFill;
+            print("fill " + fill);
+
+            if (carSpeed >= breakpoints[2])
             {
                 speedMultiplier = 2;
-                currentSpeedBarOrangeSize =
-                    Mathf.Clamp((carSpeed - breakpoints[1]) / (breakpoints[2] - breakpoints[1]) * speedBarOrangeSize, 0,
-                        speedBarOrangeSize);
-                if (carSpeed >= breakpoints[2])
+                if (carSpeed >= breakpoints[4])
                 {
                     speedMultiplier = 3;
-                    maxSpeed = true;
+                    if (carSpeed >= breakpoints[6])
+                    {
+                        speedMultiplier = 4;
+                        maxSpeedAchieved = true;
+                    }
                 }
             }
         }
-
         SetFill(fill);
 
         UpdateSpeedMultiplierVisual(speedMultiplier);
 
-
-        // redBgBig.SetActive(maxSpeed);
-        superSpeed.SetActive(maxSpeed);
+        superSpeed.SetActive(maxSpeedAchieved);
         NotifyPointsManager(speedMultiplier);
     }
 
@@ -97,6 +107,8 @@ public class SpeedMeter : MonoBehaviour
 
     private void SetupBreakpoints()
     {
-        breakpoints = car.GetComponent<PlayerSteering>().GetSpeedBreakpoints();
+        breakpoints = new List<float> { 10, 13, 16, 19, 22, 25, 28 };
+        //NOT (10 + n*3) because speedometer's graphic is NOT evenly divided
+        meterBreakpoints = new List<float> { 0, 0.24f, 0.38f, 0.53f, 0.66f, 0.82f, 1 };
     }
 }

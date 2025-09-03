@@ -171,14 +171,4 @@ public class PlayerSteering : MonoBehaviour
         inputVector.Normalize();
         input = inputVector;
     }
-
-    public List<float> GetSpeedBreakpoints()
-    {
-        return new List<float>
-        {
-            minForwardVelocity,
-            minForwardVelocity + ((maxForwardVelocity - minForwardVelocity) / 2),
-            maxForwardVelocity
-        };
-    }
 }
