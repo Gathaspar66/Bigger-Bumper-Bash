@@ -44,6 +44,14 @@ public class PlayerPrefabHandler : MonoBehaviour
         carModelHandler.SetCarDamagedLists();
         carModelHandler.SetPlayerPrefabHandler(this);
         carModelHandler.SetupImmuneMaterial();
+        SetupSmokeAndTrailRenderers();
+    }
+
+    void SetupSmokeAndTrailRenderers()
+    {
+        leftTrailRenderer.transform.position = carModelHandler.leftSlideSource.transform.position;
+        rightTrailRenderer.transform.position = carModelHandler.rightSlideSource.transform.position;
+        smokePrefab.transform.position = carModelHandler.fireSmokeSource.transform.position;
     }
 
     public void UpdateTrailEffects()

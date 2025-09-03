@@ -1,5 +1,98 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1389297667280265760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7358361782023254070}
+  m_Layer: 3
+  m_Name: LeftSlider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7358361782023254070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389297667280265760}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.488, y: 0.027, z: -0.834}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5000388214037979905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4167764912055619179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2724856741071124114}
+  m_Layer: 3
+  m_Name: FireSmokeSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2724856741071124114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167764912055619179}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.663, z: 1.261}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5000388214037979905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6850583715487761847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8541130305099407845}
+  m_Layer: 3
+  m_Name: RightSlider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8541130305099407845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6850583715487761847}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.483, y: 0.027, z: -0.834}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5000388214037979905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4822875724093703402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,7 +319,16 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e4bfd6599ebb36c40b75f09cf4453619, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 7358361782023254070}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 8541130305099407845}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 2724856741071124114}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
       insertIndex: -1
@@ -281,6 +383,11 @@ GameObject:
 --- !u!1 &3200431534917690089 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1259745187546012157, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
+  m_PrefabInstance: {fileID: 4822875724093703402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5000388214037979905 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d8769c2c68e093409448819d238efb5, type: 3}
   m_PrefabInstance: {fileID: 4822875724093703402}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5350171705060794498 stripped
@@ -359,6 +466,9 @@ MonoBehaviour:
   - {fileID: 8312179773047905435}
   frontLight: {fileID: 8082610117108431332}
   rearLight: {fileID: 2031017034516631239}
+  leftSlideSource: {fileID: 1389297667280265760}
+  rightSlideSource: {fileID: 6850583715487761847}
+  fireSmokeSource: {fileID: 4167764912055619179}
   carPaintMaterials:
   - {fileID: 2100000, guid: 6a78446394652dc4291dfc344d7490e4, type: 2}
   - {fileID: 2100000, guid: 06bb3d477c92f034784e6913c74e2ff8, type: 2}

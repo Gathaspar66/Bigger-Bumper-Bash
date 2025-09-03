@@ -16,6 +16,10 @@ public class CarModelHandler : MonoBehaviour
     public GameObject frontLight;
     public GameObject rearLight;
 
+    public GameObject leftSlideSource;
+    public GameObject rightSlideSource;
+    public GameObject fireSmokeSource;
+
     [Header("Car Materials")] //
     public List<Material> carPaintMaterials;
 
@@ -73,7 +77,7 @@ public class CarModelHandler : MonoBehaviour
         {
             gameObject.GetComponent<Animator>().speed = 0.1f;
             EffectManager.instance.SpawnAnEffect(Effect.CRASH_AND_FIRE,
-                pph.gameObject.transform.position + new Vector3(0, 0.750999987f, 1.20599997f));
+                fireSmokeSource.transform.position);
         }
 
         if (pph != null)
