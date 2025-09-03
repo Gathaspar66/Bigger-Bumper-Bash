@@ -87,6 +87,16 @@ public class PlayerPrefabHandler : MonoBehaviour
     public void SetCarPrefab(GameObject playerCarPrefab)
     {
         this.playerCarPrefab = playerCarPrefab;
+        SetupCollider();
+    }
+
+    void SetupCollider()
+    {
+        //player prefab handler collider should be smaller than car model handler collider
+        BoxCollider pphCol = gameObject.GetComponent<BoxCollider>();
+        BoxCollider cmhCol = playerCarPrefab.GetComponent<BoxCollider>();
+        pphCol.center = cmhCol.center;
+        pphCol.size = cmhCol.size * 0.9f;
     }
 
     private void OnTriggerEnter(Collider other)
