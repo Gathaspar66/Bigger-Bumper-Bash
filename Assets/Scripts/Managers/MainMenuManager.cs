@@ -21,7 +21,9 @@ public class MainMenuManager : MonoBehaviour
     public Color activeColor = Color.green;
     public Color inactiveColor = Color.white;
     public TMP_Text textToUnlock;
+    public TMP_Text statusToUnlock;
     public Light sceneDirectionalLight;
+
     [Header("Car Preview")]
     public Transform carChoiceContainer;
 
@@ -188,13 +190,18 @@ public class MainMenuManager : MonoBehaviour
 
     private void HandleLockedCarState()
     {
+        int collectedBarrels = PlayerPrefs.GetInt("CollectedBarrels", 0);
+        int hitBarriers = PlayerPrefs.GetInt("HitBarriers", 0);
+        int highScore = PlayerPrefs.GetInt("highScore", 0);
         if (car.isUnlocked)
         {
             carStatus.text = "";
             textToUnlock.text = car.name;
+
             startButtonImage.color = inactiveColor;
             startButton.interactable = true;
             sceneDirectionalLight.intensity = 2f;
+            statusToUnlock.text = "";
         }
         else
         {
@@ -203,6 +210,14 @@ public class MainMenuManager : MonoBehaviour
             startButton.interactable = false;
             startButtonImage.color = activeColor;
             sceneDirectionalLight.intensity = 0f;
+            statusToUnlock.text = car.carType switch
+            {
+                CarType.OGIER => $"{collectedBarrels}/100 barrels",
+                CarType.MOTORCAR => $"{hitBarriers}/17 barriers",
+                CarType.PUDZIAN => "",
+                CarType.PICKUP => $"{highScore}/100000",
+                _ => "",
+            };
         }
     }
 

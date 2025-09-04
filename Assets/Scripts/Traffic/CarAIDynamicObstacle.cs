@@ -30,6 +30,15 @@ public class CarAIDynamicObstacle : MonoBehaviour
     public static EffectManager effectManager;
     public List<CarData> carPool;
 
+    public enum SpawnSide { Front, Back }
+    private SpawnSide spawnSide;
+
+
+    public void SetSpawnSide(SpawnSide side)
+    {
+        spawnSide = side;
+    }
+
     private void Awake()
     {
         instance = this;
@@ -66,12 +75,13 @@ public class CarAIDynamicObstacle : MonoBehaviour
         _ = GetComponentInChildren<CarModelHandler>();
     }
 
+    /*
     private void SetInitialSpeed()
     {
         maxSpeed = PlayerSteering.instance.maxForwardVelocity;
         minSpeed = PlayerSteering.instance.minForwardVelocity;
         spawnMinSpeed = minSpeed * 0.9f;
-        spawnMaxSpeed = maxSpeed * 1.1f;
+        spawnMaxSpeed = maxSpeed * 3f;
 
         speed = GenerateSpeed();
 
@@ -83,9 +93,31 @@ public class CarAIDynamicObstacle : MonoBehaviour
         do
         {
             speed = Random.Range(spawnMinSpeed, spawnMaxSpeed);
+            print(speed);
         } while (speed > minSpeed + 1 || speed < minSpeed - 1);
 
         return speed;
+    }
+    */
+
+    private void SetInitialSpeed()
+    {
+        minSpeed = PlayerSteering.instance.minForwardVelocity;
+        maxSpeed = 20f;
+
+        if (spawnSide == SpawnSide.Front)
+        {
+            spawnMinSpeed = minSpeed * 0.8f;
+            spawnMaxSpeed = maxSpeed * 0.6f;
+        }
+        else // Back
+        {
+            spawnMinSpeed = minSpeed * 0.9f;
+            spawnMaxSpeed = maxSpeed * 0.9f;
+        }
+
+        speed = Random.Range(spawnMinSpeed, spawnMaxSpeed);
+        maxSpeed = speed;
     }
 
     public void SpawnRandomCarModel(int randomLaneIndex)

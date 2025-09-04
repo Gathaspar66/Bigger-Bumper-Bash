@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: PickupDataSO
   m_EditorClassIdentifier: 
   carType: 4
-  name: PICKUP
-  hp: 5
-  acceleationMultiplier: 30
-  brakeMultiplier: 15
-  steeringMultiplier: 5
-  maxForwardVelocity: 20
+  name: American Pickup
+  hp: 4
+  acceleationMultiplier: 20
+  brakeMultiplier: 40
+  steeringMultiplier: 1
+  maxForwardVelocity: 16
   maxSteerVelocity: 2
   minForwardVelocity: 10
-  isUnlocked: 1
+  isUnlocked: 0
   isAvailable: 1
   spawnForAI: 1
   carPrefab: {fileID: 3254706542479514739, guid: c245eb74ca6ab3242a96f51b647e277f, type: 3}
-  textToUnlock: REACH 10000 POINTS  TO UNLOCK
+  textToUnlock: REACH 100000 POINTS  TO UNLOCK

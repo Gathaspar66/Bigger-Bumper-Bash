@@ -100,7 +100,7 @@ public class CarDatabaseManager : MonoBehaviour
                     break;
 
                 case CarType.OGIER:
-                    car.isUnlocked = collectedBarrels >= 10;
+                    car.isUnlocked = collectedBarrels >= 100;
                     break;
 
                 case CarType.MOTORCAR:
@@ -112,7 +112,7 @@ public class CarDatabaseManager : MonoBehaviour
                     break;
 
                 case CarType.PICKUP:
-                    car.isUnlocked = highScore >= 10000;
+                    car.isUnlocked = highScore >= 100000;
                     break;
             }
         }

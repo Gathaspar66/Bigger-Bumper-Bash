@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +10,11 @@ public class SpeedMeter : MonoBehaviour
     //values (e.g. level speed 6, but one car is 28 other is 30, SO change to contain
     //level, and fill bar calculate from speed, not as currently, from segment)
     private float carSpeed = 0;
+
     private int speedMultiplier = 1;
     private bool maxSpeedAchieved;
-    float maxSpeed;
-    float maxBarFill;
+    private float maxSpeed;
+    private float maxBarFill;
     private GameObject car;
     private List<float> breakpoints = new();
     private List<float> meterBreakpoints = new();
@@ -48,7 +47,7 @@ public class SpeedMeter : MonoBehaviour
         SetupBreakpoints();
         car = PlayerManager.instance.GetPlayerInstance();
         maxSpeed = PlayerManager.instance.selectedCarData.maxForwardVelocity;
-        for(int i = 0; i < Mathf.Clamp((maxSpeed - 10) / 3, 0, 6); i++)
+        for (int i = 0; i < Mathf.Clamp((maxSpeed - 10) / 3, 0, 6); i++)
         {
             speedMeterSegments[i].SetActive(true);
         }
@@ -64,14 +63,14 @@ public class SpeedMeter : MonoBehaviour
         carSpeed = car.GetComponent<Rigidbody>().velocity.z;
         maxSpeedAchieved = false;
         speedMultiplier = 1;
-        
+
         if (carSpeed >= breakpoints[0])
         {
-            print(" speed " + carSpeed + " maxspeed " + maxSpeed + " maxbarfill " + maxBarFill);
+            //print(" speed " + carSpeed + " maxspeed " + maxSpeed + " maxbarfill " + maxBarFill);
             fill = Mathf.Clamp01((carSpeed - 10) / (maxSpeed - 10));
-            print("fill " + fill);
-            fill = fill * maxBarFill;
-            print("fill " + fill);
+            //print("fill " + fill);
+            fill *= maxBarFill;
+            // print("fill " + fill);
 
             if (carSpeed >= breakpoints[2])
             {
