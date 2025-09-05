@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class NearMissCollider : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class NearMissCollider : MonoBehaviour
     public float scaleMultiplier = 1.5f;
     private int nearMissCount = 0;
     private BoxCollider nearMiss;
+    public Queue<GameObject> ignoredObjects = new();
 
     private void Start()
     {
@@ -66,17 +68,35 @@ public class NearMissCollider : MonoBehaviour
         nearMiss.size = newSize;
     }
 
+
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.transform.parent.CompareTag("Player"))
         {
+            Debug.Log("PLAYER IGNORING");
             return;
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Traffic"))
         {
+            if (ignoredObjects.Contains(other.gameObject))
+            {
+                Debug.Log(other.gameObject +" IGNORING");
+                return;
+            }
+            ignoredObjects.Enqueue(other.gameObject);
+            if(ignoredObjects.Count > 10)
+            {
+                Debug.Log("DEQUEUING " + ignoredObjects.Count);
+                ignoredObjects.Dequeue();
+            }
             nearMissCount++;
             Debug.Log("NEAR MISS with: " + other.name + " | Count: " + nearMissCount);
+            GameObject tmp = EffectManager.instance.SpawnAnEffect(Effect.FLOATING_TEXT, transform.position);
+            tmp.GetComponent<FloatingText>().SetFloatingText("near miss!", player,
+                PlayerManager.instance.selectedCarData.carPrefab
+                .GetComponent<CarModelHandler>().fireSmokeSource.transform.position);
         }
     }
 }

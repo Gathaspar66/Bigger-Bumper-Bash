@@ -5,6 +5,7 @@ public enum Effect
     CRASH,
     BARREL,
     CRASH_AND_FIRE,
+    FLOATING_TEXT,
 }
 
 public class EffectManager : MonoBehaviour
@@ -17,12 +18,14 @@ public class EffectManager : MonoBehaviour
     public GameObject crashEffect;
     public GameObject barrelEffect;
     public GameObject crashAndFireEffect;
+    public GameObject floatingTextEffect;
+
     private void Awake()
     {
         instance = this;
     }
 
-    public void SpawnAnEffect(Effect effect, Vector3 location)
+    public GameObject SpawnAnEffect(Effect effect, Vector3 location)
     {
         switch (effect)
         {
@@ -36,6 +39,9 @@ public class EffectManager : MonoBehaviour
             case Effect.CRASH_AND_FIRE:
                 currentEffect = Instantiate(crashAndFireEffect, location, Quaternion.identity);
                 break;
+            case Effect.FLOATING_TEXT:
+                currentEffect = Instantiate(floatingTextEffect, location, Quaternion.identity);
+                break;
         }
 
         //effectively the same as play on awake, redundant?
@@ -44,5 +50,6 @@ public class EffectManager : MonoBehaviour
         {
             particleSystem.Play();
         }
+        return currentEffect;
     }
 }
