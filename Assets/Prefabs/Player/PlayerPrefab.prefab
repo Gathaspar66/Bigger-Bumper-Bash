@@ -139,6 +139,7 @@ MonoBehaviour:
   rightTrailRenderer: {fileID: 8741861478836002024}
   immune: {fileID: 2100000, guid: 73ca67a0e05e25743b473a1c7f476d0b, type: 2}
   carAIDynamicObstacle: {fileID: 0}
+  nearMissPrefab: {fileID: 4302734816148139951, guid: bd3e3c76d3affa643b5ba332f5aa6e8b, type: 3}
 --- !u!65 &450025254653009301
 BoxCollider:
   m_ObjectHideFlags: 0

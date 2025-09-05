@@ -26,6 +26,7 @@ public class PlayerPrefabHandler : MonoBehaviour
     private CarModelHandler carModelHandler;
     public CarAIDynamicObstacle carAIDynamicObstacle;
     private bool isPlayerDead = false;
+    public GameObject nearMissPrefab;
 
     private void Update()
     {
@@ -45,9 +46,10 @@ public class PlayerPrefabHandler : MonoBehaviour
         carModelHandler.SetPlayerPrefabHandler(this);
         carModelHandler.SetupImmuneMaterial();
         SetupSmokeAndTrailRenderers();
+        SpawnNearMiss();
     }
 
-    void SetupSmokeAndTrailRenderers()
+    private void SetupSmokeAndTrailRenderers()
     {
         leftTrailRenderer.transform.position = carModelHandler.leftSlideSource.transform.position;
         rightTrailRenderer.transform.position = carModelHandler.rightSlideSource.transform.position;
@@ -90,7 +92,7 @@ public class PlayerPrefabHandler : MonoBehaviour
         SetupCollider();
     }
 
-    void SetupCollider()
+    private void SetupCollider()
     {
         //player prefab handler collider should be smaller than car model handler collider
         BoxCollider pphCol = gameObject.GetComponent<BoxCollider>();
@@ -142,7 +144,7 @@ public class PlayerPrefabHandler : MonoBehaviour
     {
         int barrels = PlayerPrefs.GetInt("CollectedBarrels", 0);
         barrels++;
-        print(barrels);
+        // print(barrels);
         PlayerPrefs.SetInt("CollectedBarrels", barrels);
         PlayerPrefs.Save();
     }
@@ -250,5 +252,10 @@ public class PlayerPrefabHandler : MonoBehaviour
         {
             smokePrefab.Stop();
         }
+    }
+
+    public void SpawnNearMiss()
+    {
+        _ = Instantiate(nearMissPrefab);
     }
 }

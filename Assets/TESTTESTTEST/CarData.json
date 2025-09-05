@@ -16,7 +16,7 @@
     {
       "carType": "OGIER",
       "name": "Ogier Sport",
-      "hp": 3,
+      "hp": 30,
       "acceleationMultiplier": 50.0,
       "brakeMultiplier": 30.0,
       "steeringMultiplier": 1.2,

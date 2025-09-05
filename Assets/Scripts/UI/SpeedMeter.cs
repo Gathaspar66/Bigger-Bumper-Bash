@@ -51,8 +51,8 @@ public class SpeedMeter : MonoBehaviour
         {
             speedMeterSegments[i].SetActive(true);
         }
-        print("max speed " + maxSpeed);
-        print("segments count " + (int)Mathf.Clamp((maxSpeed - 10) / 3, 0, 6));
+        // print("max speed " + maxSpeed);
+        // print("segments count " + (int)Mathf.Clamp((maxSpeed - 10) / 3, 0, 6));
         maxBarFill = meterBreakpoints[(int)Mathf.Clamp((maxSpeed - 10) / 3, 0, 6)];
     }
 
