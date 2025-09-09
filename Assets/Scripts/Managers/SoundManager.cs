@@ -88,6 +88,7 @@ public class SoundManager : MonoBehaviour
             //set default values, then adjust mixer
             PlayerPrefs.SetFloat("musicVolume", 0.8f);
             PlayerPrefs.SetFloat ("soundVolume", 0.8f);
+            PlayerPrefs.Save();
         }
     }
 

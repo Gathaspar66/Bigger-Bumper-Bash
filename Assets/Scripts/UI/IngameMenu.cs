@@ -28,6 +28,7 @@ public class IngameMenu : MonoBehaviour
 
     public void CloseIngameMenu()
     {
+        PlayerPrefs.Save();
         GameManager.instance.PauseGame(false);
         ingameMenu.SetActive(false);
         menuOpenButton.SetActive(true);

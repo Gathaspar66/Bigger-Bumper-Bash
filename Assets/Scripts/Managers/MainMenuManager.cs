@@ -129,6 +129,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnSettingsCloseButtonPressed()
     {
+        PlayerPrefs.Save();
         mainMenuIngameMenu.SetActive(false);
         menuButton.SetActive(true);
     }
