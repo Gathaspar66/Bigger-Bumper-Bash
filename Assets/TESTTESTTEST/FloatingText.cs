@@ -17,6 +17,12 @@ public class FloatingText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RotateTowardsCamera();
+    }
+
+    private void RotateTowardsCamera()
+    {
+        transform.rotation = Camera.main.transform.rotation;
     }
 
     // Update is called once per frame

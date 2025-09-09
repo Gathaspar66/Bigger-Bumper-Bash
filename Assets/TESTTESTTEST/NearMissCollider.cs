@@ -34,8 +34,8 @@ public class NearMissCollider : MonoBehaviour
         }
 
         transform.position = player.transform.position + offset;
-    }
 
+    }
     private void CreateNearMissCollider()
     {
         nearMiss = GetComponent<BoxCollider>();
@@ -60,9 +60,9 @@ public class NearMissCollider : MonoBehaviour
 
 
         Vector3 newSize = new(
-            playerCollider.size.x * 2.0f,
-            playerCollider.size.y * 1.2f,
-            playerCollider.size.z * 1.2f
+            playerCollider.size.x * 1.35f,
+            playerCollider.size.y * 1.25f,
+            playerCollider.size.z * 1.25f
         );
 
         nearMiss.size = newSize;
@@ -94,9 +94,10 @@ public class NearMissCollider : MonoBehaviour
             nearMissCount++;
             Debug.Log("NEAR MISS with: " + other.name + " | Count: " + nearMissCount);
             GameObject tmp = EffectManager.instance.SpawnAnEffect(Effect.FLOATING_TEXT, transform.position);
-            tmp.GetComponent<FloatingText>().SetFloatingText("near miss!", player,
+            tmp.GetComponent<FloatingText>().SetFloatingText("near miss! +100", player,
                 PlayerManager.instance.selectedCarData.carPrefab
                 .GetComponent<CarModelHandler>().fireSmokeSource.transform.position);
+            PointsManager.instance.AddPoints(100);
         }
     }
 }
