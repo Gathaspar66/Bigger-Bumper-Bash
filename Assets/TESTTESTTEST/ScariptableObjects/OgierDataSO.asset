@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carType: 1
   name: Ogier Sport
-  hp: 30
+  hp: 3
   acceleationMultiplier: 50
   brakeMultiplier: 30
   steeringMultiplier: 1.2
