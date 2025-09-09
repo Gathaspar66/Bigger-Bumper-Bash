@@ -44,4 +44,8 @@ public class IngameMenu : MonoBehaviour
     {
         GameManager.instance.QuitToMenu();
     }
+    public void PlayMenuClickSound()
+    {
+        SoundManager.instance.PlayMenuClickSound();
+    }
 }

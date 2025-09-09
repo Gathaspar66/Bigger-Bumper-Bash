@@ -269,4 +269,9 @@ public class MainMenuManager : MonoBehaviour
         int activeSegments = Mathf.Clamp(Mathf.FloorToInt((handling - min) / step), 0, torqueBar.maxSegments);
         torqueBar.SetValue(activeSegments);
     }
+
+    public void PlayMenuClickSound()
+    {
+        SoundManager.instance.PlayMenuClickSound();
+    }
 }

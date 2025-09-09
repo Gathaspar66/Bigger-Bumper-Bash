@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource crashSource;
     public AudioSource pointsSource;
     public AudioSource barrierScrapeSource;
-    public AudioSource menuClick;
+    public AudioSource menuClickSource;
 
     [Header("Audio Mixer Groups")]//
     public AudioMixerGroup sfxMixerGroup;
@@ -101,6 +101,12 @@ public class SoundManager : MonoBehaviour
     {
         crashSource.Play();
     }
+
+    public void PlayMenuClickSound()
+    {
+        menuClickSource.Play();
+    }
+
 
     public void PlayPointsSound()
     {

@@ -570,6 +570,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 720085086}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayMenuClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &91576164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1480,6 +1492,18 @@ MonoBehaviour:
       - m_Target: {fileID: 720085086}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: OnNextCar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 720085086}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayMenuClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2707,6 +2731,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 720085086}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayMenuClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1134402231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2830,6 +2866,18 @@ MonoBehaviour:
       - m_Target: {fileID: 720085086}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: OnPreviousCar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 720085086}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayMenuClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3027,6 +3075,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 720085086}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayMenuClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 720085086}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: OnGameStartButtonPressed
@@ -3571,10 +3631,10 @@ RectTransform:
   - {fileID: 1238800287}
   - {fileID: 407194916}
   - {fileID: 1139363399}
+  - {fileID: 1134402229}
   - {fileID: 2121317568}
   - {fileID: 436058203}
   - {fileID: 169000063}
-  - {fileID: 1134402229}
   - {fileID: 454296561}
   - {fileID: 241269421}
   m_Father: {fileID: 1089197305}
@@ -3842,6 +3902,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1406490934}
         m_TargetAssemblyTypeName: UISlideController, Assembly-CSharp
         m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 720085086}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayMenuClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4513,6 +4585,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 720085086}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayMenuClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1706210928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4810,74 +4894,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6773394270175726681, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: m_Volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6773394270175726681, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -6640495835944708360, guid: 900cf862045178842b59bd94b5fb2583, type: 2}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: myToggle
-      value: 
-      objectReference: {fileID: 927910547}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: soundIcon
-      value: 
-      objectReference: {fileID: 927910545}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: audioMixer
-      value: 
-      objectReference: {fileID: 24100000, guid: 900cf862045178842b59bd94b5fb2583, type: 2}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: level1Clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7abc9754b6819dd4ea1cad3e27a27ba4, type: 3}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: soundOnSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 00d98beab341b0e4e8dbd2bd0d0906f3, type: 3}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: soundOffSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 89b4414aca5cab4408b395144174e2a1, type: 3}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: musicMixerGroup
-      value: 
-      objectReference: {fileID: -6640495835944708360, guid: 900cf862045178842b59bd94b5fb2583, type: 2}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: levelClipsList.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: levelClipsList.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 4a3b94bb4f2e8da4a9481d88317d0770, type: 3}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: levelClipsList.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 27f34c488ca01a4438facb91f6274694, type: 3}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: levelClipsList.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 00aa20fa620180c438b3fad892c0a863, type: 3}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: levelClipsList.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 7e35bfde55ccc374f8a57a7a96491da8, type: 3}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: levelClipsList.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8bec27acc251d5b4491e40443de29f94, type: 3}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: levelClipsList.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: 40b61242437fb804daca9ac669362e0b, type: 3}
-    - target: {fileID: 6915147922534474864, guid: 447bf427ee1bdb04796e015b31076fd8, type: 3}
-      propertyPath: levelClipsList.Array.data[6]
-      value: 
-      objectReference: {fileID: 8300000, guid: 49a593b91b03f7047934693676758111, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4974,6 +4990,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: ToggleAboutPanel
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 720085086}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayMenuClickSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5106,6 +5134,18 @@ MonoBehaviour:
       - m_Target: {fileID: 720085086}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: OnQuitGamePressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 720085086}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayMenuClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
