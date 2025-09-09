@@ -10,6 +10,7 @@ public enum SoundEffect
     CRASH_SOUND,
     LEVEL1_MUSIC,
     BARRIER_SCRAPE,
+    MENU_CLICK,
     Default
 }
 
@@ -24,6 +25,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource crashSource;
     public AudioSource pointsSource;
     public AudioSource barrierScrapeSource;
+    public AudioSource menuClick;
 
     [Header("Audio Mixer Groups")]//
     public AudioMixerGroup sfxMixerGroup;
