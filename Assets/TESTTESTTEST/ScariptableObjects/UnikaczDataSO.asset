@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: UnikaczDataSO
   m_EditorClassIdentifier: 
   carType: 0
-  name: Unikacz pk jp 2137%
-  hp: 3
+  name: Unikacz
+  hp: 4
   acceleationMultiplier: 30
-  brakeMultiplier: 15
-  steeringMultiplier: 5
-  maxForwardVelocity: 20
-  maxSteerVelocity: 2
+  brakeMultiplier: 30
+  steeringMultiplier: 1.2
+  maxForwardVelocity: 22
+  maxSteerVelocity: 12
   minForwardVelocity: 10
   isUnlocked: 1
   isAvailable: 1
   spawnForAI: 1
   carPrefab: {fileID: 51488253964336661, guid: 4e24d6dcdb5b80e4393393754dab6978, type: 3}
+  textToUnlock: 

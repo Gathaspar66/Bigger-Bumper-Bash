@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PudzianDataSO
   m_EditorClassIdentifier: 
   carType: 3
-  name: pudzian
+  name: Forklift
   hp: 6
   acceleationMultiplier: 20
   brakeMultiplier: 30

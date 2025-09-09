@@ -3335,7 +3335,7 @@ GameObject:
   - component: {fileID: 1338157675}
   - component: {fileID: 1338157674}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: GameVersionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3350,7 +3350,7 @@ RectTransform:
   m_GameObject: {fileID: 1338157672}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.000026, y: 1.000026, z: 1.000026}
+  m_LocalScale: {x: 1.0000261, y: 1.0000261, z: 1.0000261}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362091386}
@@ -3414,7 +3414,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3488,6 +3488,7 @@ RectTransform:
   m_Children:
   - {fileID: 1695718620}
   - {fileID: 1536553434}
+  - {fileID: 1338157673}
   - {fileID: 1517866161}
   - {fileID: 1258369008}
   - {fileID: 1273619776}
@@ -3499,7 +3500,6 @@ RectTransform:
   - {fileID: 1891649067}
   - {fileID: 91576162}
   - {fileID: 59508942}
-  - {fileID: 1338157673}
   m_Father: {fileID: 1089197305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4008,7 +4008,7 @@ RectTransform:
   m_GameObject: {fileID: 1536553433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.79488, y: 0.79488, z: 0.79488}
+  m_LocalScale: {x: 0.7274344, y: 0.7274344, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362091386}

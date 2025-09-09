@@ -44,9 +44,14 @@ public class SoundManager : MonoBehaviour
     public Sprite soundOffSprite;
     public Image soundIcon;
     private bool isAlive = true;
+
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
     }
 
     public void Activate()
@@ -67,6 +72,27 @@ public class SoundManager : MonoBehaviour
                 PlayMusic(SoundEffect.Default);
                 break;
         }
+
+        CheckFirstRun();
+    }
+
+    void CheckFirstRun()
+    {
+        //default value is 0
+        if (PlayerPrefs.GetInt("firstGameRun") == 0)
+        {
+            Debug.Log("FIRST GAME RUN DETECTED");
+            PlayerPrefs.SetInt("firstGameRun", 1);
+            //set default values, then adjust mixer
+            PlayerPrefs.SetFloat("musicVolume", 0.8f);
+            PlayerPrefs.SetFloat ("soundVolume", 0.8f);
+        }
+    }
+
+    public void UpdateVolumes()
+    {
+        audioMixer.SetFloat("Music", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("musicVolume"), 0.0001f, 1f)) * 20f);
+        audioMixer.SetFloat("SFX", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("soundVolume"), 0.0001f, 1f)) * 20f);
     }
 
     public void PlayCrashSound()
