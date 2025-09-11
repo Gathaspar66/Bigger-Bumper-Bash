@@ -3591,13 +3591,13 @@ MonoBehaviour:
     slideFrom: 1
   - rect: {fileID: 1706210926}
     slideFrom: 0
-  - rect: {fileID: 1517866161}
-    slideFrom: 3
   - rect: {fileID: 1258369008}
     slideFrom: 2
   - rect: {fileID: 1891649067}
     slideFrom: 1
   activateAfterShow: []
+  activateBeforeShow:
+  - {fileID: 1517866160}
 --- !u!1 &1406490932
 GameObject:
   m_ObjectHideFlags: 0
@@ -3662,14 +3662,8 @@ MonoBehaviour:
     slideFrom: 1
   - rect: {fileID: 1139363399}
     slideFrom: 0
-  - rect: {fileID: 0}
-    slideFrom: 2
-  - rect: {fileID: 0}
-    slideFrom: 2
   - rect: {fileID: 1134402229}
     slideFrom: 1
-  - rect: {fileID: 1238800287}
-    slideFrom: 3
   - rect: {fileID: 454296561}
     slideFrom: 3
   - rect: {fileID: 436058203}
@@ -3683,6 +3677,8 @@ MonoBehaviour:
   activateAfterShow:
   - {fileID: 445755958}
   - {fileID: 169000061}
+  activateBeforeShow:
+  - {fileID: 1238800286}
 --- !u!1 &1473304841
 GameObject:
   m_ObjectHideFlags: 0

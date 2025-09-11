@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSteering : MonoBehaviour
@@ -162,7 +161,7 @@ public class PlayerSteering : MonoBehaviour
         else
         {
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, rb.velocity.y, rb.velocity.z),
-                Time.fixedDeltaTime * 3);
+                Time.fixedDeltaTime * 5);
         }
     }
 

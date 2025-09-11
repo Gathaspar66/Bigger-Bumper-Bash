@@ -20,6 +20,9 @@ public class UISlideController : MonoBehaviour
     [Header("Optional: activation after Show/Hide")]
     public List<GameObject> activateAfterShow = new();
 
+    [Header("Optional: activation before Show/Hide")]
+    public List<GameObject> activateBeforeShow = new();
+
     private readonly Dictionary<RectTransform, Vector2> originalPositions = new();
 
     private void Awake()
@@ -41,6 +44,14 @@ public class UISlideController : MonoBehaviour
 
     private IEnumerator ShowSequence()
     {
+        foreach (GameObject obj in activateBeforeShow)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(true);
+            }
+        }
+
         List<Coroutine> running = new();
 
         foreach (SlideElement el in elements)
@@ -75,7 +86,13 @@ public class UISlideController : MonoBehaviour
                 _ = StartCoroutine(SlideOut(el));
             }
         }
-
+        foreach (GameObject obj in activateBeforeShow)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(false);
+            }
+        }
         foreach (GameObject obj in activateAfterShow)
         {
             if (obj != null)
@@ -103,7 +120,6 @@ public class UISlideController : MonoBehaviour
         }
 
         el.rect.anchoredPosition = targetPos;
-
     }
 
     private IEnumerator SlideOut(SlideElement el)
