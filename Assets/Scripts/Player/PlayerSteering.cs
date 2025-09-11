@@ -9,7 +9,6 @@ public class PlayerSteering : MonoBehaviour
     public float steeringMultiplier;
     public float minForwardVelocity;
     public float maxForwardVelocity;
-    public float maxSteerVelocity;
 
     public AnimationCurve steeringMultiplierCurve;
 
@@ -46,7 +45,6 @@ public class PlayerSteering : MonoBehaviour
         steeringMultiplier = carData.steeringMultiplier;
         minForwardVelocity = carData.minForwardVelocity;
         maxForwardVelocity = carData.maxForwardVelocity;
-        maxSteerVelocity = carData.maxSteerVelocity;
     }
 
     private void Update()

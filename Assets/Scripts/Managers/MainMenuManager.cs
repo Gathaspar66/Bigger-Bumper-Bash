@@ -235,13 +235,13 @@ public class MainMenuManager : MonoBehaviour
         hpBar.SetValue(activeSegments);
     }
 
-    private void UpdateSpeedBar(int speed)
+    private void UpdateAccelerationBar(int handling)
     {
         int min = 10;
-        int step = 3;
+        int step = 10;
 
-        int activeSegments = Mathf.Clamp((speed - min) / step, 0, speedBar.maxSegments);
-        speedBar.SetValue(activeSegments);
+        int activeSegments = Mathf.Clamp((handling - min) / step, 0, accelerationBar.maxSegments);
+        accelerationBar.SetValue(activeSegments);
     }
 
     private void UpdateHandlingBar(int handling)
@@ -253,15 +253,6 @@ public class MainMenuManager : MonoBehaviour
         handlingBar.SetValue(activeSegments);
     }
 
-    private void UpdateAccelerationBar(int handling)
-    {
-        int min = 10;
-        int step = 10;
-
-        int activeSegments = Mathf.Clamp((handling - min) / step, 0, accelerationBar.maxSegments);
-        accelerationBar.SetValue(activeSegments);
-    }
-
     private void UpdateTorqueBar(float handling)
     {
         float min = 0.9f;
@@ -269,6 +260,15 @@ public class MainMenuManager : MonoBehaviour
 
         int activeSegments = Mathf.Clamp(Mathf.FloorToInt((handling - min) / step), 0, torqueBar.maxSegments);
         torqueBar.SetValue(activeSegments);
+    }
+
+    private void UpdateSpeedBar(int speed)
+    {
+        int min = 10;
+        int step = 3;
+
+        int activeSegments = Mathf.Clamp((speed - min) / step, 0, speedBar.maxSegments);
+        speedBar.SetValue(activeSegments);
     }
 
     public void PlayMenuClickSound()

@@ -58,7 +58,6 @@ public class CarDatabaseManager : MonoBehaviour
                 carSO.brakeMultiplier = car.brakeMultiplier;
                 carSO.steeringMultiplier = car.steeringMultiplier;
                 carSO.maxForwardVelocity = car.maxForwardVelocity;
-                carSO.maxSteerVelocity = car.maxSteerVelocity;
                 carSO.minForwardVelocity = car.minForwardVelocity;
                 carSO.isAvailable = car.isAvailable;
                 carSO.spawnForAI = car.spawnForAI;

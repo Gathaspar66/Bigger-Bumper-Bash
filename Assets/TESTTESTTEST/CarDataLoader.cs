@@ -12,7 +12,6 @@ public class CarDataModel
     public float brakeMultiplier;
     public float steeringMultiplier;
     public float maxForwardVelocity;
-    public float maxSteerVelocity;
     public float minForwardVelocity;
 
     public bool isUnlocked;
@@ -37,7 +36,6 @@ public class CarDataWrapperJsonItem
     public float brakeMultiplier;
     public float steeringMultiplier;
     public float maxForwardVelocity;
-    public float maxSteerVelocity;
     public float minForwardVelocity;
 
     public bool isUnlocked;
@@ -72,7 +70,7 @@ public static class CarDataLoader
                     brakeMultiplier = jsonCar.brakeMultiplier,
                     steeringMultiplier = jsonCar.steeringMultiplier,
                     maxForwardVelocity = jsonCar.maxForwardVelocity,
-                    maxSteerVelocity = jsonCar.maxSteerVelocity,
+                    //maxSteerVelocity = jsonCar.maxSteerVelocity,
                     minForwardVelocity = jsonCar.minForwardVelocity,
                     //isUnlocked = jsonCar.isUnlocked,
                     isAvailable = jsonCar.isAvailableForPlayer,
