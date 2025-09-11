@@ -3,7 +3,7 @@
     {
       "carType": "UNIKACZ",
       "name": "Unikacz",
-      "hp": 4,
+      "hp": 40,
       "acceleationMultiplier": 30.0,
       "brakeMultiplier": 30.0,
       "steeringMultiplier": 1.1,

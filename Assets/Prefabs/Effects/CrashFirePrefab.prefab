@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 229751276240129488}
   - component: {fileID: 7000021357999880205}
   m_Layer: 0
-  m_Name: CrashFire
+  m_Name: CrashFirePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
