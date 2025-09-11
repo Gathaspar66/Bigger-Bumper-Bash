@@ -208,8 +208,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0eed0c1e17f87c944a11035226620794, type: 2}
+  m_sharedMaterial: {fileID: -3812761640470707298, guid: 0eed0c1e17f87c944a11035226620794, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -828,8 +828,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0eed0c1e17f87c944a11035226620794, type: 2}
+  m_sharedMaterial: {fileID: -3812761640470707298, guid: 0eed0c1e17f87c944a11035226620794, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1126,4 +1126,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSlider: {fileID: 3514817227056243475}
   soundSlider: {fileID: 3395956750283966840}
-  am: {fileID: 24100000, guid: 900cf862045178842b59bd94b5fb2583, type: 2}
