@@ -57,6 +57,8 @@ public class TrafficManager : MonoBehaviour
     private Lane[] backLanes;
     private StaticObstacle[] staticObstaclesData;
 
+
+
     private void Awake()
     {
         instance = this;
@@ -222,8 +224,13 @@ public class TrafficManager : MonoBehaviour
                 ? Quaternion.Euler(0, 180, 0)
                 : Quaternion.identity;
 
-            _ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
-            CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
+            GameObject carGO = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
+            CarAIDynamicObstacle ai = carGO.GetComponent<CarAIDynamicObstacle>();
+            ai.SetSpawnSide(CarAIDynamicObstacle.SpawnSide.Front);
+            ai.SpawnRandomCarFromDatabase(randomLaneIndex);
+
+            // CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
+            // CarAIDynamicObstacle.instance.SpawnRandomCarFromDatabase(randomLaneIndex);
         }
     }
 
@@ -248,8 +255,13 @@ public class TrafficManager : MonoBehaviour
                 ? Quaternion.Euler(0, 180, 0)
                 : Quaternion.identity;
 
-            _ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
-            CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
+            //_ = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
+            //CarAIDynamicObstacle.instance.SpawnRandomCarModel(randomLaneIndex);
+            GameObject carGO = Instantiate(dynamicObstaclePrefab, spawnPosition, rotation);
+            CarAIDynamicObstacle ai = carGO.GetComponent<CarAIDynamicObstacle>();
+            ai.SetSpawnSide(CarAIDynamicObstacle.SpawnSide.Back);
+            ai.SpawnRandomCarFromDatabase(randomLaneIndex);
+
         }
     }
 

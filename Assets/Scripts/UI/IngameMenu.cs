@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class IngameMenu : MonoBehaviour
 {
@@ -11,18 +7,14 @@ public class IngameMenu : MonoBehaviour
     public GameObject menuOpenButton;
     public GameObject menuCloseButton;
 
-    bool isMenuOpen = false;
-
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 
     public void OpenIngameMenu()
@@ -36,12 +28,12 @@ public class IngameMenu : MonoBehaviour
 
     public void CloseIngameMenu()
     {
+        PlayerPrefs.Save();
         GameManager.instance.PauseGame(false);
         ingameMenu.SetActive(false);
         menuOpenButton.SetActive(true);
         menuCloseButton.SetActive(false);
         SoundManager.instance.MuteEngineSound(false);
-
     }
 
     public void OnRestartButtonPressed()
@@ -52,5 +44,9 @@ public class IngameMenu : MonoBehaviour
     public void OnQuitButtonPressed()
     {
         GameManager.instance.QuitToMenu();
+    }
+    public void PlayMenuClickSound()
+    {
+        SoundManager.instance.PlayMenuClickSound();
     }
 }

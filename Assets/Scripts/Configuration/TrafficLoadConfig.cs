@@ -31,7 +31,7 @@ public class LevelConfigLoader : MonoBehaviour
 
         gameConfig = JsonUtility.FromJson<GameConfig>(configJson.text);
         isLoaded = true;
-        Debug.Log("Config loaded from TextAsset. Levels count: " + gameConfig.levels.Length);
+        //Debug.Log("Config loaded from TextAsset. Levels count: " + gameConfig.levels.Length);
     }
 
     public bool IsConfigLoaded()

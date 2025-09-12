@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3562497752352029455}
   m_Layer: 0
   m_Name: FollowCarOnZPrefab
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 0}
-  offset: {x: 0, y: 7, z: -6}
+  offset: {x: 0, y: 7.3, z: -6}
 --- !u!114 &5778097159851594321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 7115723599762048176}
+  maxSpeed: 0
 --- !u!1001 &4679458259847741329
 PrefabInstance:
   m_ObjectHideFlags: 0

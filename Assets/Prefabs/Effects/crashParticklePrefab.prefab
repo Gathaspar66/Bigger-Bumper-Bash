@@ -2626,6 +2626,7 @@ GameObject:
   - component: {fileID: 4320586022187711}
   - component: {fileID: 198330386425146304}
   - component: {fileID: 199786648670591806}
+  - component: {fileID: 1285710746679506521}
   m_Layer: 0
   m_Name: crashParticklePrefab
   m_TagString: Untagged
@@ -5212,3 +5213,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1285710746679506521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492671386003191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41a71d6672ee9d4cba9ec2c51ea5c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
