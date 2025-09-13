@@ -107,7 +107,7 @@ public class CarDatabaseManager : MonoBehaviour
                     break;
 
                 case CarType.PUDZIAN:
-                    car.isUnlocked = collectedBarrels >= 10 && hitedBarriers >= 17 && highScore >= 10000;
+                    car.isUnlocked = collectedBarrels >= 100 && hitedBarriers >= 17 && highScore >= 100000;
                     break;
 
                 case CarType.PICKUP:
