@@ -18,6 +18,8 @@ public class RoadManager : MonoBehaviour
     private const float sectionLength = 60;
     private bool isGameOver = false;
 
+    public BoxCollider left, right;
+
     private void Awake()
     {
         instance = this;
@@ -87,6 +89,13 @@ public class RoadManager : MonoBehaviour
                 sections[i].SetActive(true);
             }
         }
+        UpdateBarrierColliders();
+    }
+
+    void UpdateBarrierColliders()
+    {
+        left.center = new Vector3(left.center.x, left.center.y, sections[1].transform.position.z);
+        right.center = new Vector3(right.center.x, right.center.y, sections[1].transform.position.z);
     }
 
     private GameObject GetRandomSectionFromPool()
