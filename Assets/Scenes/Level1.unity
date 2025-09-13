@@ -185,9 +185,9 @@ GameObject:
   m_Component:
   - component: {fileID: 187920092}
   - component: {fileID: 187920093}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: right
-  m_TagString: Untagged
+  m_TagString: RightBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -470,9 +470,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1108226512}
   - component: {fileID: 1108226513}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: left
-  m_TagString: Untagged
+  m_TagString: LeftBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -830,10 +830,6 @@ MonoBehaviour:
   - {fileID: 8664369382022809974, guid: 2e773bbe54bcdff46a402d67fea537e5, type: 3}
   allSectionsPrefabs: []
   normalSectionsMultiplier: 3
-  xd:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   left: {fileID: 1108226513}
   right: {fileID: 187920093}
 --- !u!1001 &2122320036
