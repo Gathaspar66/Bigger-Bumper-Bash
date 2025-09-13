@@ -10,8 +10,6 @@ public class PlayerPrefabHandler : MonoBehaviour
     public TrailRenderer leftTrailRenderer, rightTrailRenderer;
 
     [Header("Other")] //
-    public Material immune;
-
     private bool isImmune = false;
 
     private readonly float immunityDuration = 2;
