@@ -27,7 +27,7 @@ public class CarModelHandler : MonoBehaviour
 
     public Material glowingRearLight;
 
-    private Renderer frontLightRenderer;
+    private readonly Renderer frontLightRenderer;
     private Renderer rearLightRenderer;
 
     public Material originalMaterial;
@@ -47,7 +47,6 @@ public class CarModelHandler : MonoBehaviour
 
     public void SetupAICarModel()
     {
-        ChangeCarBodyColor();
         SetCarDamagedLists();
         UpdatePlayerDamagedState(3);
     }
@@ -76,7 +75,7 @@ public class CarModelHandler : MonoBehaviour
         if (health <= 0)
         {
             gameObject.GetComponent<Animator>().speed = 0.1f;
-            EffectManager.instance.SpawnAnEffect(Effect.CRASH_AND_FIRE,
+            _ = EffectManager.instance.SpawnAnEffect(Effect.CRASH_AND_FIRE,
                 fireSmokeSource.transform.position);
         }
 
@@ -100,23 +99,47 @@ public class CarModelHandler : MonoBehaviour
         {
             return;
         }
-        _ = StartCoroutine(BlinkCoroutine());
+
+        if (frontLight == null)
+        {
+            return;
+        }
+
+        Renderer flRenderer = frontLight.GetComponent<Renderer>();
+        if (flRenderer == null)
+        {
+            return;
+        }
+
+        _ = StartCoroutine(BlinkCoroutine(flRenderer));
     }
 
-    private IEnumerator BlinkCoroutine()
+    private IEnumerator BlinkCoroutine(Renderer flRenderer)
     {
         isBlinking = true;
 
         for (int i = 0; i < 3; i++)
         {
-            frontLightRenderer.material = glowingFrontLight;
+            if (flRenderer != null)
+            {
+                flRenderer.material = glowingFrontLight;
+            }
+
             yield return new WaitForSeconds(0.1f);
 
-            frontLightRenderer.material = originalMaterial;
+            if (flRenderer != null)
+            {
+                flRenderer.material = originalMaterial;
+            }
+
             yield return new WaitForSeconds(0.1f);
         }
 
-        frontLightRenderer.material = originalMaterial;
+        if (flRenderer != null)
+        {
+            flRenderer.material = originalMaterial;
+        }
+
         isBlinking = false;
     }
 
@@ -125,54 +148,5 @@ public class CarModelHandler : MonoBehaviour
         rearLightRenderer = rearLight.GetComponent<Renderer>();
 
         rearLightRenderer.material = state ? glowingRearLight : originalRearMaterial;
-    }
-
-    public void ChangeCarBodyColor()
-    {
-        frontLightRenderer = frontLight.GetComponent<Renderer>();
-
-        Material baseMaterial = carPaintMaterials[Random.Range(0, carPaintMaterials.Count)];
-        foreach (GameObject currentCarBodyElement in carBody)
-        {
-            Renderer renderer = currentCarBodyElement.GetComponent<Renderer>();
-            Material matInstance = new(baseMaterial);
-            renderer.material = matInstance;
-        }
-    }
-
-    public void SetupImmuneMaterial()
-    {
-        Material baseMat = carBody[0].GetComponent<Renderer>().material;
-
-        normalMaterial = baseMat;
-
-        immuneMaterial = new Material(baseMat);
-
-        immuneMaterial.SetFloat("_Mode", 3);
-        immuneMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-        immuneMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-        immuneMaterial.SetInt("_ZWrite", 0);
-        immuneMaterial.DisableKeyword("_ALPHATEST_ON");
-        immuneMaterial.EnableKeyword("_ALPHABLEND_ON");
-        immuneMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-        immuneMaterial.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
-
-        Color c = baseMat.color;
-        c.a = 128f / 255f;
-        immuneMaterial.color = c;
-
-        if (immuneMaterial.HasProperty("_Metallic"))
-        {
-            immuneMaterial.SetFloat("_Metallic", 0f);
-        }
-    }
-
-    public void SetImmuneCarMaterial(Material materialToSet)
-    {
-        foreach (GameObject currentCarBodyElement in carBody)
-        {
-            MeshRenderer carRenderer = currentCarBodyElement.GetComponent<MeshRenderer>();
-            carRenderer.material = materialToSet;
-        }
     }
 }

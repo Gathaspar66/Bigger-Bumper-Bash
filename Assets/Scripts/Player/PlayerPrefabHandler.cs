@@ -27,6 +27,9 @@ public class PlayerPrefabHandler : MonoBehaviour
     public CarAIDynamicObstacle carAIDynamicObstacle;
     private bool isPlayerDead = false;
     public GameObject nearMissPrefab;
+    private Renderer[] carRenderers;
+    private float blinkTimer = 0f;
+    private float blinkInterval = 0.1f;
 
     private void Update()
     {
@@ -44,9 +47,16 @@ public class PlayerPrefabHandler : MonoBehaviour
         carModelHandler = GetComponentInChildren<CarModelHandler>();
         carModelHandler.SetCarDamagedLists();
         carModelHandler.SetPlayerPrefabHandler(this);
-        carModelHandler.SetupImmuneMaterial();
+
         SetupSmokeAndTrailRenderers();
         SpawnNearMiss();
+    }
+
+    public void SetCarPrefab(GameObject playerCarPrefab)
+    {
+        this.playerCarPrefab = playerCarPrefab;
+        carRenderers = playerCarPrefab.GetComponentsInChildren<Renderer>(true);
+        SetupCollider();
     }
 
     private void SetupSmokeAndTrailRenderers()
@@ -86,12 +96,6 @@ public class PlayerPrefabHandler : MonoBehaviour
         carModelHandler.SetRearBrakeLight(isBraking);
     }
 
-    public void SetCarPrefab(GameObject playerCarPrefab)
-    {
-        this.playerCarPrefab = playerCarPrefab;
-        SetupCollider();
-    }
-
     private void SetupCollider()
     {
         //player prefab handler collider should be smaller than car model handler collider
@@ -129,7 +133,7 @@ public class PlayerPrefabHandler : MonoBehaviour
         {
             CameraShake.Instance.Shake(0.2f, 0.1f);
             SoundManager.instance.PlayCrashSound();
-            EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
+            _ = EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
             PlayerManager.instance.GetDamaged();
 
             CarAIDynamicObstacle aiCar = other.GetComponentInParent<CarAIDynamicObstacle>();
@@ -208,21 +212,46 @@ public class PlayerPrefabHandler : MonoBehaviour
         }
         else
         {
-            bool flash = Mathf.PingPong(currentImmunityDuration * 5, 1) > 0.5f;
-            carModelHandler.SetImmuneCarMaterial(flash ? carModelHandler.immuneMaterial : carModelHandler.normalMaterial);
+            float t = 1 - (currentImmunityDuration / immunityDuration);
+
+            blinkInterval = Mathf.Lerp(0.2f, 0.05f, t);
+
+            blinkTimer -= Time.deltaTime;
+            if (blinkTimer <= 0f)
+            {
+                bool currentlyVisible = carRenderers[0].enabled;
+                SetCarRenderersVisible(!currentlyVisible);
+
+                blinkTimer = blinkInterval;
+            }
+        }
+    }
+
+    private void SetCarRenderersVisible(bool visible)
+    {
+        if (carRenderers == null)
+        {
+            return;
+        }
+
+        foreach (Renderer r in carRenderers)
+        {
+            if (r != null)
+            {
+                r.enabled = visible;
+            }
         }
     }
 
     public void StartImmunity()
     {
         currentImmunityDuration = immunityDuration;
-        carModelHandler.SetImmuneCarMaterial(carModelHandler.immuneMaterial);
         SetCarImmune(true);
     }
 
     private void EndImmunity()
     {
-        carModelHandler.SetImmuneCarMaterial(carModelHandler.normalMaterial);
+        SetCarRenderersVisible(true);
         SetCarImmune(false);
     }
 
