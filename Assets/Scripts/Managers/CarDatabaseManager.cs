@@ -29,7 +29,6 @@ public class CarDatabaseManager : MonoBehaviour
             LoadCars();
             ApplyDataToScriptableObjects();
         }
-        CheckUnlockConditions();
     }
 
     private void LoadCars()
@@ -81,39 +80,5 @@ public class CarDatabaseManager : MonoBehaviour
     public List<CarData> GetAICarPool()
     {
         return aiCarPool;
-    }
-
-    private void CheckUnlockConditions()
-    {
-        int highScore = PlayerPrefs.GetInt("highScore", 0);
-        int collectedBarrels = PlayerPrefs.GetInt("CollectedBarrels", 0);
-        int hitedBarriers = PlayerPrefs.GetInt("HitBarriers", 0);
-        for (int i = 0; i < carObjects.Count; i++)
-        {
-            CarData car = carObjects[i];
-
-            switch (car.carType)
-            {
-                case CarType.UNIKACZ:
-                    car.isUnlocked = true;
-                    break;
-
-                case CarType.OGIER:
-                    car.isUnlocked = collectedBarrels >= 100;
-                    break;
-
-                case CarType.MOTORCAR:
-                    car.isUnlocked = hitedBarriers >= 17;
-                    break;
-
-                case CarType.PUDZIAN:
-                    car.isUnlocked = collectedBarrels >= 100 && hitedBarriers >= 17 && highScore >= 100000;
-                    break;
-
-                case CarType.PICKUP:
-                    car.isUnlocked = highScore >= 100000;
-                    break;
-            }
-        }
     }
 }

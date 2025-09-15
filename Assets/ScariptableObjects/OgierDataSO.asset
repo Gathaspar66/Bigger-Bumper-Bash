@@ -15,14 +15,13 @@ MonoBehaviour:
   carType: 1
   name: Ogier Sport
   hp: 3
-  acceleationMultiplier: 50
+  acceleationMultiplier: 40
   brakeMultiplier: 30
-  steeringMultiplier: 1.2
+  steeringMultiplier: 1
   maxForwardVelocity: 28
-  maxSteerVelocity: 2
   minForwardVelocity: 10
   isUnlocked: 0
   isAvailable: 1
   spawnForAI: 1
   carPrefab: {fileID: 5300927565052757274, guid: 9e4058655600955439112d6cfbaae221, type: 3}
-  textToUnlock: COLLECT 100 BARRELS TO UNLOCK
+  textToUnlock: COLLECT 50 BARRELS TO UNLOCK

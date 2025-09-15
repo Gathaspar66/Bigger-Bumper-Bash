@@ -811,7 +811,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 169000061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1fb8735395b2bc48b06c1b569b2e7b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 737990e198c7f044797b9040e9004975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &169000063
@@ -2275,6 +2275,9 @@ MonoBehaviour:
   handlingBar: {fileID: 384010254}
   accelerationBar: {fileID: 219156678}
   torqueBar: {fileID: 1523283209}
+  requiredBarrels: 50
+  requiredBarriers: 17
+  requiredHighScore: 10000
   digitRowHandler: {fileID: 1258369007}
 --- !u!1 &813869112
 GameObject:
@@ -3440,7 +3443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v 1.02.625
+  m_text: v 1.02.626
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0eed0c1e17f87c944a11035226620794, type: 2}
   m_sharedMaterial: {fileID: -3812761640470707298, guid: 0eed0c1e17f87c944a11035226620794, type: 2}

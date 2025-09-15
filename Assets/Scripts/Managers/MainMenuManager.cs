@@ -39,6 +39,12 @@ public class MainMenuManager : MonoBehaviour
     public ColorBar torqueBar;
     private CarData car;
 
+    [Header("Unlock Requirements")]
+    [SerializeField] private int requiredBarrels = 50;
+
+    [SerializeField] private int requiredBarriers = 17;
+    [SerializeField] private int requiredHighScore = 10000;
+
     private void Awake()
     {
         instance = this;
@@ -56,7 +62,7 @@ public class MainMenuManager : MonoBehaviour
         LoadSelectedCar();
 
         startButtonImage = startButton.GetComponent<Image>();
-
+        CheckUnlockConditions();
         ShowCar(currentCarIndex);
     }
 
@@ -208,14 +214,51 @@ public class MainMenuManager : MonoBehaviour
             sceneDirectionalLight.intensity = 0f;
             statusToUnlock.text = car.carType switch
             {
-                CarType.OGIER => $"{collectedBarrels}/100 barrels",
-                CarType.MOTORCAR => $"{hitBarriers}/17 barriers",
+                CarType.OGIER => $"{collectedBarrels}/{requiredBarrels} barrels",
+                CarType.MOTORCAR => $"{hitBarriers}/{requiredBarriers} barriers",
                 CarType.PUDZIAN => "",
-                CarType.PICKUP => $"{highScore}/100000",
+                CarType.PICKUP => $"{highScore}/{requiredHighScore} score",
                 _ => "",
             };
         }
     }
+
+    private void CheckUnlockConditions()
+    {
+        int highScore = PlayerPrefs.GetInt("highScore", 0);
+        int collectedBarrels = PlayerPrefs.GetInt("CollectedBarrels", 0);
+        int hitedBarriers = PlayerPrefs.GetInt("HitBarriers", 0);
+
+        foreach (CarData car in CarObjects)
+        {
+            switch (car.carType)
+            {
+                case CarType.UNIKACZ:
+                    car.isUnlocked = true;
+                    break;
+
+                case CarType.OGIER:
+                    car.isUnlocked = collectedBarrels >= requiredBarrels;
+                    break;
+
+                case CarType.MOTORCAR:
+                    car.isUnlocked = hitedBarriers >= requiredBarriers;
+                    break;
+
+                case CarType.PUDZIAN:
+                    car.isUnlocked =
+                        collectedBarrels >= requiredBarrels &&
+                        hitedBarriers >= requiredBarriers &&
+                        highScore >= requiredHighScore;
+                    break;
+
+                case CarType.PICKUP:
+                    car.isUnlocked = highScore >= requiredHighScore;
+                    break;
+            }
+        }
+    }
+
 
     public void SetCarStats()
     {
