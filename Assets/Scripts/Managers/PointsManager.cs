@@ -55,6 +55,13 @@ public class PointsManager : MonoBehaviour
     public void AddPoints(float pointValue, string msg = "")
     {
         points += pointValue;
+
+        //spawn and config floating text
+        GameObject tmp = EffectManager.instance.SpawnAnEffect(Effect.FLOATING_TEXT, transform.position);
+        tmp.GetComponent<FloatingText>().SetFloatingText("+" + pointValue.ToString());
+        tmp.GetComponent<FloatingText>().SetFloatingText(PlayerManager.instance.GetPlayerInstance());
+        tmp.GetComponent<FloatingText>().SetFloatingText(PlayerManager.instance.selectedCarData.carPrefab
+            .GetComponent<CarModelHandler>().fireSmokeSource.transform.position);
     }
 
     public void UpdateSpeedMultiplier(int value)

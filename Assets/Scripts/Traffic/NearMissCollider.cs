@@ -86,7 +86,6 @@ public class NearMissCollider : MonoBehaviour
                 _ = ignoredObjects.Dequeue();
             }
             nearMissCount++;
-            GameObject tmp = EffectManager.instance.SpawnAnEffect(Effect.FLOATING_TEXT, transform.position);
             PointsManager.instance.AddPoints(100);
         }
     }
