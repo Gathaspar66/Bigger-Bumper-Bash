@@ -97,10 +97,10 @@ public class PlayerPrefabHandler : MonoBehaviour
     private void SetupCollider()
     {
         //player prefab handler collider should be smaller than car model handler collider
-        BoxCollider pphCol = gameObject.GetComponent<BoxCollider>();
-        BoxCollider cmhCol = playerCarPrefab.GetComponent<BoxCollider>();
-        pphCol.center = cmhCol.center;
-        pphCol.size = cmhCol.size * 0.9f;
+        BoxCollider playerPrefabHandlerCollider = gameObject.GetComponent<BoxCollider>();
+        BoxCollider carModelHandlerCollider = playerCarPrefab.GetComponent<BoxCollider>();
+        playerPrefabHandlerCollider.center = carModelHandlerCollider.center;
+        playerPrefabHandlerCollider.size = carModelHandlerCollider.size * 0.9f;
     }
 
     private void OnTriggerEnter(Collider other)
