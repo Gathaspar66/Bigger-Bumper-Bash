@@ -251,6 +251,7 @@ public class PlayerPrefabHandler : MonoBehaviour
     {
         SetCarRenderersVisible(true);
         SetCarImmune(false);
+        PlayerManager.instance.SetPlayerImmune(false);
     }
 
     private void SetCarImmune(bool value)

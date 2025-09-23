@@ -155,8 +155,8 @@ MonoBehaviour:
   rainSystem: {fileID: 9119359509136880149}
   minDryTime: 120
   maxDryTime: 300
-  rainDuration: 20
-  startRainChance: 0.938
+  rainDuration: 40
+  startRainChance: 0.1
   minForceY: 5
   maxForceY: -15
   maxCarSpeed: 30
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8758173062638144608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 

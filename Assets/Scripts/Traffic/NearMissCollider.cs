@@ -36,6 +36,7 @@ public class NearMissCollider : MonoBehaviour
         transform.position = player.transform.position + offset;
 
     }
+
     private void CreateNearMissCollider()
     {
         nearMiss = GetComponent<BoxCollider>();
@@ -68,35 +69,24 @@ public class NearMissCollider : MonoBehaviour
         nearMiss.size = newSize;
     }
 
-
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent.CompareTag("Player"))
-        {
-            Debug.Log("PLAYER IGNORING");
-            return;
-        }
+        if (other.transform.parent.CompareTag("Player")) return;
+        if (PlayerManager.instance.GetIsPlayerImmune()) return;
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Traffic"))
         {
             if (ignoredObjects.Contains(other.gameObject))
             {
-                Debug.Log(other.gameObject + " IGNORING");
                 return;
             }
             ignoredObjects.Enqueue(other.gameObject);
             if (ignoredObjects.Count > 10)
             {
-                Debug.Log("DEQUEUING " + ignoredObjects.Count);
                 _ = ignoredObjects.Dequeue();
             }
             nearMissCount++;
-            Debug.Log("NEAR MISS with: " + other.name + " | Count: " + nearMissCount);
             GameObject tmp = EffectManager.instance.SpawnAnEffect(Effect.FLOATING_TEXT, transform.position);
-            tmp.GetComponent<FloatingText>().SetFloatingText("+100", player,
-                PlayerManager.instance.selectedCarData.carPrefab
-                .GetComponent<CarModelHandler>().fireSmokeSource.transform.position);
             PointsManager.instance.AddPoints(100);
         }
     }

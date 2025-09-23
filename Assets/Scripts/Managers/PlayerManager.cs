@@ -16,6 +16,8 @@ public class PlayerManager : MonoBehaviour
     private int playerHealth;
     public CarData selectedCarData;
 
+    bool isPlayerImmune = false;
+
     private void Awake()
     {
         instance = this;
@@ -116,6 +118,7 @@ public class PlayerManager : MonoBehaviour
     private void StartImmunity()
     {
         playerInstance.GetComponent<PlayerPrefabHandler>().StartImmunity();
+        SetPlayerImmune(true);
     }
 
     public void OnPlayerDeath()
@@ -125,5 +128,15 @@ public class PlayerManager : MonoBehaviour
 
         Rigidbody rb = playerInstance.GetComponent<Rigidbody>();
         rb.isKinematic = true;
+    }
+
+    public void SetPlayerImmune(bool value)
+    {
+        isPlayerImmune = value;
+    }
+
+    public bool GetIsPlayerImmune()
+    {
+        return isPlayerImmune;
     }
 }

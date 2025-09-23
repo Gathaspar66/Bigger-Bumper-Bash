@@ -42,8 +42,23 @@ public class FloatingText : MonoBehaviour
 
     public void SetFloatingText(string message, GameObject target, Vector3 offset)
     {
+        SetFloatingText(message);
+        SetFloatingText(target);
+        SetFloatingText(offset);
+    }
+
+    public void SetFloatingText(string message)
+    {
         text.text = message;
+    }
+
+    public void SetFloatingText(GameObject target)
+    {
         targetFollow = target;
+    }
+
+    public void SetFloatingText(Vector3 offset)
+    {
         this.offset = offset;
     }
 }

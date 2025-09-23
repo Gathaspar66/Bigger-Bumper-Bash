@@ -6,7 +6,7 @@ public class PointsCollisionDetector : MonoBehaviour
     {
 
         //explosionScript = GetComponent<Explosion>();
-        PointsManager.instance.AddPoints(10);
+        PointsManager.instance.CrateHit();
         //explosionScript.Explode(Vector3.forward);
         _ = EffectManager.instance.SpawnAnEffect(Effect.BARREL, transform.position);
         GameObject tmp = EffectManager.instance.SpawnAnEffect(Effect.FLOATING_TEXT, transform.position);

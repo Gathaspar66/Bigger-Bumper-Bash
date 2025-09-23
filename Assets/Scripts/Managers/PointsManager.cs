@@ -52,11 +52,9 @@ public class PointsManager : MonoBehaviour
         lastCarLocationZ = car.transform.position.z;
     }
 
-    public void AddPoints(float pointValue)
+    public void AddPoints(float pointValue, string msg = "")
     {
         points += pointValue;
-
-        CrateHit();
     }
 
     public void UpdateSpeedMultiplier(int value)
@@ -81,6 +79,7 @@ public class PointsManager : MonoBehaviour
                 cratePointMultiplier = cratePointMultiplierMax;
             }
         }
+        AddPoints(10, "Crate!");
     }
 
     private void CheckCrateMultiplierTimer()
