@@ -156,7 +156,7 @@ MonoBehaviour:
   minDryTime: 120
   maxDryTime: 300
   rainDuration: 40
-  startRainChance: 0.1
+  startRainChance: 1
   minForceY: 5
   maxForceY: -15
   maxCarSpeed: 30
@@ -328,6 +328,10 @@ PrefabInstance:
     - target: {fileID: 331858642476460374, guid: 43d4e63e91ecbfb40956b2732b820829, type: 3}
       propertyPath: ForceModule.y.scalar
       value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 331858642476460374, guid: 43d4e63e91ecbfb40956b2732b820829, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1979141473526473820, guid: 43d4e63e91ecbfb40956b2732b820829, type: 3}
       propertyPath: m_LocalPosition.x
