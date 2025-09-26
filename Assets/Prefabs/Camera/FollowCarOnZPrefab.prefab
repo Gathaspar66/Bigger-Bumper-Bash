@@ -156,7 +156,7 @@ MonoBehaviour:
   minDryTime: 120
   maxDryTime: 300
   rainDuration: 40
-  startRainChance: 1
+  startRainChance: 0.1
   minForceY: 5
   maxForceY: -15
   maxCarSpeed: 30
