@@ -41,7 +41,7 @@
       "name": "Forklift",
       "hp": 6,
       "acceleationMultiplier": 20.0,
-      "brakeMultiplier": 30.0,
+      "brakeMultiplier": 70.0,
       "steeringMultiplier": 1.5,
       "maxForwardVelocity": 13.0,
       "minForwardVelocity": 10.0,
@@ -51,11 +51,11 @@
  {
       "carType": "PICKUP",
       "name": "American Pickup",
-      "hp": 4,
+      "hp": 3,
       "acceleationMultiplier": 40.0,
-      "brakeMultiplier": 50.0,
+      "brakeMultiplier": 40.0,
       "steeringMultiplier": 1.2,
-      "maxForwardVelocity": 16.0,
+      "maxForwardVelocity": 19.0,
       "minForwardVelocity": 10.0,
       "isAvailableForPlayer": true,
       "spawnForAI": true

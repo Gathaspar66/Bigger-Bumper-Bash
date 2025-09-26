@@ -52,11 +52,16 @@ public class PointsManager : MonoBehaviour
         lastCarLocationZ = car.transform.position.z;
     }
 
-    public void AddPoints(float pointValue)
+    public void AddPoints(float pointValue, string msg = "")
     {
         points += pointValue;
 
-        CrateHit();
+        //spawn and config floating text
+        GameObject tmp = EffectManager.instance.SpawnAnEffect(Effect.FLOATING_TEXT, transform.position);
+        tmp.GetComponent<FloatingText>().SetFloatingText("+" + pointValue.ToString());
+        tmp.GetComponent<FloatingText>().SetFloatingText(PlayerManager.instance.GetPlayerInstance());
+        tmp.GetComponent<FloatingText>().SetFloatingText(PlayerManager.instance.selectedCarData.carPrefab
+            .GetComponent<CarModelHandler>().fireSmokeSource.transform.position);
     }
 
     public void UpdateSpeedMultiplier(int value)
@@ -81,6 +86,7 @@ public class PointsManager : MonoBehaviour
                 cratePointMultiplier = cratePointMultiplierMax;
             }
         }
+        AddPoints(10, "Crate!");
     }
 
     private void CheckCrateMultiplierTimer()

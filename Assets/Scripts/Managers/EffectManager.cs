@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum Effect
@@ -14,15 +15,47 @@ public class EffectManager : MonoBehaviour
 
     private GameObject currentEffect;
 
-    //reference to an effect prefab, add to enum class and call in the switch
     public GameObject crashEffect;
     public GameObject barrelEffect;
     public GameObject crashAndFireEffect;
     public GameObject floatingTextEffect;
+    public Light directionalLight;
+    [SerializeField] private float normalIntensity = 1f;
+    [SerializeField] private float dimIntensity = 0.5f;
+    [SerializeField] private float fadeSpeed = 1f;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    public void DimLight()
+    {
+        if (directionalLight != null)
+        {
+            _ = StartCoroutine(FadeLight(dimIntensity));
+        }
+    }
+
+    public void RestoreLight()
+    {
+        if (directionalLight != null)
+        {
+            _ = StartCoroutine(FadeLight(normalIntensity));
+        }
+    }
+
+    private IEnumerator FadeLight(float targetIntensity)
+    {
+        float startIntensity = directionalLight.intensity;
+        float t = 0f;
+        while (t < 1f)
+        {
+            directionalLight.intensity = Mathf.Lerp(startIntensity, targetIntensity, t);
+            t += Time.deltaTime * fadeSpeed;
+            yield return null;
+        }
+        directionalLight.intensity = targetIntensity;
     }
 
     public GameObject SpawnAnEffect(Effect effect, Vector3 location)
@@ -36,15 +69,16 @@ public class EffectManager : MonoBehaviour
             case Effect.BARREL:
                 currentEffect = Instantiate(barrelEffect, location, Quaternion.identity);
                 break;
+
             case Effect.CRASH_AND_FIRE:
                 currentEffect = Instantiate(crashAndFireEffect, location, Quaternion.identity);
                 break;
+
             case Effect.FLOATING_TEXT:
                 currentEffect = Instantiate(floatingTextEffect, location, Quaternion.identity);
                 break;
         }
 
-        //effectively the same as play on awake, redundant?
         ParticleSystem particleSystem = currentEffect.GetComponent<ParticleSystem>();
         if (particleSystem != null)
         {
