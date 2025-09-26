@@ -2215,17 +2215,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &672940259 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
-  m_PrefabInstance: {fileID: 3622217187431229535}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &720085084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,7 +2274,6 @@ MonoBehaviour:
   textToUnlock: {fileID: 2121317566}
   statusToUnlock: {fileID: 68955575}
   sceneDirectionalLight: {fileID: 619323647}
-  vibrationToggle: {fileID: 672940259}
   carChoiceContainer: {fileID: 169000063}
   hpBar: {fileID: 591660058}
   speedBar: {fileID: 1584851802}
