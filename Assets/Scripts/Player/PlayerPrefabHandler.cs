@@ -129,6 +129,7 @@ public class PlayerPrefabHandler : MonoBehaviour
 
         if (other.gameObject.layer == 3)
         {
+            SoundManager.instance.Vibrate();
             CameraShake.Instance.Shake(0.2f, 0.1f);
             SoundManager.instance.PlayCrashSound();
             _ = EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);

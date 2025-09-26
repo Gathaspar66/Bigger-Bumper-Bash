@@ -49,4 +49,10 @@ public class IngameMenu : MonoBehaviour
     {
         SoundManager.instance.PlayMenuClickSound();
     }
+    public void OnVibrationToggleChanged(bool isOn)
+    {
+        PlayerPrefs.SetInt("VibrationEnabled", isOn ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
 }

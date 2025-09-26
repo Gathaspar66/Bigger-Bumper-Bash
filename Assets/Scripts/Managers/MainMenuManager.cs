@@ -259,7 +259,6 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
-
     public void SetCarStats()
     {
         UpdateHpBar(car.hp);

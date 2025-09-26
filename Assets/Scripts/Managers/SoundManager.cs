@@ -78,7 +78,7 @@ public class SoundManager : MonoBehaviour
         CheckFirstRun();
     }
 
-    void CheckFirstRun()
+    private void CheckFirstRun()
     {
         //default value is 0
         if (PlayerPrefs.GetInt("firstGameRun") == 0)
@@ -87,15 +87,15 @@ public class SoundManager : MonoBehaviour
             PlayerPrefs.SetInt("firstGameRun", 1);
             //set default values, then adjust mixer
             PlayerPrefs.SetFloat("musicVolume", 0.8f);
-            PlayerPrefs.SetFloat ("soundVolume", 0.8f);
+            PlayerPrefs.SetFloat("soundVolume", 0.8f);
             PlayerPrefs.Save();
         }
     }
 
     public void UpdateVolumes()
     {
-        audioMixer.SetFloat("Music", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("musicVolume"), 0.0001f, 1f)) * 20f);
-        audioMixer.SetFloat("SFX", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("soundVolume"), 0.0001f, 1f)) * 20f);
+        _ = audioMixer.SetFloat("Music", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("musicVolume"), 0.0001f, 1f)) * 20f);
+        _ = audioMixer.SetFloat("SFX", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("soundVolume"), 0.0001f, 1f)) * 20f);
     }
 
     public void PlayCrashSound()
@@ -107,7 +107,6 @@ public class SoundManager : MonoBehaviour
     {
         menuClickSource.Play();
     }
-
 
     public void PlayPointsSound()
     {
@@ -198,6 +197,17 @@ public class SoundManager : MonoBehaviour
     {
         PlayerSoundsHandler.instance.PlayerCarBreakSound(braking);
     }
+
+    public void Vibrate()
+    {
+        if (PlayerPrefs.GetInt("VibrationEnabled", 1) == 1)
+        {
+#if UNITY_ANDROID || UNITY_IOS
+            Handheld.Vibrate();
+#endif
+        }
+    }
+
     public void OnPlayerDeath()
     {
         StopBarrierScrape();
