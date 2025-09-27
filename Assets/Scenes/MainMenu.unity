@@ -3448,7 +3448,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v 1.02.687c
+  m_text: v 1.02.688
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0eed0c1e17f87c944a11035226620794, type: 2}
   m_sharedMaterial: {fileID: -3812761640470707298, guid: 0eed0c1e17f87c944a11035226620794, type: 2}
@@ -5942,7 +5942,11 @@ PrefabInstance:
     - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 720085086}
+      objectReference: {fileID: 5272663201140485896, guid: 34298425f1196a046b5be5a23c99cf69, type: 3}
+    - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnVibrationToggleChanged
+      objectReference: {fileID: 0}
     - target: {fileID: 8804116437685986472, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.437

@@ -200,7 +200,7 @@ public class SoundManager : MonoBehaviour
 
     public void Vibrate()
     {
-        if (PlayerPrefs.GetInt("VibrationEnabled", 1) == 1)
+        if (PlayerPrefs.GetInt("VibrationEnabled", 0) == 1)
         {
 #if UNITY_ANDROID || UNITY_IOS
             Handheld.Vibrate();

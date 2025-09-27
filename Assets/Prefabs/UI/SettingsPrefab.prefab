@@ -255,10 +255,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vibration
       objectReference: {fileID: 0}
-    - target: {fileID: 4514689074940532712, guid: 34298425f1196a046b5be5a23c99cf69, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6829799435435790098, guid: 34298425f1196a046b5be5a23c99cf69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+
 public class VibrateController : MonoBehaviour
 {
     public Toggle vibrationToggle;
-    private void Start()
+
+    private void Awake()
     {
-        bool vibrationEnabled = PlayerPrefs.GetInt("VibrationEnabled", 1) == 1;
+        if (!PlayerPrefs.HasKey("VibrationEnabled"))
+        {
+            PlayerPrefs.SetInt("VibrationEnabled", 0);
+            PlayerPrefs.Save();
+        }
+        bool vibrationEnabled = PlayerPrefs.GetInt("VibrationEnabled", 0) == 1;
         vibrationToggle.isOn = vibrationEnabled;
+
+        vibrationToggle.onValueChanged.AddListener(delegate { OnVibrationToggleChanged(); });
     }
-    public void OnVibrationToggleChanged(bool isOn)
+
+    public void OnVibrationToggleChanged()
     {
-        PlayerPrefs.SetInt("VibrationEnabled", isOn ? 1 : 0);
+        PlayerPrefs.SetInt("VibrationEnabled", vibrationToggle.isOn ? 1 : 0);
+
         PlayerPrefs.Save();
     }
 }
