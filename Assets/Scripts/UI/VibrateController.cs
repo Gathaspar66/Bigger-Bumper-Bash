@@ -7,15 +7,10 @@ public class VibrateController : MonoBehaviour
 
     private void Awake()
     {
-        if (!PlayerPrefs.HasKey("VibrationEnabled"))
-        {
-            PlayerPrefs.SetInt("VibrationEnabled", 0);
-            PlayerPrefs.Save();
-        }
-        bool vibrationEnabled = PlayerPrefs.GetInt("VibrationEnabled", 0) == 1;
+        bool vibrationEnabled = PlayerPrefs.GetInt("VibrationEnabled") == 1;
         vibrationToggle.isOn = vibrationEnabled;
 
-        vibrationToggle.onValueChanged.AddListener(delegate { OnVibrationToggleChanged(); });
+        //vibrationToggle.onValueChanged.AddListener(delegate { OnVibrationToggleChanged(); });
     }
 
     public void OnVibrationToggleChanged()
@@ -23,5 +18,10 @@ public class VibrateController : MonoBehaviour
         PlayerPrefs.SetInt("VibrationEnabled", vibrationToggle.isOn ? 1 : 0);
 
         PlayerPrefs.Save();
+    }
+
+    public void awezsprawdz()
+    {
+        print("on vaue changed");
     }
 }
