@@ -329,4 +329,9 @@ public class MainMenuManager : MonoBehaviour
     {
         carMaterialsBar.PreviousMaterial();
     }
+
+    public CarModelHandler GetCurrentCar()
+    {
+        return spawnedCar.GetComponent<CarModelHandler>();
+    }
 }

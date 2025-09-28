@@ -149,4 +149,12 @@ public class CarModelHandler : MonoBehaviour
 
         rearLightRenderer.material = state ? glowingRearLight : originalRearMaterial;
     }
+
+    public void SetCarMaterial(Material mat)
+    {
+        foreach(GameObject i in carBody)
+        {
+            i.GetComponent<MeshRenderer>().material = mat;
+        }
+    }
 }

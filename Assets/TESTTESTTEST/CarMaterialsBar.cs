@@ -77,6 +77,6 @@ public class CarMaterialsBar : MonoBehaviour
             segments[currentMaterialIndex].color = Color.white;
         }
         segments[currentMaterialIndex].color = Color.green;
-
+        MainMenuManager.instance.GetCurrentCar().SetCarMaterial(CarMaterialManager.instance.materials[currentMaterialIndex].matObject);
     }
 }
