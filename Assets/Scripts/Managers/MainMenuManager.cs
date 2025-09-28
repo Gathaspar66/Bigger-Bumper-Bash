@@ -39,6 +39,8 @@ public class MainMenuManager : MonoBehaviour
     public ColorBar torqueBar;
     private CarData car;
 
+    public CarMaterialsBar carMaterialsBar;
+
     [Header("Unlock Requirements")]
     [SerializeField] private int requiredBarrels = 50;
 
@@ -316,5 +318,15 @@ public class MainMenuManager : MonoBehaviour
     public void PlayMenuClickSound()
     {
         SoundManager.instance.PlayMenuClickSound();
+    }
+
+    public void OnNextMaterial()
+    {
+        carMaterialsBar.NextMaterial();
+    }
+
+    public void OnPreviousMaterial()
+    {
+        carMaterialsBar.PreviousMaterial();
     }
 }
