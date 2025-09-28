@@ -2633,6 +2633,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1108339974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4290285400719218771, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+  m_PrefabInstance: {fileID: 3622217187431229535}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e36852746ac4641a43e30ba21d26e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1134402228
 GameObject:
   m_ObjectHideFlags: 0
@@ -5939,13 +5950,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 4081949843873745402, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5272663201140485896, guid: 34298425f1196a046b5be5a23c99cf69, type: 3}
+      objectReference: {fileID: 1108339974}
+    - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnVibrationToggleChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VibrateController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VibrateController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476659870042398899, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8804116437685986472, guid: 310cbb3e6765e814b86abd7cba04aed0, type: 3}
       propertyPath: m_AnchorMax.x
