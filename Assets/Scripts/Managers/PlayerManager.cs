@@ -65,6 +65,9 @@ public class PlayerManager : MonoBehaviour
 
         playerMaxHealth = selectedCarData.hp;
         playerHealth = playerMaxHealth;
+
+        carInstance.GetComponent<CarModelHandler>()
+            .SetCarMaterial(CarMaterialManager.instance.materials[PlayerPrefs.GetInt("CarColorChoice")].matObject);
     }
 
     public void SpawnCamera()
