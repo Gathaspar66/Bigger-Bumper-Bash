@@ -15,8 +15,14 @@ public class CarMaterialsBar : MonoBehaviour
 
     public GameObject startButton;
 
+    List<CarMaterialData> availableMaterials = new();
+
     // Start is called before the first frame update
     void Start()
+    {
+        BuildBar();
+    }
+    private void OnEnable()
     {
         BuildBar();
     }
@@ -31,22 +37,29 @@ public class CarMaterialsBar : MonoBehaviour
     {
         foreach (Image i in segments)
         {
-            //Destroy(i.transform.GetChild(0));
             Destroy(i.gameObject);
         }
         segments.Clear();
+        currentMaterialIndex = 0; 
+        availableMaterials.Clear();
+
+         CarType selectedCar = (CarType)PlayerPrefs.GetInt("SelectedCar");
 
         for (int i = 0; i < CarMaterialManager.instance.materials.Count; i++)
         {
-            Image seg = Instantiate(segmentPrefab, transform);
-            seg.name = $"Seg{i + 1}";
-            segments.Add(seg);
-            Image seg2 = Instantiate(segmentPrefab, seg.transform);
-            seg2.color = CarMaterialManager.instance.materials[i].matColor;
-            seg2.rectTransform.transform.localScale = new Vector2(0.9f, 0.9f);
-            if (!CarMaterialManager.instance.materials[i].isUnlocked)
+            if (CarMaterialManager.instance.materials[i].unlockedForCars.Contains(selectedCar))
             {
-                Image seg3 = Instantiate(xSegmentPrefab, seg.transform);
+                availableMaterials.Add(CarMaterialManager.instance.materials[i]);
+                Image seg = Instantiate(segmentPrefab, transform);
+                seg.name = $"Seg{i + 1}";
+                segments.Add(seg);
+                Image seg2 = Instantiate(segmentPrefab, seg.transform);
+                seg2.color = CarMaterialManager.instance.materials[i].matColor;
+                seg2.rectTransform.transform.localScale = new Vector2(0.9f, 0.9f);
+                if (!CarMaterialManager.instance.materials[i].isUnlocked)
+                {
+                    Image seg3 = Instantiate(xSegmentPrefab, seg.transform);
+                }
             }
         }
         SetCurrentlyChosenMaterial();
@@ -54,7 +67,7 @@ public class CarMaterialsBar : MonoBehaviour
 
     public void NextMaterial()
     {
-        if (currentMaterialIndex >= CarMaterialManager.instance.materials.Count - 1)
+        if (currentMaterialIndex >= availableMaterials.Count - 1)
         {
             currentMaterialIndex = 0;
         }
@@ -69,7 +82,7 @@ public class CarMaterialsBar : MonoBehaviour
     {
         if (currentMaterialIndex <= 0)
         {
-            currentMaterialIndex = CarMaterialManager.instance.materials.Count - 1;
+            currentMaterialIndex = availableMaterials.Count - 1;
         }
         else
         {
@@ -86,11 +99,11 @@ public class CarMaterialsBar : MonoBehaviour
             i.color = Color.white;
         }
         segments[currentMaterialIndex].color = Color.green;
-        MainMenuManager.instance.GetCurrentCar().SetCarMaterial(CarMaterialManager.instance.materials[currentMaterialIndex].matObject);
-        startButton.SetActive(CarMaterialManager.instance.materials[currentMaterialIndex].isUnlocked);
-        textToUnlock.text = CarMaterialManager.instance.materials[currentMaterialIndex].isUnlocked ? "" : CarMaterialManager.instance.materials[currentMaterialIndex].textToUnlock;
+        MainMenuManager.instance.GetCurrentCar().SetCarMaterial(availableMaterials[currentMaterialIndex].matObject);
+        startButton.SetActive(availableMaterials[currentMaterialIndex].isUnlocked);
+        textToUnlock.text = availableMaterials[currentMaterialIndex].isUnlocked ? "" : availableMaterials[currentMaterialIndex].textToUnlock;
 
-        PlayerPrefs.SetInt("CarColorChoice", currentMaterialIndex);
+        PlayerPrefs.SetInt("CarColorChoice", (int)availableMaterials[currentMaterialIndex].matType);
         PlayerPrefs.Save();
     }
 }

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f243785e76575a9479ec0cf794a265c7, type: 3}
   m_Name: BlueCarMaterial
   m_EditorClassIdentifier: 
-  carType: 1
+  matType: 1
   matColor: {r: 0, g: 0.106405735, b: 1, a: 1}
   name: Blue
   isUnlocked: 1
+  unlockedForCars: 0000000001000000020000000300000004000000
   matObject: {fileID: 2100000, guid: bbac3394d6c7acf40be5f9cd319b7d81, type: 2}
   textToUnlock: should be unlocked

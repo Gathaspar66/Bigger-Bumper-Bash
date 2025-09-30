@@ -16,10 +16,9 @@ MonoBehaviour:
   name: Forklift
   hp: 6
   acceleationMultiplier: 20
-  brakeMultiplier: 30
+  brakeMultiplier: 70
   steeringMultiplier: 1.5
   maxForwardVelocity: 13
-  maxSteerVelocity: 1
   minForwardVelocity: 10
   isUnlocked: 0
   isAvailable: 1

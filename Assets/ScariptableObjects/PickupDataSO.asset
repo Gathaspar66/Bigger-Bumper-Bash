@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carType: 4
   name: American Pickup
-  hp: 4
+  hp: 3
   acceleationMultiplier: 40
-  brakeMultiplier: 50
+  brakeMultiplier: 40
   steeringMultiplier: 1.2
-  maxForwardVelocity: 16
+  maxForwardVelocity: 19
   minForwardVelocity: 10
   isUnlocked: 0
   isAvailable: 1

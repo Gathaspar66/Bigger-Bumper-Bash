@@ -17,9 +17,8 @@ MonoBehaviour:
   hp: 4
   acceleationMultiplier: 30
   brakeMultiplier: 30
-  steeringMultiplier: 1.2
+  steeringMultiplier: 1.1
   maxForwardVelocity: 22
-  maxSteerVelocity: 12
   minForwardVelocity: 10
   isUnlocked: 1
   isAvailable: 1

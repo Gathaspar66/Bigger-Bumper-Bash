@@ -153,8 +153,8 @@ RectTransform:
   m_Children:
   - {fileID: 353904647}
   - {fileID: 1009824034}
-  - {fileID: 2093373869}
   - {fileID: 2135762836}
+  - {fileID: 2093373869}
   - {fileID: 1825527946}
   - {fileID: 1252783752}
   - {fileID: 1675433170}
@@ -192,10 +192,10 @@ MonoBehaviour:
   - rect: {fileID: 2135762836}
     slideFrom: 3
   activateAfterShow:
-  - {fileID: 1009824031}
   - {fileID: 169000061}
   activateBeforeShow:
   - {fileID: 2093373868}
+  - {fileID: 1009824031}
 --- !u!1 &10443208
 GameObject:
   m_ObjectHideFlags: 0
@@ -4119,10 +4119,10 @@ MonoBehaviour:
   - rect: {fileID: 68955574}
     slideFrom: 2
   activateAfterShow:
-  - {fileID: 445755958}
   - {fileID: 169000061}
   activateBeforeShow:
   - {fileID: 1238800286}
+  - {fileID: 445755958}
 --- !u!1 &1473304841
 GameObject:
   m_ObjectHideFlags: 0

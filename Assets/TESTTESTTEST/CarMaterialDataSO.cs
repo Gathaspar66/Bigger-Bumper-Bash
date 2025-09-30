@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum CarMaterialType
@@ -14,7 +15,7 @@ public enum CarMaterialType
 public class CarMaterialData : ScriptableObject
 {
     [Header("Basic Material Info")]
-    public CarMaterialType carType;
+    public CarMaterialType matType;
 
     public Color matColor;
 
@@ -23,6 +24,8 @@ public class CarMaterialData : ScriptableObject
     [Header("Material Availability")]
     [Tooltip("Whether the material is unlocked in-game – not loaded from JSON, set dynamically during gameplay.")]
     public bool isUnlocked;
+
+    public List<CarType> unlockedForCars;
 
     //[Tooltip("Whether the material is available for the AI to use – loaded from JSON.")]
     //public bool isAvailable;

@@ -16,10 +16,9 @@ MonoBehaviour:
   name: Motorcar 17
   hp: 5
   acceleationMultiplier: 20
-  brakeMultiplier: 20
-  steeringMultiplier: 1
-  maxForwardVelocity: 16
-  maxSteerVelocity: 1.4
+  brakeMultiplier: 40
+  steeringMultiplier: 1.2
+  maxForwardVelocity: 24
   minForwardVelocity: 10
   isUnlocked: 0
   isAvailable: 1

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f243785e76575a9479ec0cf794a265c7, type: 3}
   m_Name: WhiteCarMaterial 3
   m_EditorClassIdentifier: 
-  carType: 2
-  matColor: {r: 1, g: 0.8141632, b: 0, a: 1}
-  name: YELLOW
+  matType: 4
+  matColor: {r: 1, g: 1, b: 1, a: 1}
+  name: WHITE
   isUnlocked: 0
-  matObject: {fileID: 2100000, guid: 8297caa54c5ae944d9378724e2d23685, type: 2}
-  textToUnlock: git gud
+  unlockedForCars: 0000000001000000020000000300000004000000
+  matObject: {fileID: 2100000, guid: da6ecff43930bfb408cdc71416885a13, type: 2}
+  textToUnlock: white is locked as an example of a locked material and color and
+    also to test a very long unlock text because why not do that and just find out
+    funny or not like and subscribe to get more content like this one xoxoxo
