@@ -17,4 +17,4 @@ MonoBehaviour:
   name: Blue
   isUnlocked: 1
   matObject: {fileID: 2100000, guid: bbac3394d6c7acf40be5f9cd319b7d81, type: 2}
-  textToUnlock: 
+  textToUnlock: should be unlocked

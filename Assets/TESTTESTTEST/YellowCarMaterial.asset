@@ -15,6 +15,6 @@ MonoBehaviour:
   carType: 2
   matColor: {r: 1, g: 0.8141632, b: 0, a: 1}
   name: YELLOW
-  isUnlocked: 1
+  isUnlocked: 0
   matObject: {fileID: 2100000, guid: 8297caa54c5ae944d9378724e2d23685, type: 2}
-  textToUnlock: 
+  textToUnlock: git gud

@@ -3,12 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CarMaterialsBar : MonoBehaviour
 {
     public Image segmentPrefab;
+    public Image xSegmentPrefab;
+    public TMP_Text textToUnlock;
     public List<Image> segments = new();
     int currentMaterialIndex = 0;
+
+    public GameObject startButton;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +44,10 @@ public class CarMaterialsBar : MonoBehaviour
             Image seg2 = Instantiate(segmentPrefab, seg.transform);
             seg2.color = CarMaterialManager.instance.materials[i].matColor;
             seg2.rectTransform.transform.localScale = new Vector2(0.9f, 0.9f);
+            if (!CarMaterialManager.instance.materials[i].isUnlocked)
+            {
+                Image seg3 = Instantiate(xSegmentPrefab, seg.transform);
+            }
         }
         SetCurrentlyChosenMaterial();
     }
@@ -53,7 +62,7 @@ public class CarMaterialsBar : MonoBehaviour
         {
             currentMaterialIndex++;
         }
-        BuildBar();
+        SetCurrentlyChosenMaterial();
     }
 
     internal void PreviousMaterial()
@@ -66,7 +75,7 @@ public class CarMaterialsBar : MonoBehaviour
         {
             currentMaterialIndex--;
         }
-        BuildBar();
+        SetCurrentlyChosenMaterial();
     }
 
     private void SetCurrentlyChosenMaterial()
@@ -74,10 +83,13 @@ public class CarMaterialsBar : MonoBehaviour
         //CarMaterialManager.instance.materials[currentMaterialIndex];
         foreach(Image i in segments)
         {
-            segments[currentMaterialIndex].color = Color.white;
+            i.color = Color.white;
         }
         segments[currentMaterialIndex].color = Color.green;
         MainMenuManager.instance.GetCurrentCar().SetCarMaterial(CarMaterialManager.instance.materials[currentMaterialIndex].matObject);
+        startButton.SetActive(CarMaterialManager.instance.materials[currentMaterialIndex].isUnlocked);
+        textToUnlock.text = CarMaterialManager.instance.materials[currentMaterialIndex].isUnlocked ? "" : CarMaterialManager.instance.materials[currentMaterialIndex].textToUnlock;
+
         PlayerPrefs.SetInt("CarColorChoice", currentMaterialIndex);
         PlayerPrefs.Save();
     }
