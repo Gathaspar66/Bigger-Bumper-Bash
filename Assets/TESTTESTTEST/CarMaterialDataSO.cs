@@ -5,6 +5,9 @@ public enum CarMaterialType
     RED,
     BLUE,
     YELLOW,
+    PINK,
+    WHITE,
+    BROWN,
 }
 
 [CreateAssetMenu]
