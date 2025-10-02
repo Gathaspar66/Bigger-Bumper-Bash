@@ -85,13 +85,11 @@ public class CarMaterialsBar : MonoBehaviour
 
     void MarkButtonSelectedByMaterialType()
     {
-        print("mark button "+ currentSelectedMaterialType);
         CarMaterialButton currentCMB;
         foreach (GameObject i in segments)
         {
             currentCMB = i.GetComponent<CarMaterialButton>();
             currentCMB.SetSelected(currentCMB.carMatType == currentSelectedMaterialType);
-            print(currentCMB.carMatType + " "+ (currentCMB.carMatType == currentSelectedMaterialType));
         }
     }
 }
