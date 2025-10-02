@@ -16,6 +16,6 @@ MonoBehaviour:
   matColor: {r: 0.6528301, g: 0.4066866, b: 0.07267349, a: 1}
   name: BROWN
   isUnlocked: 1
-  unlockedForCars: 00000000
+  unlockedForCars: 0000000002000000
   matObject: {fileID: 2100000, guid: 2393fa13da9caec42909a5787d51db2c, type: 2}
   textToUnlock: should be unlocked

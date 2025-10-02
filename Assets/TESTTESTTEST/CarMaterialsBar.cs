@@ -10,11 +10,11 @@ public class CarMaterialsBar : MonoBehaviour
     public GameObject segmentPrefab;
     public TMP_Text textToUnlock;
     public List<GameObject> segments = new();
-    int currentMaterialIndex = 0;
+    CarMaterialType currentSelectedMaterialType;
+    CarType currentSelectedCar;
 
     public GameObject startButton;
 
-    List<CarMaterialData> availableMaterials = new();
 
     // Start is called before the first frame update
     void Start()
@@ -40,17 +40,15 @@ public class CarMaterialsBar : MonoBehaviour
             Destroy(i);
         }
         segments.Clear();
-        currentMaterialIndex = 0; 
-        availableMaterials.Clear();
 
-         CarType selectedCar = (CarType)PlayerPrefs.GetInt("SelectedCar");
+        currentSelectedCar = (CarType)PlayerPrefs.GetInt("SelectedCar");
+        currentSelectedMaterialType = CarDataLoader.GetLastSelectedMaterialByCar(currentSelectedCar);
 
         for (int i = 0; i < CarMaterialManager.instance.materials.Count; i++)
         {
             CarMaterialButton currentCMB;
-            if (CarMaterialManager.instance.materials[i].unlockedForCars.Contains(selectedCar))
+            if (CarMaterialManager.instance.materials[i].unlockedForCars.Contains(currentSelectedCar))
             {
-                availableMaterials.Add(CarMaterialManager.instance.materials[i]);
                 GameObject seg = Instantiate(segmentPrefab, transform);
                 seg.name = $"Seg{i + 1}";
                 segments.Add(seg);
@@ -61,24 +59,26 @@ public class CarMaterialsBar : MonoBehaviour
                 currentCMB.SetCarMaterialsBar(this);
             }
         }
+
         SetCurrentlyChosenMaterial();
     }
 
 
     private void SetCurrentlyChosenMaterial()
     {
-        //CarMaterialManager.instance.materials[currentMaterialIndex];
-        MainMenuManager.instance.GetCurrentCar().SetCarMaterial(availableMaterials[currentMaterialIndex].matObject);
-        startButton.SetActive(availableMaterials[currentMaterialIndex].isUnlocked);
-        textToUnlock.text = availableMaterials[currentMaterialIndex].isUnlocked ? "" : availableMaterials[currentMaterialIndex].textToUnlock;
+        CarMaterialData currentMaterialData = CarMaterialManager.instance.GetMaterialByType(currentSelectedMaterialType);
+        MainMenuManager.instance.GetCurrentCar().SetCarMaterial(currentMaterialData.matObject);
+        MainMenuManager.instance.StartGameButtonUnlock(currentMaterialData.isUnlocked);
+        textToUnlock.text = currentMaterialData.isUnlocked ? "" : currentMaterialData.textToUnlock;
 
-        PlayerPrefs.SetInt("CarColorChoice", (int)availableMaterials[currentMaterialIndex].matType);
+        PlayerPrefs.SetInt("CarColorChoice", (int)currentMaterialData.matType);
+        CarDataLoader.SaveLastSelectedMaterialByCar(currentSelectedCar, currentSelectedMaterialType);
         PlayerPrefs.Save();
     }
 
     public void ButtonPressed(CarMaterialType value)
     {
-        currentMaterialIndex = (int)value;
+        currentSelectedMaterialType = value;
         SetCurrentlyChosenMaterial();
         foreach (GameObject i in segments)
         {

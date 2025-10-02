@@ -24,4 +24,21 @@ public class CarMaterialManager : MonoBehaviour
     {
         
     }
+
+    public CarMaterialData GetMaterialByInt(int value)
+    {
+        return GetMaterialByType((CarMaterialType)value);
+    }
+
+    public CarMaterialData GetMaterialByType(CarMaterialType value)
+    {
+        foreach(CarMaterialData i in materials)
+        {
+            if (i.matType == value)
+            {
+                return i;
+            }
+        }
+        return null;
+    }
 }

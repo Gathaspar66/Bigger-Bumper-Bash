@@ -85,4 +85,16 @@ public static class CarDataLoader
         isLoaded = true;
         return carList;
     }
+
+    public static CarMaterialType GetLastSelectedMaterialByCar(CarType carType)
+    {
+        string[] a = { "UNIKACZ", "OGIER", "MOTORCAR", "PUDZIAN", "PICKUP" };
+        return (CarMaterialType)PlayerPrefs.GetInt("LastSelectedMaterial" + a[(int)carType]);
+    }
+
+    public static void SaveLastSelectedMaterialByCar(CarType carType, CarMaterialType carMat)
+    {
+        string[] a = { "UNIKACZ", "OGIER", "MOTORCAR", "PUDZIAN", "PICKUP" };
+        PlayerPrefs.SetInt("LastSelectedMaterial" + a[(int)carType], (int)carMat);
+    }
 }

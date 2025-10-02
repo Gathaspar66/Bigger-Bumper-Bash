@@ -197,14 +197,14 @@ public class MainMenuManager : MonoBehaviour
         {
             textToUnlock.text = car.name;
 
-            startButton.SetActive(true);
+            StartGameButtonUnlock(true);
             sceneDirectionalLight.intensity = 2f;
             statusToUnlock.text = "";
         }
         else
         {
             textToUnlock.text = car.textToUnlock;
-            startButton.SetActive(false);
+            StartGameButtonUnlock(false);
             sceneDirectionalLight.intensity = 0f;
             statusToUnlock.text = car.carType switch
             {
@@ -315,5 +315,10 @@ public class MainMenuManager : MonoBehaviour
     public CarModelHandler GetCurrentCar()
     {
         return spawnedCar.GetComponent<CarModelHandler>();
+    }
+
+    public void StartGameButtonUnlock(bool value)
+    {
+        startButton.SetActive(value && car.isUnlocked);
     }
 }

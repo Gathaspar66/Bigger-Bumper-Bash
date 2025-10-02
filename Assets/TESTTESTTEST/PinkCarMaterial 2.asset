@@ -16,6 +16,6 @@ MonoBehaviour:
   matColor: {r: 1, g: 0.216981, b: 0.673112, a: 1}
   name: PINK
   isUnlocked: 0
-  unlockedForCars: 00000000
+  unlockedForCars: 0000000002000000
   matObject: {fileID: 2100000, guid: 6d6d4b945e794e44a89032c471291bef, type: 2}
   textToUnlock: unlock pink big money $$$$ you cant get this one ever
