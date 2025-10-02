@@ -15,9 +15,9 @@ MonoBehaviour:
   matType: 4
   matColor: {r: 0, g: 0.23529413, b: 0.26666668, a: 1}
   name: GREEN
-  isUnlocked: 1
+  isUnlocked: 0
   unlockedForCars: 0000000001000000020000000300000004000000
   matObject: {fileID: 2100000, guid: a94e3b83cdbbebf4d9bb4fe974d51e0b, type: 2}
-  textToUnlock: white is locked as an example of a locked material and color and
-    also to test a very long unlock text because why not do that and just find out
-    funny or not like and subscribe to get more content like this one xoxoxo
+  textToUnlock: locked as an example of a locked material and color and also to test
+    a very long unlock text because why not do that and just find out funny or not
+    like and subscribe to get more content like this one xoxoxo
