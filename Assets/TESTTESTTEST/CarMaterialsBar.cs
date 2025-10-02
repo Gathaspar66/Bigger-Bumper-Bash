@@ -70,6 +70,7 @@ public class CarMaterialsBar : MonoBehaviour
         MainMenuManager.instance.GetCurrentCar().SetCarMaterial(currentMaterialData.matObject);
         MainMenuManager.instance.StartGameButtonUnlock(currentMaterialData.isUnlocked);
         textToUnlock.text = currentMaterialData.isUnlocked ? "" : currentMaterialData.textToUnlock;
+        MarkButtonSelectedByMaterialType();
 
         PlayerPrefs.SetInt("CarColorChoice", (int)currentMaterialData.matType);
         CarDataLoader.SaveLastSelectedMaterialByCar(currentSelectedCar, currentSelectedMaterialType);
@@ -80,9 +81,17 @@ public class CarMaterialsBar : MonoBehaviour
     {
         currentSelectedMaterialType = value;
         SetCurrentlyChosenMaterial();
+    }
+
+    void MarkButtonSelectedByMaterialType()
+    {
+        print("mark button "+ currentSelectedMaterialType);
+        CarMaterialButton currentCMB;
         foreach (GameObject i in segments)
         {
-            i.GetComponent<CarMaterialButton>().SetSelected(false);
+            currentCMB = i.GetComponent<CarMaterialButton>();
+            currentCMB.SetSelected(currentCMB.carMatType == currentSelectedMaterialType);
+            print(currentCMB.carMatType + " "+ (currentCMB.carMatType == currentSelectedMaterialType));
         }
     }
 }

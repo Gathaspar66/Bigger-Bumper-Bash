@@ -7,7 +7,7 @@ public enum CarMaterialType
     BLUE,
     YELLOW,
     PINK,
-    WHITE,
+    GREEN,
     BROWN,
 }
 

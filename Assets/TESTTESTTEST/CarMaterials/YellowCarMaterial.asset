@@ -15,7 +15,7 @@ MonoBehaviour:
   matType: 2
   matColor: {r: 1, g: 0.8141632, b: 0, a: 1}
   name: YELLOW
-  isUnlocked: 0
-  unlockedForCars: 0000000002000000
+  isUnlocked: 1
+  unlockedForCars: 0000000001000000020000000300000004000000
   matObject: {fileID: 2100000, guid: 8297caa54c5ae944d9378724e2d23685, type: 2}
   textToUnlock: git gud

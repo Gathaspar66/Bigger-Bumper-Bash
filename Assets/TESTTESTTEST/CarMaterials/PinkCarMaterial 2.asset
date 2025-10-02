@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f243785e76575a9479ec0cf794a265c7, type: 3}
-  m_Name: BrownCarMaterial 1
+  m_Name: PinkCarMaterial 2
   m_EditorClassIdentifier: 
-  matType: 5
-  matColor: {r: 0.6528301, g: 0.4066866, b: 0.07267349, a: 1}
-  name: BROWN
-  isUnlocked: 1
-  unlockedForCars: 0000000002000000
-  matObject: {fileID: 2100000, guid: 2393fa13da9caec42909a5787d51db2c, type: 2}
-  textToUnlock: should be unlocked
+  matType: 3
+  matColor: {r: 1, g: 0.216981, b: 0.673112, a: 1}
+  name: PINK
+  isUnlocked: 0
+  unlockedForCars: 
+  matObject: {fileID: 2100000, guid: 6d6d4b945e794e44a89032c471291bef, type: 2}
+  textToUnlock: unlock pink big money $$$$ you cant get this one ever

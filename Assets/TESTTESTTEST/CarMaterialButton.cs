@@ -55,6 +55,5 @@ public class CarMaterialButton : MonoBehaviour
     public void OnButtonPress()
     {
         cmb.ButtonPressed(carMatType);
-        SetSelected(true);
     }
 }
