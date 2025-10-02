@@ -14,12 +14,8 @@ public class MainMenuManager : MonoBehaviour
 
     public GameObject menuButton;
     public GameObject aboutMenu;
-    public Button startButton;
+    public GameObject startButton;
     public GameObject isCarChooseViewOpen;
-    private Image startButtonImage;
-    public TMP_Text carStatus;
-    public Color activeColor = Color.green;
-    public Color inactiveColor = Color.white;
     public TMP_Text textToUnlock;
     public TMP_Text statusToUnlock;
     public Light sceneDirectionalLight;
@@ -63,9 +59,8 @@ public class MainMenuManager : MonoBehaviour
 
         LoadSelectedCar();
 
-        startButtonImage = startButton.GetComponent<Image>();
         CheckUnlockConditions();
-        ShowCar(currentCarIndex);
+        //ShowCar(currentCarIndex);
     }
 
     private void LoadSelectedCar()
@@ -145,7 +140,7 @@ public class MainMenuManager : MonoBehaviour
     public void OnNextCar()
     {
         currentCarIndex = (currentCarIndex + 1) % CarObjects.Count;
-        ShowCar(currentCarIndex);
+        ShowCar();
     }
 
     public void OnPreviousCar()
@@ -156,10 +151,10 @@ public class MainMenuManager : MonoBehaviour
             currentCarIndex = CarObjects.Count - 1;
         }
 
-        ShowCar(currentCarIndex);
+        ShowCar();
     }
 
-    private void ShowCar(int index)
+    public void ShowCar()
     {
         if (spawnedCar != null)
         {
@@ -172,7 +167,7 @@ public class MainMenuManager : MonoBehaviour
             return;
         }
 
-        car = cars[index];
+        car = cars[currentCarIndex];
 
         if (car.carPrefab != null)
         {
@@ -190,6 +185,7 @@ public class MainMenuManager : MonoBehaviour
 
         PlayerPrefs.SetInt("SelectedCar", (int)car.carType);
         PlayerPrefs.Save();
+        carMaterialsBar.BuildBar();
     }
 
     private void HandleLockedCarState()
@@ -199,20 +195,16 @@ public class MainMenuManager : MonoBehaviour
         int highScore = PlayerPrefs.GetInt("highScore", 0);
         if (car.isUnlocked)
         {
-            carStatus.text = "";
             textToUnlock.text = car.name;
 
-            startButtonImage.color = inactiveColor;
-            startButton.interactable = true;
+            startButton.SetActive(true);
             sceneDirectionalLight.intensity = 2f;
             statusToUnlock.text = "";
         }
         else
         {
-            carStatus.text = "LOCKED";
             textToUnlock.text = car.textToUnlock;
-            startButton.interactable = false;
-            startButtonImage.color = activeColor;
+            startButton.SetActive(false);
             sceneDirectionalLight.intensity = 0f;
             statusToUnlock.text = car.carType switch
             {
@@ -318,16 +310,6 @@ public class MainMenuManager : MonoBehaviour
     public void PlayMenuClickSound()
     {
         SoundManager.instance.PlayMenuClickSound();
-    }
-
-    public void OnNextMaterial()
-    {
-        carMaterialsBar.NextMaterial();
-    }
-
-    public void OnPreviousMaterial()
-    {
-        carMaterialsBar.PreviousMaterial();
     }
 
     public CarModelHandler GetCurrentCar()
