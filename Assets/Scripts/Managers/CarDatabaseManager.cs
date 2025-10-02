@@ -60,7 +60,7 @@ public class CarDatabaseManager : MonoBehaviour
                 carSO.minForwardVelocity = car.minForwardVelocity;
                 carSO.isAvailable = car.isAvailable;
                 carSO.spawnForAI = car.spawnForAI;
-                Debug.Log($"Mapped {carSO.carType} -> {carSO.name}, prefab = {carSO.carPrefab.name}");
+                //Debug.Log($"Mapped {carSO.carType} -> {carSO.name}, prefab = {carSO.carPrefab.name}");
             }
         }
     }

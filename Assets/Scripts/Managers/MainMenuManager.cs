@@ -195,25 +195,24 @@ public class MainMenuManager : MonoBehaviour
         int highScore = PlayerPrefs.GetInt("highScore", 0);
         if (car.isUnlocked)
         {
-            textToUnlock.text = car.name;
+            textToUnlock.text = "";
 
             StartGameButtonUnlock(true);
             sceneDirectionalLight.intensity = 2f;
-            statusToUnlock.text = "";
         }
         else
         {
-            textToUnlock.text = car.textToUnlock;
             StartGameButtonUnlock(false);
             sceneDirectionalLight.intensity = 0f;
-            statusToUnlock.text = car.carType switch
+            textToUnlock.text = car.textToUnlock + " (" + car.carType switch
             {
-                CarType.OGIER => $"{collectedBarrels}/{requiredBarrels} barrels",
-                CarType.MOTORCAR => $"{hitBarriers}/{requiredBarriers} barriers",
+                CarType.OGIER => $"{collectedBarrels}/{requiredBarrels}",
+                CarType.MOTORCAR => $"{hitBarriers}/{requiredBarriers}",
                 CarType.PUDZIAN => "",
-                CarType.PICKUP => $"{highScore}/{requiredHighScore} score",
+                CarType.PICKUP => $"{highScore}/{requiredHighScore}",
                 _ => "",
-            };
+            }
+            + ")";
         }
     }
 
