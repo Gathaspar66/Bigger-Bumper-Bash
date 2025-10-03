@@ -1,33 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class IngameMenu : MonoBehaviour
 {
     public GameObject ingameMenu;
 
-    bool isMenuOpen = false;
+    public GameObject menuOpenButton;
+    public GameObject menuCloseButton;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 
-    public void ToggleIngameMenu()
+    public void OpenIngameMenu()
     {
-        isMenuOpen = !isMenuOpen;
-        GameManager.instance.PauseGame(isMenuOpen);
-        ingameMenu.SetActive(isMenuOpen);
-        SoundManager.instance.ToggleEngineSound(isMenuOpen);
+        GameManager.instance.PauseGame(true);
+        ingameMenu.SetActive(true);
+        menuOpenButton.SetActive(false);
+        menuCloseButton.SetActive(true);
+        SoundManager.instance.MuteEngineSound(true);
+    }
+
+    public void CloseIngameMenu()
+    {
+        PlayerPrefs.Save();
+        GameManager.instance.PauseGame(false);
+        ingameMenu.SetActive(false);
+        menuOpenButton.SetActive(true);
+        menuCloseButton.SetActive(false);
+        SoundManager.instance.MuteEngineSound(false);
     }
 
     public void OnRestartButtonPressed()
@@ -39,4 +45,14 @@ public class IngameMenu : MonoBehaviour
     {
         GameManager.instance.QuitToMenu();
     }
+    public void PlayMenuClickSound()
+    {
+        SoundManager.instance.PlayMenuClickSound();
+    }
+    public void OnVibrationToggleChanged(bool isOn)
+    {
+        PlayerPrefs.SetInt("VibrationEnabled", isOn ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
 }

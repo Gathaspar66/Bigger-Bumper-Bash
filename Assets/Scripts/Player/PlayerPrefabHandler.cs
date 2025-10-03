@@ -10,10 +10,6 @@ public class PlayerPrefabHandler : MonoBehaviour
     public TrailRenderer leftTrailRenderer, rightTrailRenderer;
 
     [Header("Other")] //
-    public Material normal;
-
-    public Material immune;
-
     private bool isImmune = false;
 
     private readonly float immunityDuration = 2;
@@ -28,6 +24,10 @@ public class PlayerPrefabHandler : MonoBehaviour
     private CarModelHandler carModelHandler;
     public CarAIDynamicObstacle carAIDynamicObstacle;
     private bool isPlayerDead = false;
+    public GameObject nearMissPrefab;
+    private Renderer[] carRenderers;
+    private float blinkTimer = 0f;
+    private float blinkInterval = 0.1f;
 
     private void Update()
     {
@@ -45,6 +45,23 @@ public class PlayerPrefabHandler : MonoBehaviour
         carModelHandler = GetComponentInChildren<CarModelHandler>();
         carModelHandler.SetCarDamagedLists();
         carModelHandler.SetPlayerPrefabHandler(this);
+
+        SetupSmokeAndTrailRenderers();
+        SpawnNearMiss();
+    }
+
+    public void SetCarPrefab(GameObject playerCarPrefab)
+    {
+        this.playerCarPrefab = playerCarPrefab;
+        carRenderers = playerCarPrefab.GetComponentsInChildren<Renderer>(true);
+        SetupCollider();
+    }
+
+    private void SetupSmokeAndTrailRenderers()
+    {
+        leftTrailRenderer.transform.position = carModelHandler.leftSlideSource.transform.position;
+        rightTrailRenderer.transform.position = carModelHandler.rightSlideSource.transform.position;
+        smokePrefab.transform.position = carModelHandler.fireSmokeSource.transform.position;
     }
 
     public void UpdateTrailEffects()
@@ -77,9 +94,13 @@ public class PlayerPrefabHandler : MonoBehaviour
         carModelHandler.SetRearBrakeLight(isBraking);
     }
 
-    public void SetCarPrefab(GameObject playerCarPrefab)
+    private void SetupCollider()
     {
-        this.playerCarPrefab = playerCarPrefab;
+        //player prefab handler collider should be smaller than car model handler collider
+        BoxCollider playerPrefabHandlerCollider = gameObject.GetComponent<BoxCollider>();
+        BoxCollider carModelHandlerCollider = playerCarPrefab.GetComponent<BoxCollider>();
+        playerPrefabHandlerCollider.center = carModelHandlerCollider.center;
+        playerPrefabHandlerCollider.size = carModelHandlerCollider.size * 0.9f;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,6 +112,7 @@ public class PlayerPrefabHandler : MonoBehaviour
         if (other.gameObject.layer == 6)
         {
             SoundManager.instance.PlayPointsSound();
+            AddCollectedBarrel();
         }
         if (isImmune)
         {
@@ -105,13 +127,12 @@ public class PlayerPrefabHandler : MonoBehaviour
             hitPoint = other.ClosestPoint(transform.position);
         }
 
-
-
         if (other.gameObject.layer == 3)
         {
+            SoundManager.instance.Vibrate();
             CameraShake.Instance.Shake(0.2f, 0.1f);
             SoundManager.instance.PlayCrashSound();
-            EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
+            _ = EffectManager.instance.SpawnAnEffect(Effect.CRASH, hitPoint);
             PlayerManager.instance.GetDamaged();
 
             CarAIDynamicObstacle aiCar = other.GetComponentInParent<CarAIDynamicObstacle>();
@@ -120,6 +141,23 @@ public class PlayerPrefabHandler : MonoBehaviour
                 aiCar.StopCarDueToCrash();
             }
         }
+    }
+
+    private void AddCollectedBarrel()
+    {
+        int barrels = PlayerPrefs.GetInt("CollectedBarrels", 0);
+        barrels++;
+        // print(barrels);
+        PlayerPrefs.SetInt("CollectedBarrels", barrels);
+        PlayerPrefs.Save();
+    }
+
+    private void AddHitBarrier()
+    {
+        int hitBarriers = PlayerPrefs.GetInt("HitBarriers", 0);
+        hitBarriers++;
+        PlayerPrefs.SetInt("HitBarriers", hitBarriers);
+        PlayerPrefs.Save();
     }
 
     internal void SetPlayerDead(bool isDead)
@@ -148,12 +186,14 @@ public class PlayerPrefabHandler : MonoBehaviour
         {
             sparksL.Stop();
             SoundManager.instance.StopBarrierScrape();
+            AddHitBarrier();
         }
 
         if (other.CompareTag("RightBarrier"))
         {
             sparksR.Stop();
             SoundManager.instance.StopBarrierScrape();
+            AddHitBarrier();
         }
     }
 
@@ -171,22 +211,48 @@ public class PlayerPrefabHandler : MonoBehaviour
         }
         else
         {
-            bool flash = Mathf.PingPong(currentImmunityDuration * 5, 1) > 0.5f;
-            carModelHandler.SetImmuneCarMaterial(flash ? immune : normal);
+            float t = 1 - (currentImmunityDuration / immunityDuration);
+
+            blinkInterval = Mathf.Lerp(0.2f, 0.05f, t);
+
+            blinkTimer -= Time.deltaTime;
+            if (blinkTimer <= 0f)
+            {
+                bool currentlyVisible = carRenderers[0].enabled;
+                SetCarRenderersVisible(!currentlyVisible);
+
+                blinkTimer = blinkInterval;
+            }
+        }
+    }
+
+    private void SetCarRenderersVisible(bool visible)
+    {
+        if (carRenderers == null)
+        {
+            return;
+        }
+
+        foreach (Renderer r in carRenderers)
+        {
+            if (r != null)
+            {
+                r.enabled = visible;
+            }
         }
     }
 
     public void StartImmunity()
     {
         currentImmunityDuration = immunityDuration;
-        carModelHandler.SetImmuneCarMaterial(immune);
         SetCarImmune(true);
     }
 
     private void EndImmunity()
     {
-        carModelHandler.SetImmuneCarMaterial(normal);
+        SetCarRenderersVisible(true);
         SetCarImmune(false);
+        PlayerManager.instance.SetPlayerImmune(false);
     }
 
     private void SetCarImmune(bool value)
@@ -215,5 +281,10 @@ public class PlayerPrefabHandler : MonoBehaviour
         {
             smokePrefab.Stop();
         }
+    }
+
+    public void SpawnNearMiss()
+    {
+        _ = Instantiate(nearMissPrefab);
     }
 }

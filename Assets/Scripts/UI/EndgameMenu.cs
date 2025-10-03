@@ -14,12 +14,6 @@ public class EndgameMenu : MonoBehaviour
 
     private void Start()
     {
-        ScaleBlackBackground();
-    }
-
-    private void ScaleBlackBackground()
-    {
-        blackBackground.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
     }
 
 

@@ -10,7 +10,6 @@ public class SlidersController : MonoBehaviour
     public Slider musicSlider;
     public Slider soundSlider;
 
-    public AudioMixer am;
 
     private void Start()
     {
@@ -25,13 +24,13 @@ public class SlidersController : MonoBehaviour
 
     public void OnMusicSliderChanged()
     {
-        am.SetFloat("Music", Mathf.Log10(Mathf.Clamp(musicSlider.value, 0.0001f, 1f)) * 20f);
+        SoundManager.instance.UpdateVolumes();
         PlayerPrefs.SetFloat("musicVolume", musicSlider.value);
     }
 
     public void OnSoundSliderChanged()
     {
-        am.SetFloat("SFX", Mathf.Log10(Mathf.Clamp(soundSlider.value, 0.0001f, 1f)) * 20f);
+        SoundManager.instance.UpdateVolumes();
         PlayerPrefs.SetFloat("soundVolume", soundSlider.value);
     }
 }

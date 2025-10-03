@@ -12,11 +12,14 @@ public class RoadManager : MonoBehaviour
     public GameObject[] allSectionsPrefabs;
     public int normalSectionsMultiplier = 1;
     private readonly GameObject[] sectionsPool = new GameObject[20];
-    private readonly GameObject[] sections = new GameObject[3];
+    Queue<GameObject> sectionsQueue = new();
+    int sectionsCount = 3;
     private Transform playerCarTransform;
     private readonly WaitForSeconds waitFor100ms = new(0.1f);
     private const float sectionLength = 60;
     private bool isGameOver = false;
+
+    public BoxCollider left, right;
 
     private void Awake()
     {
@@ -47,19 +50,21 @@ public class RoadManager : MonoBehaviour
 
     public void SetStartPosition()
     {
+        //road segments setup
         for (int i = 0; i < sectionsPool.Length; i++)
         {
             int randomPrefabIndex = Random.Range(0, allSectionsPrefabs.Length);
             sectionsPool[i] = Instantiate(allSectionsPrefabs[randomPrefabIndex]);
             sectionsPool[i].SetActive(false);
         }
-
-        for (int i = 0; i < sections.Length; i++)
+        
+        //first road segments spawn
+        for (int i = 0; i < sectionsCount; i++)
         {
             GameObject randomSection = GetRandomSectionFromPool();
             randomSection.transform.position = new Vector3(0, 0, i * sectionLength);
             randomSection.SetActive(true);
-            sections[i] = randomSection;
+            sectionsQueue.Enqueue(randomSection);
         }
     }
 
@@ -74,19 +79,27 @@ public class RoadManager : MonoBehaviour
 
     private void UpdateSectionPositions()
     {
-        for (int i = 0; i < sections.Length; i++)
+        GameObject currentLastSegment = sectionsQueue.Peek();
+        if (currentLastSegment.transform.position.z - playerCarTransform.position.z < -sectionLength)
         {
-            if (sections[i].transform.position.z - playerCarTransform.position.z < -sectionLength)
-            {
-                Vector3 lastSectionPosition = sections[i].transform.position;
-                sections[i].SetActive(false);
+            Vector3 lastSectionPosition = currentLastSegment.transform.position;
+            currentLastSegment.SetActive(false);
 
-                sections[i] = GetRandomSectionFromPool();
-                sections[i].transform.position = new Vector3(lastSectionPosition.x, 0,
-                    lastSectionPosition.z + (sectionLength * sections.Length));
-                sections[i].SetActive(true);
-            }
+            sectionsQueue.Dequeue();
+            GameObject newSegment = GetRandomSectionFromPool();
+            sectionsQueue.Enqueue(newSegment);
+
+            newSegment.transform.position = new Vector3(lastSectionPosition.x, 0,
+                lastSectionPosition.z + (sectionLength * sectionsCount));
+            newSegment.SetActive(true);
         }
+        UpdateBarrierColliders();
+    }
+
+    void UpdateBarrierColliders()
+    {
+        left.center = new Vector3(left.center.x, left.center.y, sectionsQueue.Peek().transform.position.z + left.size.z / 3);
+        right.center = new Vector3(right.center.x, right.center.y, sectionsQueue.Peek().transform.position.z + right.size.z / 3);
     }
 
     private GameObject GetRandomSectionFromPool()

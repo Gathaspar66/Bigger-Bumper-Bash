@@ -10,6 +10,7 @@ public enum SoundEffect
     CRASH_SOUND,
     LEVEL1_MUSIC,
     BARRIER_SCRAPE,
+    MENU_CLICK,
     Default
 }
 
@@ -24,11 +25,12 @@ public class SoundManager : MonoBehaviour
     public AudioSource crashSource;
     public AudioSource pointsSource;
     public AudioSource barrierScrapeSource;
+    public AudioSource menuClickSource;
 
     [Header("Audio Mixer Groups")]//
     public AudioMixerGroup sfxMixerGroup;
 
-    internal void ToggleEngineSound(bool muteEngine)
+    internal void MuteEngineSound(bool muteEngine)
     {
         PlayerSoundsHandler.instance.ToggleEngineSound(muteEngine);
     }
@@ -44,9 +46,14 @@ public class SoundManager : MonoBehaviour
     public Sprite soundOffSprite;
     public Image soundIcon;
     private bool isAlive = true;
+
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
     }
 
     public void Activate()
@@ -67,11 +74,38 @@ public class SoundManager : MonoBehaviour
                 PlayMusic(SoundEffect.Default);
                 break;
         }
+
+        CheckFirstRun();
+    }
+
+    private void CheckFirstRun()
+    {
+        //default value is 0
+        if (PlayerPrefs.GetInt("firstGameRun") == 0)
+        {
+            Debug.Log("FIRST GAME RUN DETECTED");
+            PlayerPrefs.SetInt("firstGameRun", 1);
+            //set default values, then adjust mixer
+            PlayerPrefs.SetFloat("musicVolume", 0.8f);
+            PlayerPrefs.SetFloat("soundVolume", 0.8f);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public void UpdateVolumes()
+    {
+        _ = audioMixer.SetFloat("Music", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("musicVolume"), 0.0001f, 1f)) * 20f);
+        _ = audioMixer.SetFloat("SFX", Mathf.Log10(Mathf.Clamp(PlayerPrefs.GetFloat("soundVolume"), 0.0001f, 1f)) * 20f);
     }
 
     public void PlayCrashSound()
     {
         crashSource.Play();
+    }
+
+    public void PlayMenuClickSound()
+    {
+        menuClickSource.Play();
     }
 
     public void PlayPointsSound()
@@ -163,6 +197,17 @@ public class SoundManager : MonoBehaviour
     {
         PlayerSoundsHandler.instance.PlayerCarBreakSound(braking);
     }
+
+    public void Vibrate()
+    {
+        if (PlayerPrefs.GetInt("VibrationEnabled", 0) == 1)
+        {
+            #if UNITY_ANDROID || UNITY_IOS
+            Handheld.Vibrate();
+            #endif
+        }
+    }
+
     public void OnPlayerDeath()
     {
         StopBarrierScrape();
