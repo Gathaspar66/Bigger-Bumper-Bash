@@ -7,6 +7,7 @@ public enum Effect
     BARREL,
     CRASH_AND_FIRE,
     FLOATING_TEXT,
+    CAR_REPAIR,
 }
 
 public class EffectManager : MonoBehaviour
@@ -19,6 +20,7 @@ public class EffectManager : MonoBehaviour
     public GameObject barrelEffect;
     public GameObject crashAndFireEffect;
     public GameObject floatingTextEffect;
+    public GameObject carRepairEffect;
     public Light directionalLight;
     [SerializeField] private float normalIntensity = 1f;
     [SerializeField] private float dimIntensity = 0.5f;
@@ -77,6 +79,11 @@ public class EffectManager : MonoBehaviour
             case Effect.FLOATING_TEXT:
                 currentEffect = Instantiate(floatingTextEffect, location, Quaternion.identity);
                 break;
+
+            case Effect.CAR_REPAIR:
+                currentEffect = Instantiate(carRepairEffect, location, Quaternion.identity);
+                break;
+                
         }
 
         ParticleSystem particleSystem = currentEffect.GetComponent<ParticleSystem>();
