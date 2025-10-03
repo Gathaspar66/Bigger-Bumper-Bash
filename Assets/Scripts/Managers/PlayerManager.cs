@@ -99,7 +99,15 @@ public class PlayerManager : MonoBehaviour
         }
         StartImmunity();
     }
-
+    public void AddHealth()
+    {
+        if (playerHealth < playerMaxHealth)
+        {
+            playerHealth++;
+            UpdatePlayerDamagedState();
+            UserInterfaceManager.instance.UpdateHealthDisplay(playerHealth, playerMaxHealth);
+        }
+    }
     private void UpdatePlayerDamagedState()
     {
         playerInstance.GetComponent<PlayerPrefabHandler>().UpdatePlayerDamagedState(playerHealth);

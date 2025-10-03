@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class BarrelIdleMovement : MonoBehaviour
 {
     public float offset = 0.2f;
     public float speed = 2f;
@@ -30,6 +30,6 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void Rotate()
     {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);
     }
 }
