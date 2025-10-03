@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6632559679259406277}
   - component: {fileID: 1164978499527429261}
   m_Layer: 6
-  m_Name: HealthPrefab
+  m_Name: healthWrenchPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
